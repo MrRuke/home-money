@@ -4,7 +4,7 @@
 /dist
 /tmp
 /out-tsc
-
+.idea
 # dependencies
 /node_modules
 
