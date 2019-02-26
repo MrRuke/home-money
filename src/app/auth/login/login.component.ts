@@ -3,6 +3,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UsersServices} from "../../shared/services/users.services";
 import {User} from "../../shared/models/user.model";
 import {Message} from "../../shared/models/message.model";
+import {AuthServices} from "../../shared/services/auth.services";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -15,7 +17,9 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   message: Message;
 
-  constructor(private usersServices: UsersServices) {
+  constructor(private usersServices: UsersServices,
+              private authServices: AuthServices,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -41,6 +45,8 @@ export class LoginComponent implements OnInit {
         if (user) {
           if (user.password === formData.password) {
             this.showMessage('Вы авторизовались', 'alert-success');
+            window.localStorage.setItem('user', JSON.stringify(user));
+            this.authServices.login();
           } else {
             this.showMessage('Пароль не верный');
           }
