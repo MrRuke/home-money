@@ -1,10 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {AuthModule} from "./auth/auth.module";
 import {UsersServices} from "./shared/services/users.services";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -13,9 +13,11 @@ import {UsersServices} from "./shared/services/users.services";
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     AuthModule
   ],
   providers: [UsersServices],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

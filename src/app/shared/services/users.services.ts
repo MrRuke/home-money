@@ -1,24 +1,19 @@
 import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
-import { map } from 'rxjs/operators';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map'
 import {HttpClient} from "@angular/common/http";
-import {User} from "../models/user.module";
+import {User} from "../models/user.model";
+
 @Injectable()
 
 export class UsersServices {
   constructor(private http: HttpClient) {
   }
 
-  /*getUserByEmail(email: string): Observable<User> {
-    return this.http.get(`http://localhost:3000/users?email=${email}`)
-      .map((response: Response) => response.json());
-  }*/
 
-  getUserByEmail(email: string) : Observable<User> {
-    return this.http.get(`http://localhost:3000/users?email=${email}`)
-      .pipe(map((response: Response) => response.json()));
-    /*return this.http.get(`http://localhost:3000/users?email=${email}`)
-      .map((response: Response) => response.json());
-    return this.http.get('https://reqres.in/api/users').pipe(map(res => res.data)).subscribe(res => console.log(res));*/
+  getUserByEmail(email: string): Observable<User> {
+    return this.http.get<User>(`http://localhost:3000/users?email=${email}`)
+      .map((response: any) => response)
+      .map((user: User[]) => user[0] ? user[0] : undefined);
   }
 }
