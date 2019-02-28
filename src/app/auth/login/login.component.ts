@@ -27,8 +27,11 @@ export class LoginComponent implements OnInit {
     this.message = new Message('', 'alert-danger');
     this.route.queryParams
       .subscribe((params: Params) => {
+      console.log(params);
         if (params['nowCanLogin']) {
           this.showMessage({text: 'Вы успешно зарегистрированы', type: 'alert-success'});
+        } else if (params['accessDenied']){
+          this.showMessage({text: 'Вы покинули систему', type: 'alert-warning'});
         }
       });
     this.form = new FormGroup({
