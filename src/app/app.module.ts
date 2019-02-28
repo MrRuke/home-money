@@ -6,6 +6,7 @@ import {AuthModule} from "./auth/auth.module";
 import {UsersServices} from "./shared/services/users.services";
 import {HttpClientModule} from "@angular/common/http";
 import {AuthServices} from "./shared/services/auth.services";
+import {SystemModule} from "./system/system.module";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {AuthServices} from "./shared/services/auth.services";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AuthModule
+    AuthModule,
+    SystemModule
   ],
   providers: [UsersServices, AuthServices],
   bootstrap: [AppComponent]
