@@ -32,6 +32,41 @@
       "id": 3,
       "name": "Машина",
       "capacity": 7000
+    },
+    {
+      "name": "",
+      "capacity": 1,
+      "id": 4
+    },
+    {
+      "name": null,
+      "capacity": 1,
+      "id": 5
+    },
+    {
+      "name": "test",
+      "capacity": 1,
+      "id": 6
+    },
+    {
+      "name": "test",
+      "capacity": 1,
+      "id": 7
+    },
+    {
+      "name": null,
+      "capacity": 1,
+      "id": 8
+    },
+    {
+      "name": "22",
+      "capacity": 1,
+      "id": 9
+    },
+    {
+      "name": null,
+      "capacity": 1,
+      "id": 10
     }
   ],
   "events": [
