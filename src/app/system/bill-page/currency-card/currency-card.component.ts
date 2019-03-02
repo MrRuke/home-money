@@ -9,7 +9,7 @@ export class CurrencyCardComponent implements OnInit {
 
   @Input() currency: any;
   currencies: string[] = ['USD', 'EURO'];
-  rate: number[] = [];
+  rate: any[] = [];
   constructor() {
   }
 
