@@ -52,6 +52,10 @@ export class LoginComponent implements OnInit {
     const formData = this.form.value;
     this.usersServices.getUserByEmail(formData.email)
       .subscribe((user: User) => {
+      console.log(user);
+      console.log(user.password);
+      console.log(formData);
+      console.log(formData.password);
         if (user) {
           if (user.password === formData.password) {
             this.showMessage({text: 'Вы авторизовались', type: 'alert-success'});

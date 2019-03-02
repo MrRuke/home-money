@@ -3,22 +3,22 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 import {HttpClient} from "@angular/common/http";
 import {User} from "../models/user.model";
+import {BaseApi} from "../core/base";
 
 @Injectable()
 
-export class UsersServices {
-  constructor(private http: HttpClient) {
+export class UsersServices extends BaseApi{
+  constructor(public http: HttpClient) {
+    super(http)
   }
 
-
   getUserByEmail(email: string): Observable<User> {
-    return this.http.get<User>(`http://localhost:3000/users?email=${email}`)
-      .map((response: any) => response)
-      .map((user: User[]) => user[0] ? user[0] : undefined);
+    return this.get(`users?email=${email}`)
+      .map((user: User[]) => user[0] ? user[0] : undefined)
   }
 
   createNewUser(user: User): Observable<User> {
-    return this.http.post<User>(`http://localhost:3000/users`, user)
-      .map((response: any) => response);
+    return this.post('users', user);
   }
+
 }
