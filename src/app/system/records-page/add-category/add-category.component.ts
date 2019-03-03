@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {FormGroup, NgForm} from "@angular/forms";
+import {NgForm} from "@angular/forms";
 import {CategoriesService} from "../../shared/services/categories.service";
 import {Category} from "../../shared/models/category.model";
 
@@ -17,9 +17,7 @@ export class AddCategoryComponent {
   onSubmit(form: NgForm) {
     console.log(form);
     let { name, capacity } = form.value;
-    if (capacity < 0) {
-      capacity *= -1;
-    }
+    if (capacity < 0) capacity *= -1;
 
     const category = new Category(name, capacity);
 
