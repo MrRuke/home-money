@@ -6,6 +6,9 @@
   </div>
   <div class="card-block">
     <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="alert {{message.type}}" *ngIf="message.text">
+        {{message.text}}
+      </div>
       <div
         class="form-group"
         [ngClass]="{'has-error': name.invalid && name.touched}"
