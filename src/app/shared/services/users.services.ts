@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
+import { map } from "rxjs/operators";
 import {HttpClient} from "@angular/common/http";
 import {User} from "../models/user.model";
 import {BaseApi} from "../core/base";
@@ -14,7 +14,7 @@ export class UsersServices extends BaseApi{
 
   getUserByEmail(email: string): Observable<User> {
     return this.get(`users?email=${email}`)
-      .map((user: User[]) => user[0] ? user[0] : undefined)
+      .pipe(map((user: User[]) => user[0] ? user[0] : undefined))
   }
 
   createNewUser(user: User): Observable<User> {

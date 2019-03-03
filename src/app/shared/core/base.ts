@@ -1,7 +1,8 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
-import 'rxjs/add/operator/map'
+import { map } from "rxjs/operators";
+
 @Injectable()
 export class BaseApi {
   private baseUrl = 'http://localhost:3000/';
@@ -13,14 +14,14 @@ export class BaseApi {
 
   public get(url: string = '') : Observable<any>{
     return this.http.get(this.getUrl(url))
-      .map((response: any) => response);
+      .pipe(map((response: any) => response));
   }
   public post(url: string = '', data: any = {}) : Observable<any>{
     return this.http.post(this.getUrl(url), data)
-      .map((response: any) => response);
+      .pipe(map((response: any) => response));
   }
   public put(url: string = '', data: any = {}) : Observable<any>{
     return this.http.put(this.getUrl(url), data)
-      .map((response: any) => response);
+      .pipe(map((response: any) => response));
   }
 }
