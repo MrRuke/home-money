@@ -5,6 +5,9 @@
     </div>
   </div>
   <div class="card-block">
+    <div class="alert {{message.type}}" *ngIf="message.text">
+      {{message.text}}
+    </div>
     <form #f="ngForm" (ngSubmit)="onSubmit(f)">
       <div class="form-group">
         <label class="control-label" for="category">Выберите категорию</label>
@@ -87,7 +90,8 @@
         type="submit"
         class="btn btn-primary"
         [disabled]="f.invalid"
-      >Добавить</button>
+      >Добавить
+      </button>
     </form>
   </div>
 </div>

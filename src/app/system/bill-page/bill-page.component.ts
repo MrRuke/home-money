@@ -12,8 +12,8 @@ import {Bill} from "../shared/models/bill.model";
 })
 export class BillPageComponent implements OnInit, OnDestroy {
 
-  subscription1: Subscription;
-  subscription2: Subscription;
+  sub1: Subscription;
+  sub2: Subscription;
   currency: any;
   bill: Bill;
   isLoaded = false;
@@ -22,7 +22,7 @@ export class BillPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscription1 = Observable.combineLatest(
+    this.sub1 = Observable.combineLatest(
       this.billService.getBill(),
       this.billService.getCurrency('EUR')
     ).subscribe((data: [Bill, any]) => {
@@ -33,17 +33,17 @@ export class BillPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.subscription1) {
-      this.subscription1.unsubscribe();
+    if (this.sub1) {
+      this.sub1.unsubscribe();
     }
-    if (this.subscription2) {
-      this.subscription2.unsubscribe();
+    if (this.sub2) {
+      this.sub2.unsubscribe();
     }
   }
 
   onRefresh() {
     this.isLoaded = false;
-    this.subscription2 = this.billService.getCurrency('EUR')
+    this.sub2 = this.billService.getCurrency('EUR')
       .subscribe((currency: any) => {
         this.isLoaded = true;
       });
