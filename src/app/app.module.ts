@@ -9,10 +9,12 @@ import {AuthServices} from "./shared/services/auth.services";
 import {SystemModule} from "./system/system.module";
 import {AuthGuard} from "./shared/services/auth.guard";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {NotFoundComponent} from "./shared/components/not-found/not-found.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

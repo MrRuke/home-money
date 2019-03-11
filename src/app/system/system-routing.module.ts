@@ -8,6 +8,7 @@ import { PlanningPageComponent } from './planning-page/planning-page.component';
 import { RecordsPageComponent } from './records-page/records-page.component';
 import {HistoryDetailComponent} from "./history-page/history-detail/history-detail.component";
 import {AuthGuard} from "../shared/services/auth.guard";
+import {NotFoundComponent} from "../shared/components/not-found/not-found.component";
 
 const routes: Routes = [
   {path: 'system', component: SystemComponent, canActivate: [AuthGuard], children: [
@@ -16,7 +17,8 @@ const routes: Routes = [
     {path: 'history/:id', component: HistoryDetailComponent},
     {path: 'planning', component: PlanningPageComponent},
     {path: 'records', component: RecordsPageComponent}
-  ]}
+  ]},
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
