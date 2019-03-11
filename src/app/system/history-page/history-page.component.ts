@@ -2,9 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CategoriesService} from "../shared/services/categories.service";
 import {EventsService} from "../shared/services/events.service";
 import {Observable, Subscription} from "rxjs/Rx";
-import {AppEvent} from "../shared/models/event.model";
 import {Category} from "../shared/models/category.model";
-
+import {AppEvent} from "../shared/models/event.model";
 @Component({
   selector: 'app-history-page',
   templateUrl: './history-page.component.html',
@@ -13,19 +12,19 @@ import {Category} from "../shared/models/category.model";
 export class HistoryPageComponent implements OnInit, OnDestroy {
 
 
-  categories: Category = [];
-  events: AppEvent = [];
+  categories: Category[] = [];
+  events: AppEvent[] = [];
   sub1: Subscription;
   isLoaded = false;
   chartData = [];
 
   constructor(private categoriesService: CategoriesService,
-              private eventsSerivce: EventsService) { }
+              private eventsService: EventsService) { }
 
   ngOnInit() {
     this.sub1 = Observable.combineLatest(
       this.categoriesService.getCategories(),
-      this.eventsSerivce.getEvents()
+      this.eventsService.getEvents()
     ).subscribe((data: [Category[], AppEvent[]]) => {
       this.categories = data[0];
       this.events= data[1];

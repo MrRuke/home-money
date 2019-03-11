@@ -9,8 +9,8 @@ import {AppEvent} from "../../shared/models/event.model";
 })
 export class HistoryEventsComponent implements OnInit {
 
-  @Input() categories: Category = [];
-  @Input() events: AppEvent = [];
+  @Input() categories: Category[] = [];
+  @Input() events: AppEvent[] = [];
   searchValue = '';
   searchPlaceholder= 'Сумма';
   searchField = 'amount';
