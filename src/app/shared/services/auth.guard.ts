@@ -5,10 +5,13 @@ import {
 import {Observable} from 'rxjs/Observable';
 import {AuthServices} from "./auth.services";
 import {Injectable} from "@angular/core";
+import {User} from "../models/user.model";
 
 @Injectable()
 
 export class AuthGuard implements CanActivate, CanActivateChild {
+
+
   constructor(private authService: AuthServices,
               private router: Router) {
 
