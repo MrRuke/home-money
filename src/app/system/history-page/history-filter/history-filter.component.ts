@@ -22,12 +22,12 @@ export class HistoryFilterComponent {
     {type: 'outcome', label: 'Расход'}
   ];
   selectedPeriod = 'd';
-  selectedTypes = [];
+  selectedTypes = ['income', 'outcome'];
   selectedCategories = [];
 
 
   closeFilter() {
-    this.selectedTypes = [];
+    this.selectedTypes = ['income', 'outcome'];
     this.selectedCategories = [];
     this.selectedPeriod = 'd';
     this.onFilterCancel.emit();

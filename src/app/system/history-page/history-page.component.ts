@@ -34,8 +34,8 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
       this.categories = data[0];
       this.events = data[1];
       this.isLoaded = true;
-      this.calculateChartData();
       this.setOriginEvent();
+      this.calculateChartData();
     })
   }
 
