@@ -14,7 +14,7 @@
     }
   ],
   "bill": {
-    "value": 85555,
+    "value": 85123,
     "currency": "RUB"
   },
   "categories": [
@@ -95,6 +95,14 @@
       "date": "05.03.2019 23:26:02",
       "description": "21",
       "id": 7
+    },
+    {
+      "type": "outcome",
+      "amount": 432,
+      "category": 1,
+      "date": "12.03.2019 21:56:25",
+      "description": "Тест",
+      "id": 8
     }
   ]
 }

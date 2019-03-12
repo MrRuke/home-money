@@ -4,6 +4,7 @@ import {EventsService} from "../shared/services/events.service";
 import {Observable, Subscription} from "rxjs/Rx";
 import {Category} from "../shared/models/category.model";
 import {AppEvent} from "../shared/models/event.model";
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-history-page',
@@ -15,6 +16,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
 
   categories: Category[] = [];
   events: AppEvent[] = [];
+  filteredEvents: AppEvent[] = [];
   sub1: Subscription;
   isLoaded = false;
   chartData = [];
@@ -33,6 +35,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
       this.events = data[1];
       this.isLoaded = true;
       this.calculateChartData();
+      this.setOriginEvent();
     })
   }
 
@@ -43,7 +46,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   calculateChartData(): void {
     this.chartData = [];
     this.categories.forEach((cat) => {
-      const catEvents = this.events.filter((event) => event.category === cat.id && event.type === 'outcome');
+      const catEvents = this.filteredEvents.filter((event) => event.category === cat.id && event.type === 'outcome');
       this.chartData.push({
         name: cat.name,
         value: catEvents.reduce((total, event) => {
@@ -54,7 +57,9 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     })
   }
 
-
+  private setOriginEvent() {
+    this.filteredEvents = this.events.slice();
+  }
   private toggleFilterVisibility(dir: boolean) {
     this.isFilterVisible = dir;
   }
@@ -64,11 +69,33 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   }
 
   onFilterApply(filterData) {
-    console.log(filterData);
     this.toggleFilterVisibility(false);
+    this.setOriginEvent();
+
+    const startPeriod = moment().startOf(filterData.period).startOf('d');
+    const endPeriod = moment().endOf(filterData.period).startOf('d');
+
+    this.filteredEvents = this.filteredEvents
+      .filter((e) => {
+        return filterData.types.indexOf(e.type) !== -1;
+      })
+      .filter((e) => {
+        return filterData.categories.indexOf(e.category.toString()) !== -1;
+      })
+      .filter((e) => {
+        const momentDate = moment(e.date, 'DD.MM.YYYY HH:mm:ss');
+        return momentDate.isBetween(startPeriod, endPeriod);
+      });
+
+    this.calculateChartData();
   }
 
   onFilterCancel() {
     this.toggleFilterVisibility(false);
+    this.setOriginEvent();
+    this.calculateChartData();
   }
+
+
+
 }
