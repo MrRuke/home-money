@@ -4,6 +4,7 @@ import {EventsService} from "../shared/services/events.service";
 import {Observable, Subscription} from "rxjs/Rx";
 import {Category} from "../shared/models/category.model";
 import {AppEvent} from "../shared/models/event.model";
+
 @Component({
   selector: 'app-history-page',
   templateUrl: './history-page.component.html',
@@ -17,9 +18,11 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   sub1: Subscription;
   isLoaded = false;
   chartData = [];
+  isFilterVisible = false;
 
   constructor(private categoriesService: CategoriesService,
-              private eventsService: EventsService) { }
+              private eventsService: EventsService) {
+  }
 
   ngOnInit() {
     this.sub1 = Observable.combineLatest(
@@ -27,11 +30,12 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
       this.eventsService.getEvents()
     ).subscribe((data: [Category[], AppEvent[]]) => {
       this.categories = data[0];
-      this.events= data[1];
+      this.events = data[1];
       this.isLoaded = true;
       this.calculateChartData();
     })
   }
+
   ngOnDestroy() {
     if (this.sub1) this.sub1.unsubscribe();
   }
@@ -42,7 +46,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
       const catEvents = this.events.filter((event) => event.category === cat.id && event.type === 'outcome');
       this.chartData.push({
         name: cat.name,
-        value: catEvents.reduce((total, event)=> {
+        value: catEvents.reduce((total, event) => {
           total += event.amount;
           return total;
         }, 0)
@@ -50,4 +54,21 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     })
   }
 
+
+  private toggleFilterVisibility(dir: boolean) {
+    this.isFilterVisible = dir;
+  }
+
+  openFilter() {
+    this.toggleFilterVisibility(true);
+  }
+
+  onFilterApply(filterData) {
+    console.log(filterData);
+    this.toggleFilterVisibility(false);
+  }
+
+  onFilterCancel() {
+    this.toggleFilterVisibility(false);
+  }
 }
