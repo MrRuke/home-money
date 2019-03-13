@@ -4,6 +4,7 @@ import {Observable} from "rxjs/Observable";
 import 'rxjs/add/observable/combineLatest';
 import {Subscription} from "rxjs/Subscription";
 import {Bill} from "../shared/models/bill.model";
+import {Meta, Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-bill-page',
@@ -18,7 +19,14 @@ export class BillPageComponent implements OnInit, OnDestroy {
   bill: Bill;
   isLoaded = false;
 
-  constructor(private billService: BillService) {
+  constructor(private billService: BillService,
+              private title: Title,
+              private meta: Meta) {
+    title.setTitle('Счет');
+    meta.addTags([
+      {name: 'keywords', content: 'счет'},
+      {name: 'description', content: 'Страница счета'}
+    ])
   }
 
   ngOnInit() {

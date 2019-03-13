@@ -5,6 +5,7 @@ import {Observable, Subscription} from "rxjs/Rx";
 import {Category} from "../shared/models/category.model";
 import {AppEvent} from "../shared/models/event.model";
 import * as moment from 'moment';
+import {Meta, Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-history-page',
@@ -23,7 +24,14 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   isFilterVisible = false;
 
   constructor(private categoriesService: CategoriesService,
-              private eventsService: EventsService) {
+              private eventsService: EventsService,
+              private title: Title,
+              private meta: Meta) {
+    title.setTitle('История');
+    meta.addTags([
+      {name: 'keywords', content: 'история'},
+      {name: 'description', content: 'Страница истории'}
+    ])
   }
 
   ngOnInit() {

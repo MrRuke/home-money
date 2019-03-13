@@ -3,10 +3,8 @@ import {fadeStateTrigger} from "../shared/animations/fade.animation";
 
 @Component({
   selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  animations: [fadeStateTrigger]
+  templateUrl: './auth.component.html'
 })
 
 export class AuthComponent {
-  @HostBinding('@fade') a = true;
 }

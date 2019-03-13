@@ -6,6 +6,7 @@ import {Message} from "../../shared/models/message.model";
 import {AuthServices} from "../../shared/services/auth.services";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {fadeStateTrigger} from "../../shared/animations/fade.animation";
+import {Meta, Title} from "@angular/platform-browser";
 
 
 @Component({
@@ -22,7 +23,14 @@ export class LoginComponent implements OnInit {
   constructor(private usersServices: UsersServices,
               private authServices: AuthServices,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private title: Title,
+              private meta: Meta) {
+    title.setTitle('Вход в систему');
+    meta.addTags([
+      {name: 'keywords', content: 'логин, вход, система'},
+      {name: 'description', content: 'Страница для входа в систему'}
+    ])
   }
 
   ngOnInit() {
@@ -31,7 +39,7 @@ export class LoginComponent implements OnInit {
       .subscribe((params: Params) => {
         if (params['nowCanLogin']) {
           this.showMessage({text: 'Вы успешно зарегистрированы', type: 'alert-success'});
-        } else if (params['accessDenied']){
+        } else if (params['accessDenied']) {
           this.showMessage({text: 'Для работы с системой необходима авторизация', type: 'alert-warning'});
         }
       });

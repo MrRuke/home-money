@@ -7,6 +7,7 @@ import 'rxjs/add/observable/combineLatest';
 import {Bill} from "../shared/models/bill.model";
 import {Category} from "../shared/models/category.model";
 import {AppEvent} from "../shared/models/event.model";
+import {Meta, Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-planning-page',
@@ -23,7 +24,14 @@ export class PlanningPageComponent implements OnInit, OnDestroy {
 
   constructor(private billService: BillService,
               private categoriesService: CategoriesService,
-              private eventsService: EventsService) {
+              private eventsService: EventsService,
+              private title: Title,
+              private meta: Meta) {
+    title.setTitle('Планирование');
+    meta.addTags([
+      {name: 'keywords', content: 'планирование'},
+      {name: 'description', content: 'Страница планирования'}
+    ])
   }
 
   ngOnInit() {
