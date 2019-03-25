@@ -22,6 +22,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   isLoaded = false;
   chartData = [];
   isFilterVisible = false;
+  currencyPage = 1;
 
   constructor(private categoriesService: CategoriesService,
               private eventsService: EventsService,
@@ -102,6 +103,10 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     this.toggleFilterVisibility(false);
     this.setOriginEvent();
     this.calculateChartData();
+  }
+
+  changePage(currencyPage) {
+    this.currencyPage = currencyPage;
   }
 
 

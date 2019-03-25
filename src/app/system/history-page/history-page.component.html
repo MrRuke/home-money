@@ -21,6 +21,12 @@
       [categories]="categories"
     ></app-history-filter>
   </div>
+  <app-history-pagination
+    [currencyPage]="currencyPage"
+    [maxPage]=1000
+    (changePage)="changePage($event)"
+  ></app-history-pagination>
+  <p>Текущая страница: {{currencyPage}}</p>
 </div>
 
 
