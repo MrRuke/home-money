@@ -1,11 +1,16 @@
-import {Component, HostBinding} from '@angular/core';
-import {fadeStateTrigger} from "../shared/animations/fade.animation";
+import {
+  Component,
+  HostBinding,
+} from '@angular/core';
+
+import { fadeStateTrigger } from '@app/shared/animations/fade.animation';
 
 @Component({
   selector: 'app-system',
   templateUrl: './system.component.html',
-  animations: [fadeStateTrigger]
+  animations: [fadeStateTrigger],
 })
 export class SystemComponent {
-  @HostBinding('@fade') a = true;
+  @HostBinding('@fade')
+  public a = true;
 }

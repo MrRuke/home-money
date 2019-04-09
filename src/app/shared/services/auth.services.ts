@@ -1,19 +1,19 @@
-import {User} from "../models/user.model";
+import { User } from '../models/user.model';
 
 export class AuthServices {
   private isAuth = false;
   private user: User;
 
-  login() {
+  public login(): void {
     this.isAuth = true;
   }
 
-  logout() {
+  public logout(): void {
     this.isAuth = false;
     window.localStorage.clear();
   }
 
-  isLoggedIn(): boolean {
+  public isLoggedIn(): boolean {
     this.user = JSON.parse(window.localStorage.getItem('user'));
     if (this.user) {
       return true;

@@ -1,23 +1,27 @@
-import {Injectable} from "@angular/core";
-import {Observable} from 'rxjs/Observable';
-import { map } from "rxjs/operators";
-import {HttpClient} from "@angular/common/http";
-import {User} from "../models/user.model";
-import {BaseApi} from "../core/base";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
+
+import { User } from '../models/user.model';
+import { BaseApi } from '../core/base';
 
 @Injectable()
 
-export class UsersServices extends BaseApi{
+export class UsersServices extends BaseApi {
   constructor(public http: HttpClient) {
-    super(http)
+    super(http);
   }
 
-  getUserByEmail(email: string): Observable<User> {
+  public getUserByEmail(email: string): Observable<User> {
     return this.get(`users?email=${email}`)
-      .pipe(map((user: User[]) => user[0] ? user[0] : undefined))
+      .pipe(map((user: User[]) => user[0]
+        ? user[0]
+        : undefined));
   }
 
-  createNewUser(user: User): Observable<User> {
+  public createNewUser(user: User): Observable<User> {
     return this.post('users', user);
   }
 

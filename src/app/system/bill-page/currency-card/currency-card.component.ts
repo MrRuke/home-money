@@ -1,23 +1,25 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 
 @Component({
   selector: 'app-currency-card',
   templateUrl: './currency-card.component.html',
-  styleUrls: ['./currency-card.component.scss']
+  styleUrls: ['./currency-card.component.scss'],
 })
 export class CurrencyCardComponent implements OnInit {
+  @Input()
+  public currency: any;
 
-  @Input() currency: any;
-  currencies: string[] = ['USD', 'EURO'];
-  rate: any = ['RUB', 'EURO', 'USD'];
-  constructor() {
-  }
+  public currencies: string[] = ['USD', 'EURO'];
+  public rate: any = ['RUB', 'EURO', 'USD'];
 
-  ngOnInit() {
-    const {rates} = this.currency;
-    this.rate.RUB =  1;
+  public ngOnInit() {
+    const { rates } = this.currency;
+    this.rate.RUB = 1;
     this.rate.EURO = 1 / rates['RUB'];
     this.rate.USD = this.rate.EURO * rates['USD'];
   }
-
 }

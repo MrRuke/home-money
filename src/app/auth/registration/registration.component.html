@@ -1,7 +1,7 @@
 <p class="text-xs-center">Регистрация для получения доступа</p>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="form-group"
-    [ngClass]="{'has-error': form.get('email').invalid && form.get('email').touched}"
+       [ngClass]="{'has-error': form.get('email').invalid && form.get('email').touched}"
   >
     <label for="email">Email</label>
     <input
@@ -19,7 +19,7 @@
     </span>
   </div>
   <div class="form-group"
-    [ngClass]="{'has-error': form.get('password').invalid && form.get('password').touched}"
+       [ngClass]="{'has-error': form.get('password').invalid && form.get('password').touched}"
   >
     <label for="password">Пароль</label>
     <input
@@ -32,7 +32,8 @@
     <span class="form-help-text"
           *ngIf="form.get('password').invalid && form.get('password').touched">
       <span *ngIf="form.get('password')['errors']['required']">Пароль не может быть пустым</span>
-      <span *ngIf="form.get('password')['errors']['minlength'] && form.get('password')['errors']['minlength']['requiredLength']">
+      <span
+        *ngIf="form.get('password')['errors']['minlength'] && form.get('password')['errors']['minlength']['requiredLength']">
         Ваш пароль должен быть больше {{form.get('password')['errors']['minlength']['requiredLength']}} символов. <br>
         Вы ввели {{form.get('password')['errors']['minlength']['actualLength']}}.</span>
     </span>

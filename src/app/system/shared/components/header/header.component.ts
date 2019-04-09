@@ -1,29 +1,34 @@
-import {Component, OnInit} from '@angular/core';
-import {User} from "../../../../shared/models/user.model";
-import {AuthServices} from "../../../../shared/services/auth.services";
-import {Router} from "@angular/router";
+import {
+  Component,
+  OnInit,
+} from '@angular/core';
+import { Router } from '@angular/router';
+
+import { User } from '@app/shared/models/user.model';
+import { AuthServices } from '@app/shared/services/auth.services';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  public date: Date = new Date();
+  public user: User;
 
-  date: Date = new Date();
-  user: User;
-
-  constructor(private authSerive: AuthServices,
-              private router: Router) {
+  constructor(
+    private authSerive: AuthServices,
+    private router: Router,
+  ) {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.user = JSON.parse(window.localStorage.getItem('user'));
   }
 
-  onLogout() {
+  public onLogout() {
     this.authSerive.logout();
-    this.router.navigate(['login'])
+    this.router.navigate(['login']);
   }
 
 }

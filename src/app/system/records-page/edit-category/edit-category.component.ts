@@ -1,52 +1,67 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {NgForm} from "@angular/forms";
-import {Category} from "../../shared/models/category.model";
-import {CategoriesService} from "../../shared/services/categories.service";
-import {Message} from "../../../shared/models/message.model";
-import {Subscription} from "rxjs/Rx";
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { Subscription } from 'rxjs/Subscription';
+
+import { Message } from '@app/shared/models/message.model';
+import { Category } from '@app/system/shared/models/category.model';
+import { CategoriesService } from '@app/system/shared/services/categories.service';
 
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
-  styleUrls: ['./edit-category.component.scss']
+  styleUrls: ['./edit-category.component.scss'],
 })
 export class EditCategoryComponent implements OnInit, OnDestroy {
+  @Input()
+  public categories: Category[] = [];
 
-  @Input() categories: Category[] = [];
-  @Output() onCategoryEdit = new EventEmitter<Category>();
+  @Output()
+  public categoryEdit = new EventEmitter<Category>();
 
-  currentCategoryId = 1;
-  currentCategory: Category;
-  message: Message;
-  sub1: Subscription;
+  public currentCategoryId = 1;
+  public currentCategory: Category;
+  public message: Message;
+  private sub1: Subscription;
 
   constructor(private categoriesService: CategoriesService) {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.message = new Message('', 'alert-success');
     this.onCategoryChange();
   }
 
-  ngOnDestroy() {
-    if (this.sub1) this.sub1.unsubscribe();
+  public ngOnDestroy() {
+    if (this.sub1) {
+      this.sub1.unsubscribe();
+    }
   }
 
-  onSubmit(form: NgForm) {
-    let {capacity, name} = form.value;
-    if (capacity < 0) capacity *= -1;
+  public onSubmit(form: NgForm): void {
+    const { capacity, name } = form.value;
+    if (capacity < 0) {
+      capacity *= -1;
+    }
 
     const category = new Category(name, capacity, +this.currentCategoryId);
 
     this.sub1 = this.categoriesService.updateCategory(category)
-      .subscribe((category: Category) => {
-        this.onCategoryEdit.emit(category);
+      .subscribe((result: Category) => {
+        this.categoryEdit.emit(result);
         this.message.text = 'Категория изменена.';
         window.setTimeout(() => this.message.text = '', 3000);
-      })
+      });
   }
 
-  onCategoryChange() {
+  public onCategoryChange(): void {
     this.currentCategory = this.categories
       .find(category => category.id === +this.currentCategoryId);
   }

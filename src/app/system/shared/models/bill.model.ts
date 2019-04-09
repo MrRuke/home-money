@@ -1,6 +1,7 @@
 export class Bill {
-  constructor(public value: number,
-              public currency: string) {
-
+  constructor(
+    public value: number,
+    public currency: string,
+  ) {
   }
 }

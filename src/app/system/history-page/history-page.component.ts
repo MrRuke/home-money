@@ -1,58 +1,76 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CategoriesService} from "../shared/services/categories.service";
-import {EventsService} from "../shared/services/events.service";
-import {Observable, Subscription} from "rxjs/Rx";
-import {Category} from "../shared/models/category.model";
-import {AppEvent} from "../shared/models/event.model";
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import {
+  Meta,
+  Title,
+} from '@angular/platform-browser';
+
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import * as moment from 'moment';
-import {Meta, Title} from "@angular/platform-browser";
+
+import { CategoriesService } from '../shared/services/categories.service';
+import { EventsService } from '../shared/services/events.service';
+import { Category } from '../shared/models/category.model';
+import { AppEvent } from '../shared/models/event.model';
 
 @Component({
   selector: 'app-history-page',
   templateUrl: './history-page.component.html',
-  styleUrls: ['./history-page.component.scss']
+  styleUrls: ['./history-page.component.scss'],
 })
 export class HistoryPageComponent implements OnInit, OnDestroy {
+  public categories: Category[] = [];
+  public events: AppEvent[] = [];
+  public filteredEvents: AppEvent[] = [];
+  public isLoaded = false;
+  public chartData = [];
+  public isFilterVisible = false;
+  public currencyPage = 1;
+  private sub1: Subscription;
 
-
-  categories: Category[] = [];
-  events: AppEvent[] = [];
-  filteredEvents: AppEvent[] = [];
-  sub1: Subscription;
-  isLoaded = false;
-  chartData = [];
-  isFilterVisible = false;
-  currencyPage = 1;
-
-  constructor(private categoriesService: CategoriesService,
-              private eventsService: EventsService,
-              private title: Title,
-              private meta: Meta) {
+  constructor(
+    private categoriesService: CategoriesService,
+    private eventsService: EventsService,
+    private title: Title,
+    private meta: Meta,
+  ) {
     title.setTitle('История');
     meta.addTags([
-      {name: 'keywords', content: 'история'},
-      {name: 'description', content: 'Страница истории'}
-    ])
+      {
+        name: 'keywords',
+        content: 'история',
+      },
+      {
+        name: 'description',
+        content: 'Страница истории',
+      },
+    ]);
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.sub1 = Observable.combineLatest(
       this.categoriesService.getCategories(),
-      this.eventsService.getEvents()
+      this.eventsService.getEvents(),
     ).subscribe((data: [Category[], AppEvent[]]) => {
       this.categories = data[0];
       this.events = data[1];
       this.isLoaded = true;
       this.setOriginEvent();
       this.calculateChartData();
-    })
+    });
   }
 
-  ngOnDestroy() {
-    if (this.sub1) this.sub1.unsubscribe();
+  public ngOnDestroy() {
+    if (this.sub1) {
+      this.sub1.unsubscribe();
+    }
   }
 
-  calculateChartData(): void {
+  private calculateChartData(): void {
     this.chartData = [];
     this.categories.forEach((cat) => {
       const catEvents = this.filteredEvents.filter((event) => event.category === cat.id && event.type === 'outcome');
@@ -61,23 +79,24 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
         value: catEvents.reduce((total, event) => {
           total += event.amount;
           return total;
-        }, 0)
-      })
-    })
+        }, 0),
+      });
+    });
   }
 
-  private setOriginEvent() {
+  private setOriginEvent(): void {
     this.filteredEvents = this.events.slice();
   }
-  private toggleFilterVisibility(dir: boolean) {
+
+  private toggleFilterVisibility(dir: boolean): void {
     this.isFilterVisible = dir;
   }
 
-  openFilter() {
+  public openFilter(): void {
     this.toggleFilterVisibility(true);
   }
 
-  onFilterApply(filterData) {
+  public onFilterApply(filterData): void {
     this.toggleFilterVisibility(false);
     this.setOriginEvent();
 
@@ -99,16 +118,14 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     this.calculateChartData();
   }
 
-  onFilterCancel() {
+  public onFilterCancel(): void {
     this.toggleFilterVisibility(false);
     this.setOriginEvent();
     this.calculateChartData();
   }
 
-  changePage(currencyPage) {
+  public changePage(currencyPage: number): void {
     this.currencyPage = currencyPage;
   }
-
-
 
 }

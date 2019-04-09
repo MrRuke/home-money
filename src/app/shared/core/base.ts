@@ -1,28 +1,35 @@
-import {HttpClient} from "@angular/common/http";
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs/Observable";
-import { map } from "rxjs/operators";
-import { environment } from "../../../environments/environment";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
+
+import { environment } from '@env/environment';
+
 
 @Injectable()
 export class BaseApi {
   private baseUrl = environment.restURL;
-  constructor(public http: HttpClient){}
 
-  private getUrl(url: string = '') : string {
-    return this.baseUrl + url;
+  constructor(public http: HttpClient) {
   }
 
-  public get(url: string = '') : Observable<any>{
+  public get(url: string = ''): Observable<any> {
     return this.http.get(this.getUrl(url))
       .pipe(map((response: any) => response));
   }
-  public post(url: string = '', data: any = {}) : Observable<any>{
+
+  public post(url: string = '', data: any = {}): Observable<any> {
     return this.http.post(this.getUrl(url), data)
       .pipe(map((response: any) => response));
   }
-  public put(url: string = '', data: any = {}) : Observable<any>{
+
+  public put(url: string = '', data: any = {}): Observable<any> {
     return this.http.put(this.getUrl(url), data)
       .pipe(map((response: any) => response));
+  }
+
+  private getUrl(url: string = ''): string {
+    return this.baseUrl + url;
   }
 }
