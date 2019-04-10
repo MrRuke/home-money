@@ -54,32 +54,32 @@ export class HistoryFilterComponent {
     this.selectedTypes = ['income', 'outcome'];
     this.selectedCategories = [];
     this.selectedPeriod = 'd';
-    this.onFilterCancel.emit();
+    this.filterCancel.emit();
   }
 
   public applyFilter(): void {
-    this.onFilterApply.emit({
+    this.filterApply.emit({
       types: this.selectedTypes,
       categories: this.selectedCategories,
       period: this.selectedPeriod,
     });
   }
 
-  public handlerChangeType({ checked, value }) {
+  public handlerChangeType({ checked, value }): void {
     this.calculateInputParams('selectedTypes', checked, value);
   }
 
-  public handlerChangeCategory({ checked, value }) {
+  public handlerChangeCategory({ checked, value }): void {
     this.calculateInputParams('selectedCategories', checked, value);
   }
 
-  private calculateInputParams(field: string, checked: boolean, value: string) {
+  private calculateInputParams(field: string, checked: boolean, value: string): void {
     if (checked) {
-      this[field].indexOf(value) === -1
-        ? this[field].push(value)
-        : null;
-    } else {
-      this[field] = this[field].filter(i => i !== value);
+      if (this[field].indexOf(value) === -1) {
+        this[field].push(value);
+      }
+      return;
     }
+    this[field] = this[field].filter(i => i !== value);
   }
 }

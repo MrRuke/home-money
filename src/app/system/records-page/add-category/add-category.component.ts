@@ -39,7 +39,8 @@ export class AddCategoryComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit(form: NgForm): void {
-    const { name, capacity } = form.value;
+    const { name } = form.value;
+    let { capacity } = form.value;
     if (capacity < 0) {
       capacity *= -1;
     }

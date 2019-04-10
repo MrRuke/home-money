@@ -6,8 +6,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./history-pagination.component.scss']
 })
 export class HistoryPaginationComponent {
-  @Input() public currencyPage: number = 1;
-  @Input() public maxPage: number = 1;
+  @Input() public currencyPage: number | string = 1;
+  @Input() public maxPage: number | string = 1;
   @Output() public changePage = new EventEmitter<number>();
 
   private errorPage = false;

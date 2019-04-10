@@ -29,7 +29,7 @@ export class HistoryEventsComponent implements OnInit {
     });
   }
 
-  public getEventClass(e: AppEvent): string[] {
+  public getEventClass(e: AppEvent) {
     return {
       'label': true,
       'label-danger': e.type === 'outcome',
