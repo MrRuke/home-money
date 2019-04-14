@@ -4,14 +4,16 @@ import {
   Routes,
 } from '@angular/router';
 
+import { AuthGuard } from '../shared/services/auth.guard';
+import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
+
+import { HistoryDetailComponent } from './history-page/history-detail/history-detail.component';
 import { SystemComponent } from './system.component';
 import { BillPageComponent } from './bill-page/bill-page.component';
 import { HistoryPageComponent } from './history-page/history-page.component';
 import { PlanningPageComponent } from './planning-page/planning-page.component';
 import { RecordsPageComponent } from './records-page/records-page.component';
-import { HistoryDetailComponent } from './history-page/history-detail/history-detail.component';
-import { AuthGuard } from '../shared/services/auth.guard';
-import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
+import { UsersPageComponent } from './users-page/users-page.component';
 
 const routes: Routes = [
   {
@@ -38,6 +40,10 @@ const routes: Routes = [
       {
         path: 'records',
         component: RecordsPageComponent,
+      },
+      {
+        path: 'users',
+        component: UsersPageComponent,
       },
     ],
   },

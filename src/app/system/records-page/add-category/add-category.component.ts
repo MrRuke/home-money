@@ -29,7 +29,9 @@ export class AddCategoryComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this.message = new Message('', 'alert-success');
+    this.message = {
+      type: 'alert-success',
+    };
   }
 
   public ngOnDestroy() {
@@ -45,7 +47,10 @@ export class AddCategoryComponent implements OnInit, OnDestroy {
       capacity *= -1;
     }
 
-    const category = new Category(name, capacity);
+    const category = {
+      name: name,
+      capacity: capacity,
+    };
 
     this.sub1 = this.categoriesService.addCategory(category)
       .subscribe((result: Category) => {

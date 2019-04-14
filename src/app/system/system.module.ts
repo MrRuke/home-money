@@ -26,6 +26,8 @@ import { HistoryDetailComponent } from './history-page/history-detail/history-de
 import { HistoryFilterComponent } from './history-page/history-filter/history-filter.component';
 import { FilterPipe } from './shared/pipes/filter.pipe';
 import { HistoryPaginationComponent } from './history-page/history-pagination/history-pagination.component';
+import { UsersPageComponent } from './users-page/users-page.component';
+import { UsersService } from './shared/services/users.service';
 
 @NgModule({
   imports: [
@@ -54,11 +56,13 @@ import { HistoryPaginationComponent } from './history-page/history-pagination/hi
     HistoryFilterComponent,
     HistoryPaginationComponent,
     FilterPipe,
+    UsersPageComponent,
   ],
   providers: [
     BillService,
     CategoriesService,
     EventsService,
+    UsersService,
   ],
 })
 export class SystemModule {

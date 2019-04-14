@@ -27,7 +27,7 @@ export class HistoryPaginationComponent {
     }
   }
   public pageTransition(status = false) {
-    return status ? this.checkValue(this.currencyPage + 1) : this.checkValue(this.currencyPage - 1);
+    return status ? this.checkValue(+this.currencyPage + 1) : this.checkValue(+this.currencyPage - 1);
   }
 
 }

@@ -1,0 +1,19 @@
+<div class="title-block">
+  <h3 class="title">
+    Страница пользователей <span class="sparkline bar"></span>
+  </h3>
+</div>
+
+<section class="section">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div *ngFor="let u of users">
+        {{ u.id }}
+        {{ u.name }}
+        {{ u.email }}
+      </div>
+
+    </div>
+  </div>
+</section>

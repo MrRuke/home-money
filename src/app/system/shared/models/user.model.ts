@@ -1,4 +1,4 @@
-export interface Bill {
+export interface User {
   value: number;
   currency: string;
 }

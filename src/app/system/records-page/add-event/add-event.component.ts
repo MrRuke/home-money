@@ -48,7 +48,9 @@ export class AddEventComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this.message = new Message('', 'alert-danger');
+    this.message = {
+      type: 'alert-danger',
+    };
   }
 
   public ngOnDestroy() {
@@ -67,9 +69,13 @@ export class AddEventComponent implements OnInit, OnDestroy {
       amount *= -1;
     }
 
-    const event = new AppEvent(
-      type, amount, +category, moment().format('DD.MM.YYYY HH:mm:ss'), description,
-    );
+    const event = {
+      type: type,
+      amount: amount,
+      category: +category,
+      date: moment().format('DD.MM.YYYY HH:mm:ss'),
+      description: description,
+    };
 
     this.sub1 = this.billService.getBill()
       .subscribe((bill: Bill) => {

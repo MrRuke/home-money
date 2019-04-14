@@ -18,7 +18,6 @@ import {
   Title,
 } from '@angular/platform-browser';
 
-
 import { User } from '@app/shared/models/user.model';
 import { Message } from '@app/shared/models/message.model';
 import { UsersServices } from '@app/shared/services/users.services';
@@ -66,7 +65,9 @@ export class LoginComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.message = new Message('', 'alert-danger');
+    this.message = {
+      type: 'alert-danger',
+    };
     this.route.queryParams
       .subscribe((params: Params) => {
         if (params['nowCanLogin']) {

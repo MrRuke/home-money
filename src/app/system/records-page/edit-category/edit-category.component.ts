@@ -35,7 +35,9 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this.message = new Message('', 'alert-success');
+    this.message = {
+      type: 'alert-success',
+    };
     this.onCategoryChange();
   }
 
@@ -52,7 +54,11 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
       capacity *= -1;
     }
 
-    const category = new Category(name, capacity, +this.currentCategoryId);
+    const category = {
+      name: name,
+      capacity: capacity,
+      id: +this.currentCategoryId,
+    };
 
     this.sub1 = this.categoriesService.updateCategory(category)
       .subscribe((result: Category) => {

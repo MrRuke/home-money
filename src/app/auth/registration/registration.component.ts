@@ -48,7 +48,11 @@ export class RegistrationComponent {
 
   public onSubmit(): void {
     const { email, password, name } = this.form.value;
-    const user = new User(email, password, name);
+    const user = {
+      email: email,
+      password: password,
+      name: name,
+    };
     this.usersServices.createNewUser(user)
       .subscribe(() => {
         this.router.navigate(['/login'], {
