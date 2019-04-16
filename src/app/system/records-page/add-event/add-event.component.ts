@@ -12,7 +12,6 @@ import * as moment from 'moment';
 
 import { Message } from '@app/shared/models/message.model';
 import { Category } from '@app/system/shared/models/category.model';
-import { AppEvent } from '@app/system/shared/models/event.model';
 import { EventsService } from '@app/system/shared/services/events.service';
 import { BillService } from '@app/system/shared/services/bill.service';
 import { Bill } from '@app/system/shared/models/bill.model';
