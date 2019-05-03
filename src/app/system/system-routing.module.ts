@@ -1,60 +1,9 @@
 import { NgModule } from '@angular/core';
-import {
-  RouterModule,
-  Routes,
-} from '@angular/router';
-
-import { AuthGuard } from '../shared/services/auth.guard';
-import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
-
-import { HistoryDetailComponent } from './history-page/history-detail/history-detail.component';
-import { SystemComponent } from './system.component';
-import { BillPageComponent } from './bill-page/bill-page.component';
-import { HistoryPageComponent } from './history-page/history-page.component';
-import { PlanningPageComponent } from './planning-page/planning-page.component';
-import { RecordsPageComponent } from './records-page/records-page.component';
-import { UsersPageComponent } from './users-page/users-page.component';
-
-const routes: Routes = [
-  {
-    path: 'system',
-    component: SystemComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: 'bill',
-        component: BillPageComponent,
-      },
-      {
-        path: 'history',
-        component: HistoryPageComponent,
-      },
-      {
-        path: 'history/:id',
-        component: HistoryDetailComponent,
-      },
-      {
-        path: 'planning',
-        component: PlanningPageComponent,
-      },
-      {
-        path: 'records',
-        component: RecordsPageComponent,
-      },
-      {
-        path: 'users',
-        component: UsersPageComponent,
-      },
-    ],
-  },
-  {
-    path: '**',
-    component: NotFoundComponent,
-  },
-];
+import { RouterModule } from '@angular/router';
+import { SystemScheme } from '@app/nav-scheme';
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(SystemScheme)],
   exports: [RouterModule],
 })
 export class SystemRoutingModule {

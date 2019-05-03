@@ -1,13 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'system', redirectTo: 'system/bill', pathMatch: 'full'}
-];
+import { RouterModule } from '@angular/router';
+import { AppScheme } from '@app/nav-scheme';
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(AppScheme)],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
