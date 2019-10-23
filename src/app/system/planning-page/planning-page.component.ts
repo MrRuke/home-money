@@ -8,9 +8,11 @@ import {
   Title,
 } from '@angular/platform-browser';
 
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/observable/combineLatest';
+import {
+  combineLatest,
+  Observable,
+} from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { Bill } from '../shared/models/bill.model';
 import { Category } from '../shared/models/category.model';
@@ -52,7 +54,7 @@ export class PlanningPageComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this.sub1 = Observable.combineLatest(
+    this.sub1 = combineLatest(
       this.billService.getBill(),
       this.categoriesService.getCategories(),
       this.eventsService.getEvents(),

@@ -6,8 +6,7 @@ import {
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/mergeMap';
+import { Subscription } from 'rxjs';
 import * as moment from 'moment';
 
 import { Message } from '@app/shared/models/message.model';
@@ -15,6 +14,7 @@ import { Category } from '@app/system/shared/models/category.model';
 import { EventsService } from '@app/system/shared/services/events.service';
 import { BillService } from '@app/system/shared/services/bill.service';
 import { Bill } from '@app/system/shared/models/bill.model';
+import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-event',
@@ -95,7 +95,9 @@ export class AddEventComponent implements OnInit, OnDestroy {
             value,
             currency: bill.currency,
           })
-          .mergeMap(() => this.eventsService.addEvent(event))
+          .pipe(
+            mergeMap(() => this.eventsService.addEvent(event)),
+          )
           .subscribe(() => {
             form.setValue({
               amount: 1,

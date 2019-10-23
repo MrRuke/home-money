@@ -8,12 +8,13 @@ import {
   Params,
 } from '@angular/router';
 
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import { EventsService } from '@app/system/shared/services/events.service';
 import { CategoriesService } from '@app/system/shared/services/categories.service';
 import { AppEvent } from '@app/system/shared/models/event.model';
 import { Category } from '@app/system/shared/models/category.model';
+import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-history-detail',
@@ -35,11 +36,13 @@ export class HistoryDetailComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this.sub1 = this.route.params
-      .mergeMap((params: Params) => this.eventsService.getEventsById(params.id))
-      .mergeMap((event: AppEvent) => {
-        this.event = event;
-        return this.categoriesService.getCategoryById(event.category);
-      })
+      .pipe(
+        mergeMap((params: Params) => this.eventsService.getEventsById(params.id)),
+        mergeMap((event: AppEvent) => {
+          this.event = event;
+          return this.categoriesService.getCategoryById(event.category);
+        }),
+      )
       .subscribe((category: Category) => {
         this.category = category;
         this.isLoaded = true;

@@ -8,9 +8,10 @@ import {
   Title,
 } from '@angular/platform-browser';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/combineLatest';
-import { Subscription } from 'rxjs/Subscription';
+import {
+  combineLatest,
+  Subscription,
+} from 'rxjs';
 
 import { BillService } from '../shared/services/bill.service';
 import { Bill } from '../shared/models/bill.model';
@@ -46,7 +47,7 @@ export class BillPageComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this.sub1 = Observable.combineLatest(
+    this.sub1 = combineLatest(
       this.billService.getBill(),
       this.billService.getCurrency('EUR'),
     ).subscribe((data: [Bill, any]) => {

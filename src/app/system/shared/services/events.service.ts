@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
-
 import { BaseApi } from '@app/shared/core/base';
+import { Observable } from 'rxjs';
 import { AppEvent } from '../models/event.model';
 
 @Injectable()

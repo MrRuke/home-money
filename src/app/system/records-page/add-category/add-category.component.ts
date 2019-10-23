@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import { Message } from '@app/shared/models/message.model';
 import { CategoriesService } from '@app/system/shared/services/categories.service';

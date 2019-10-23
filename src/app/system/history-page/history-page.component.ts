@@ -8,8 +8,10 @@ import {
   Title,
 } from '@angular/platform-browser';
 
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import {
+  combineLatest,
+} from 'rxjs';
+import { Subscription } from 'rxjs';
 import * as moment from 'moment';
 
 import { CategoriesService } from '../shared/services/categories.service';
@@ -52,7 +54,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this.sub1 = Observable.combineLatest(
+    this.sub1 = combineLatest(
       this.categoriesService.getCategories(),
       this.eventsService.getEvents(),
     ).subscribe((data: [Category[], AppEvent[]]) => {

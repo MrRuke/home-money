@@ -8,11 +8,11 @@ import {
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Subscription } from 'rxjs/Subscription';
 
 import { Message } from '@app/shared/models/message.model';
 import { Category } from '@app/system/shared/models/category.model';
 import { CategoriesService } from '@app/system/shared/services/categories.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-edit-category',
