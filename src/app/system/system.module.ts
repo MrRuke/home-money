@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { SharedModule } from '../shared/shared.module';
 import { SystemRoutingModule } from './system-routing.module';
@@ -34,6 +35,7 @@ import { UsersService } from './shared/services/users.service';
     CommonModule,
     SharedModule,
     SystemRoutingModule,
+    TranslateModule,
   ],
   declarations: [
     BillPageComponent,

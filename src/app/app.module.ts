@@ -1,5 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
@@ -17,14 +19,21 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
     NotFoundComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     AuthModule,
     SystemModule,
     BrowserAnimationsModule,
+    TranslateModule.forRoot(),
   ],
-  providers: [UsersServices, AuthServices, AuthGuard],
+  providers: [
+    CommonModule,
+    UsersServices,
+    AuthServices,
+    AuthGuard,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
