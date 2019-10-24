@@ -3,10 +3,7 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import {
-  Meta,
-  Title,
-} from '@angular/platform-browser';
+import { MetaService } from '@app/shared/services/meta.service';
 
 import {
   combineLatest,
@@ -37,20 +34,11 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   constructor(
     private categoriesService: CategoriesService,
     private eventsService: EventsService,
-    private title: Title,
-    private meta: Meta,
+    private metaService: MetaService,
   ) {
-    title.setTitle('История');
-    meta.addTags([
-      {
-        name: 'keywords',
-        content: 'история',
-      },
-      {
-        name: 'description',
-        content: 'Страница истории',
-      },
-    ]);
+    this.metaService.setTitle('История');
+    this.metaService.addDescription('Страница истории');
+    this.metaService.addKeywords('история');
   }
 
   public ngOnInit() {

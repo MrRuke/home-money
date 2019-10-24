@@ -3,10 +3,7 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import {
-  Meta,
-  Title,
-} from '@angular/platform-browser';
+import { MetaService } from '@app/shared/services/meta.service';
 import { BillPageUseCases } from '@app/system/bill-page/bill-page.usecases';
 import { BillPageViewModel } from '@app/system/bill-page/bill-page.viewmodel';
 
@@ -14,8 +11,6 @@ import {
   combineLatest,
   Subscription,
 } from 'rxjs';
-
-import { Bill } from '../shared/models/bill.model';
 
 @Component({
   selector: 'app-bill-page',
@@ -28,21 +23,12 @@ export class BillPageComponent implements OnInit, OnDestroy {
 
   constructor(
     public viewModel: BillPageViewModel,
-    private title: Title,
-    private meta: Meta,
     private useCases: BillPageUseCases,
+    private metaService: MetaService,
   ) {
-    title.setTitle('Счет');
-    meta.addTags([
-      {
-        name: 'keywords',
-        content: 'счет',
-      },
-      {
-        name: 'description',
-        content: 'Страница счета',
-      },
-    ]);
+    this.metaService.setTitle('Счет');
+    this.metaService.addDescription('Страница счета');
+    this.metaService.addKeywords('счет');
   }
 
   public ngOnInit() {

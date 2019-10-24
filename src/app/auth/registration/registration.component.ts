@@ -5,10 +5,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import {
-  Meta,
-  Title,
-} from '@angular/platform-browser';
+import { MetaService } from '@app/shared/services/meta.service';
 
 import { UsersServices } from '@app/shared/services/users.services';
 import { User } from '@app/shared/models/user.model';
@@ -24,20 +21,12 @@ export class RegistrationComponent {
   constructor(
     private usersServices: UsersServices,
     private router: Router,
-    private title: Title,
-    private meta: Meta,
+    private metaService: MetaService,
   ) {
-    title.setTitle('Регистрация');
-    meta.addTags([
-      {
-        name: 'keywords',
-        content: 'регистрация',
-      },
-      {
-        name: 'description',
-        content: 'Страница для регистрации в системе',
-      },
-    ]);
+    this.metaService.setTitle('Регистрация');
+    this.metaService.addDescription('Страница для регистрации в системе');
+    this.metaService.addKeywords('регистрация');
+
     this.form = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails.bind(this)),
       'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),

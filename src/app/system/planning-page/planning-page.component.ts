@@ -3,16 +3,9 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import {
-  Meta,
-  Title,
-} from '@angular/platform-browser';
+import { MetaService } from '@app/shared/services/meta.service';
 
-import {
-  combineLatest,
-  Observable,
-} from 'rxjs';
-import { Subscription } from 'rxjs';
+import { combineLatest, Subscription } from 'rxjs';
 
 import { Bill } from '../shared/models/bill.model';
 import { Category } from '../shared/models/category.model';
@@ -37,20 +30,11 @@ export class PlanningPageComponent implements OnInit, OnDestroy {
     private billService: BillService,
     private categoriesService: CategoriesService,
     private eventsService: EventsService,
-    private title: Title,
-    private meta: Meta,
+    private metaService: MetaService,
   ) {
-    title.setTitle('Планирование');
-    meta.addTags([
-      {
-        name: 'keywords',
-        content: 'планирование',
-      },
-      {
-        name: 'description',
-        content: 'Страница планирования',
-      },
-    ]);
+    this.metaService.setTitle('Планирование');
+    this.metaService.addDescription('Страница планирования');
+    this.metaService.addKeywords('планирование');
   }
 
   public ngOnInit() {

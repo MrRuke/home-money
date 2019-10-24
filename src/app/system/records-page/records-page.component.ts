@@ -2,10 +2,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import {
-  Meta,
-  Title,
-} from '@angular/platform-browser';
+import { MetaService } from '@app/shared/services/meta.service';
 import { RecordsPageUseCases } from '@app/system/records-page/records-page.usecases';
 import { RecordsPageViewModel } from '@app/system/records-page/records-page.viewmodel';
 
@@ -21,21 +18,12 @@ export class RecordsPageComponent implements OnInit {
   constructor(
     public readonly viewModel: RecordsPageViewModel,
     private categoriesService: CategoriesService,
-    private title: Title,
-    private meta: Meta,
     private useCases: RecordsPageUseCases,
+    private metaService: MetaService,
   ) {
-    title.setTitle('Запись');
-    meta.addTags([
-      {
-        name: 'keywords',
-        content: 'запись',
-      },
-      {
-        name: 'description',
-        content: 'Страница записи',
-      },
-    ]);
+    this.metaService.setTitle('Запись');
+    this.metaService.addDescription('Страница записи');
+    this.metaService.addKeywords('запись');
   }
 
   public ngOnInit() {

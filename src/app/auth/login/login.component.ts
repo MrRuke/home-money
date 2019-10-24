@@ -13,13 +13,10 @@ import {
   Params,
   Router,
 } from '@angular/router';
-import {
-  Meta,
-  Title,
-} from '@angular/platform-browser';
 
 import { User } from '@app/shared/models/user.model';
 import { Message } from '@app/shared/models/message.model';
+import { MetaService } from '@app/shared/services/meta.service';
 import { UsersServices } from '@app/shared/services/users.services';
 import { AuthServices } from '@app/shared/services/auth.services';
 import { fadeStateTrigger } from '@app/shared/animations/fade.animation';
@@ -43,20 +40,11 @@ export class LoginComponent implements OnInit {
     private authServices: AuthServices,
     private router: Router,
     private route: ActivatedRoute,
-    private title: Title,
-    private meta: Meta,
+    private metaService: MetaService,
   ) {
-    title.setTitle('Вход в систему');
-    meta.addTags([
-      {
-        name: 'keywords',
-        content: 'логин, вход, система',
-      },
-      {
-        name: 'description',
-        content: 'Страница для входа в систему',
-      },
-    ]);
+    this.metaService.setTitle('Вход в систему');
+    this.metaService.addDescription('Страница для входа в систему');
+    this.metaService.addKeywords('логин, вход, система');
 
     this.form = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email]),

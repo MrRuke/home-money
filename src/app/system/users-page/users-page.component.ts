@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  Meta,
-  Title,
-} from '@angular/platform-browser';
+import { MetaService } from '@app/shared/services/meta.service';
 
 import { UsersService } from '../shared/services/users.service';
 import { User } from '../shared/models/user.model';
@@ -18,20 +15,11 @@ export class UsersPageComponent {
 
   constructor(
     private usersService: UsersService,
-    private title: Title,
-    private meta: Meta,
+    private metaService: MetaService,
   ) {
-    title.setTitle('Пользователи');
-    meta.addTags([
-      {
-        name: 'keywords',
-        content: 'пользователи',
-      },
-      {
-        name: 'description',
-        content: 'Страница пользователей',
-      },
-    ]);
+    this.metaService.setTitle('Пользователи');
+    this.metaService.addDescription('Страница пользователей');
+    this.metaService.addKeywords('пользователи');
 
     this.usersService.getUsers()
       .subscribe((users: User[]) => {
