@@ -1,54 +1,55 @@
-<app-card title="RECORDS.ADD_CATEGORY">
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <div class="alert {{message.type}}" *ngIf="message.text">
-      {{message.text}}
-    </div>
-    <div
-      class="form-group"
-      [ngClass]="{'has-error': name.invalid && name.touched}"
-    >
-      <label class="control-label" for="category-name">Введите название</label>
+<app-card title="RECORDS.ADD_CATEGORY" [formGroup]="formGroup">
+  <div
+    class="form-group"
+    [ngClass]="{ 'has-error': hasError('name') }"
+  >
+    <label class="control-label">
+      {{ 'RECORDS.ENTER_NAME' | translate }}
       <input
+        [title]="'RECORDS.ENTER_NAME' | translate"
         type="text"
-        id="category-name"
+        formControlName="name"
         class="form-control"
-        name="name"
-        required
-        #name="ngModel"
-        ngModel
-      >
-      <span
-        class="form-help-text"
-        *ngIf="name.invalid && name.touched"
-      > Название категории не может быть пустым.
-        </span>
-    </div>
+      />
+    </label>
+
     <div
-      class="form-group"
-      [ngClass]="{'has-error': capacity.invalid && capacity.touched}"
+      class="form-help-text"
+      *ngIf="hasError('name')"
     >
-      <label class="control-label" for="category-value">Введите лимит</label>
-      <input
-        type="number"
-        id="category-value"
-        class="form-control"
-        name="capacity"
-        required
-        min="1"
-        #capacity="ngModel"
-        [ngModel]="1"
-      >
-      <span
-        class="form-help-text"
-        *ngIf="capacity.invalid && capacity.touched"
-      >Число должно быть больше 0
-        </span>
+      {{ 'ERRORS.REQUIRED' | translate }}
     </div>
-    <button
-      type="submit"
-      class="btn btn-primary"
-      [disabled]="f.invalid"
-    >Добавить
-    </button>
-  </form>
+  </div>
+
+  <div
+    class="form-group"
+    [ngClass]="{ 'has-error': hasError('capacity') }"
+  >
+    <label class="control-label">
+      {{ 'RECORDS.ENTER_CAPACITY' | translate }}
+      <input
+        [title]="'RECORDS.ENTER_CAPACITY' | translate"
+        type="number"
+        formControlName="capacity"
+        class="form-control"
+      />
+    </label>
+
+    <div
+      class="form-help-text"
+      *ngIf="hasError('capacity')"
+    >
+      {{ 'ERRORS.REQUIRED' | translate }}
+    </div>
+  </div>
+
+  <button
+    [title]="'ACTIONS.ADD' | translate"
+    type="submit"
+    class="btn btn-primary"
+    (click)="addCategory()"
+    [disabled]="formGroup.invalid"
+  >
+    {{ 'ACTIONS.ADD' | translate }}
+  </button>
 </app-card>

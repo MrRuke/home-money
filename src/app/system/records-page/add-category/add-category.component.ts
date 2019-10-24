@@ -1,16 +1,13 @@
 import {
   Component,
   EventEmitter,
-  OnDestroy,
-  OnInit,
   Output,
 } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 
-import { Subscription } from 'rxjs';
-
-import { Message } from '@app/shared/models/message.model';
-import { CategoriesService } from '@app/system/shared/services/categories.service';
 import { Category } from '@app/system/shared/models/category.model';
 
 @Component({
@@ -18,48 +15,26 @@ import { Category } from '@app/system/shared/models/category.model';
   templateUrl: './add-category.component.html',
   styleUrls: ['./add-category.component.scss'],
 })
-export class AddCategoryComponent implements OnInit, OnDestroy {
+export class AddCategoryComponent {
   @Output()
-  public categoryAdd = new EventEmitter<Category>();
+  public valueChange = new EventEmitter<Category>();
 
-  public message: Message;
-  public sub1: Subscription;
+  public readonly formGroup = this.fb.group({
+    name: this.fb.control(null, Validators.required),
+    capacity: this.fb.control(null, Validators.required),
+  });
 
-  constructor(private categoriesService: CategoriesService) {
+  constructor(
+    private fb: FormBuilder,
+  ) {
   }
 
-  public ngOnInit() {
-    this.message = {
-      type: 'alert-success',
-    };
+  public hasError(controlName: string): boolean {
+    return this.formGroup.get(controlName).invalid && this.formGroup.get(controlName).touched;
   }
 
-  public ngOnDestroy() {
-    if (this.sub1) {
-      this.sub1.unsubscribe();
-    }
-  }
-
-  public onSubmit(form: NgForm): void {
-    const { name } = form.value;
-    let { capacity } = form.value;
-    if (capacity < 0) {
-      capacity *= -1;
-    }
-
-    const category = {
-      name: name,
-      capacity: capacity,
-    };
-    this.categoryAdd.emit(category);
-
-    // this.sub1 = this.categoriesService.addCategory(category)
-    //   .subscribe((result: Category) => {
-    //     form.reset();
-    //     form.form.patchValue({ capacity: 1 });
-    //     this.message.text = 'Категория добавлена.';
-    //     window.setTimeout(() => this.message.text = '', 3000);
-    //     this.categoryAdd.emit(result);
-    //   });
+  public addCategory(): void {
+    this.valueChange.emit(this.formGroup.value);
+    this.formGroup.reset();
   }
 }

@@ -74,6 +74,16 @@
       "name": "432",
       "capacity": 1,
       "id": 11
+    },
+    {
+      "name": "1",
+      "capacity": 23,
+      "id": 12
+    },
+    {
+      "name": "213",
+      "capacity": 32,
+      "id": 13
     }
   ],
   "events": [

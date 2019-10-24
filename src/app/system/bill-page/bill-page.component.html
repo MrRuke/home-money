@@ -3,7 +3,7 @@
   [actionsTemplate]="controls"
   [loading]="viewModel.loading | async"
 >
-  <div class="row">
+  <div class="row dashboard-page">
     <div *ngIf="(viewModel.bill | async) as bill" appCard>
       <app-bill-card [bill]="bill"></app-bill-card>
     </div>

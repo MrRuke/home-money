@@ -9,5 +9,13 @@ export const locales = {
   RECORDS: {
     TITLE: 'Страница записей',
     ADD_CATEGORY: 'Добавить категорию',
+    ENTER_NAME: 'Введите название',
+    ENTER_CAPACITY: 'Введите лимит',
+  },
+  ACTIONS: {
+    ADD: 'Добавить',
+  },
+  ERRORS: {
+    REQUIRED: 'Поле обязательно для заполнения',
   },
 };
