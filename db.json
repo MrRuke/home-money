@@ -31,14 +31,49 @@
       "id": 2
     },
     {
-      "id": 3,
       "name": "Машина",
-      "capacity": 7000
+      "capacity": 7000,
+      "id": 3
     },
     {
       "name": "Новая категория 2",
       "capacity": 1555,
       "id": 4
+    },
+    {
+      "name": "1",
+      "capacity": 1,
+      "id": 5
+    },
+    {
+      "name": "12",
+      "capacity": 1,
+      "id": 6
+    },
+    {
+      "name": "432",
+      "capacity": 1,
+      "id": 7
+    },
+    {
+      "name": "432",
+      "capacity": 1,
+      "id": 8
+    },
+    {
+      "name": "432",
+      "capacity": 1,
+      "id": 9
+    },
+    {
+      "name": "432",
+      "capacity": 1,
+      "id": 10
+    },
+    {
+      "name": "432",
+      "capacity": 1,
+      "id": 11
     }
   ],
   "events": [

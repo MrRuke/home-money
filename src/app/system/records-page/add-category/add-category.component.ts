@@ -51,14 +51,15 @@ export class AddCategoryComponent implements OnInit, OnDestroy {
       name: name,
       capacity: capacity,
     };
+    this.categoryAdd.emit(category);
 
-    this.sub1 = this.categoriesService.addCategory(category)
-      .subscribe((result: Category) => {
-        form.reset();
-        form.form.patchValue({ capacity: 1 });
-        this.message.text = 'Категория добавлена.';
-        window.setTimeout(() => this.message.text = '', 3000);
-        this.categoryAdd.emit(result);
-      });
+    // this.sub1 = this.categoriesService.addCategory(category)
+    //   .subscribe((result: Category) => {
+    //     form.reset();
+    //     form.form.patchValue({ capacity: 1 });
+    //     this.message.text = 'Категория добавлена.';
+    //     window.setTimeout(() => this.message.text = '', 3000);
+    //     this.categoryAdd.emit(result);
+    //   });
   }
 }

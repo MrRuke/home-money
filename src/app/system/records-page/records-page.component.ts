@@ -6,6 +6,8 @@ import {
   Meta,
   Title,
 } from '@angular/platform-browser';
+import { RecordsPageUseCases } from '@app/system/records-page/records-page.usecases';
+import { RecordsPageViewModel } from '@app/system/records-page/records-page.viewmodel';
 
 import { Category } from '../shared/models/category.model';
 import { CategoriesService } from '../shared/services/categories.service';
@@ -16,14 +18,12 @@ import { CategoriesService } from '../shared/services/categories.service';
   styleUrls: ['./records-page.component.scss'],
 })
 export class RecordsPageComponent implements OnInit {
-
-  public categories: Category[] = [];
-  public isLoaded = false;
-
   constructor(
+    public readonly viewModel: RecordsPageViewModel,
     private categoriesService: CategoriesService,
     private title: Title,
     private meta: Meta,
+    private useCases: RecordsPageUseCases,
   ) {
     title.setTitle('Запись');
     meta.addTags([
@@ -39,21 +39,14 @@ export class RecordsPageComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.categoriesService.getCategories()
-      .subscribe((categories: Category[]) => {
-        this.categories = categories;
-        this.isLoaded = true;
-      });
+    this.useCases.loadCategories().subscribe();
   }
 
-  public newCategoryAdded(category: Category): void {
-    this.categories.push(category);
+  public addCategory(category: Category): void {
+    this.useCases.addCategory(category).subscribe();
   }
 
-  public categoryWasEdit(category: Category): void {
-    const idx = this.categories
-      .findIndex(c => c.id === category.id);
-    this.categories[idx] = category;
+  public updateCategory(category: Category): void {
+    this.useCases.updateCategory(category).subscribe();
   }
-
 }

@@ -1,27 +1,21 @@
 <app-page
-  title="Страница записей"
+  title="RECORDS.TITLE"
+  [loading]="viewModel.loading | async"
 >
-  <section class="section text-center" *ngIf="!isLoaded">
-    <app-loader></app-loader>
-  </section>
-
-  <section class="section" *ngIf="isLoaded">
-    <div class="row">
-      <div class="col-md-6">
-        <app-add-event [categories]="categories"></app-add-event>
-      </div>
-      <div class="col-md-6">
-        <app-add-category (categoryAdd)="newCategoryAdded($event)"></app-add-category>
-      </div>
+  <div class="row">
+    <div *ngIf="(viewModel.categories | async) as categories" appCard>
+      <app-add-event [categories]="categories"></app-add-event>
     </div>
 
-    <div class="row">
-      <div class="col-md-6">
-        <app-edit-category
-          [categories]="categories"
-          (categoryEdit)="categoryWasEdit($event)"
-        ></app-edit-category>
-      </div>
+    <div appCard>
+      <app-add-category (categoryAdd)="addCategory($event)"></app-add-category>
     </div>
-  </section>
+
+<!--    <div *ngIf="(viewModel.categories | async) as categories" appCard>-->
+<!--      <app-edit-category-->
+<!--        [categories]="categories"-->
+<!--        (categoryEdit)="updateCategory($event)"-->
+<!--      ></app-edit-category>-->
+<!--    </div>-->
+  </div>
 </app-page>

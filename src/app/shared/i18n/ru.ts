@@ -6,4 +6,8 @@ export const locales = {
     CURRENCY: 'Валюта',
     DATE: 'Дата',
   },
+  RECORDS: {
+    TITLE: 'Страница записей',
+    ADD_CATEGORY: 'Добавить категорию',
+  },
 };

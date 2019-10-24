@@ -60,12 +60,13 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
       id: +this.currentCategoryId,
     };
 
-    this.sub1 = this.categoriesService.updateCategory(category)
-      .subscribe((result: Category) => {
-        this.categoryEdit.emit(result);
-        this.message.text = 'Категория изменена.';
-        window.setTimeout(() => this.message.text = '', 3000);
-      });
+    this.categoryEdit.emit(category);
+    // this.sub1 = this.categoriesService.updateCategory(category)
+    //   .subscribe((result: Category) => {
+    //     this.categoryEdit.emit(result);
+    //     this.message.text = 'Категория изменена.';
+    //     window.setTimeout(() => this.message.text = '', 3000);
+    //   });
   }
 
   public onCategoryChange(): void {
