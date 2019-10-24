@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CardDirective } from '@app/system/shared/directives/card.directive';
 import { TranslateModule } from '@ngx-translate/core';
 import { BemModule } from 'angular-bem';
 
@@ -31,6 +32,7 @@ import { HistoryPaginationComponent } from './history-page/history-pagination/hi
 import { UsersPageComponent } from './users-page/users-page.component';
 import { UsersService } from './shared/services/users.service';
 import { PageComponent } from './shared/components/page/page.component';
+import { CardComponent } from './shared/components/card/card.component';
 
 @NgModule({
   imports: [
@@ -63,6 +65,8 @@ import { PageComponent } from './shared/components/page/page.component';
     FilterPipe,
     UsersPageComponent,
     PageComponent,
+    CardComponent,
+    CardDirective,
   ],
   providers: [
     BillService,

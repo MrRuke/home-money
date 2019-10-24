@@ -1,27 +1,18 @@
-<div *ngIf="currency" class="col col-xs-12 col-sm-12 col-md-6 col-xl-7 history-col">
-  <div class="card stats">
-    <div class="card-block">
-      <div class="title-block">
-        <h4 class="title">{{ 'BILL.COURSE' | translate }}</h4>
-      </div>
-      <div class="row row-sm stats-container">
-        <table class="table table-hover">
-          <thead>
-          <tr>
-            <th>{{ 'BILL.CURRENCY' | translate }}</th>
-            <th>{{ 'BILL.COURSE' | translate }}</th>
-            <th>{{ 'BILL.DATE' | translate }}</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let rate of currencies;">
-            <td>{{ rate }} </td>
-            <td>{{ currency.rates[rate] | number:'1.2' }}</td>
-            <td>{{ currency.date | appMoment:'YYYY-MM-DD' }}</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+<app-card title="BILL.COURSE">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>{{ 'BILL.CURRENCY' | translate }}</th>
+      <th>{{ 'BILL.COURSE' | translate }}</th>
+      <th>{{ 'BILL.DATE' | translate }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let rate of currencies;">
+      <td>{{ rate }} </td>
+      <td>{{ currency.rates[rate] | number:'1.2' }}</td>
+      <td>{{ currency.date | appMoment:'YYYY-MM-DD' }}</td>
+    </tr>
+    </tbody>
+  </table>
+</app-card>

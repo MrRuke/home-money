@@ -4,13 +4,13 @@
   [loading]="viewModel.loading | async"
 >
   <div class="row">
-    <ng-container *ngIf="(viewModel.bill | async) as bill">
+    <div *ngIf="(viewModel.bill | async) as bill" appCard>
       <app-bill-card [bill]="bill"></app-bill-card>
-    </ng-container>
+    </div>
 
-    <ng-container *ngIf="(viewModel.currency | async) as currency">
+    <div *ngIf="(viewModel.currency | async) as currency" appCard>
       <app-currency-card [currency]="currency"></app-currency-card>
-    </ng-container>
+    </div>
   </div>
 </app-page>
 
