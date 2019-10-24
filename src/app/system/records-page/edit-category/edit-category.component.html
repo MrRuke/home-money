@@ -1,79 +1,74 @@
-<div class="card">
-  <div class="card-header bordered">
-    <div class="header-block">
-      <h3 class="title">Редактировать категорию</h3>
+<app-card title="RECORDS.EDIT_CATEGORY" [formGroup]="formGroup">
+  <div class="form-group">
+    <label class="control-label">
+      {{ 'RECORDS.SELECT_CATEGORY' | translate }}
+
+      <select
+        class="form-control"
+        [formControl]="categoryControl"
+      >
+        <option value="0">Выберите</option>
+        <option
+          *ngFor="let category of categories"
+          [value]="category.id"
+        >
+          {{ category.name }}
+        </option>
+      </select>
+    </label>
+  </div>
+
+  <div
+    class="form-group"
+    [ngClass]="{ 'has-error': hasError('name') }"
+  >
+    <label class="control-label">
+      {{ 'RECORDS.ENTER_NAME' | translate }}
+      <input
+        [title]="'RECORDS.ENTER_NAME' | translate"
+        type="text"
+        formControlName="name"
+        class="form-control"
+      />
+    </label>
+
+    <div
+      class="form-help-text"
+      *ngIf="hasError('name')"
+    >
+      {{ 'ERRORS.REQUIRED' | translate }}
     </div>
   </div>
-  <div class="card-block">
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-      <div class="alert {{message.type}}" *ngIf="message.text">
-        {{message.text}}
-      </div>
-      <div class="form-group">
-        <label class="control-label" for="edit-select-category">Выберите категорию</label>
-        <select
-          class="form-control"
-          id="edit-select-category"
-          [(ngModel)]="currentCategoryId"
-          [ngModelOptions]="{standalone: true}"
-          (change)="onCategoryChange()"
-          ngDefaultControl
-        >
-          <option
-            *ngFor="let category of categories"
-            [value]="category.id"
-          >
-            {{category.name}}
-          </option>
-        </select>
-      </div>
-      <div
-        class="form-group"
-        [ngClass]="{'has-error': name.invalid && name.touched}"
-      >
-        <label class="control-label" for="edit-category-name">Введите название</label>
-        <input
-          type="text"
-          id="edit-category-name"
-          class="form-control"
-          name="name"
-          required
-          #name="ngModel"
-          [ngModel]="currentCategory.name"
-        >
-        <span
-          class="form-help-text"
-          *ngIf="name.invalid && name.touched"
-        > Название категории не может быть пустым.
-        </span>
-      </div>
-      <div
-        class="form-group"
-        [ngClass]="{'has-error': capacity.invalid && capacity.touched}"
-      >
-        <label class="control-label" for="edit-category-value">Введите лимит</label>
-        <input
-          type="number"
-          id="edit-category-value"
-          class="form-control"
-          name="capacity"
-          required
-          min="1"
-          #capacity="ngModel"
-          [ngModel]="currentCategory.capacity"
-        >
-        <span
-          class="form-help-text"
-          *ngIf="capacity.invalid && capacity.touched"
-        >Число должно быть больше 0
-        </span>
-      </div>
-      <button
-        type="submit"
-        class="btn btn-primary"
-        [disabled]="f.invalid"
-      >Изменить
-      </button>
-    </form>
+
+  <div
+    class="form-group"
+    [ngClass]="{ 'has-error': hasError('capacity') }"
+  >
+    <label class="control-label">
+      {{ 'RECORDS.ENTER_CAPACITY' | translate }}
+      <input
+        [title]="'RECORDS.ENTER_CAPACITY' | translate"
+        type="number"
+        formControlName="capacity"
+        class="form-control"
+      />
+    </label>
+
+    <div
+      class="form-help-text"
+      *ngIf="hasError('capacity')"
+    >
+      {{ 'ERRORS.REQUIRED' | translate }}
+    </div>
   </div>
-</div>
+
+  <button
+    [title]="'ACTIONS.CHANGE' | translate"
+    type="submit"
+    class="btn btn-primary"
+    (click)="updateCategory()"
+    [disabled]="!categoryControl.dirty || formGroup.invalid"
+  >
+    {{ 'ACTIONS.CHANGE' | translate }}
+  </button>
+</app-card>

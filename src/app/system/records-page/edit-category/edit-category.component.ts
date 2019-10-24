@@ -6,8 +6,11 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
+import {
+  FormBuilder,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 
 import { Message } from '@app/shared/models/message.model';
 import { Category } from '@app/system/shared/models/category.model';
@@ -19,59 +22,43 @@ import { Subscription } from 'rxjs';
   templateUrl: './edit-category.component.html',
   styleUrls: ['./edit-category.component.scss'],
 })
-export class EditCategoryComponent implements OnInit, OnDestroy {
+export class EditCategoryComponent implements OnInit {
   @Input()
   public categories: Category[] = [];
 
   @Output()
-  public categoryEdit = new EventEmitter<Category>();
+  public valueChange = new EventEmitter<Category>();
 
-  public currentCategoryId = 1;
-  public currentCategory: Category;
-  public message: Message;
-  private sub1: Subscription;
+  public readonly categoryControl = this.fb.control(0);
+  public readonly formGroup = this.fb.group({
+    id: null,
+    name: this.fb.control(null, Validators.required),
+    capacity: this.fb.control(null, Validators.required),
+  });
 
-  constructor(private categoriesService: CategoriesService) {
+  constructor(
+    private fb: FormBuilder,
+  ) {
   }
 
   public ngOnInit() {
-    this.message = {
-      type: 'alert-success',
-    };
-    this.onCategoryChange();
+    this.categoryControl.valueChanges.subscribe(id => {
+      const category = this.categories.find(item => item.id === Number(id));
+      if (category) {
+        this.formGroup.setValue(category);
+      } else {
+        this.formGroup.reset();
+      }
+    });
   }
 
-  public ngOnDestroy() {
-    if (this.sub1) {
-      this.sub1.unsubscribe();
-    }
+  public hasError(controlName: string): boolean {
+    return this.formGroup.get(controlName).invalid && this.formGroup.get(controlName).touched;
   }
 
-  public onSubmit(form: NgForm): void {
-    const { name } = form.value;
-    let { capacity } = form.value;
-    if (capacity < 0) {
-      capacity *= -1;
-    }
-
-    const category = {
-      name: name,
-      capacity: capacity,
-      id: +this.currentCategoryId,
-    };
-
-    this.categoryEdit.emit(category);
-    // this.sub1 = this.categoriesService.updateCategory(category)
-    //   .subscribe((result: Category) => {
-    //     this.categoryEdit.emit(result);
-    //     this.message.text = 'Категория изменена.';
-    //     window.setTimeout(() => this.message.text = '', 3000);
-    //   });
+  public updateCategory(): void {
+    this.valueChange.emit(this.formGroup.value);
+    this.formGroup.reset();
+    this.categoryControl.reset();
   }
-
-  public onCategoryChange(): void {
-    this.currentCategory = this.categories
-      .find(category => category.id === +this.currentCategoryId);
-  }
-
 }

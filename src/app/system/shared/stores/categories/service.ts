@@ -40,7 +40,7 @@ export class CategoriesService {
     this.store.setLoading(true);
 
     return this.api.updateCategory(category).pipe(
-      tap(categories => this.store.update(categories)),
+      tap(() => this.store.update(category.id, category)),
       tap(() => this.store.setLoading(false)),
       mapTo(void 0),
     );

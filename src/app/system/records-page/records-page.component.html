@@ -11,11 +11,11 @@
       <app-add-category (valueChange)="addCategory($event)"></app-add-category>
     </div>
 
-<!--    <div *ngIf="(viewModel.categories | async) as categories" appCard>-->
-<!--      <app-edit-category-->
-<!--        [categories]="categories"-->
-<!--        (categoryEdit)="updateCategory($event)"-->
-<!--      ></app-edit-category>-->
-<!--    </div>-->
+    <div *ngIf="(viewModel.categories | async) as categories" appCard>
+      <app-edit-category
+        [categories]="categories"
+        (valueChange)="updateCategory($event)"
+      ></app-edit-category>
+    </div>
   </div>
 </app-page>

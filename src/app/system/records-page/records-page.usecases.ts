@@ -17,6 +17,7 @@ export class RecordsPageUseCases {
   public addCategory(category: Category): Observable<void> {
     return this.categoriesService.addCategory(category);
   }
+  
   public updateCategory(category: Category): Observable<void> {
     return this.categoriesService.updateCategory(category);
   }
