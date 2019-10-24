@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { BemModule } from 'angular-bem';
 
 import { SharedModule } from '../shared/shared.module';
 import { SystemRoutingModule } from './system-routing.module';
@@ -29,6 +30,7 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
 import { HistoryPaginationComponent } from './history-page/history-pagination/history-pagination.component';
 import { UsersPageComponent } from './users-page/users-page.component';
 import { UsersService } from './shared/services/users.service';
+import { PageComponent } from './shared/components/page/page.component';
 
 @NgModule({
   imports: [
@@ -36,6 +38,7 @@ import { UsersService } from './shared/services/users.service';
     SharedModule,
     SystemRoutingModule,
     TranslateModule,
+    BemModule,
   ],
   declarations: [
     BillPageComponent,
@@ -59,6 +62,7 @@ import { UsersService } from './shared/services/users.service';
     HistoryPaginationComponent,
     FilterPipe,
     UsersPageComponent,
+    PageComponent,
   ],
   providers: [
     BillService,

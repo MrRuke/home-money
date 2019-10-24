@@ -1,21 +1,9 @@
-<div class="title-block">
-  <h3 class="title pull-left">
-    {{ 'BILL.TITLE' | translate }}
-    <span class="sparkline bar"></span>
-  </h3>
-  <div class="pull-right">
-    <button class="btn-sm btn btn-primary-outline" (click)="onRefresh()">
-      <i class="fa fa-refresh"></i>
-    </button>
-  </div>
-</div>
-<section class="section">
-  <div *ngIf="viewModel.loading | async" class="row text-center">
-    <app-loader></app-loader>
-  </div>
-
+<app-page
+  title="BILL.TITLE"
+  [actionsTemplate]="controls"
+  [loading]="viewModel.loading | async"
+>
   <div class="row">
-
     <ng-container *ngIf="(viewModel.bill | async) as bill">
       <app-bill-card [bill]="bill"></app-bill-card>
     </ng-container>
@@ -23,6 +11,11 @@
     <ng-container *ngIf="(viewModel.currency | async) as currency">
       <app-currency-card [currency]="currency"></app-currency-card>
     </ng-container>
-
   </div>
-</section>
+</app-page>
+
+<ng-template #controls>
+  <button class="btn-sm btn btn-primary-outline" (click)="onRefresh()">
+    <i class="fa fa-refresh"></i>
+  </button>
+</ng-template>

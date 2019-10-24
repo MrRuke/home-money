@@ -1,0 +1,19 @@
+<div block="app-page">
+
+  <div class="title-block">
+    <h3 *ngIf="title" class="title pull-left">
+      {{ title | translate }}
+    </h3>
+    <div *ngIf="actionsTemplate" class="pull-right">
+      <ng-container [ngTemplateOutlet]="actionsTemplate"></ng-container>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="row text-center">
+    <app-loader></app-loader>
+  </div>
+
+  <section *ngIf="!loading" class="section">
+    <ng-content></ng-content>
+  </section>
+</div>
