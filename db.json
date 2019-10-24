@@ -39,51 +39,6 @@
       "id": 4,
       "name": "Новая категория 2",
       "capacity": 1555
-    },
-    {
-      "name": "1",
-      "capacity": 1,
-      "id": 5
-    },
-    {
-      "id": 6,
-      "name": "12",
-      "capacity": 5
-    },
-    {
-      "name": "432",
-      "capacity": 1,
-      "id": 7
-    },
-    {
-      "id": 8,
-      "name": "432",
-      "capacity": 16
-    },
-    {
-      "name": "432",
-      "capacity": 1,
-      "id": 9
-    },
-    {
-      "id": 10,
-      "name": "432",
-      "capacity": 1
-    },
-    {
-      "name": "432",
-      "capacity": 1,
-      "id": 11
-    },
-    {
-      "id": 12,
-      "name": "1",
-      "capacity": 23
-    },
-    {
-      "name": "213",
-      "capacity": 32,
-      "id": 13
     }
   ],
   "events": [
@@ -129,27 +84,35 @@
     },
     {
       "type": "outcome",
-      "amount": 1232,
+      "amount": 2,
       "category": 4,
-      "date": "05.03.2019 23:25:53",
-      "description": "432432",
-      "id": 6
+      "date": "24.10.2019 23:59:51",
+      "id": 6,
+      "description": "34"
     },
     {
+      "category": 4,
       "type": "outcome",
-      "amount": 13213,
-      "category": 3,
-      "date": "05.03.2019 23:26:02",
-      "description": "21",
+      "amount": 123,
+      "description": "t",
+      "date": "25.10.2019 00:01:32",
       "id": 7
     },
     {
-      "type": "outcome",
-      "amount": 432,
-      "category": 1,
-      "date": "12.03.2019 21:56:25",
-      "description": "Тест",
+      "category": 4,
+      "type": "OUTCOME",
+      "amount": 213,
+      "description": null,
+      "date": "25.10.2019 00:19:10",
       "id": 8
+    },
+    {
+      "category": 1,
+      "type": "OUTCOME",
+      "amount": 4,
+      "description": null,
+      "date": "25.10.2019 00:20:29",
+      "id": 9
     }
   ]
 }

@@ -7,7 +7,7 @@
         class="form-control"
         [formControl]="categoryControl"
       >
-        <option value="0">Выберите</option>
+        <option value="0">{{ 'ACTIONS.SELECT' | translate }}</option>
         <option
           *ngFor="let category of categories"
           [value]="category.id"

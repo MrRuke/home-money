@@ -1,9 +1,14 @@
 export interface AppEvent {
-  type: string;
+  type: EventType;
   amount: number;
   category: number;
   date: string;
   description: string;
   id?: string;
   catName?: string;
+}
+
+export enum EventType {
+  INCOME = 'INCOME',
+  OUTCOME = 'OUTCOME',
 }

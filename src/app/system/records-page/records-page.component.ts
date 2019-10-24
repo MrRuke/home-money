@@ -5,6 +5,8 @@ import {
 import { MetaService } from '@app/shared/services/meta.service';
 import { RecordsPageUseCases } from '@app/system/records-page/records-page.usecases';
 import { RecordsPageViewModel } from '@app/system/records-page/records-page.viewmodel';
+import { AppEvent } from '@app/system/shared/models/event.model';
+import { combineLatest } from 'rxjs';
 
 import { Category } from '../shared/models/category.model';
 import { CategoriesService } from '../shared/services/categories.service';
@@ -27,7 +29,10 @@ export class RecordsPageComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.useCases.loadCategories().subscribe();
+    combineLatest([
+      this.useCases.loadCategories(),
+      this.useCases.loadEvents(),
+    ]).subscribe();
   }
 
   public addCategory(category: Category): void {
@@ -36,5 +41,9 @@ export class RecordsPageComponent implements OnInit {
 
   public updateCategory(category: Category): void {
     this.useCases.updateCategory(category).subscribe();
+  }
+
+  public addEvent(event: AppEvent): void {
+    this.useCases.addEvent(event).subscribe();
   }
 }

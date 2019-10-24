@@ -1,117 +1,58 @@
 import {
   Component,
+  EventEmitter,
   Input,
-  OnDestroy,
-  OnInit,
+  Output,
 } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
+import {
+  AppEvent,
+  EventType,
+} from '@app/system/shared/models/event.model';
 
-import { Subscription } from 'rxjs';
 import * as moment from 'moment';
 
-import { Message } from '@app/shared/models/message.model';
 import { Category } from '@app/system/shared/models/category.model';
-import { EventsService } from '@app/system/shared/services/events.service';
-import { BillService } from '@app/system/shared/services/bill.service';
-import { Bill } from '@app/system/shared/models/bill.model';
-import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.component.html',
   styleUrls: ['./add-event.component.scss'],
 })
-export class AddEventComponent implements OnInit, OnDestroy {
+export class AddEventComponent {
   @Input()
   public categories: Category[] = [];
 
-  public types = [
-    {
-      type: 'income',
-      label: 'Доход',
-    },
-    {
-      type: 'outcome',
-      label: 'Расход',
-    },
-  ];
-  public message: Message;
+  @Output()
+  public valueChange = new EventEmitter<AppEvent>();
 
-  private sub1: Subscription;
-  private sub2: Subscription;
+  public readonly eventTypes = EventType;
+  public readonly formGroup = this.fb.group({
+    category: this.fb.control(null, Validators.required),
+    type: this.fb.control(null, Validators.required),
+    amount: this.fb.control(null, Validators.required),
+    description: null,
+  });
 
   constructor(
-    private eventsService: EventsService,
-    private billService: BillService,
+    private fb: FormBuilder,
   ) {
   }
 
-  public ngOnInit() {
-    this.message = {
-      type: 'alert-danger',
-    };
-  }
-
-  public ngOnDestroy() {
-    if (this.sub1) {
-      this.sub1.unsubscribe();
-    }
-    if (this.sub2) {
-      this.sub2.unsubscribe();
-    }
-  }
-
-  public onSubmit(form: NgForm): void {
-    const { description, category, type } = form.value;
-    let { amount } = form.value;
-    if (amount < 0) {
-      amount *= -1;
-    }
-
-    const event = {
-      type: type,
-      amount: amount,
-      category: +category,
+  public addEvent(): void {
+    this.valueChange.emit({
+      ...this.formGroup.value,
+      category: Number(this.formGroup.value.category),
       date: moment().format('DD.MM.YYYY HH:mm:ss'),
-      description: description,
-    };
-
-    this.sub1 = this.billService.getBill()
-      .subscribe((bill: Bill) => {
-        let value = 0;
-        if (type === 'outcome') {
-          if (amount > bill.value) {
-            this.showMessage(`На счету недостаточно средств. Вам не хватает ${amount - bill.value} рублей.`);
-            return;
-          } else {
-            value = bill.value - amount;
-            this.showMessage('Событие создано', 'alert-success');
-          }
-        } else {
-          value = bill.value + amount;
-          this.showMessage('Событие создано', 'alert-success');
-        }
-        this.sub2 = this.billService.updateBill({
-            value,
-            currency: bill.currency,
-          })
-          .pipe(
-            mergeMap(() => this.eventsService.addEvent(event)),
-          )
-          .subscribe(() => {
-            form.setValue({
-              amount: 1,
-              description: ' ',
-              category: 1,
-              type: 'outcome',
-            });
-          });
-      });
+    });
+    this.formGroup.reset();
   }
 
-  private showMessage(text: string, type: string = 'alert-danger'): void {
-    this.message.text = text;
-    this.message.type = type;
-    window.setTimeout(() => this.message.text = '', 3000);
+  public hasError(controlName: string): boolean {
+    return this.formGroup.get(controlName).invalid && this.formGroup.get(controlName).touched;
   }
+
 }
