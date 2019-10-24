@@ -10,11 +10,19 @@
   </div>
 </div>
 <section class="section">
-  <div class="row text-center" *ngIf="!isLoaded">
+  <div *ngIf="viewModel.loading | async" class="row text-center">
     <app-loader></app-loader>
   </div>
+
   <div class="row">
-    <app-bill-card [bill]="bill" [currency]="currency" *ngIf="isLoaded"></app-bill-card>
-    <app-currency-card [currency]="currency" *ngIf="isLoaded"></app-currency-card>
+
+    <ng-container *ngIf="(viewModel.bill | async) as bill">
+      <app-bill-card [bill]="bill"></app-bill-card>
+    </ng-container>
+
+    <ng-container *ngIf="(viewModel.currency | async) as currency">
+      <app-currency-card [currency]="currency"></app-currency-card>
+    </ng-container>
+
   </div>
 </section>

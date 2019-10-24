@@ -7,13 +7,14 @@ import {
   Meta,
   Title,
 } from '@angular/platform-browser';
+import { BillPageUseCases } from '@app/system/bill-page/bill-page.usecases';
+import { BillPageViewModel } from '@app/system/bill-page/bill-page.viewmodel';
 
 import {
   combineLatest,
   Subscription,
 } from 'rxjs';
 
-import { BillService } from '../shared/services/bill.service';
 import { Bill } from '../shared/models/bill.model';
 
 @Component({
@@ -22,16 +23,14 @@ import { Bill } from '../shared/models/bill.model';
   styleUrls: ['./bill-page.component.scss'],
 })
 export class BillPageComponent implements OnInit, OnDestroy {
-  public currency: any;
-  public bill: Bill;
-  public isLoaded = false;
   private sub1: Subscription;
   private sub2: Subscription;
 
   constructor(
-    private billService: BillService,
+    public viewModel: BillPageViewModel,
     private title: Title,
     private meta: Meta,
+    private useCases: BillPageUseCases,
   ) {
     title.setTitle('Счет');
     meta.addTags([
@@ -47,14 +46,10 @@ export class BillPageComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this.sub1 = combineLatest(
-      this.billService.getBill(),
-      this.billService.getCurrency('EUR'),
-    ).subscribe((data: [Bill, any]) => {
-      this.bill = data[0];
-      this.currency = data[1];
-      this.isLoaded = true;
-    });
+    this.sub1 = combineLatest([
+      this.useCases.loadBill(),
+      this.useCases.loadCurrency(),
+    ]).subscribe();
   }
 
   public ngOnDestroy() {
@@ -67,10 +62,9 @@ export class BillPageComponent implements OnInit, OnDestroy {
   }
 
   public onRefresh(): void {
-    this.isLoaded = false;
-    this.sub2 = this.billService.getCurrency('EUR')
-      .subscribe((currency: any) => {
-        this.isLoaded = true;
-      });
+    this.sub2 = combineLatest([
+      this.useCases.loadBill(),
+      this.useCases.loadCurrency(),
+    ]).subscribe();
   }
 }

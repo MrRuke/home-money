@@ -1,25 +1,20 @@
 import {
   Component,
   Input,
-  OnInit,
 } from '@angular/core';
+import {
+  Currency,
+  CurrencyValue,
+} from '@app/system/shared/models/bill.model';
 
 @Component({
   selector: 'app-currency-card',
   templateUrl: './currency-card.component.html',
   styleUrls: ['./currency-card.component.scss'],
 })
-export class CurrencyCardComponent implements OnInit {
+export class CurrencyCardComponent {
   @Input()
-  public currency: any;
+  public currency: Currency;
 
-  public currencies: string[] = ['USD', 'EURO'];
-  public rate: any = ['RUB', 'EURO', 'USD'];
-
-  public ngOnInit() {
-    const { rates } = this.currency;
-    this.rate.RUB = 1;
-    this.rate.EURO = 1 / rates['RUB'];
-    this.rate.USD = this.rate.EURO * rates['USD'];
-  }
+  public readonly currencies = Object.values(CurrencyValue);
 }
