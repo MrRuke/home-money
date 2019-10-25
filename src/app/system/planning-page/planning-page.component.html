@@ -1,45 +1,46 @@
 <app-page
-  title="Страница планирования"
+  title="PLANNING.TITLE"
+  [loading]="viewModel.loading | async"
 >
-  <section class="section" *ngIf="isLoaded">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header card-header-sm bordered">
-            <div class="header-block">
-              <h3 class="title">Расходы</h3>
+  <div *ngIf="(viewModel.planning | async) as planning" class="row">
+    <div class="col col-xs-12 col-sm-12 col-md-12 col-xl-12">
+      <app-card title="PLANNING.EXPENSES" [rightHeaderTemplate]="rightHeaderTemplate">
+        <div class="row" *ngFor="let category of planning.categories">
+          <div class="col-xs-6">
+            <div class="n-progress">
+              <div
+                class="progress-bar"
+                [ngClass]="category.color"
+                [ngStyle]="{ width: category.percent }"
+              >
+                {{ category.name }}
+              </div>
             </div>
-            <h5 class="planning-expenses pull-right">
-              Общий остаток: <span class="text-success">{{bill.value | number:'1.2'}} Р</span>
-            </h5>
           </div>
-          <div class="card-block">
-
-            <div class="row" *ngFor="let category of categories">
-              <div class="col-xs-6">
-                <div class="n-progress">
-                  <div class="progress-bar" [ngClass]="getCategoryColor(category)" [ngStyle]="{width: getCategoryPercent(category)}">
-                    <span>{{category.name}}</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-6">
-                <p>
-                  <span class="text-{{getCategoryColor(category)}}">{{getCategoryCost(category) | number: '1.2'}}</span>
-                  из
-                  <span class="text-primary">{{category.capacity | number: '1.2'}}</span>
-                  |
-                  осталось <span class="text-{{getCategoryColor(category)}}">
-                {{category.capacity - getCategoryCost(category) | number: '1.2'}}
-              </span> (руб.)
-                </p>
-              </div>
-            </div>
-
+          <div class="col-xs-6">
+            <span class="text-{{category.color}}">
+              {{category.cost | number: '1.2'}}
+            </span>
+            {{ 'PLANNING.OF' | translate }}
+            <span class="text-primary">
+              {{category.capacity | number: '1.2'}}
+            </span>
+            {{ 'PLANNING.BALANCE' | translate }}
+            <span class="text-{{category.color}}">
+              {{category.balance | number: '1.2'}}
+            </span>
+            {{ 'MEASURES.RUB' | translate }}
           </div>
         </div>
-      </div>
+      </app-card>
+
+      <ng-template #rightHeaderTemplate>
+        <span>{{ 'PLANNING.MAIN_BALANCE' | translate }}</span>
+        <span *ngIf="planning.bill" class="text-success">
+          {{ planning.bill.value | number:'1.2' }}
+          {{ 'MEASURES.RUB' | translate }}
+        </span>
+      </ng-template>
     </div>
-  </section>
-  <section class="section text-center" *ngIf="!isLoaded"><app-loader></app-loader></section>
+  </div>
 </app-page>

@@ -4,12 +4,14 @@ import {
   OnInit,
 } from '@angular/core';
 import { MetaService } from '@app/shared/services/meta.service';
+import { PlanningPageUseCases } from '@app/system/planning-page/planning-page.usecases';
+import { PlanningPageViewModel } from '@app/system/planning-page/planning-page.viewmodel';
 
-import { combineLatest, Subscription } from 'rxjs';
+import {
+  combineLatest,
+  Subscription,
+} from 'rxjs';
 
-import { Bill } from '../shared/models/bill.model';
-import { Category } from '../shared/models/category.model';
-import { AppEvent } from '../shared/models/event.model';
 import { BillService } from '../shared/services/bill.service';
 import { CategoriesService } from '../shared/services/categories.service';
 import { EventsService } from '../shared/services/events.service';
@@ -20,17 +22,15 @@ import { EventsService } from '../shared/services/events.service';
   styleUrls: ['./planning-page.component.scss'],
 })
 export class PlanningPageComponent implements OnInit, OnDestroy {
-  public isLoaded = false;
-  public bill: Bill;
-  public categories: Category[] = [];
-  public events: AppEvent[] = [];
   private sub1: Subscription;
 
   constructor(
+    public readonly viewModel: PlanningPageViewModel,
     private billService: BillService,
     private categoriesService: CategoriesService,
     private eventsService: EventsService,
     private metaService: MetaService,
+    private useCases: PlanningPageUseCases,
   ) {
     this.metaService.setTitle('Планирование');
     this.metaService.addDescription('Страница планирования');
@@ -38,49 +38,16 @@ export class PlanningPageComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this.sub1 = combineLatest(
-      this.billService.getBill(),
-      this.categoriesService.getCategories(),
-      this.eventsService.getEvents(),
-    ).subscribe((data: [Bill, Category[], AppEvent[]]) => {
-      this.bill = data[0];
-      this.categories = data[1];
-      this.events = data[2];
-      this.isLoaded = true;
-    });
+    this.sub1 = combineLatest([
+      this.useCases.loadBill(),
+      this.useCases.loadCategories(),
+      this.useCases.loadEvents(),
+    ]).subscribe();
   }
 
   public ngOnDestroy() {
     if (this.sub1) {
       this.sub1.unsubscribe();
     }
-  }
-
-  public getCategoryCost(category: Category): number {
-    const catEvents = this.events.filter(e => e.category === category.id && e.type === 'outcome');
-    return catEvents.reduce((total, event) => {
-      total += event.amount;
-      return total;
-    }, 0);
-  }
-
-  public getCategoryPercent(category: Category): string {
-    return this.getPercent(category) + '%';
-  }
-
-  public getCategoryColor(category: Category): string {
-    const percent = this.getPercent(category);
-    return percent < 60
-      ? 'success'
-      : percent >= 100
-        ? 'danger'
-        : 'warning';
-  }
-
-  private getPercent(category: Category): number {
-    const percent = (100 * this.getCategoryCost(category) / category.capacity);
-    return percent > 100
-      ? 100
-      : percent;
   }
 }

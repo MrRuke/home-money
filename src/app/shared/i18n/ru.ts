@@ -22,6 +22,13 @@ export const locales = {
     INCOME: 'Доход',
     OUTCOME: 'Расход',
   },
+  PLANNING: {
+    TITLE: 'Страница планирования',
+    EXPENSES: 'Расходы',
+    MAIN_BALANCE: 'Общий остаток:',
+    OF: 'из',
+    BALANCE: '| осталось',
+  },
   ACTIONS: {
     ADD: 'Добавить',
     CHANGE: 'Изменить',
@@ -29,5 +36,8 @@ export const locales = {
   },
   ERRORS: {
     REQUIRED: 'Поле обязательно для заполнения',
+  },
+  MEASURES: {
+    RUB: 'руб.',
   },
 };

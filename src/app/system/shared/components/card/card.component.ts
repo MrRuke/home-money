@@ -12,4 +12,7 @@ import {
 export class CardComponent {
   @Input()
   public title = '';
+
+  @Input()
+  public rightHeaderTemplate?: TemplateRef<{}>;
 }

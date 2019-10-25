@@ -22,8 +22,8 @@
   "categories": [
     {
       "id": 1,
-      "name": "Дом23",
-      "capacity": 15001
+      "name": "Дом233",
+      "capacity": 15000
     },
     {
       "id": 2,
@@ -37,14 +37,14 @@
     },
     {
       "id": 4,
-      "name": "Новая категория 2",
+      "name": "Новая категория 3",
       "capacity": 1555
     }
   ],
   "events": [
     {
       "id": 1,
-      "type": "income",
+      "type": "INCOME",
       "amount": 1250,
       "category": 2,
       "date": "12.06.2017 19:49:02",
@@ -52,14 +52,14 @@
     },
     {
       "id": 2,
-      "type": "outcome",
+      "type": "OUTCOME",
       "amount": 1300,
       "category": 1,
       "date": "13.06.2017 19:49:02",
       "description": "Купил посудомоечную машину"
     },
     {
-      "type": "income",
+      "type": "INCOME",
       "amount": 1480,
       "category": 2,
       "date": "17.06.2017 14:00:48",
@@ -67,7 +67,7 @@
       "description": "Поход в окей с баллами. Бесплатная еда"
     },
     {
-      "type": "outcome",
+      "type": "OUTCOME",
       "amount": 2470,
       "category": 2,
       "date": "17.06.2017 14:00:58",
@@ -75,7 +75,7 @@
       "description": "Закупка на неделю"
     },
     {
-      "type": "outcome",
+      "type": "OUTCOME",
       "amount": 4000,
       "category": 3,
       "date": "10.06.2017 14:01:58",
@@ -83,7 +83,7 @@
       "description": "Заправка + проход ТО"
     },
     {
-      "type": "outcome",
+      "type": "OUTCOME",
       "amount": 2,
       "category": 4,
       "date": "24.10.2019 23:59:51",
@@ -92,7 +92,7 @@
     },
     {
       "category": 4,
-      "type": "outcome",
+      "type": "OUTCOME",
       "amount": 123,
       "description": "t",
       "date": "25.10.2019 00:01:32",
@@ -113,6 +113,14 @@
       "description": null,
       "date": "25.10.2019 00:20:29",
       "id": 9
+    },
+    {
+      "category": 2,
+      "type": "OUTCOME",
+      "amount": 60000,
+      "description": null,
+      "date": "26.10.2019 02:35:57",
+      "id": 10
     }
   ]
 }
