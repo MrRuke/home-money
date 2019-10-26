@@ -5,14 +5,9 @@ import {
 } from '@angular/core';
 import { MetaService } from '@app/shared/services/meta.service';
 
-import {
-  combineLatest,
-} from 'rxjs';
 import { Subscription } from 'rxjs';
 import * as moment from 'moment';
 
-import { CategoriesService } from '../shared/services/categories.service';
-import { EventsService } from '../shared/services/events.service';
 import { Category } from '../shared/models/category.model';
 import { AppEvent } from '../shared/models/event.model';
 
@@ -32,8 +27,6 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   private sub1: Subscription;
 
   constructor(
-    private categoriesService: CategoriesService,
-    private eventsService: EventsService,
     private metaService: MetaService,
   ) {
     this.metaService.setTitle('История');
@@ -42,16 +35,16 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this.sub1 = combineLatest(
-      this.categoriesService.getCategories(),
-      this.eventsService.getEvents(),
-    ).subscribe((data: [Category[], AppEvent[]]) => {
-      this.categories = data[0];
-      this.events = data[1];
-      this.isLoaded = true;
-      this.setOriginEvent();
-      this.calculateChartData();
-    });
+    // this.sub1 = combineLatest(
+    //   this.categoriesService.getCategories(),
+    //   this.eventsService.getEvents(),
+    // ).subscribe((data: [Category[], AppEvent[]]) => {
+    //   this.categories = data[0];
+    //   this.events = data[1];
+    //   this.isLoaded = true;
+    //   this.setOriginEvent();
+    //   this.calculateChartData();
+    // });
   }
 
   public ngOnDestroy() {

@@ -9,7 +9,6 @@ import { AppEvent } from '@app/system/shared/models/event.model';
 import { combineLatest } from 'rxjs';
 
 import { Category } from '../shared/models/category.model';
-import { CategoriesService } from '../shared/services/categories.service';
 
 @Component({
   selector: 'app-records-page',
@@ -19,7 +18,6 @@ import { CategoriesService } from '../shared/services/categories.service';
 export class RecordsPageComponent implements OnInit {
   constructor(
     public readonly viewModel: RecordsPageViewModel,
-    private categoriesService: CategoriesService,
     private useCases: RecordsPageUseCases,
     private metaService: MetaService,
   ) {

@@ -31,9 +31,9 @@
       "capacity": 10000
     },
     {
+      "id": 3,
       "name": "Машина",
-      "capacity": 7000,
-      "id": 3
+      "capacity": 9000
     },
     {
       "id": 4,

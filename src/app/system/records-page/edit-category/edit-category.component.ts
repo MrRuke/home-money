@@ -2,20 +2,15 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnDestroy,
   OnInit,
   Output,
 } from '@angular/core';
 import {
   FormBuilder,
-  NgForm,
   Validators,
 } from '@angular/forms';
 
-import { Message } from '@app/shared/models/message.model';
 import { Category } from '@app/system/shared/models/category.model';
-import { CategoriesService } from '@app/system/shared/services/categories.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-edit-category',

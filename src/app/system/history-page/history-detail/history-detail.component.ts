@@ -3,18 +3,12 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import {
-  ActivatedRoute,
-  Params,
-} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 
-import { EventsService } from '@app/system/shared/services/events.service';
-import { CategoriesService } from '@app/system/shared/services/categories.service';
 import { AppEvent } from '@app/system/shared/models/event.model';
 import { Category } from '@app/system/shared/models/category.model';
-import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-history-detail',
@@ -29,24 +23,22 @@ export class HistoryDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private eventsService: EventsService,
-    private categoriesService: CategoriesService,
   ) {
   }
 
   public ngOnInit() {
-    this.sub1 = this.route.params
-      .pipe(
-        mergeMap((params: Params) => this.eventsService.getEventsById(params.id)),
-        mergeMap((event: AppEvent) => {
-          this.event = event;
-          return this.categoriesService.getCategoryById(event.category);
-        }),
-      )
-      .subscribe((category: Category) => {
-        this.category = category;
-        this.isLoaded = true;
-      });
+    // this.sub1 = this.route.params
+    //   .pipe(
+    //     mergeMap((params: Params) => this.eventsService.getEventsById(params.id)),
+    //     mergeMap((event: AppEvent) => {
+    //       this.event = event;
+    //       return this.categoriesService.getCategoryById(event.category);
+    //     }),
+    //   )
+    //   .subscribe((category: Category) => {
+    //     this.category = category;
+    //     this.isLoaded = true;
+    //   });
   }
 
   public ngOnDestroy() {
