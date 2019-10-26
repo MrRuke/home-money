@@ -25,7 +25,6 @@ import { HistoryEventsComponent } from './history-page/history-events/history-ev
 import { HistoryDetailComponent } from './history-page/history-detail/history-detail.component';
 import { HistoryFilterComponent } from './history-page/history-filter/history-filter.component';
 import { FilterPipe } from './shared/pipes/filter.pipe';
-import { HistoryPaginationComponent } from './history-page/history-pagination/history-pagination.component';
 import { UsersPageComponent } from './users-page/users-page.component';
 import { UsersService } from './shared/services/users.service';
 import { PageComponent } from './shared/components/page/page.component';
@@ -58,7 +57,6 @@ import { CardComponent } from './shared/components/card/card.component';
     HistoryEventsComponent,
     HistoryDetailComponent,
     HistoryFilterComponent,
-    HistoryPaginationComponent,
     FilterPipe,
     UsersPageComponent,
     PageComponent,

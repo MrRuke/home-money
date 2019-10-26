@@ -4,12 +4,13 @@ import {
   OnInit,
 } from '@angular/core';
 import { MetaService } from '@app/shared/services/meta.service';
+import { HistoryPageUseCases } from '@app/system/history-page/history-page.usecases';
+import { HistoryPageViewModel } from '@app/system/history-page/history-page.viewmodel';
 
-import { Subscription } from 'rxjs';
-import * as moment from 'moment';
-
-import { Category } from '../shared/models/category.model';
-import { AppEvent } from '../shared/models/event.model';
+import {
+  combineLatest,
+  Subscription,
+} from 'rxjs';
 
 @Component({
   selector: 'app-history-page',
@@ -17,17 +18,12 @@ import { AppEvent } from '../shared/models/event.model';
   styleUrls: ['./history-page.component.scss'],
 })
 export class HistoryPageComponent implements OnInit, OnDestroy {
-  public categories: Category[] = [];
-  public events: AppEvent[] = [];
-  public filteredEvents: AppEvent[] = [];
-  public isLoaded = false;
-  public chartData = [];
-  public isFilterVisible = false;
-  public currencyPage = 1;
   private sub1: Subscription;
 
   constructor(
+    public readonly viewModel: HistoryPageViewModel,
     private metaService: MetaService,
+    private useCases: HistoryPageUseCases,
   ) {
     this.metaService.setTitle('История');
     this.metaService.addDescription('Страница истории');
@@ -35,16 +31,10 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    // this.sub1 = combineLatest(
-    //   this.categoriesService.getCategories(),
-    //   this.eventsService.getEvents(),
-    // ).subscribe((data: [Category[], AppEvent[]]) => {
-    //   this.categories = data[0];
-    //   this.events = data[1];
-    //   this.isLoaded = true;
-    //   this.setOriginEvent();
-    //   this.calculateChartData();
-    // });
+    this.sub1 = combineLatest([
+      this.useCases.loadCategories(),
+      this.useCases.loadEvents(),
+    ]).subscribe();
   }
 
   public ngOnDestroy() {
@@ -53,26 +43,12 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     }
   }
 
-  private calculateChartData(): void {
-    this.chartData = [];
-    // this.categories.forEach((cat) => {
-    //   const catEvents = this.filteredEvents.filter((event) => event.category === cat.id && event.type === 'outcome');
-    //   this.chartData.push({
-    //     name: cat.name,
-    //     value: catEvents.reduce((total, event) => {
-    //       total += event.amount;
-    //       return total;
-    //     }, 0),
-    //   });
-    // });
-  }
-
   private setOriginEvent(): void {
-    this.filteredEvents = this.events.slice();
+    //  this.filteredEvents = this.events.slice();
   }
 
   private toggleFilterVisibility(dir: boolean): void {
-    this.isFilterVisible = dir;
+    //  this.isFilterVisible = dir;
   }
 
   public openFilter(): void {
@@ -80,35 +56,30 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   }
 
   public onFilterApply(filterData): void {
-    this.toggleFilterVisibility(false);
-    this.setOriginEvent();
+    // this.toggleFilterVisibility(false);
+    // this.setOriginEvent();
+    //
+    // const startPeriod = moment().startOf(filterData.period).startOf('d');
+    // const endPeriod = moment().endOf(filterData.period).startOf('d');
+    //
+    // this.filteredEvents = this.filteredEvents
+    //   .filter((e) => {
+    //     return filterData.types.indexOf(e.type) !== -1;
+    //   })
+    //   .filter((e) => {
+    //     return filterData.categories.indexOf(e.category.toString()) !== -1;
+    //   })
+    //   .filter((e) => {
+    //     const momentDate = moment(e.date, 'DD.MM.YYYY HH:mm:ss');
+    //     return momentDate.isBetween(startPeriod, endPeriod);
+    //   });
 
-    const startPeriod = moment().startOf(filterData.period).startOf('d');
-    const endPeriod = moment().endOf(filterData.period).startOf('d');
-
-    this.filteredEvents = this.filteredEvents
-      .filter((e) => {
-        return filterData.types.indexOf(e.type) !== -1;
-      })
-      .filter((e) => {
-        return filterData.categories.indexOf(e.category.toString()) !== -1;
-      })
-      .filter((e) => {
-        const momentDate = moment(e.date, 'DD.MM.YYYY HH:mm:ss');
-        return momentDate.isBetween(startPeriod, endPeriod);
-      });
-
-    this.calculateChartData();
+    // this.calculateChartData();
   }
 
   public onFilterCancel(): void {
     this.toggleFilterVisibility(false);
     this.setOriginEvent();
-    this.calculateChartData();
+    // this.calculateChartData();
   }
-
-  public changePage(currencyPage: number): void {
-    this.currencyPage = currencyPage;
-  }
-
 }

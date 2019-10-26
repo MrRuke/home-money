@@ -1,27 +1,23 @@
 <app-page
-  title="Страница истории"
+  title="HISTORY.TITLE"
   [actionsTemplate]="controls"
+  [loading]="viewModel.loading | async"
 >
-  <div *ngIf="!isLoaded" class="text-center">
-    <app-loader></app-loader>
-  </div>
-  <div *ngIf="isLoaded">
-    <app-history-chart [data]="chartData"></app-history-chart>
-    <app-history-events [categories]="categories" [events]="filteredEvents"></app-history-events>
-    <div *ngIf="isFilterVisible">
+  <ng-container *ngIf="(viewModel.history | async) as history">
+
+    <app-history-chart [data]="history.chartData"></app-history-chart>
+
+    <app-history-events [categories]="history.categories" [events]="history.events"></app-history-events>
+
+    <div *ngIf="history.filterVisible">
       <app-history-filter
         (filterApply)="onFilterApply($event)"
         (filterCancel)="onFilterCancel()"
-        [categories]="categories"
+        [categories]="history.categories"
       ></app-history-filter>
     </div>
-    <app-history-pagination
-      [currencyPage]="currencyPage"
-      [maxPage]=1000
-      (changePage)="changePage($event)"
-    ></app-history-pagination>
-    <p>Текущая страница: {{currencyPage}}</p>
-  </div>
+
+  </ng-container>
 </app-page>
 
 <ng-template #controls>
@@ -29,6 +25,3 @@
     <i class="fa fa-filter"></i>
   </button>
 </ng-template>
-
-
-

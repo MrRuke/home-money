@@ -3,9 +3,13 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
+import { HistoryPageViewModel } from '@app/system/history-page/history-page.viewmodel';
 
 import { Category } from '@app/system/shared/models/category.model';
-import { AppEvent } from '@app/system/shared/models/event.model';
+import {
+  AppEvent,
+  EventType,
+} from '@app/system/shared/models/event.model';
 
 @Component({
   selector: 'app-history-events',
@@ -17,11 +21,13 @@ export class HistoryEventsComponent implements OnInit {
   public categories: Category[] = [];
 
   @Input()
-  public events: AppEvent[] = [];
+  public events: HistoryPageViewModel.EventView[] = [];
 
   public searchValue = '';
   public searchPlaceholder = 'Сумма';
   public searchField = 'amount';
+
+  public readonly eventType = EventType;
 
   public ngOnInit() {
     this.events.forEach((e) => {
@@ -32,8 +38,8 @@ export class HistoryEventsComponent implements OnInit {
   public getEventClass(e: AppEvent) {
     return {
       'label': true,
-      // 'label-danger': e.type === 'outcome',
-      // 'label-success ': e.type === 'income',
+      'label-danger': e.type === EventType.OUTCOME,
+      'label-success ': e.type === EventType.INCOME,
     };
   }
 

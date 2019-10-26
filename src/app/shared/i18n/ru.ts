@@ -29,10 +29,23 @@ export const locales = {
     OF: 'из',
     BALANCE: '| осталось',
   },
+  HISTORY: {
+    TITLE: 'Страница истории',
+    EVENTS: 'Список событий',
+    TABLE: {
+      NUMBER: '#',
+      AMOUNT: 'Сумма',
+      DATE: 'Дата',
+      CATEGORY: 'Категория',
+      TYPE: 'Тип',
+      ACTION: 'Действие',
+    },
+  },
   ACTIONS: {
     ADD: 'Добавить',
     CHANGE: 'Изменить',
     SELECT: 'Выберите',
+    OPEN: 'Открыть',
   },
   ERRORS: {
     REQUIRED: 'Поле обязательно для заполнения',
