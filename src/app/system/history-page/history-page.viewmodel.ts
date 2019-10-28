@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CurrencyValue } from '@app/system/shared/models/bill.model';
 import { Category } from '@app/system/shared/models/category.model';
 import {
   AppEvent,
@@ -85,4 +86,5 @@ export namespace HistoryPageViewModel {
     name: string;
     value: number;
   }
+
 }

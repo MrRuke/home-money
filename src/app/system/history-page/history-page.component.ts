@@ -1,46 +1,44 @@
 import {
   Component,
-  OnDestroy,
   OnInit,
 } from '@angular/core';
+import { BemModifiers } from '@app/shared/core/bem';
+import { SubscriberComponent } from '@app/shared/core/subscriber';
 import { MetaService } from '@app/shared/services/meta.service';
 import { HistoryPageUseCases } from '@app/system/history-page/history-page.usecases';
 import { HistoryPageViewModel } from '@app/system/history-page/history-page.viewmodel';
 
-import {
-  combineLatest,
-  Subscription,
-} from 'rxjs';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-history-page',
   templateUrl: './history-page.component.html',
   styleUrls: ['./history-page.component.scss'],
 })
-export class HistoryPageComponent implements OnInit, OnDestroy {
-  private sub1: Subscription;
+export class HistoryPageComponent extends SubscriberComponent implements OnInit {
+  public get modifiers(): BemModifiers {
+    return {
+      shipCommentVisible2: false,
+      shipCommentVisible: true,
+    };
+  }
 
   constructor(
     public readonly viewModel: HistoryPageViewModel,
     private metaService: MetaService,
     private useCases: HistoryPageUseCases,
   ) {
+    super();
     this.metaService.setTitle('История');
     this.metaService.addDescription('Страница истории');
     this.metaService.addKeywords('история');
   }
 
   public ngOnInit() {
-    this.sub1 = combineLatest([
+    this.subscribe(combineLatest([
       this.useCases.loadCategories(),
       this.useCases.loadEvents(),
-    ]).subscribe();
-  }
-
-  public ngOnDestroy() {
-    if (this.sub1) {
-      this.sub1.unsubscribe();
-    }
+    ]));
   }
 
   private setOriginEvent(): void {

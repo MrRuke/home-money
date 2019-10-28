@@ -2,6 +2,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
+import { SubscriberComponent } from '@app/shared/core/subscriber';
 import { MetaService } from '@app/shared/services/meta.service';
 import { RecordsPageUseCases } from '@app/system/records-page/records-page.usecases';
 import { RecordsPageViewModel } from '@app/system/records-page/records-page.viewmodel';
@@ -15,22 +16,23 @@ import { Category } from '../shared/models/category.model';
   templateUrl: './records-page.component.html',
   styleUrls: ['./records-page.component.scss'],
 })
-export class RecordsPageComponent implements OnInit {
+export class RecordsPageComponent  extends SubscriberComponent implements OnInit {
   constructor(
     public readonly viewModel: RecordsPageViewModel,
     private useCases: RecordsPageUseCases,
     private metaService: MetaService,
   ) {
+    super();
     this.metaService.setTitle('Запись');
     this.metaService.addDescription('Страница записи');
     this.metaService.addKeywords('запись');
   }
 
   public ngOnInit() {
-    combineLatest([
+    this.subscribe(combineLatest([
       this.useCases.loadCategories(),
       this.useCases.loadEvents(),
-    ]).subscribe();
+    ]));
   }
 
   public addCategory(category: Category): void {

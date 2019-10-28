@@ -1,9 +1,9 @@
 import {
   Component,
-  OnDestroy,
   OnInit,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SubscriberComponent } from '@app/shared/core/subscriber';
 
 import { Subscription } from 'rxjs';
 
@@ -15,15 +15,15 @@ import { Category } from '@app/system/shared/models/category.model';
   templateUrl: './history-detail.component.html',
   styleUrls: ['./history-detail.component.scss'],
 })
-export class HistoryDetailComponent implements OnInit, OnDestroy {
+export class HistoryDetailComponent extends SubscriberComponent implements OnInit {
   public event: AppEvent;
   public category: Category;
   public isLoaded = false;
-  private sub1: Subscription;
 
   constructor(
     private route: ActivatedRoute,
   ) {
+    super();
   }
 
   public ngOnInit() {
@@ -39,12 +39,6 @@ export class HistoryDetailComponent implements OnInit, OnDestroy {
     //     this.category = category;
     //     this.isLoaded = true;
     //   });
-  }
-
-  public ngOnDestroy() {
-    if (this.sub1) {
-      this.sub1.unsubscribe();
-    }
   }
 
 }

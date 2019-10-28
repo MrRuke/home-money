@@ -16,6 +16,7 @@ export class HistoryPageUseCases {
   }
 
   public loadEvents(): Observable<void> {
+    console.log('1load');
     return this.eventsService.loadValue();
   }
 }

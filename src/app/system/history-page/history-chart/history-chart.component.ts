@@ -11,5 +11,5 @@ import { HistoryPageViewModel } from '@app/system/history-page/history-page.view
 })
 export class HistoryChartComponent {
   @Input()
-  public data: HistoryPageViewModel.ChartData;
+  public data: HistoryPageViewModel.ChartData[];
 }
