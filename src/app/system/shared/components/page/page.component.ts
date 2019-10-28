@@ -11,7 +11,7 @@ import {
 })
 export class PageComponent {
   @Input()
-  public title = '';
+  public headerTitle = '';
 
   @Input()
   public actionsTemplate?: TemplateRef<{}>;

@@ -1,4 +1,4 @@
-<app-card title="RECORDS.ADD_CATEGORY" [formGroup]="formGroup">
+<app-card cardTitle="RECORDS.ADD_CATEGORY" [formGroup]="formGroup">
   <div
     class="form-group"
     [ngClass]="{ 'has-error': hasError('name') }"
@@ -6,7 +6,6 @@
     <label class="control-label">
       {{ 'RECORDS.ENTER_NAME' | translate }}
       <input
-        [title]="'RECORDS.ENTER_NAME' | translate"
         type="text"
         formControlName="name"
         class="form-control"
@@ -28,7 +27,6 @@
     <label class="control-label">
       {{ 'RECORDS.ENTER_CAPACITY' | translate }}
       <input
-        [title]="'RECORDS.ENTER_CAPACITY' | translate"
         type="number"
         formControlName="capacity"
         class="form-control"
@@ -44,7 +42,6 @@
   </div>
 
   <button
-    [title]="'ACTIONS.ADD' | translate"
     type="submit"
     class="btn btn-primary"
     (click)="addCategory()"

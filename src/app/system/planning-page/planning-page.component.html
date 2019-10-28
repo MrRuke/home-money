@@ -1,10 +1,10 @@
 <app-page
-  title="PLANNING.TITLE"
+  headerTitle="PLANNING.TITLE"
   [loading]="viewModel.loading | async"
 >
   <div *ngIf="(viewModel.planning | async) as planning" class="row">
     <div class="col col-xs-12 col-sm-12 col-md-12 col-xl-12">
-      <app-card title="PLANNING.EXPENSES" [rightHeaderTemplate]="rightHeaderTemplate">
+      <app-card cardTitle="PLANNING.EXPENSES" [rightHeaderTemplate]="rightHeaderTemplate">
         <div class="row" *ngFor="let category of planning.categories">
           <div class="col-xs-6">
             <div class="n-progress">

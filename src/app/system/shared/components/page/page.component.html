@@ -1,8 +1,8 @@
 <div block="app-page">
 
   <div class="title-block">
-    <h3 *ngIf="title" class="title pull-left">
-      {{ title | translate }}
+    <h3 *ngIf="headerTitle" class="title pull-left">
+      {{ headerTitle | translate }}
     </h3>
     <div *ngIf="actionsTemplate" class="pull-right">
       <ng-container [ngTemplateOutlet]="actionsTemplate"></ng-container>

@@ -1,4 +1,4 @@
-<app-card title="RECORDS.EDIT_CATEGORY" [formGroup]="formGroup">
+<app-card cardTitle="RECORDS.EDIT_CATEGORY" [formGroup]="formGroup">
   <div class="form-group">
     <label class="control-label">
       {{ 'RECORDS.SELECT_CATEGORY' | translate }}
@@ -25,7 +25,6 @@
     <label class="control-label">
       {{ 'RECORDS.ENTER_NAME' | translate }}
       <input
-        [title]="'RECORDS.ENTER_NAME' | translate"
         type="text"
         formControlName="name"
         class="form-control"
@@ -47,7 +46,6 @@
     <label class="control-label">
       {{ 'RECORDS.ENTER_CAPACITY' | translate }}
       <input
-        [title]="'RECORDS.ENTER_CAPACITY' | translate"
         type="number"
         formControlName="capacity"
         class="form-control"
@@ -63,7 +61,6 @@
   </div>
 
   <button
-    [title]="'ACTIONS.CHANGE' | translate"
     type="submit"
     class="btn btn-primary"
     (click)="updateCategory()"

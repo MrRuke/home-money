@@ -1,4 +1,4 @@
-<app-card title="RECORDS.ADD_EVENT" [formGroup]="formGroup">
+<app-card cardTitle="RECORDS.ADD_EVENT" [formGroup]="formGroup">
   <div
     class="form-group"
     [ngClass]="{ 'has-error': hasError('category') }"
@@ -75,7 +75,6 @@
     <label class="control-label">
       {{ 'RECORDS.ENTER_AMOUNT' | translate }}
       <input
-        [title]="'RECORDS.ENTER_AMOUNT' | translate"
         type="number"
         formControlName="amount"
         class="form-control"
@@ -97,7 +96,6 @@
     <label class="control-label">
       {{ 'RECORDS.ENTER_DESCRIPTION' | translate }}
       <input
-        [title]="'RECORDS.ENTER_DESCRIPTION' | translate"
         type="text"
         formControlName="description"
         class="form-control"
@@ -113,7 +111,6 @@
   </div>
 
   <button
-    [title]="'ACTIONS.ADD' | translate"
     type="submit"
     class="btn btn-primary"
     (click)="addEvent()"

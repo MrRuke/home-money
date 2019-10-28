@@ -11,7 +11,7 @@ import {
 })
 export class CardComponent {
   @Input()
-  public title = '';
+  public cardTitle = '';
 
   @Input()
   public rightHeaderTemplate?: TemplateRef<{}>;
