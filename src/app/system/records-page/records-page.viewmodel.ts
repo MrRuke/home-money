@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Category } from '@app/system/shared/models/category.model';
-import { CategoriesQuery } from '@app/system/shared/stores/categories/query';
-import { EventsQuery } from '@app/system/shared/stores/events/query';
+import { Category } from 'app/system/shared/models/category.model';
+import { CategoriesQuery } from 'app/system/shared/stores/categories/query';
+import { EventsQuery } from 'app/system/shared/stores/events/query';
 import {
   combineLatest,
   Observable,

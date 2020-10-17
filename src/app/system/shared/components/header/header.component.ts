@@ -4,8 +4,8 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { User } from '@app/shared/models/user.model';
-import { AuthServices } from '@app/shared/services/auth.services';
+import { User } from 'app/shared/models/user.model';
+import { AuthServices } from 'app/shared/services/auth.services';
 
 @Component({
   selector: 'app-header',
@@ -22,11 +22,11 @@ export class HeaderComponent implements OnInit {
   ) {
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.user = JSON.parse(window.localStorage.getItem('user'));
   }
 
-  public onLogout() {
+  public onLogout(): void {
     this.authSerive.logout();
     this.router.navigate(['login']);
   }

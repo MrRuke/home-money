@@ -3,7 +3,7 @@ import {
   HostBinding,
 } from '@angular/core';
 
-import { fadeStateTrigger } from '@app/shared/animations/fade.animation';
+import { fadeStateTrigger } from 'app/shared/animations/fade.animation';
 
 @Component({
   selector: 'app-system',

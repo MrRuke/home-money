@@ -2,11 +2,11 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { BemModifiers } from '@app/shared/core/bem';
-import { SubscriberComponent } from '@app/shared/core/subscriber';
-import { MetaService } from '@app/shared/services/meta.service';
-import { HistoryPageUseCases } from '@app/system/history-page/history-page.usecases';
-import { HistoryPageViewModel } from '@app/system/history-page/history-page.viewmodel';
+import { BemModifiers } from 'app/shared/core/bem';
+import { SubscriberComponent } from 'app/shared/core/subscriber';
+import { MetaService } from 'app/shared/services/meta.service';
+import { HistoryPageUseCases } from 'app/system/history-page/history-page.usecases';
+import { HistoryPageViewModel } from 'app/system/history-page/history-page.viewmodel';
 
 import { combineLatest } from 'rxjs';
 
@@ -34,7 +34,7 @@ export class HistoryPageComponent extends SubscriberComponent implements OnInit 
     this.metaService.addKeywords('история');
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.subscribe(combineLatest([
       this.useCases.loadCategories(),
       this.useCases.loadEvents(),

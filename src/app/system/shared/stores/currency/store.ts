@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CurrencyState } from '@app/system/shared/stores/currency/model';
-import { InitialState } from '@app/system/shared/stores/initialStore';
+import { CurrencyState } from 'app/system/shared/stores/currency/model';
+import { InitialState } from 'app/system/shared/stores/initialStore';
 import {
   Store,
   StoreConfig,

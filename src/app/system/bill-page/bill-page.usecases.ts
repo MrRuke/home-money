@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BillService } from '@app/system/shared/stores/bill/service';
-import { CurrencyService } from '@app/system/shared/stores/currency/service';
+import { BillService } from 'app/system/shared/stores/bill/service';
+import { CurrencyService } from 'app/system/shared/stores/currency/service';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })

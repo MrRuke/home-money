@@ -11,11 +11,11 @@ import {
 import {
   AppEvent,
   EventType,
-} from '@app/system/shared/models/event.model';
+} from 'app/system/shared/models/event.model';
 
 import * as moment from 'moment';
 
-import { Category } from '@app/system/shared/models/category.model';
+import { Category } from 'app/system/shared/models/category.model';
 
 @Component({
   selector: 'app-add-event',

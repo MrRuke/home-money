@@ -23,7 +23,7 @@ export class FilterPipe implements PipeTransform {
           : 'расход';
       }
       if (field === 'category') {
-        t[field] = t['catName'];
+        t[field] = t.catName;
       }
       return t[field].toLowerCase().indexOf(value.toLowerCase()) !== -1;
     });

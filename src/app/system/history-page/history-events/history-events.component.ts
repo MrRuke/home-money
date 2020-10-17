@@ -1,15 +1,8 @@
-import {
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
-import { HistoryPageViewModel } from '@app/system/history-page/history-page.viewmodel';
+import { Component, Input, OnInit } from '@angular/core';
+import { HistoryPageViewModel } from 'app/system/history-page/history-page.viewmodel';
 
-import { Category } from '@app/system/shared/models/category.model';
-import {
-  AppEvent,
-  EventType,
-} from '@app/system/shared/models/event.model';
+import { Category } from 'app/system/shared/models/category.model';
+import { AppEvent, EventType } from 'app/system/shared/models/event.model';
 
 @Component({
   selector: 'app-history-events',
@@ -29,15 +22,15 @@ export class HistoryEventsComponent implements OnInit {
 
   public readonly eventType = EventType;
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.events.forEach((e) => {
       e.catName = this.categories.find(c => c.id === e.category).name;
     });
   }
 
-  public getEventClass(e: AppEvent) {
+  public getEventClass(e: AppEvent): any {
     return {
-      'label': true,
+      label: true,
       'label-danger': e.type === EventType.OUTCOME,
       'label-success ': e.type === EventType.INCOME,
     };

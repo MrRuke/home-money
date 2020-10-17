@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AppEvent } from '@app/system/shared/models/event.model';
-import { EventsState } from '@app/system/shared/stores/events/model';
-import { EventsStore } from '@app/system/shared/stores/events/store';
+import { AppEvent } from 'app/system/shared/models/event.model';
+import { EventsState } from 'app/system/shared/stores/events/model';
+import { EventsStore } from 'app/system/shared/stores/events/store';
 import { QueryEntity } from '@datorama/akita';
 import { Observable } from 'rxjs';
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BillApi } from '@app/system/shared/api/bill-api';
-import { CurrencyStore } from '@app/system/shared/stores/currency/store';
+import { BillApi } from 'app/system/shared/api/bill-api';
+import { CurrencyStore } from 'app/system/shared/stores/currency/store';
 import { Observable } from 'rxjs';
 import {
   mapTo,
