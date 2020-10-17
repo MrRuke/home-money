@@ -4,14 +4,14 @@ import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthModule } from './auth/auth.module';
-import { UsersServices } from './shared/services/users.services';
+import { AuthModule } from './old/auth/auth.module';
+import { UsersServices } from './old/shared/services/users.services';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthServices } from './shared/services/auth.services';
-import { SystemModule } from './system/system.module';
-import { AuthGuard } from './shared/services/auth.guard';
+import { AuthServices } from './old/shared/services/auth.services';
+import { SystemModule } from './old/system/system.module';
+import { AuthGuard } from './old/shared/services/auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { NotFoundComponent } from './old/shared/components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
