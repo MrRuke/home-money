@@ -42,7 +42,7 @@ export class HistoryPageComponent extends SubscriberComponent implements OnInit 
   }
 
   private setOriginEvent(): void {
-    //  this.filteredEvents = this.events.slice();
+    //  this.filteredEvents = this.history.slice();
   }
 
   private toggleFilterVisibility(dir: boolean): void {
