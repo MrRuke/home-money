@@ -5,10 +5,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MetaService } from '@app/shared/services/meta.service';
+import { MetaService } from 'app/shared/services/meta.service';
 
-import { UsersServices } from '@app/shared/services/users.services';
-import { User } from '@app/shared/models/user.model';
+import { UsersServices } from 'app/shared/services/users.services';
+import { User } from 'app/shared/models/user.model';
 
 @Component({
   selector: 'app-registration',
@@ -28,19 +28,19 @@ export class RegistrationComponent {
     this.metaService.addKeywords('регистрация');
 
     this.form = new FormGroup({
-      'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails.bind(this)),
-      'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
-      'name': new FormControl(null, [Validators.required]),
-      'agree': new FormControl(null, [Validators.requiredTrue]),
+      email: new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails.bind(this)),
+      password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      name: new FormControl(null, [Validators.required]),
+      agree: new FormControl(null, [Validators.requiredTrue]),
     });
   }
 
   public onSubmit(): void {
     const { email, password, name } = this.form.value;
     const user = {
-      email: email,
-      password: password,
-      name: name,
+      email,
+      password,
+      name,
     };
     this.usersServices.createNewUser(user)
       .subscribe(() => {

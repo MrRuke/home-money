@@ -13,7 +13,7 @@ export class DropdownDirective {
   public isOpen = false;
 
   @HostListener('click')
-  public onClick() {
+  public onClick(): void {
     this.isOpen = !this.isOpen;
   }
 }

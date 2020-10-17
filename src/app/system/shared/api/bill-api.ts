@@ -7,7 +7,7 @@ import {
   map,
 } from 'rxjs/operators';
 
-import { BaseApi } from '@app/shared/core/base';
+import { BaseApi } from 'app/shared/core/base';
 import {
   Bill,
   Currency,

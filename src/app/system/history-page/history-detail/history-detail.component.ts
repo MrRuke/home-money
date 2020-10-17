@@ -3,12 +3,12 @@ import {
   OnInit,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SubscriberComponent } from '@app/shared/core/subscriber';
+import { SubscriberComponent } from 'app/shared/core/subscriber';
 
 import { Subscription } from 'rxjs';
 
-import { AppEvent } from '@app/system/shared/models/event.model';
-import { Category } from '@app/system/shared/models/category.model';
+import { AppEvent } from 'app/system/shared/models/event.model';
+import { Category } from 'app/system/shared/models/category.model';
 
 @Component({
   selector: 'app-history-detail',
@@ -26,7 +26,7 @@ export class HistoryDetailComponent extends SubscriberComponent implements OnIni
     super();
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     // this.sub1 = this.route.params
     //   .pipe(
     //     mergeMap((params: Params) => this.eventsService.getEventsById(params.id)),

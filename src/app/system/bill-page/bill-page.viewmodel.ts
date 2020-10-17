@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import {
   Bill,
   Currency,
-} from '@app/system/shared/models/bill.model';
-import { BillQuery } from '@app/system/shared/stores/bill/query';
-import { CurrencyQuery } from '@app/system/shared/stores/currency/query';
+} from 'app/system/shared/models/bill.model';
+import { BillQuery } from 'app/system/shared/stores/bill/query';
+import { CurrencyQuery } from 'app/system/shared/stores/currency/query';
 import {
   combineLatest,
   Observable,

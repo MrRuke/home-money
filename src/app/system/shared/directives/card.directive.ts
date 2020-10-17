@@ -8,7 +8,7 @@ import {
 })
 
 export class CardDirective {
-  @HostBinding('class') get getCard() {
+  @HostBinding('class') get getCard(): string {
     return 'col col-xs-12 col-sm-12 col-md-6 col-xl-6';
   }
 }

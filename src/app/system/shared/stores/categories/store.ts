@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CategoriesState } from '@app/system/shared/stores/categories/model';
+import { CategoriesState } from 'app/system/shared/stores/categories/model';
 import {
   EntityStore,
   StoreConfig,

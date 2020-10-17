@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CategoriesApi } from '@app/system/shared/api/categories-api';
-import { Category } from '@app/system/shared/models/category.model';
-import { CategoriesStore } from '@app/system/shared/stores/categories/store';
+import { CategoriesApi } from 'app/system/shared/api/categories-api';
+import { Category } from 'app/system/shared/models/category.model';
+import { CategoriesStore } from 'app/system/shared/stores/categories/store';
 import { Observable } from 'rxjs';
 import {
   mapTo,

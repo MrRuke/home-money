@@ -2,7 +2,7 @@ import {
   Component,
   Input,
 } from '@angular/core';
-import { HistoryPageViewModel } from '@app/system/history-page/history-page.viewmodel';
+import { HistoryPageViewModel } from 'app/system/history-page/history-page.viewmodel';
 
 @Component({
   selector: 'app-history-chart',

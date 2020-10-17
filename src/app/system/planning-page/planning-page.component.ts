@@ -2,10 +2,10 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { SubscriberComponent } from '@app/shared/core/subscriber';
-import { MetaService } from '@app/shared/services/meta.service';
-import { PlanningPageUseCases } from '@app/system/planning-page/planning-page.usecases';
-import { PlanningPageViewModel } from '@app/system/planning-page/planning-page.viewmodel';
+import { SubscriberComponent } from 'app/shared/core/subscriber';
+import { MetaService } from 'app/shared/services/meta.service';
+import { PlanningPageUseCases } from 'app/system/planning-page/planning-page.usecases';
+import { PlanningPageViewModel } from 'app/system/planning-page/planning-page.viewmodel';
 
 import { combineLatest } from 'rxjs';
 
@@ -26,7 +26,7 @@ export class PlanningPageComponent extends SubscriberComponent implements OnInit
     this.metaService.addKeywords('планирование');
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.subscribe(combineLatest([
       this.useCases.loadBill(),
       this.useCases.loadCategories(),

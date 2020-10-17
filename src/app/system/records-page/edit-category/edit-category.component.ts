@@ -10,7 +10,7 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { Category } from '@app/system/shared/models/category.model';
+import { Category } from 'app/system/shared/models/category.model';
 
 @Component({
   selector: 'app-edit-category',
@@ -36,7 +36,7 @@ export class EditCategoryComponent implements OnInit {
   ) {
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.categoryControl.valueChanges.subscribe(id => {
       const category = this.categories.find(item => item.id === Number(id));
       if (category) {

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { CurrencyValue } from '@app/system/shared/models/bill.model';
-import { Category } from '@app/system/shared/models/category.model';
+import { CurrencyValue } from 'app/system/shared/models/bill.model';
+import { Category } from 'app/system/shared/models/category.model';
 import {
   AppEvent,
   EventType,
-} from '@app/system/shared/models/event.model';
-import { CategoriesQuery } from '@app/system/shared/stores/categories/query';
-import { EventsQuery } from '@app/system/shared/stores/events/query';
+} from 'app/system/shared/models/event.model';
+import { CategoriesQuery } from 'app/system/shared/stores/categories/query';
+import { EventsQuery } from 'app/system/shared/stores/events/query';
 import {
   combineLatest,
   Observable,
@@ -70,6 +70,7 @@ export class HistoryPageViewModel {
   }
 }
 
+// tslint:disable-next-line:no-namespace
 export namespace HistoryPageViewModel {
   export interface HistoryView {
     categories: Category[];

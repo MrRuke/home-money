@@ -8,7 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { Category } from '@app/system/shared/models/category.model';
+import { Category } from 'app/system/shared/models/category.model';
 
 @Component({
   selector: 'app-add-category',

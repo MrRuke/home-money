@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BillState } from '@app/system/shared/stores/bill/model';
-import { InitialState } from '@app/system/shared/stores/initialStore';
+import { BillState } from 'app/system/shared/stores/bill/model';
+import { InitialState } from 'app/system/shared/stores/initialStore';
 import {
   Store,
   StoreConfig,

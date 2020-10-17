@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BillApi } from '@app/system/shared/api/bill-api';
-import { BillStore } from '@app/system/shared/stores/bill/store';
+import { BillApi } from 'app/system/shared/api/bill-api';
+import { BillStore } from 'app/system/shared/stores/bill/store';
 import { Observable } from 'rxjs';
 import {
   mapTo,

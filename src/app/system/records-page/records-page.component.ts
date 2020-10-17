@@ -2,11 +2,11 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { SubscriberComponent } from '@app/shared/core/subscriber';
-import { MetaService } from '@app/shared/services/meta.service';
-import { RecordsPageUseCases } from '@app/system/records-page/records-page.usecases';
-import { RecordsPageViewModel } from '@app/system/records-page/records-page.viewmodel';
-import { AppEvent } from '@app/system/shared/models/event.model';
+import { SubscriberComponent } from 'app/shared/core/subscriber';
+import { MetaService } from 'app/shared/services/meta.service';
+import { RecordsPageUseCases } from 'app/system/records-page/records-page.usecases';
+import { RecordsPageViewModel } from 'app/system/records-page/records-page.viewmodel';
+import { AppEvent } from 'app/system/shared/models/event.model';
 import { combineLatest } from 'rxjs';
 
 import { Category } from '../shared/models/category.model';
@@ -28,7 +28,7 @@ export class RecordsPageComponent  extends SubscriberComponent implements OnInit
     this.metaService.addKeywords('запись');
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.subscribe(combineLatest([
       this.useCases.loadCategories(),
       this.useCases.loadEvents(),
