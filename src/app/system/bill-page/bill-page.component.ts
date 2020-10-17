@@ -2,10 +2,10 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { SubscriberComponent } from '@app/shared/core/subscriber';
-import { MetaService } from '@app/shared/services/meta.service';
-import { BillPageUseCases } from '@app/system/bill-page/bill-page.usecases';
-import { BillPageViewModel } from '@app/system/bill-page/bill-page.viewmodel';
+import { SubscriberComponent } from 'app/shared/core/subscriber';
+import { MetaService } from 'app/shared/services/meta.service';
+import { BillPageUseCases } from 'app/system/bill-page/bill-page.usecases';
+import { BillPageViewModel } from 'app/system/bill-page/bill-page.viewmodel';
 
 import { combineLatest } from 'rxjs';
 
@@ -26,7 +26,7 @@ export class BillPageComponent extends SubscriberComponent implements OnInit {
     this.metaService.addKeywords('счет');
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.subscribe(combineLatest([
       this.useCases.loadBill(),
       this.useCases.loadCurrency(),

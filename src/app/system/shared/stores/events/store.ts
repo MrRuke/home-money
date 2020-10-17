@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EventsState } from '@app/system/shared/stores/events/model';
+import { EventsState } from 'app/system/shared/stores/events/model';
 import {
   EntityStore,
   StoreConfig,

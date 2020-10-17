@@ -14,12 +14,12 @@ import {
   Router,
 } from '@angular/router';
 
-import { User } from '@app/shared/models/user.model';
-import { Message } from '@app/shared/models/message.model';
-import { MetaService } from '@app/shared/services/meta.service';
-import { UsersServices } from '@app/shared/services/users.services';
-import { AuthServices } from '@app/shared/services/auth.services';
-import { fadeStateTrigger } from '@app/shared/animations/fade.animation';
+import { User } from 'app/shared/models/user.model';
+import { Message } from 'app/shared/models/message.model';
+import { MetaService } from 'app/shared/services/meta.service';
+import { UsersServices } from 'app/shared/services/users.services';
+import { AuthServices } from 'app/shared/services/auth.services';
+import { fadeStateTrigger } from 'app/shared/animations/fade.animation';
 
 @Component({
   selector: 'app-login',
@@ -47,23 +47,23 @@ export class LoginComponent implements OnInit {
     this.metaService.addKeywords('логин, вход, система');
 
     this.form = new FormGroup({
-      'email': new FormControl(null, [Validators.required, Validators.email]),
-      'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
     });
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.message = {
       type: 'alert-danger',
     };
     this.route.queryParams
       .subscribe((params: Params) => {
-        if (params['nowCanLogin']) {
+        if (params.nowCanLogin) {
           this.showMessage({
             text: 'Вы успешно зарегистрированы',
             type: 'alert-success',
           });
-        } else if (params['accessDenied']) {
+        } else if (params.accessDenied) {
           this.showMessage({
             text: 'Для работы с системой необходима авторизация',
             type: 'alert-warning',

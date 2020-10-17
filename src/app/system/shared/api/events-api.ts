@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { BaseApi } from '@app/shared/core/base';
+import { BaseApi } from 'app/shared/core/base';
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { AppEvent } from '../models/event.model';

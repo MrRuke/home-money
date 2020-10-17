@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardDirective } from '@app/system/shared/directives/card.directive';
+import { CardDirective } from 'app/system/shared/directives/card.directive';
 import { TranslateModule } from '@ngx-translate/core';
 import { BemModule } from 'angular-bem';
 

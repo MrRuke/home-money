@@ -3,7 +3,7 @@ import {
   Input,
 } from '@angular/core';
 
-import { Bill } from '@app/system/shared/models/bill.model';
+import { Bill } from 'app/system/shared/models/bill.model';
 
 @Component({
   selector: 'app-bill-card',

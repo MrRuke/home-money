@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MetaService } from '@app/shared/services/meta.service';
+import { MetaService } from 'app/shared/services/meta.service';
 
 import { UsersService } from '../shared/services/users.service';
 import { User } from '../shared/models/user.model';

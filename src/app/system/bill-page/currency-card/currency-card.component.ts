@@ -5,7 +5,7 @@ import {
 import {
   Currency,
   CurrencyValue,
-} from '@app/system/shared/models/bill.model';
+} from 'app/system/shared/models/bill.model';
 
 @Component({
   selector: 'app-currency-card',
