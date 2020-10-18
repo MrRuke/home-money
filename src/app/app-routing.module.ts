@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AppScheme } from 'app/nav-scheme';
 
 @NgModule({
-  imports: [RouterModule.forRoot(AppScheme)],
+  imports: [RouterModule.forRoot([
+    {
+      path: 'future/history',
+      loadChildren: () => import('./modules/history/history.module')
+        .then(m => m.HistoryModule),
+    },
+  ])],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

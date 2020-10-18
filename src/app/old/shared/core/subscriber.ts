@@ -1,9 +1,12 @@
-import { OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import {
   Observable,
   Subscription,
 } from 'rxjs';
 
+@Component({
+  template: ''
+})
 export abstract class SubscriberComponent implements OnDestroy {
   private subscription = new Subscription();
 

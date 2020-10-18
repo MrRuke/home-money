@@ -1,0 +1,12 @@
+<div block="app-history-layout">
+  <div elem="list">
+    <div *ngFor="let element of viewModel.history | async; trackBy: trackByHistory" elem="item">
+      <div>{{ element.amount }}</div>
+      <div>{{ element.date }}</div>
+      <div>
+        <span *ngIf="element.type === HistoryType.INCOME">INCOME</span>
+        <span *ngIf="element.type === HistoryType.OUTCOME">OUTCOME</span>
+      </div>
+    </div>
+  </div>
+</div>
