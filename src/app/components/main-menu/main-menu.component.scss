@@ -1,0 +1,33 @@
+.app-main-menu {
+  &__list {
+    margin-top: 20px;
+  }
+
+  &__item {
+    margin: 10px 15px 0;
+    text-transform: uppercase;
+    padding: 10px 8px;
+    display: flex;
+    opacity: .7;
+    transition: opacity 400ms;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 12px;
+    background: #66615B;
+  }
+
+  &__title {
+    color: #66615B;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 30px;
+  }
+}

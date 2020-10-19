@@ -1,0 +1,14 @@
+<div block="app-main-menu">
+  <div elem="list">
+    <a
+      *ngFor="let item of menuList; trackBy: trackByMenu"
+      [href]="item.href"
+      [title]="item.title"
+    >
+      <div elem="item">
+        <div elem="icon"></div>
+        <div elem="title">{{ item.title }}</div>
+      </div>
+    </a>
+  </div>
+</div>
