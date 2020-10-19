@@ -11,7 +11,6 @@ export interface HistoryRequest {
   description: string;
 }
 
-export interface History extends HistoryRequest {
+export interface HistoryElement extends HistoryRequest {
   id: string;
-  catName: string;
 }

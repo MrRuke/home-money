@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { locales } from '@app/old/shared/i18n/ru';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './old/auth/auth.module';
@@ -37,4 +38,11 @@ import { NotFoundComponent } from './old/shared/components/not-found/not-found.c
   bootstrap: [AppComponent],
 })
 export class AppModule {
+  constructor(
+    translateService: TranslateService,
+  ) {
+    translateService.setDefaultLang('ru');
+    translateService.use('ru');
+    translateService.setTranslation('ru', locales);
+  }
 }

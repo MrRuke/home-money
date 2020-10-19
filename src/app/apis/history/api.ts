@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HistoryRequest } from '@app/apis/history/models';
+import { HistoryElement, HistoryRequest } from '@app/apis/history/models';
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { BaseApi } from '../base-api';
@@ -11,15 +11,15 @@ export class HistoryApi extends BaseApi {
     super(http);
   }
 
-  public addHistoryElement(event: HistoryRequest): Observable<History> {
+  public addHistoryElement(event: HistoryRequest): Observable<HistoryElement> {
     return this.post('events', event).pipe(delay(400));
   }
 
-  public getHistory(): Observable<History[]> {
+  public getHistory(): Observable<HistoryElement[]> {
     return this.get('events').pipe(delay(400));
   }
 
-  public getHistoryElementById(id: string): Observable<History> {
+  public getHistoryElementById(id: string): Observable<HistoryElement> {
     return this.get(`events/${id}`).pipe(delay(400));
   }
 }
