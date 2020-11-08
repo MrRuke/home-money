@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-menu',
@@ -29,8 +30,17 @@ export class MainMenuComponent {
     },
   ];
 
+  constructor(
+    private router: Router,
+  ) {
+  }
+
   public trackByMenu(index: number): number {
     return index;
+  }
+
+  public isActive(url: string): boolean {
+    return this.router.isActive(url, true);
   }
 }
 

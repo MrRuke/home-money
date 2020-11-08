@@ -1,4 +1,6 @@
 .app-main-menu {
+  $block: &;
+
   &__list {
     margin-top: 20px;
   }
@@ -10,9 +12,44 @@
     display: flex;
     opacity: .7;
     transition: opacity 400ms;
+    position: relative;
 
     &:hover {
       opacity: 1;
+    }
+  }
+
+  &__item--active {
+    opacity: 1;
+
+    #{$block}__icon {
+      background: #ef8157;
+    }
+
+    #{$block}__title {
+      color: #ef8157;
+    }
+
+    &:before,
+    &:after {
+      border-right: 17px solid #f4f3ef;
+      border-top: 17px solid transparent;
+      border-bottom: 17px solid transparent;
+      content: "";
+      display: inline-block;
+      position: absolute;
+      right: -17px;
+      top: 7px;
+    }
+
+    &:before {
+      border-right-color: #DDDDDD;
+      right: -16px;
+    }
+
+    &:after {
+      border-right-color: #f4f3ef;
+      right: -17px;
     }
   }
 
@@ -21,6 +58,7 @@
     height: 30px;
     margin-right: 12px;
     background: #66615B;
+    border-radius: 50%;
   }
 
   &__title {
