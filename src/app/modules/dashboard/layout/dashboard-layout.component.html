@@ -1,1 +1,6 @@
-<p>Dashboard-layout works!</p>
+<div block="app-dashboard-layout">
+  <div *ngFor="let item of accounts | async; trackBy: trackByAccounts">
+    <span>{{ item.value }}</span>
+    <span>{{ item.currency }}</span>
+  </div>
+</div>
