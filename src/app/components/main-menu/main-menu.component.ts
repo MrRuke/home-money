@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-menu',
@@ -9,28 +10,37 @@ export class MainMenuComponent {
   public readonly menuList: MainMenuItem[] = [
     {
       title: 'Home',
-      href: '#',
+      href: '/',
       icon: '',
     },
     {
       title: 'History',
-      href: '#',
+      href: 'history',
       icon: '',
     },
     {
       title: 'Planning',
-      href: '#',
+      href: 'planning',
       icon: '',
     },
     {
       title: 'Records',
-      href: '#',
+      href: 'records',
       icon: '',
     },
   ];
 
+  constructor(
+    private router: Router,
+  ) {
+  }
+
   public trackByMenu(index: number): number {
     return index;
+  }
+
+  public isActive(url: string): boolean {
+    return this.router.isActive(url, true);
   }
 }
 

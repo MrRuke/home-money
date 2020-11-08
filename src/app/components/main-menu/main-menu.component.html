@@ -2,10 +2,10 @@
   <div elem="list">
     <a
       *ngFor="let item of menuList; trackBy: trackByMenu"
-      [href]="item.href"
+      [routerLink]="item.href"
       [title]="item.title"
     >
-      <div elem="item">
+      <div elem="item" [mod]="{ active: isActive(item.href) }">
         <div elem="icon"></div>
         <div elem="title">{{ item.title }}</div>
       </div>

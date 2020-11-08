@@ -1,0 +1,19 @@
+<div block="app-planning-layout">
+  <div *ngFor="let element of planning | async">
+    <span>
+      {{ element.category.capacity }}
+    </span>
+    <span>
+      {{ element.category.name }}
+    </span>
+    <span>
+      {{ element.cost }}
+    </span>
+    <span>
+      {{ element.balance }}
+    </span>
+    <span>
+      {{ element.percent }}
+    </span>
+  </div>
+</div>
