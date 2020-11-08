@@ -7,6 +7,6 @@ export enum AccountCurrencyTypes {
   RUB = 'RUB',
 }
 
-export interface Account extends AccountRequest {
+export interface AccountElement extends AccountRequest {
   id: number;
 }
