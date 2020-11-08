@@ -19,6 +19,13 @@
     "value": 85123,
     "currency": "RUB"
   },
+  "accounts": [
+    {
+      "id": 1,
+      "value": 100000,
+      "currency": "RUB"
+    }
+  ],
   "categories": [
     {
       "id": 1,
