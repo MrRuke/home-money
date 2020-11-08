@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PlanningUseCases } from '../planning.usecases';
+import { PlanningViewModel } from '../planning.viewmodel';
 
 @Component({
   selector: 'app-planning-layout',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./planning-layout.component.scss']
 })
 export class PlanningLayoutComponent implements OnInit {
+  public readonly planning = this.viewModel.selectPlanning();
 
-  constructor() { }
+  constructor(
+    private viewModel: PlanningViewModel,
+    private useCases: PlanningUseCases,
+  ) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    this.useCases.loadValues().subscribe();
   }
-
 }
