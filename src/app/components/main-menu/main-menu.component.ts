@@ -14,7 +14,7 @@ export class MainMenuComponent {
     },
     {
       title: 'History',
-      href: '#',
+      href: 'history',
       icon: '',
     },
     {
@@ -24,7 +24,7 @@ export class MainMenuComponent {
     },
     {
       title: 'Records',
-      href: '#',
+      href: 'records',
       icon: '',
     },
   ];
