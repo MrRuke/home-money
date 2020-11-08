@@ -19,7 +19,7 @@ export class MainMenuComponent {
     },
     {
       title: 'Planning',
-      href: '#',
+      href: 'planning',
       icon: '',
     },
     {

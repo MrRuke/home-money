@@ -13,6 +13,11 @@ import { RouterModule } from '@angular/router';
       loadChildren: () => import('./modules/records/records.module')
         .then(m => m.RecordsModule),
     },
+    {
+      path: 'planning',
+      loadChildren: () => import('./modules/planning/planning.module')
+        .then(m => m.PlanningModule),
+    },
   ])],
   exports: [RouterModule]
 })
