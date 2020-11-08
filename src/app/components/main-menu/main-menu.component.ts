@@ -9,7 +9,7 @@ export class MainMenuComponent {
   public readonly menuList: MainMenuItem[] = [
     {
       title: 'Home',
-      href: '#',
+      href: '/',
       icon: '',
     },
     {
