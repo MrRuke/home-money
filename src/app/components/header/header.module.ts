@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { BemModule } from 'angular-bem';
 import { HeaderComponent } from './header.component';
 
@@ -9,6 +12,9 @@ import { HeaderComponent } from './header.component';
   imports: [
     CommonModule,
     BemModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   exports: [
     HeaderComponent,
