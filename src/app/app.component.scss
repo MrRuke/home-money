@@ -2,7 +2,6 @@
   &__main-panel {
     margin-left: auto;
     width: calc(100% - 260px);
-    background-color: #f4f3ef;
   }
 
   &__main-menu {
@@ -28,5 +27,15 @@
 
   &__content {
     padding: 80px 16px;
+  }
+
+  &__main-panel-background {
+    background: #f4f3ef;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
   }
 }
