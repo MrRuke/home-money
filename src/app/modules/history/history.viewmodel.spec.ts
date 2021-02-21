@@ -14,7 +14,7 @@ describe('HistoryViewModel', () => {
   });
 
   it('should be return history list', done => {
-    viewModel.history.subscribe(res => {
+    viewModel.selectHistory().subscribe(res => {
       expect(res).toEqual([]);
       done();
     });
