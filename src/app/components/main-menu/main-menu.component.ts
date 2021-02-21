@@ -11,22 +11,22 @@ export class MainMenuComponent {
     {
       title: 'Home',
       href: '/',
-      icon: '',
+      icon: 'home',
     },
     {
       title: 'History',
       href: 'history',
-      icon: '',
+      icon: 'history',
     },
     {
       title: 'Planning',
       href: 'planning',
-      icon: '',
+      icon: 'archive',
     },
     {
       title: 'Records',
       href: 'records',
-      icon: '',
+      icon: 'mode',
     },
   ];
 

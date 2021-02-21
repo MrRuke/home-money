@@ -6,7 +6,7 @@
       [title]="item.title"
     >
       <div elem="item" [mod]="{ active: isActive(item.href) }">
-        <div elem="icon"></div>
+        <mat-icon elem="icon">{{ item.icon }}</mat-icon>
         <div elem="title">{{ item.title }}</div>
       </div>
     </a>
