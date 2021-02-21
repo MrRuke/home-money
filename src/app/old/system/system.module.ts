@@ -66,6 +66,9 @@ import { CardComponent } from './shared/components/card/card.component';
   providers: [
     UsersService,
   ],
+  exports: [
+    MomentPipe,
+  ],
 })
 export class SystemModule {
 }

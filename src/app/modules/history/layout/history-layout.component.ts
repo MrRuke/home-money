@@ -7,15 +7,16 @@ import { HistoryViewModel } from '../history.viewmodel';
 @Component({
   selector: 'app-history-layout',
   templateUrl: './history-layout.component.html',
-  styleUrls: ['./history-layout.component.scss']
+  styleUrls: ['./history-layout.component.scss'],
 })
 export class HistoryLayoutComponent implements OnInit {
-  public readonly HistoryType = HistoryType;
+  public readonly history = this.viewModel.selectHistory();
 
   constructor(
-    public readonly viewModel: HistoryViewModel,
+    private viewModel: HistoryViewModel,
     private useCases: HistoryUseCases,
-  ) { }
+  ) {
+  }
 
   public ngOnInit(): void {
     this.useCases.loadHistory().subscribe();
