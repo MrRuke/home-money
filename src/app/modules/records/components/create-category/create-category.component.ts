@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { CategoryRequest } from '@app/apis/categories/models';
 
 @Component({
   selector: 'app-create-category',
@@ -21,8 +22,23 @@ export class CreateCategoryComponent {
     limit: this.limitControl,
   });
 
+  @Output()
+  public categorySubmitted = new EventEmitter<CategoryRequest>();
+
   constructor(
     private formBuilder: FormBuilder,
   ) {
+  }
+
+  public submit(): void {
+    if (this.formGroup.invalid) {
+      return;
+    }
+
+    this.categorySubmitted.emit(this.formGroup.value);
+    // TODO
+    this.formGroup.reset();
+    this.nameControl.reset();
+    this.limitControl.reset();
   }
 }

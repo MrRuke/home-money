@@ -1,6 +1,7 @@
 <form
   block="app-create-category"
   [formGroup]="formGroup"
+  (ngSubmit)="submit()"
 >
   <mat-form-field elem="field">
     <mat-label>Category name</mat-label>

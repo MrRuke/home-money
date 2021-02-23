@@ -32,7 +32,7 @@ export class PlanningViewModel {
           category,
           cost,
           percent: this.getPercent(category, cost),
-          balance: category.capacity - cost,
+          balance: category.limit - cost,
         };
       })),
     );
@@ -46,7 +46,7 @@ export class PlanningViewModel {
   }
 
   private getPercent(category: Category, cost: number): number {
-    const percent = (100 * cost / category.capacity);
+    const percent = (100 * cost / category.limit);
     return percent > 100
       ? 100
       : percent;
