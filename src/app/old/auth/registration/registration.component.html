@@ -1,7 +1,6 @@
 <p class="text-xs-center">Регистрация для получения доступа</p>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="form-group"
-       [ngClass]="{'has-error': form.get('email').invalid && form.get('email').touched}"
   >
     <label for="email">Email</label>
     <input
@@ -11,15 +10,8 @@
       placeholder="Введите email"
       formControlName="email"
     >
-    <span class="form-help-text"
-          *ngIf="form.get('email').invalid && form.get('email').touched">
-      <span *ngIf="form.get('email')['errors']['required']">Email не может быть пустым</span>
-      <span *ngIf="form.get('email')['errors']['email']">Введите корректный Email</span>
-      <span *ngIf="form.get('email')['errors']['forbiddenEmail']">Email уже используется</span>
-    </span>
   </div>
   <div class="form-group"
-       [ngClass]="{'has-error': form.get('password').invalid && form.get('password').touched}"
   >
     <label for="password">Пароль</label>
     <input
@@ -29,17 +21,8 @@
       placeholder="Введите пароль"
       formControlName="password"
     >
-    <span class="form-help-text"
-          *ngIf="form.get('password').invalid && form.get('password').touched">
-      <span *ngIf="form.get('password')['errors']['required']">Пароль не может быть пустым</span>
-      <span
-        *ngIf="form.get('password')['errors']['minlength'] && form.get('password')['errors']['minlength']['requiredLength']">
-        Ваш пароль должен быть больше {{form.get('password')['errors']['minlength']['requiredLength']}} символов. <br>
-        Вы ввели {{form.get('password')['errors']['minlength']['actualLength']}}.</span>
-    </span>
   </div>
   <div class="form-group"
-       [ngClass]="{'has-error': form.get('name').invalid && form.get('name').touched}"
   >
     <label for="name">Имя</label>
     <input
@@ -49,13 +32,11 @@
       placeholder="Введите имя"
       formControlName="name"
     >
-    <span class="form-help-text"
-          *ngIf="form.get('name').invalid && form.get('name').touched">
+    <span class="form-help-text">
       Имя не может быть пустым
     </span>
   </div>
   <div class="form-group"
-       [ngClass]="{'has-error': form.get('agree').invalid && form.get('agree').touched}"
   >
     <label for="agree">
       <input

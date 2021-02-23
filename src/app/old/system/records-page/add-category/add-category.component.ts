@@ -30,6 +30,7 @@ export class AddCategoryComponent {
   }
 
   public hasError(controlName: string): boolean {
+    // @ts-ignore
     return this.formGroup.get(controlName).invalid && this.formGroup.get(controlName).touched;
   }
 

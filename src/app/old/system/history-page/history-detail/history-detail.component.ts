@@ -16,7 +16,9 @@ import { Category } from '@app/old/system/shared/models/category.model';
   styleUrls: ['./history-detail.component.scss'],
 })
 export class HistoryDetailComponent extends SubscriberComponent implements OnInit {
+  // @ts-ignore
   public event: AppEvent;
+  // @ts-ignore
   public category: Category;
   public isLoaded = false;
 

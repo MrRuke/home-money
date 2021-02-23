@@ -53,6 +53,7 @@ export class HistoryPageComponent extends SubscriberComponent implements OnInit 
     this.toggleFilterVisibility(true);
   }
 
+  // @ts-ignore
   public onFilterApply(filterData): void {
     // this.toggleFilterVisibility(false);
     // this.setOriginEvent();

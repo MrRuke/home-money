@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
   public a = true;
 
   public form: FormGroup;
+  // @ts-ignore
   public message: Message;
 
   constructor(

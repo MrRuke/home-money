@@ -14,6 +14,7 @@ import { AuthServices } from '@app/old/shared/services/auth.services';
 })
 export class HeaderComponent implements OnInit {
   public date: Date = new Date();
+  // @ts-ignore
   public user: User;
 
   constructor(
@@ -23,6 +24,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    // @ts-ignore
     this.user = JSON.parse(window.localStorage.getItem('user'));
   }
 

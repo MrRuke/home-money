@@ -44,8 +44,10 @@ export class HistoryPageViewModel {
   }
 
   private getCategoryInEvents(categories: Category[], events: AppEvent[]): HistoryPageViewModel.EventView[] {
+    // @ts-ignore
     return events.map(item => ({
       ...item,
+      // @ts-ignore
       categoryName: categories.find(category => category.id === item.category).name,
     }));
   }

@@ -8,10 +8,12 @@ import {
 })
 
 export class FilterPipe implements PipeTransform {
+  // tslint:disable-next-line:no-any
   public transform(items: any, value: string, field: string): string {
     if (items.length === 0 || !value) {
       return items;
     }
+    // @ts-ignore
     return items.filter((i) => {
       const t = Object.assign({}, i);
       if (!isNaN(t[field])) {
