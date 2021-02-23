@@ -1,1 +1,39 @@
-.app-planning-layout {}
+.app-planning-layout {
+  &__progress-item {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    position: relative;
+  }
+
+  &__progress-item-bar {
+    background: white;
+    padding: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  &__progress-item-bar--low {
+    background-color: #28a745;
+  }
+
+  &__progress-item-bar--medium {
+    background-color: #ffc107;
+  }
+
+  &__progress-item-bar--high {
+    background-color: #dc3545;
+  }
+
+  &__progress-item-values {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  &__progress-item-cost,
+  &__progress-item-category {
+    border-right: 1px solid darkgray;
+    padding-right: 6px;
+    margin-right: 6px;
+  }
+}

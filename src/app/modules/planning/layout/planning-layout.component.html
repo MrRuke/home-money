@@ -1,19 +1,20 @@
 <div block="app-planning-layout">
-  <div *ngFor="let element of planning | async">
-    <span>
-      {{ element.category.capacity }}
-    </span>
-    <span>
-      {{ element.category.name }}
-    </span>
-    <span>
-      {{ element.cost }}
-    </span>
-    <span>
-      {{ element.balance }}
-    </span>
-    <span>
-      {{ element.percent }}
-    </span>
+  <div
+    *ngFor="let element of planning | async; trackBy: trackByPlanning"
+    elem="progress-item"
+  >
+    <div elem="progress-item-values">
+      <span elem="progress-item-category">{{ element.category.name }}</span>
+      <span elem="progress-item-cost">{{ element.cost }} из {{ element.category.capacity}}</span>
+      <span elem="progress-item-balance">Остаток {{ element.balance }}</span>
+    </div>
+
+    <div
+      elem="progress-item-bar"
+      [mod]="getProgressBarModifiers(element.percent)"
+      [style.width.%]="element.percent"
+    >
+      {{ element.percent | number: '1.0-0' }}%
+    </div>
   </div>
 </div>
