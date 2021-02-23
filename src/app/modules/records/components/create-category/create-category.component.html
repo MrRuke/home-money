@@ -1,0 +1,57 @@
+<form
+  block="app-create-category"
+  [formGroup]="formGroup"
+>
+  <mat-form-field elem="field">
+    <mat-label>Category name</mat-label>
+
+    <input
+      type="text"
+      matInput
+      formControlName="name"
+      placeholder="Set down category name"
+      required
+    >
+
+    <mat-error *ngIf="nameControl.hasError('required')">
+      Category name is <strong>required</strong>
+    </mat-error>
+
+    <mat-error *ngIf="nameControl.hasError('maxlength')">
+      Category name length is must be <strong>less 32 symbols</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field elem="field">
+    <mat-label>Category limit</mat-label>
+
+    <input
+      type="number"
+      matInput
+      formControlName="limit"
+      placeholder="Set down limit"
+      required
+    >
+
+    <mat-error *ngIf="limitControl.hasError('required')">
+      Limit is <strong>required</strong>
+    </mat-error>
+
+    <mat-error *ngIf="limitControl.hasError('min')">
+      Limit is must be <strong>more than 0</strong>
+    </mat-error>
+
+    <mat-error *ngIf="limitControl.hasError('max')">
+      Limit is must be <strong>less than 999999</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    elem="submit-button"
+    type="submit"
+    color="primary"
+  >
+    Create category
+  </button>
+</form>
