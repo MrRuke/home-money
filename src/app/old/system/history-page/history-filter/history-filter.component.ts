@@ -17,9 +17,13 @@ export class HistoryFilterComponent {
   public categories: Category[] = [];
 
   @Output()
+  // @ts-ignore
+  // tslint:disable-next-line:no-any
   public filterCancel = new EventEmitter<any>();
 
   @Output()
+  // @ts-ignore
+  // tslint:disable-next-line:no-any
   public filterApply = new EventEmitter<any>();
 
   public timePeriods = [
@@ -65,21 +69,26 @@ export class HistoryFilterComponent {
     });
   }
 
+  // @ts-ignore
   public handlerChangeType({ checked, value }): void {
     this.calculateInputParams('selectedTypes', checked, value);
   }
 
+  // @ts-ignore
   public handlerChangeCategory({ checked, value }): void {
     this.calculateInputParams('selectedCategories', checked, value);
   }
 
   private calculateInputParams(field: string, checked: boolean, value: string): void {
     if (checked) {
+      // @ts-ignore
       if (this[field].indexOf(value) === -1) {
+        // @ts-ignore
         this[field].push(value);
       }
       return;
     }
+    // @ts-ignore
     this[field] = this[field].filter(i => i !== value);
   }
 }

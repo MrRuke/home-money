@@ -10,6 +10,7 @@ import { User } from '../shared/models/user.model';
   styleUrls: ['./users-page.component.scss'],
 })
 export class UsersPageComponent {
+  // @ts-ignore
   public users: User[];
   public isLoaded = false;
 

@@ -28,6 +28,7 @@ export class RegistrationComponent {
     this.metaService.addKeywords('регистрация');
 
     this.form = new FormGroup({
+      // @ts-ignore
       email: new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails.bind(this)),
       password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
       name: new FormControl(null, [Validators.required]),
@@ -52,8 +53,10 @@ export class RegistrationComponent {
       });
   }
 
+
+  // tslint:disable-next-line:no-any
   private forbiddenEmails(control: FormControl): Promise<any> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.usersServices.getUserByEmail(control.value)
         .subscribe((user: User) => {
           if (user) {

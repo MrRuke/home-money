@@ -12,5 +12,6 @@ import { Bill } from '@app/old/system/shared/models/bill.model';
 })
 export class BillCardComponent {
   @Input()
+  // @ts-ignore
   public bill: Bill;
 }

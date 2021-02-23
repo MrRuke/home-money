@@ -2,6 +2,7 @@ import { User } from '../models/user.model';
 
 export class AuthServices {
   private isAuth = false;
+  // @ts-ignore
   private user: User;
 
   public login(): void {
@@ -14,6 +15,7 @@ export class AuthServices {
   }
 
   public isLoggedIn(): boolean {
+    // @ts-ignore
     this.user = JSON.parse(window.localStorage.getItem('user'));
     if (this.user) {
       return true;

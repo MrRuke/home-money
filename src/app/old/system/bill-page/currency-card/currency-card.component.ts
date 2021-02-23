@@ -14,6 +14,7 @@ import {
 })
 export class CurrencyCardComponent {
   @Input()
+  // @ts-ignore
   public currency: Currency;
 
   public readonly currencies = Object.values(CurrencyValue);
