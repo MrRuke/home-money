@@ -1,6 +1,6 @@
 export interface CategoryRequest {
   name: string;
-  capacity: number;
+  limit: number;
 }
 
 export interface Category extends CategoryRequest {
