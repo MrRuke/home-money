@@ -4,8 +4,7 @@
       *ngFor="let item of accounts | async; trackBy: trackByAccounts"
       elem="item"
     >
-      <span>{{ item.value }}</span>
-      <span>{{ item.currency }}</span>
+      {{ item.value | appCost: item.currency }}
     </div>
 
     <div elem="create-card">

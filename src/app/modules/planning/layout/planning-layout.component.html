@@ -17,9 +17,15 @@
       <div elem="progress-item-values">
         <span elem="progress-item-category">{{ element.category.name }}</span>
         <span elem="progress-item-cost">
-          <strong>{{ element.cost }}</strong> из <strong>{{ element.category.limit}}</strong>
+          <strong>
+            {{ element.cost | appCost: 'RUB' }}
+          </strong> из <strong>
+          {{ element.category.limit | appCost: 'RUB' }}
+        </strong>
         </span>
-        <span elem="progress-item-balance">Остаток <strong>{{ element.balance }}</strong></span>
+        <span elem="progress-item-balance">
+          Остаток <strong>{{ element.balance | appCost: 'RUB' }}</strong>
+        </span>
       </div>
     </div>
   </mat-card>
