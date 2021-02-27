@@ -1,6 +1,17 @@
 <div block="app-dashboard-layout">
-  <div *ngFor="let item of accounts | async; trackBy: trackByAccounts">
-    <span>{{ item.value }}</span>
-    <span>{{ item.currency }}</span>
+  <div elem="list">
+    <div
+      *ngFor="let item of accounts | async; trackBy: trackByAccounts"
+      elem="item"
+    >
+      <span>{{ item.value }}</span>
+      <span>{{ item.currency }}</span>
+    </div>
+
+    <div elem="create-card">
+      <button mat-fab color="primary">
+        <span elem="create-card-icon">+</span>
+      </button>
+    </div>
   </div>
 </div>

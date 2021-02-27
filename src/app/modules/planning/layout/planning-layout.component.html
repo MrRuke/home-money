@@ -4,18 +4,22 @@
       *ngFor="let element of planning | async; trackBy: trackByPlanning"
       elem="progress-item"
     >
-      <div elem="progress-item-values">
-        <span elem="progress-item-category">{{ element.category.name }}</span>
-        <span elem="progress-item-cost">{{ element.cost }} из {{ element.category.limit}}</span>
-        <span elem="progress-item-balance">Остаток {{ element.balance }}</span>
+      <div elem="progress-item-bar-wrapper">
+        <div
+          elem="progress-item-bar"
+          [mod]="getProgressBarModifiers(element.percent)"
+          [style.width.%]="element.percent"
+        >
+          {{ element.percent | number: '1.0-0' }}%
+        </div>
       </div>
 
-      <div
-        elem="progress-item-bar"
-        [mod]="getProgressBarModifiers(element.percent)"
-        [style.width.%]="element.percent"
-      >
-        {{ element.percent | number: '1.0-0' }}%
+      <div elem="progress-item-values">
+        <span elem="progress-item-category">{{ element.category.name }}</span>
+        <span elem="progress-item-cost">
+          <strong>{{ element.cost }}</strong> из <strong>{{ element.category.limit}}</strong>
+        </span>
+        <span elem="progress-item-balance">Остаток <strong>{{ element.balance }}</strong></span>
       </div>
     </div>
   </mat-card>

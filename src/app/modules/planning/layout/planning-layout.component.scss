@@ -3,14 +3,23 @@
     width: 100%;
     box-sizing: border-box;
     padding: 6px;
+    display: flex;
+    align-items: center;
     position: relative;
   }
 
   &__progress-item-bar {
-    background: white;
     padding: 6px;
     font-size: 14px;
     box-sizing: border-box;
+    width: 100%;
+  }
+
+  &__progress-item-bar-wrapper {
+    width: 50%;
+    background: #e6e6e6;
+    border-radius: 8px;
+    overflow: hidden;
   }
 
   &__progress-item-bar--low {
@@ -27,7 +36,7 @@
 
   &__progress-item-values {
     font-size: 12px;
-    margin-bottom: 6px;
+    margin-left: 12px;
   }
 
   &__progress-item-cost,
