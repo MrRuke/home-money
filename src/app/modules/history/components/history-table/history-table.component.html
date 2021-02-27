@@ -20,7 +20,7 @@
       </th>
 
       <td *matCellDef="let element" mat-cell>
-        {{ element.amount | number: '1.2' }} руб.
+        {{ element.amount | appCost: 'RUB' }}
       </td>
     </ng-container>
 
