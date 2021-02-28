@@ -19,26 +19,83 @@
     "value": 85123,
     "currency": "RUB"
   },
+  "accounts": [
+    {
+      "id": 1,
+      "value": 100000,
+      "currency": "RUB"
+    }
+  ],
   "categories": [
     {
       "id": 1,
       "name": "Дом233",
-      "capacity": 15000
+      "limit": 15000
     },
     {
       "id": 2,
       "name": "Еда",
-      "capacity": 10000
+      "limit": 10000
     },
     {
       "id": 3,
       "name": "Машина",
-      "capacity": 9000
+      "limit": 9000
     },
     {
       "id": 4,
       "name": "Новая категория 3",
-      "capacity": 1555
+      "limit": 1555
+    },
+    {
+      "name": "",
+      "limit": "",
+      "id": 5
+    },
+    {
+      "name": "category name",
+      "limit": 9999,
+      "id": 6
+    },
+    {
+      "name": "tsetest",
+      "limit": 12323,
+      "id": 7
+    },
+    {
+      "name": "тест",
+      "limit": 2333,
+      "id": 8
+    },
+    {
+      "name": null,
+      "limit": null,
+      "id": 9
+    },
+    {
+      "name": null,
+      "limit": null,
+      "id": 10
+    },
+    {
+      "name": "tset",
+      "limit": 3333,
+      "id": 11
+    },
+    {
+      "name": "test3",
+      "limit": 123,
+      "id": 12
+    },
+    {
+      "name": "",
+      "limit": "",
+      "id": 13
+    },
+    {
+      "name": "122",
+      "limit": 12,
+      "id": 14
     }
   ],
   "events": [

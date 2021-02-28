@@ -1,0 +1,65 @@
+.app-main-menu {
+  $block: &;
+
+  &__list {
+    margin-top: 20px;
+  }
+
+  &__item {
+    margin: 10px 15px 0;
+    text-transform: uppercase;
+    padding: 10px 8px;
+    display: flex;
+    align-items: center;
+    opacity: .5;
+    transition: opacity 400ms;
+    position: relative;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__item--active {
+    opacity: 1;
+
+    #{$block}__title {
+      color: #ef8157;
+    }
+
+    &:before,
+    &:after {
+      border-right: 17px solid #f4f3ef;
+      border-top: 17px solid transparent;
+      border-bottom: 17px solid transparent;
+      content: "";
+      display: inline-block;
+      position: absolute;
+      right: -17px;
+      top: 7px;
+    }
+
+    &:before {
+      border-right-color: #DDDDDD;
+      right: -16px;
+    }
+
+    &:after {
+      border-right-color: #f4f3ef;
+      right: -17px;
+    }
+  }
+
+  &__icon {
+    margin-right: 12px;
+  }
+
+  &__title {
+    color: #66615B;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 30px;
+    font-weight: bold;
+  }
+}

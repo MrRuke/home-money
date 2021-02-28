@@ -1,1 +1,17 @@
-<router-outlet></router-outlet>
+<div block="app-root">
+  <div elem="main-menu">
+    <app-main-menu></app-main-menu>
+  </div>
+
+  <div elem="main-panel">
+    <div elem="header">
+      <app-header></app-header>
+    </div>
+
+    <div elem="content">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div elem="main-panel-background"></div>
+  </div>
+</div>

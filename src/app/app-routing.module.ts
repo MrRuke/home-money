@@ -1,9 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AppScheme } from 'app/nav-scheme';
 
 @NgModule({
-  imports: [RouterModule.forRoot(AppScheme)],
+  imports: [RouterModule.forRoot([
+    {
+      path: 'history',
+      loadChildren: () => import('./modules/history/history.module')
+        .then(m => m.HistoryModule),
+    },
+    {
+      path: 'records',
+      loadChildren: () => import('./modules/records/records.module')
+        .then(m => m.RecordsModule),
+    },
+    {
+      path: 'planning',
+      loadChildren: () => import('./modules/planning/planning.module')
+        .then(m => m.PlanningModule),
+    },
+    {
+      path: '',
+      loadChildren: () => import('./modules/dashboard/dashboard.module')
+        .then(m => m.DashboardModule),
+    },
+  ])],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

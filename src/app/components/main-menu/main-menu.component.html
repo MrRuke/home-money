@@ -1,0 +1,14 @@
+<div block="app-main-menu">
+  <div elem="list">
+    <a
+      *ngFor="let item of menuList; trackBy: trackByMenu"
+      [routerLink]="item.href"
+      [title]="item.title"
+    >
+      <div elem="item" [mod]="{ active: isActive(item.href) }">
+        <mat-icon elem="icon">{{ item.icon }}</mat-icon>
+        <div elem="title">{{ item.title }}</div>
+      </div>
+    </a>
+  </div>
+</div>

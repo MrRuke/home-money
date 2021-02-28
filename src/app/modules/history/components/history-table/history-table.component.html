@@ -1,0 +1,65 @@
+<div block="app-history-table">
+  <table
+    elem="table"
+    mat-table
+    [dataSource]="history"
+  >
+    <ng-container matColumnDef="No">
+      <th *matHeaderCellDef mat-header-cell>
+        No
+      </th>
+
+      <td *matCellDef="let index = index" mat-cell>
+        {{ index + 1 }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Amount">
+      <th *matHeaderCellDef mat-header-cell>
+        Amount
+      </th>
+
+      <td *matCellDef="let element" mat-cell>
+        {{ element.amount | appCost: 'RUB' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Date">
+      <th *matHeaderCellDef mat-header-cell>
+        Date
+      </th>
+
+      <td *matCellDef="let element" mat-cell>
+        {{ element.date | appMoment:'DD.MM.YYYY HH:mm' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Type">
+      <th *matHeaderCellDef mat-header-cell>
+        Type
+      </th>
+
+      <td *matCellDef="let element" mat-cell>
+        <ng-container [ngSwitch]="element.type">
+          <span
+            *ngSwitchCase="HistoryType.INCOME"
+            elem="type-label"
+            mod="income"
+          >
+            {{ element.type }}
+          </span>
+          <span
+            *ngSwitchCase="HistoryType.OUTCOME"
+            elem="type-label"
+            mod="outcome"
+          >
+            {{ element.type }}
+          </span>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  </table>
+</div>

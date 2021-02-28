@@ -1,0 +1,42 @@
+.app-dashboard-layout {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    background: white;
+    width: 400px;
+    height: 220px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 28px;
+    box-sizing: border-box;
+    font-size: 28px;
+    margin: 8px;
+  }
+
+  &__create-card {
+    border: 4px dashed #3f51b5;
+    width: 400px;
+    height: 220px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 8px;
+    transition: background-color 400ms;
+    cursor: pointer;
+
+    &:hover {
+      background: #ececec;
+    }
+  }
+
+  &__create-card-icon {
+    font-size: 28px;
+  }
+}

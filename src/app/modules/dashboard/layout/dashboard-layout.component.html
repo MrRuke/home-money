@@ -1,0 +1,16 @@
+<div block="app-dashboard-layout">
+  <div elem="list">
+    <div
+      *ngFor="let item of accounts | async; trackBy: trackByAccounts"
+      elem="item"
+    >
+      {{ item.value | appCost: item.currency }}
+    </div>
+
+    <div elem="create-card">
+      <button mat-fab color="primary">
+        <span elem="create-card-icon">+</span>
+      </button>
+    </div>
+  </div>
+</div>

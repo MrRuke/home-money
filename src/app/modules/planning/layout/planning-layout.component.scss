@@ -1,0 +1,48 @@
+.app-planning-layout {
+  &__progress-item {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  &__progress-item-bar {
+    padding: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  &__progress-item-bar-wrapper {
+    width: 50%;
+    background: #e6e6e6;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  &__progress-item-bar--low {
+    background-color: #28a745;
+  }
+
+  &__progress-item-bar--medium {
+    background-color: #ffc107;
+  }
+
+  &__progress-item-bar--high {
+    background-color: #dc3545;
+  }
+
+  &__progress-item-values {
+    font-size: 12px;
+    margin-left: 12px;
+  }
+
+  &__progress-item-cost,
+  &__progress-item-category {
+    border-right: 1px solid darkgray;
+    padding-right: 6px;
+    margin-right: 6px;
+  }
+}

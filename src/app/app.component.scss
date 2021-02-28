@@ -1,0 +1,41 @@
+.app-root {
+  &__main-panel {
+    margin-left: auto;
+    width: calc(100% - 260px);
+  }
+
+  &__main-menu {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    bottom: 0;
+    width: 260px;
+    left: 0;
+    z-index: 1000;
+    background: #fff;
+    border-right: 1px solid #ddd;
+    box-sizing: border-box;
+  }
+
+  &__header {
+    position: fixed;
+    top: 0;
+    height: 80px;
+    z-index: 1000;
+    width: calc(100% - 260px);
+  }
+
+  &__content {
+    padding: 80px 16px;
+  }
+
+  &__main-panel-background {
+    background: #f4f3ef;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+}
