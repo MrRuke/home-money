@@ -115,22 +115,12 @@
               "devServerTarget": "home-money:serve:production"
             }
           }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
-          }
         }
       }
     }
   },
   "defaultProject": "home-money",
   "cli": {
-    "analytics": "3d9132ba-9489-48c1-8b99-d6c9acab57f7",
-    "defaultCollection": "@angular-eslint/schematics"
+    "analytics": "3d9132ba-9489-48c1-8b99-d6c9acab57f7"
   }
 }
