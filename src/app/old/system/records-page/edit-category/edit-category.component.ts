@@ -6,7 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import {
-  FormBuilder,
+  UntypedFormBuilder,
   Validators,
 } from '@angular/forms';
 
@@ -32,7 +32,7 @@ export class EditCategoryComponent implements OnInit {
   });
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
   }
 

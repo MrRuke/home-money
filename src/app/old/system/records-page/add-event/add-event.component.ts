@@ -5,7 +5,7 @@ import {
   Output,
 } from '@angular/core';
 import {
-  FormBuilder,
+  UntypedFormBuilder,
   Validators,
 } from '@angular/forms';
 import {
@@ -38,7 +38,7 @@ export class AddEventComponent {
   });
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
   }
 

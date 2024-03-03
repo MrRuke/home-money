@@ -4,8 +4,8 @@ import {
   OnInit,
 } from '@angular/core';
 import {
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import {
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   @HostBinding('@fade')
   public a = true;
 
-  public form: FormGroup;
+  public form: UntypedFormGroup;
   // @ts-ignore
   public message: Message;
 
@@ -47,9 +47,9 @@ export class LoginComponent implements OnInit {
     this.metaService.addDescription('Страница для входа в систему');
     this.metaService.addKeywords('логин, вход, система');
 
-    this.form = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+    this.form = new UntypedFormGroup({
+      email: new UntypedFormControl(null, [Validators.required, Validators.email]),
+      password: new UntypedFormControl(null, [Validators.required, Validators.minLength(6)]),
     });
   }
 

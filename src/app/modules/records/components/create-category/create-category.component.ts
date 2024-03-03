@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { CategoryRequest } from '@app/apis/categories/models';
 
 @Component({
@@ -26,7 +26,7 @@ export class CreateCategoryComponent {
   public categorySubmitted = new EventEmitter<CategoryRequest>();
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
   ) {
   }
 
