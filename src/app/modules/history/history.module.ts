@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
+import {MatTableModule} from '@angular/material/table';
 import { HistoryRoutingModule } from '@app/modules/history/history-routing.module';
 import { SystemModule } from '@app/old/system/system.module';
 import { CostPipeModule } from '@app/services/cost.pipe.module';
