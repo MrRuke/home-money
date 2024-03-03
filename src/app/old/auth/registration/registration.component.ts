@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,7 +16,7 @@ import { User } from '@app/old/shared/models/user.model';
   styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent {
-  public form: FormGroup;
+  public form: UntypedFormGroup;
 
   constructor(
     private usersServices: UsersServices,
@@ -27,12 +27,12 @@ export class RegistrationComponent {
     this.metaService.addDescription('Страница для регистрации в системе');
     this.metaService.addKeywords('регистрация');
 
-    this.form = new FormGroup({
+    this.form = new UntypedFormGroup({
       // @ts-ignore
-      email: new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails.bind(this)),
-      password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
-      name: new FormControl(null, [Validators.required]),
-      agree: new FormControl(null, [Validators.requiredTrue]),
+      email: new UntypedFormControl(null, [Validators.required, Validators.email], this.forbiddenEmails.bind(this)),
+      password: new UntypedFormControl(null, [Validators.required, Validators.minLength(6)]),
+      name: new UntypedFormControl(null, [Validators.required]),
+      agree: new UntypedFormControl(null, [Validators.requiredTrue]),
     });
   }
 
@@ -55,7 +55,7 @@ export class RegistrationComponent {
 
 
   // tslint:disable-next-line:no-any
-  private forbiddenEmails(control: FormControl): Promise<any> {
+  private forbiddenEmails(control: UntypedFormControl): Promise<any> {
     return new Promise((resolve) => {
       this.usersServices.getUserByEmail(control.value)
         .subscribe((user: User) => {
