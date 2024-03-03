@@ -23,7 +23,7 @@ import { RouterModule } from '@angular/router';
         loadChildren: () => import('./modules/dashboard/dashboard.module')
             .then(m => m.DashboardModule),
     },
-], { relativeLinkResolution: 'legacy' })],
+], {})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
