@@ -14,5 +14,6 @@ export class CardComponent {
   public cardTitle = '';
 
   @Input()
+  // eslint-disable-next-line @typescript-eslint/ban-types
   public rightHeaderTemplate?: TemplateRef<{}>;
 }

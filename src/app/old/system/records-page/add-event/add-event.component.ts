@@ -52,7 +52,7 @@ export class AddEventComponent {
   }
 
   public hasError(controlName: string): boolean {
-    // @ts-ignore
+    // @ts-expect-error legacy
     return this.formGroup.get(controlName).invalid && this.formGroup.get(controlName).touched;
   }
 

@@ -5,8 +5,6 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { SubscriberComponent } from '@app/old/shared/core/subscriber';
 
-import { Subscription } from 'rxjs';
-
 import { AppEvent } from '@app/old/system/shared/models/event.model';
 import { Category } from '@app/old/system/shared/models/category.model';
 
@@ -16,9 +14,9 @@ import { Category } from '@app/old/system/shared/models/category.model';
   styleUrls: ['./history-detail.component.scss'],
 })
 export class HistoryDetailComponent extends SubscriberComponent implements OnInit {
-  // @ts-ignore
+  // @ts-expect-error legacy
   public event: AppEvent;
-  // @ts-ignore
+  // @ts-expect-error legacy
   public category: Category;
   public isLoaded = false;
 
@@ -29,6 +27,7 @@ export class HistoryDetailComponent extends SubscriberComponent implements OnIni
   }
 
   public ngOnInit(): void {
+    console.log('legacy');
     // this.sub1 = this.route.params
     //   .pipe(
     //     mergeMap((params: Params) => this.eventsService.getEventsById(params.id)),

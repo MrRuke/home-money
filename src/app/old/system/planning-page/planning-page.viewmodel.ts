@@ -84,7 +84,7 @@ export class PlanningPageViewModel {
   }
 }
 
-// tslint:disable-next-line:no-namespace
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace PlanningPageViewModel {
   export interface PlanningView {
     bill: Bill;

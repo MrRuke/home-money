@@ -28,7 +28,7 @@ export class RegistrationComponent {
     this.metaService.addKeywords('регистрация');
 
     this.form = new UntypedFormGroup({
-      // @ts-ignore
+      // @ts-expect-error legacy
       email: new UntypedFormControl(null, [Validators.required, Validators.email], this.forbiddenEmails.bind(this)),
       password: new UntypedFormControl(null, [Validators.required, Validators.minLength(6)]),
       name: new UntypedFormControl(null, [Validators.required]),
@@ -55,6 +55,7 @@ export class RegistrationComponent {
 
 
   // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private forbiddenEmails(control: UntypedFormControl): Promise<any> {
     return new Promise((resolve) => {
       this.usersServices.getUserByEmail(control.value)

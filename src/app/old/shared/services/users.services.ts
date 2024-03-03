@@ -15,7 +15,7 @@ export class UsersServices extends BaseApi {
   }
 
   public getUserByEmail(email: string): Observable<User> {
-    // @ts-ignore
+    // @ts-expect-error legacy
     return this.get(`users?email=${email}`)
       .pipe(map((user: User[]) => user[0]
         ? user[0]

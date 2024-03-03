@@ -2,7 +2,7 @@ import { User } from '../models/user.model';
 
 export class AuthServices {
   private isAuth = false;
-  // @ts-ignore
+  // @ts-expect-error legacy
   private user: User;
 
   public login(): void {
@@ -15,7 +15,7 @@ export class AuthServices {
   }
 
   public isLoggedIn(): boolean {
-    // @ts-ignore
+    // @ts-expect-error legacy
     this.user = JSON.parse(window.localStorage.getItem('user'));
     if (this.user) {
       return true;

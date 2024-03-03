@@ -24,12 +24,12 @@ export class HistoryEventsComponent implements OnInit {
 
   public ngOnInit(): void {
     this.events.forEach((e) => {
-      // @ts-ignore
+      // @ts-expect-error legacy
       e.catName = this.categories.find(c => c.id === e.category).name;
     });
   }
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public getEventClass(e: AppEvent): any {
     return {
       label: true,
@@ -45,7 +45,7 @@ export class HistoryEventsComponent implements OnInit {
       category: 'Категория',
       type: 'Тип',
     };
-    // @ts-ignore
+    // @ts-expect-error legacy
     this.searchPlaceholder = namesMap[field];
     this.searchField = field;
   }

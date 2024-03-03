@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HistoryElement, HistoryType } from '@app/apis/history/models';
+import { HistoryElement } from '@app/apis/history/models';
 
 import { HistoryUseCases } from '../history.usecases';
 import { HistoryViewModel } from '../history.viewmodel';

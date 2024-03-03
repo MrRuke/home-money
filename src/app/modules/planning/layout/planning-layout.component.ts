@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BemModifiers } from '@app/old/shared/core/bem';
 import { PlanningUseCases } from '../planning.usecases';
-import { PlanningView, PlanningViewModel } from '../planning.viewmodel';
+import { PlanningViewModel } from '../planning.viewmodel';
 
 @Component({
   selector: 'app-planning-layout',

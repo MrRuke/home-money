@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -28,10 +29,9 @@ export class BaseApi {
       .pipe(map((response: any) => response));
   }
 
-  // tslint:disable-next-line:no-any
   public put(url: string = '', data: any = {}): Observable<any> {
     return this.http.put(this.getUrl(url), data)
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .pipe(map((response: any) => response));
   }
 

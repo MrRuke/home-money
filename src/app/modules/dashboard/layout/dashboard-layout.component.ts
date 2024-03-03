@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountElement } from '@app/apis/accounts/models';
-import { HistoryElement } from '@app/apis/history/models';
 import { DashboardUseCases } from '../dashboard.usecases';
 import { DashboardViewModel } from '../dashboard.viewmodel';
 

@@ -14,6 +14,7 @@ export class PageComponent {
   public headerTitle = '';
 
   @Input()
+  // eslint-disable-next-line @typescript-eslint/ban-types
   public actionsTemplate?: TemplateRef<{}>;
 
   @Input()

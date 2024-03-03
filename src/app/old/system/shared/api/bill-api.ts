@@ -29,10 +29,9 @@ export class BillApi extends BaseApi {
   }
 
   public getCurrency(base: string = 'EUR'): Observable<Currency> {
-    // @ts-ignore
     return this.http.get(
       `http://data.fixer.io/api/latest?access_key=6367d4cea90bd5d899c0ab78ea0498af&format=1&symbols=USD,EUR,RUB&base=${base}`)
-      // @ts-ignore
+      // @ts-expect-error legacy
       .pipe(map((response: Currency) => response));
   }
 }

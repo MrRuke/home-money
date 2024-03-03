@@ -45,6 +45,7 @@ export class HistoryPageComponent extends SubscriberComponent implements OnInit 
     //  this.filteredEvents = this.history.slice();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   private toggleFilterVisibility(dir: boolean): void {
     //  this.isFilterVisible = dir;
   }
@@ -53,8 +54,9 @@ export class HistoryPageComponent extends SubscriberComponent implements OnInit 
     this.toggleFilterVisibility(true);
   }
 
-  // @ts-ignore
+  // @ts-expect-error legacy
   public onFilterApply(filterData): void {
+    console.log(filterData);
     // this.toggleFilterVisibility(false);
     // this.setOriginEvent();
     //

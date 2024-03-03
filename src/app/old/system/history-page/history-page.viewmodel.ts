@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { CurrencyValue } from '@app/old/system/shared/models/bill.model';
 import { Category } from '@app/old/system/shared/models/category.model';
 import {
   AppEvent,
@@ -44,10 +43,9 @@ export class HistoryPageViewModel {
   }
 
   private getCategoryInEvents(categories: Category[], events: AppEvent[]): HistoryPageViewModel.EventView[] {
-    // @ts-ignore
     return events.map(item => ({
       ...item,
-      // @ts-ignore
+      // @ts-expect-error legacy
       categoryName: categories.find(category => category.id === item.category).name,
     }));
   }
@@ -72,7 +70,7 @@ export class HistoryPageViewModel {
   }
 }
 
-// tslint:disable-next-line:no-namespace
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace HistoryPageViewModel {
   export interface HistoryView {
     categories: Category[];

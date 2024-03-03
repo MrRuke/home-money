@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   public a = true;
 
   public form: UntypedFormGroup;
-  // @ts-ignore
+  // @ts-expect-error legacy
   public message: Message;
 
   constructor(

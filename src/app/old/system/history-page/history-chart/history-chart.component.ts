@@ -11,6 +11,6 @@ import { HistoryPageViewModel } from '@app/old/system/history-page/history-page.
 })
 export class HistoryChartComponent {
   @Input()
-  // @ts-ignore
+// @ts-expect-error legacy
   public data: HistoryPageViewModel.ChartData[];
 }
