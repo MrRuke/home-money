@@ -1,13 +1,13 @@
-<div block="app-main-menu">
-  <div elem="list">
+<div class="app-main-menu">
+  <div class="list">
     <a
       *ngFor="let item of menuList; trackBy: trackByMenu"
       [routerLink]="item.href"
       [title]="item.title"
     >
-      <div elem="item" [mod]="{ active: isActive(item.href) }">
-        <mat-icon elem="icon">{{ item.icon }}</mat-icon>
-        <div elem="title">{{ item.title }}</div>
+      <div class="item" [mod]="{ active: isActive(item.href) }">
+        <mat-icon class="icon">{{ item.icon }}</mat-icon>
+        <div class="title">{{ item.title }}</div>
       </div>
     </a>
   </div>

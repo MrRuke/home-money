@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardDirective } from '@app/old/system/shared/directives/card.directive';
 import { TranslateModule } from '@ngx-translate/core';
-import { BemModule } from 'angular-bem';
 
 import { SharedModule } from '../shared/shared.module';
 import { SystemRoutingModule } from './system-routing.module';
@@ -36,7 +35,6 @@ import { CardComponent } from './shared/components/card/card.component';
     SharedModule,
     SystemRoutingModule,
     TranslateModule,
-    BemModule,
   ],
   declarations: [
     BillPageComponent,

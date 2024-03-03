@@ -1,6 +1,6 @@
-<div block="app-history-table">
+<div class="app-history-table">
   <table
-    elem="table"
+    class="table"
     mat-table
     [dataSource]="history"
   >
@@ -43,15 +43,13 @@
         <ng-container [ngSwitch]="element.type">
           <span
             *ngSwitchCase="HistoryType.INCOME"
-            elem="type-label"
-            mod="income"
+            class="type-label"
           >
             {{ element.type }}
           </span>
           <span
             *ngSwitchCase="HistoryType.OUTCOME"
-            elem="type-label"
-            mod="outcome"
+            class="type-label"
           >
             {{ element.type }}
           </span>

@@ -5,7 +5,6 @@ import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/lega
 import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
 import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
 import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
-import { BemModule } from 'angular-bem';
 
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
 import { RecordsLayoutComponent } from './layout/records-layout.component';
@@ -20,7 +19,6 @@ import { RecordsRoutingModule } from './records-routing.module';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
-    BemModule,
     MatCardModule,
     MatButtonModule,
   ],

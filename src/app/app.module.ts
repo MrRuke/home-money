@@ -6,7 +6,6 @@ import { HeaderModule } from '@app/components/header/header.module';
 import { MainMenuModule } from '@app/components/main-menu/main-menu.module';
 import { locales } from '@app/old/shared/i18n/ru';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { BemModule } from 'angular-bem';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './old/auth/auth.module';
@@ -34,7 +33,6 @@ import { NotFoundComponent } from './old/shared/components/not-found/not-found.c
     TranslateModule.forRoot(),
     HeaderModule,
     MainMenuModule,
-    BemModule,
     MatNativeDateModule,
   ],
   providers: [

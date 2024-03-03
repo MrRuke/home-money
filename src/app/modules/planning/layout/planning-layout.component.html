@@ -1,12 +1,12 @@
-<div block="app-planning-layout">
+<div class="app-planning-layout">
   <mat-card>
     <div
       *ngFor="let element of planning | async; trackBy: trackByPlanning"
-      elem="progress-item"
+      class="progress-item"
     >
-      <div elem="progress-item-bar-wrapper">
+      <div class="progress-item-bar-wrapper">
         <div
-          elem="progress-item-bar"
+          class="progress-item-bar"
           [mod]="getProgressBarModifiers(element.percent)"
           [style.width.%]="element.percent"
         >
@@ -14,16 +14,16 @@
         </div>
       </div>
 
-      <div elem="progress-item-values">
-        <span elem="progress-item-category">{{ element.category.name }}</span>
-        <span elem="progress-item-cost">
+      <div class="progress-item-values">
+        <span class="progress-item-category">{{ element.category.name }}</span>
+        <span class="progress-item-cost">
           <strong>
             {{ element.cost | appCost: 'RUB' }}
           </strong> из <strong>
           {{ element.category.limit | appCost: 'RUB' }}
         </strong>
         </span>
-        <span elem="progress-item-balance">
+        <span class="progress-item-balance">
           Остаток <strong>{{ element.balance | appCost: 'RUB' }}</strong>
         </span>
       </div>
