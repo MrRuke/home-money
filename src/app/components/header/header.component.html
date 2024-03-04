@@ -1,12 +1,9 @@
-<mat-toolbar
-  class="app-header"
-  color="primary"
->
-  <span>Accounting of finance</span>
+<p-toolbar styleClass="header">
+  <div class="p-toolbar-group-start">
+    <span class="header__title">Accounting of finance</span>
+  </div>
 
-  <span class="app-header__spacer"></span>
-
-  <button mat-icon-button>
-    <mat-icon>favorite</mat-icon>
-  </button>
-</mat-toolbar>
+  <div class="p-toolbar-group-end">
+    <p-button icon="pi pi-heart-fill" size="small" [rounded]="true"></p-button>
+  </div>
+</p-toolbar>

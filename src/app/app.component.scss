@@ -18,16 +18,8 @@
     box-sizing: border-box;
   }
 
-  &__header {
-    position: fixed;
-    top: 0;
-    height: 80px;
-    z-index: 1000;
-    width: calc(100% - 260px);
-  }
-
   &__content {
-    padding: 80px 16px;
+    padding: 1rem;
   }
 
   &__main-panel-background {

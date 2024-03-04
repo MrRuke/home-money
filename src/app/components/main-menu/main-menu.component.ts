@@ -1,34 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-main-menu',
   templateUrl: './main-menu.component.html',
   styleUrls: ['./main-menu.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class MainMenuComponent {
-  public readonly menuList: MainMenuItem[] = [
+  public readonly items: MenuItem[] = [
     {
-      title: 'Home',
-      href: '/',
-      icon: 'home',
+        label: 'Home',
+        icon: 'pi pi-fw pi-home',
+        routerLink: ['/']
     },
     {
-      title: 'History',
-      href: 'history',
-      icon: 'history',
+        label: 'History',
+        icon: 'pi pi-fw pi-history',
+        routerLink: ['/history']
     },
     {
-      title: 'Planning',
-      href: 'planning',
-      icon: 'archive',
+        label: 'Planning',
+        icon: 'pi pi-fw pi-book',
+        routerLink: ['/planning']
     },
     {
-      title: 'Records',
-      href: 'records',
-      icon: 'mode',
-    },
-  ];
+        label: 'Records',
+        icon: 'pi pi-fw pi-pencil',
+        routerLink: ['/records']
+    }
+];
 
   constructor(
     private router: Router,

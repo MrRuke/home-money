@@ -1,8 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-// @import "@angular/material/prebuilt-themes/indigo-pink.css";
-
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
 
 a {
   color: unset;
@@ -12,4 +11,9 @@ a {
 body {
   margin: 0;
   padding: 0;
+}
+
+html {
+  // BASE SIZE FOR REM
+  font-size: 14px;
 }

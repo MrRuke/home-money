@@ -47,6 +47,9 @@ export class PlanningViewModel {
 
   private getPercent(category: Category, cost: number): number {
     const percent = (100 * cost / category.limit);
+    if (!percent) {
+      return 0;
+    }
     return percent > 100
       ? 100
       : percent;
