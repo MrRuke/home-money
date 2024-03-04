@@ -1,13 +1,13 @@
 <div class="app-main-menu">
-  <div class="list">
+  <div class="app-main-menu__list">
     <a
       *ngFor="let item of menuList; trackBy: trackByMenu"
       [routerLink]="item.href"
       [title]="item.title"
     >
-      <div class="item">
-        <mat-icon class="icon">{{ item.icon }}</mat-icon>
-        <div class="title">{{ item.title }}</div>
+      <div class="app-main-menu__item">
+        <mat-icon class="app-main-menu__icon">{{ item.icon }}</mat-icon>
+        <div class="app-main-menu__title">{{ item.title }}</div>
       </div>
     </a>
   </div>
