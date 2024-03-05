@@ -1,9 +1,3 @@
-<div>
-  <mat-card>
-    <mat-card-title>Create category</mat-card-title>
-
-    <mat-card-content>
-      <app-create-category (categorySubmitted)="createCategory($event)"></app-create-category>
-    </mat-card-content>
-  </mat-card>
-</div>
+<p-card header="Create category">
+  <app-create-category (categorySubmitted)="createCategory($event)"></app-create-category>
+</p-card>

@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HeaderModule } from '@app/components/header/header.module';
@@ -33,7 +32,6 @@ import { NotFoundComponent } from './old/shared/components/not-found/not-found.c
     TranslateModule.forRoot(),
     HeaderModule,
     MainMenuModule,
-    MatNativeDateModule,
   ],
   providers: [
     CommonModule,

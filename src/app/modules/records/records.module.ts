@@ -5,22 +5,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
 import { RecordsLayoutComponent } from './layout/records-layout.component';
 import { RecordsRoutingModule } from './records-routing.module';
-import { MatButtonModule } from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
+
 
 @NgModule({
   declarations: [RecordsLayoutComponent, CreateCategoryComponent],
   imports: [
     CommonModule,
     RecordsRoutingModule,
-    MatFormFieldModule,
-    MatInputModule,
     ReactiveFormsModule,
     FormsModule,
-    MatCardModule,
-    MatButtonModule,
+    ButtonModule,
+    CardModule,
+    InputTextModule,
+    InputNumberModule,
   ],
 })
 export class RecordsModule {
