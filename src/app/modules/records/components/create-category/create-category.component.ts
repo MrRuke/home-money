@@ -30,8 +30,10 @@ export class CreateCategoryComponent {
   ) {
   }
 
-  public submit(): void {
+  public handleSubmit(): void {
     if (this.formGroup.invalid) {
+      this.nameControl.markAsDirty();
+      this.limitControl.markAsDirty();
       return;
     }
 
