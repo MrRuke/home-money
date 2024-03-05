@@ -1,4 +1,5 @@
 <div class="app-planning-layout">
+  <p-card header="History">
     <div
       *ngFor="let element of planning | async; trackBy: trackByPlanning"
       class="app-planning-layout__progress-item"
@@ -8,22 +9,27 @@
           class="app-planning-layout__progress-item-bar"
           [style.width.%]="element.percent"
         >
-          {{ element.percent | number: '1.0-0' }}%
+          {{ element.percent | number : "1.0-0" }}%
         </div>
       </div>
 
       <div class="app-planning-layout__progress-item-values">
-        <span class="app-planning-layout__progress-item-category">{{ element.category.name }}</span>
+        <span class="app-planning-layout__progress-item-category">{{
+          element.category.name
+        }}</span>
         <span class="app-planning-layout__progress-item-cost">
           <strong>
-            {{ element.cost | appCost: 'RUB' }}
-          </strong> из <strong>
-          {{ element.category.limit | appCost: 'RUB' }}
-        </strong>
+            {{ element.cost | appCost : "RUB" }}
+          </strong>
+          из
+          <strong>
+            {{ element.category.limit | appCost : "RUB" }}
+          </strong>
         </span>
         <span class="app-planning-layout__progress-item-balance">
-          Остаток <strong>{{ element.balance | appCost: 'RUB' }}</strong>
+          Остаток <strong>{{ element.balance | appCost : "RUB" }}</strong>
         </span>
       </div>
     </div>
+  </p-card>
 </div>
