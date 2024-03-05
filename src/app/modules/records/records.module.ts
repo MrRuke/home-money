@@ -9,10 +9,16 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
-
+import { AddEventComponent } from './components/add-event/add-event.component';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
-  declarations: [RecordsLayoutComponent, CreateCategoryComponent],
+  declarations: [
+    RecordsLayoutComponent,
+    CreateCategoryComponent,
+    AddEventComponent,
+  ],
   imports: [
     CommonModule,
     RecordsRoutingModule,
@@ -22,6 +28,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
     CardModule,
     InputTextModule,
     InputNumberModule,
+    RadioButtonModule,
+    DropdownModule,
   ],
 })
 export class RecordsModule {

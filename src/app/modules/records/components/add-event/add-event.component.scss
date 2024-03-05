@@ -1,4 +1,4 @@
-.create-category {
+.add-event {
   &__field {
     display: flex;
     flex-direction: column;
@@ -15,5 +15,9 @@
   &__submit-button {
     margin-top: 0.5rem;
     display: block;
+  }
+
+  &__radio-button + &__radio-button {
+    margin-top: 0.5rem;
   }
 }

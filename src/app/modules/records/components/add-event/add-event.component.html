@@ -1,0 +1,57 @@
+<form class="add-event" [formGroup]="formGroup">
+  <div class="add-event__field">
+    <label for="amount">Amount</label>
+
+    <p-inputNumber
+      inputId="integeronly"
+      id="amount"
+      formControlName="amount"
+    ></p-inputNumber>
+
+    <small class="add-event__field-helper">Set down amount </small>
+
+    <small
+      *ngIf="amountControl.hasError('required') && amountControl.dirty"
+      class="add-event__field-helper--error"
+    >
+      Amount is <strong>required</strong>
+    </small>
+  </div>
+
+  <div class="add-event__field">
+    <div *ngFor="let type of types" class="add-event__radio-button">
+      <p-radioButton
+        [inputId]="type"
+        [value]="type"
+        formControlName="type"
+      ></p-radioButton>
+
+      <label [for]="type">
+        {{ type }}
+      </label>
+    </div>
+  </div>
+
+  <div class="add-event__field">
+    <p-dropdown
+      formControlName="category"
+      [options]="categories"
+      optionLabel="name"
+      placeholder="Choose category"
+    ></p-dropdown>
+
+    <small
+      *ngIf="categoryControl.hasError('required') && categoryControl.dirty"
+      class="add-event__field-helper--error"
+    >
+      Category is <strong>required</strong>
+    </small>
+  </div>
+
+  <p-button
+    label="Add event"
+    severity="success"
+    class="add-event__submit-button"
+    (onClick)="handleSubmit()"
+  ></p-button>
+</form>

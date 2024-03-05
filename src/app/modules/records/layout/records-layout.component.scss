@@ -1,0 +1,5 @@
+.records-layout {
+  &__card + &__card {
+    margin-top: 1rem;
+  }
+}

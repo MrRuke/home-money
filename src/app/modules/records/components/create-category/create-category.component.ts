@@ -12,7 +12,7 @@ export class CreateCategoryComponent {
     Validators.required,
     Validators.maxLength(32),
   ]);
-  public readonly limitControl = this.formBuilder.control('', [
+  public readonly limitControl = this.formBuilder.control(1, [
     Validators.required,
     Validators.min(1),
     Validators.max(999999),
