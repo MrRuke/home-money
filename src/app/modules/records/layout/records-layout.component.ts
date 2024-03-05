@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryRequest } from '@app/apis/categories/models';
 import { HistoryRequest } from '@app/apis/history/models';
 import { RecordsUseCases } from '@app/modules/records/records.usecases';
+import { MetaService } from '@app/services/meta.service';
 
 @Component({
   selector: 'app-records-layout',
@@ -13,7 +14,13 @@ export class RecordsLayoutComponent implements OnInit {
 
   constructor(
     private useCases: RecordsUseCases,
+    metaService: MetaService,
   ) {
+    metaService.init({
+      title: 'Records',
+      description: 'Page of records',
+      keywords: 'Records',
+    });
   }
 
   public ngOnInit(): void {

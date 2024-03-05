@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BemModifiers } from '@app/old/shared/core/bem';
 import { PlanningUseCases } from '../planning.usecases';
 import { PlanningViewModel } from '../planning.viewmodel';
+import { MetaService } from '@app/services/meta.service';
 
 @Component({
   selector: 'app-planning-layout',
@@ -14,7 +15,13 @@ export class PlanningLayoutComponent implements OnInit {
   constructor(
     private viewModel: PlanningViewModel,
     private useCases: PlanningUseCases,
+    metaService: MetaService,
   ) {
+    metaService.init({
+      title: 'Planning',
+      description: 'Page of planning',
+      keywords: 'Planning',
+    });
   }
 
   public ngOnInit(): void {

@@ -3,6 +3,7 @@ import { HistoryElement } from '@app/apis/history/models';
 
 import { HistoryUseCases } from '../history.usecases';
 import { HistoryViewModel } from '../history.viewmodel';
+import { MetaService } from '@app/services/meta.service';
 
 @Component({
   selector: 'app-history-layout',
@@ -15,7 +16,13 @@ export class HistoryLayoutComponent implements OnInit {
   constructor(
     private viewModel: HistoryViewModel,
     private useCases: HistoryUseCases,
+    metaService: MetaService,
   ) {
+    metaService.init({
+      title: 'History',
+      description: 'Page of history',
+      keywords: 'History',
+    });
   }
 
   public ngOnInit(): void {

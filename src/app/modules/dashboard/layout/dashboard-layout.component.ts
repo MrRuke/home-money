@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountElement } from '@app/apis/accounts/models';
 import { DashboardUseCases } from '../dashboard.usecases';
 import { DashboardViewModel } from '../dashboard.viewmodel';
+import { MetaService } from '@app/services/meta.service';
 
 @Component({
   selector: 'app-dashboard-layout',
@@ -14,8 +15,13 @@ export class DashboardLayoutComponent implements OnInit {
   constructor(
     private viewModel: DashboardViewModel,
     private useCases: DashboardUseCases,
+    metaService: MetaService,
   ) {
-
+    metaService.init({
+      title: 'Dashboard',
+      description: 'Page of dashboard',
+      keywords: 'Dashboard',
+    });
   }
 
   public ngOnInit(): void {
