@@ -6,7 +6,7 @@
     >
       <div class="app-planning-layout__progress-item-bar-wrapper">
         <div
-          class="app-planning-layout__progress-item-bar"
+          class="app-planning-layout__progress-item-bar {{getProgressBarModifiers(element.percent)}}"
           [style.width.%]="element.percent"
         >
           {{ element.percent | number : "1.0-0" }}%

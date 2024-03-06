@@ -3,18 +3,34 @@ import { AccountElement } from '@app/apis/accounts/models';
 import { Category } from '@app/apis/categories/models';
 import { HistoryElement, HistoryType } from '@app/apis/history/models';
 import { AccountsQuery } from '@app/stores/accounts/query';
+import { AccountsService } from '@app/stores/accounts/service';
 import { CategoriesQuery } from '@app/stores/categories/query';
+import { CategoriesService } from '@app/stores/categories/service';
 import { HistoryQuery } from '@app/stores/history/query';
+import { HistoryService } from '@app/stores/history/service';
 import { combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, mapTo } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
-export class PlanningViewModel {
+export class PlanningService {
   constructor(
+    private accountsService: AccountsService,
+    private categoriesService: CategoriesService,
+    private historyService: HistoryService,
     private accountsQuery: AccountsQuery,
     private categoriesQuery: CategoriesQuery,
     private historyQuery: HistoryQuery,
   ) {
+  }
+
+  public loadValues(): Observable<void> {
+    return combineLatest([
+      this.accountsService.load(),
+      this.categoriesService.load(),
+      this.historyService.load(),
+    ]).pipe(
+      mapTo(void 0),
+    );
   }
 
   public selectAccounts(): Observable<AccountElement[]> {
@@ -55,6 +71,7 @@ export class PlanningViewModel {
       : percent;
   }
 }
+
 
 export interface PlanningView {
   category: Category;

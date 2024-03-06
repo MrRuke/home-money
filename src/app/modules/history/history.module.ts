@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HistoryRoutingModule } from '@app/modules/history/history-routing.module';
-import { SystemModule } from '@app/old/system/system.module';
 import { CostPipeModule } from '@app/services/cost.pipe.module';
 import { HistoryLayoutComponent } from './layout/history-layout.component';
 import { HistoryTableComponent } from './components/history-table/history-table.component';
@@ -12,7 +11,6 @@ import { TableModule } from 'primeng/table';
   imports: [
     CommonModule,
     HistoryRoutingModule,
-    SystemModule,
     CostPipeModule,
     TableModule,
   ],

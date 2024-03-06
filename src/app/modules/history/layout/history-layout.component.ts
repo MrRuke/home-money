@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { HistoryElement } from '@app/apis/history/models';
 
-import { HistoryUseCases } from '../history.usecases';
-import { HistoryViewModel } from '../history.viewmodel';
 import { MetaService } from '@app/services/meta.service';
+import { SubscriberComponent } from '@app/core/subscriber';
+import { HistoryService } from '../history.service';
 
 @Component({
   selector: 'app-history-layout',
   templateUrl: './history-layout.component.html',
   styleUrls: ['./history-layout.component.scss'],
 })
-export class HistoryLayoutComponent implements OnInit {
-  public readonly history = this.viewModel.selectHistory();
+export class HistoryLayoutComponent extends SubscriberComponent implements OnInit {
+  public readonly history = this.hstoryService.selectHistory();
 
   constructor(
-    private viewModel: HistoryViewModel,
-    private useCases: HistoryUseCases,
+    private hstoryService: HistoryService,
     metaService: MetaService,
   ) {
+    super();
     metaService.init({
       title: 'History',
       description: 'Page of history',
@@ -26,7 +26,7 @@ export class HistoryLayoutComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.useCases.loadHistory().subscribe();
+    this.subscribe(this.hstoryService.loadHistory());
   }
 
   public trackByHistory(index: number, history: HistoryElement): string {

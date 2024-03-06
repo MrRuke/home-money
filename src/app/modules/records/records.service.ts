@@ -7,7 +7,7 @@ import { HistoryService } from '@app/stores/history/service';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class RecordsUseCases {
+export class RecordsService{
   constructor(
     private categoriesService: CategoriesService,
     private categoriesQuery: CategoriesQuery,

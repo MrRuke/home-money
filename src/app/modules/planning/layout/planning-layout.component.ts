@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { BemModifiers } from '@app/old/shared/core/bem';
-import { PlanningUseCases } from '../planning.usecases';
-import { PlanningViewModel } from '../planning.viewmodel';
 import { MetaService } from '@app/services/meta.service';
+import { SubscriberComponent } from '@app/core/subscriber';
+import { PlanningService } from '../planning.service';
 
 @Component({
   selector: 'app-planning-layout',
   templateUrl: './planning-layout.component.html',
   styleUrls: ['./planning-layout.component.scss'],
 })
-export class PlanningLayoutComponent implements OnInit {
-  public readonly planning = this.viewModel.selectPlanning();
+export class PlanningLayoutComponent extends SubscriberComponent implements OnInit {
+  public readonly planning = this.planningService.selectPlanning();
 
   constructor(
-    private viewModel: PlanningViewModel,
-    private useCases: PlanningUseCases,
+    private planningService: PlanningService,
     metaService: MetaService,
   ) {
+    super();
     metaService.init({
       title: 'Planning',
       description: 'Page of planning',
@@ -25,15 +24,17 @@ export class PlanningLayoutComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.useCases.loadValues().subscribe();
+    this.subscribe(this.planningService.loadValues());
   }
 
-  public getProgressBarModifiers(percent: number): BemModifiers {
-    return {
-      low: percent < 60,
-      medium: percent > 60 && percent < 100,
-      high: percent >= 100,
-    };
+  public getProgressBarModifiers(percent: number): string {
+    if (percent < 60) {
+      return 'app-planning-layout__progress-item-bar--low';
+    } else if (percent >= 100) {
+      return 'app-planning-layout__progress-item-bar--high';
+    } else {
+      return 'app-planning-layout__progress-item-bar--medium';
+    }
   }
 
   public trackByPlanning(index: number): number {

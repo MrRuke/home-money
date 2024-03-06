@@ -3,10 +3,7 @@ import { Routes } from '@angular/router';
 import { AuthComponent } from './old/auth/auth.component';
 import { LoginComponent } from './old/auth/login/login.component';
 import { RegistrationComponent } from './old/auth/registration/registration.component';
-import { AuthGuard } from './old/shared/services/auth.guard';
-import { HistoryDetailComponent } from './old/system/history-page/history-detail/history-detail.component';
-import { HistoryPageComponent } from './old/system/history-page/history-page.component';
-import { SystemComponent } from './old/system/system.component';
+// import { AuthGuard } from './old/shared/services/auth.guard';
 
 export const Urls = {
   url: '',
@@ -58,23 +55,23 @@ export const AuthScheme: Routes = [
   },
 ];
 
-export const SystemScheme: Routes = [
-  {
-    path: Urls.system.url,
-    component: SystemComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: Urls.system.history.url,
-        component: HistoryPageComponent,
-      },
-      {
-        path: Urls.system.history.detail.url,
-        component: HistoryDetailComponent,
-      },
-    ],
-  },
-];
+// export const SystemScheme: Routes = [
+//   {
+//     path: Urls.system.url,
+//     component: HistoryPageComponent,
+//     canActivate: [AuthGuard],
+//     children: [
+//       {
+//         path: Urls.system.history.url,
+//         component: HistoryPageComponent,
+//       },
+//       {
+//         path: Urls.system.history.detail.url,
+//         component: HistoryDetailComponent,
+//       },
+//     ],
+//   },
+// ];
 
 export const AppScheme: Routes = [
   { path: Urls.url, redirectTo: 'login', pathMatch: 'full' },
