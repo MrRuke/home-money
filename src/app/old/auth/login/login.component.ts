@@ -19,13 +19,11 @@ import { Message } from '@app/old/shared/models/message.model';
 import { MetaService } from '@app/old/shared/services/meta.service';
 import { UsersServices } from '@app/old/shared/services/users.services';
 import { AuthServices } from '@app/old/shared/services/auth.services';
-import { fadeStateTrigger } from '@app/old/shared/animations/fade.animation';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: [fadeStateTrigger],
 })
 
 export class LoginComponent implements OnInit {

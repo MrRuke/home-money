@@ -14,12 +14,10 @@ import { AuthServices } from './old/shared/services/auth.services';
 import { SystemModule } from './old/system/system.module';
 import { AuthGuard } from './old/shared/services/auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NotFoundComponent } from './old/shared/components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent,
   ],
   imports: [
     CommonModule,
