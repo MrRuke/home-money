@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "^17.2.3",
     "@angular/router": "^17.2.3",
     "@datorama/akita": "^8.0.1",
+    "@ngrx/store": "^17.1.1",
     "@ngx-translate/core": "^15.0.0",
     "@swimlane/ngx-charts": "^20.5.0",
     "@types/d3-scale": "^4.0.8",
@@ -65,6 +66,7 @@
     "protractor": "~7.0.0",
     "ts-node": "~10.9.2",
     "tslint": "~6.1.0",
-    "typescript": "~5.3.3"
+    "typescript": "~5.3.3",
+    "@ngrx/eslint-plugin": "^17.1.1"
   }
 }
