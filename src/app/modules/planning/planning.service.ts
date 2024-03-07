@@ -2,26 +2,22 @@ import { Injectable } from '@angular/core';
 import { AccountElement } from '@app/apis/accounts/models';
 import { Category } from '@app/apis/categories/models';
 import { HistoryElement, HistoryType } from '@app/apis/history/models';
-import { CategoriesQuery } from '@app/stores/categories/query';
-import { CategoriesService } from '@app/stores/categories/service';
-import { combineLatest, Observable, of } from 'rxjs';
-import { mapTo } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class PlanningService {
   constructor(
-    private categoriesService: CategoriesService,
-    private categoriesQuery: CategoriesQuery,
   ) {
   }
 
   public loadValues(): Observable<void> {
-    return combineLatest([
-      // this.accountsService.load(),
-      this.categoriesService.load(),
-    ]).pipe(
-      mapTo(void 0),
-    );
+    return of(void 0);
+    // return combineLatest([
+    //   // this.accountsService.load(),
+    //   this.categoriesService.load(),
+    // ]).pipe(
+    //   mapTo(void 0),
+    // );
   }
 
   public selectAccounts(): Observable<AccountElement[]> {

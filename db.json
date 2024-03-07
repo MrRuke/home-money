@@ -31,6 +31,11 @@
       "id": "0aec",
       "name": "New category",
       "limit": "1500"
+    },
+    {
+      "id": "be76",
+      "name": "32",
+      "limit": 1
     }
   ],
   "events": [

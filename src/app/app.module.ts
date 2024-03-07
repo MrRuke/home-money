@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { accountReducer } from './stores/account/account.reducer';
 import { historyReducer } from './stores/history/history.reducer';
+import { categoryReducer } from './stores/categories/category.reducer';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { historyReducer } from './stores/history/history.reducer';
     StoreModule.forRoot({
       accounts: accountReducer,
       history: historyReducer,
+      categories: categoryReducer,
     }),
   ],
   providers: [

@@ -1,28 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Category, CategoryRequest } from '@app/apis/categories/models';
-import { CategoriesQuery } from '@app/stores/categories/query';
-import { CategoriesService } from '@app/stores/categories/service';
+import { Category } from '@app/apis/categories/models';
 import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class RecordsService{
   constructor(
-    private categoriesService: CategoriesService,
-    private categoriesQuery: CategoriesQuery,
   ) {
   }
 
   public loadCategories(): Observable<void> {
-    return this.categoriesService.load();
+    
+    return of(void 0);
+    // return this.categoriesService.load();
   }
 
 
-  public createCategory(category: CategoryRequest): Observable<void> {
-    return this.categoriesService.addElement(category);
+  public createCategory(category: any): Observable<void> {
+    return of(void 0);
+    // return this.categoriesService.addElement(category);
   }
 
   public selectCategories(): Observable<Category[]> {
-    return this.categoriesQuery.selectCategories();
+    return of([]);
+    // return this.categoriesQuery.selectCategories();
   }
 
   public addHistoryElement(event: any): Observable<void> {
