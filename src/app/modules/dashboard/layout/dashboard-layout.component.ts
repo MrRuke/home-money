@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountElement } from '@app/apis/accounts/models';
+import { AccountCurrencyTypes, AccountElement } from '@app/apis/accounts/models';
 import { MetaService } from '@app/services/meta.service';
 import { SubscriberComponent } from '@app/core/subscriber';
-import { DashboardService } from '../dashboard.service';
+import { Store } from '@ngrx/store';
+import { selectAccounts } from '@app/stores/account/account.selectors';
+import { AccountsActions } from '@app/stores/account/account.actions';
+import { tap } from 'rxjs';
+import { AccountService } from '@app/stores/account/account.service';
 
 @Component({
   selector: 'app-dashboard-layout',
@@ -10,10 +14,11 @@ import { DashboardService } from '../dashboard.service';
   styleUrls: ['./dashboard-layout.component.scss'],
 })
 export class DashboardLayoutComponent extends SubscriberComponent implements OnInit {
-  public readonly accounts = this.dashboardService.selectAccounts();
+  public readonly accounts = this.store.select(selectAccounts);
 
   constructor(
-    private dashboardService: DashboardService,
+    private accountService: AccountService,
+    private store: Store,
     metaService: MetaService,
   ) {
     super();
@@ -25,7 +30,30 @@ export class DashboardLayoutComponent extends SubscriberComponent implements OnI
   }
 
   public ngOnInit(): void {
-    this.subscribe(this.dashboardService.loadAccounts());
+    this.subscribe(this.accountService.load().pipe(
+      tap((res) => {
+        this.store.dispatch(AccountsActions.retrievedAccountList({ accounts: res }))
+      }),
+    ))
+  }
+
+  public onRemove(accountId: number): void {
+    this.subscribe(this.accountService.delete(accountId).pipe(
+      tap(() => {
+        this.store.dispatch(AccountsActions.removeAccount({ accountId }));
+      }),
+    ));
+  }
+
+  public onAdd(): void {
+    this.subscribe(this.accountService.add({
+      value: 1200,
+      currency: AccountCurrencyTypes.RUB,
+    }).pipe(
+      tap((account) => {
+        this.store.dispatch(AccountsActions.addAccount({ account }));
+      }),
+    ));
   }
 
   public trackByAccounts(index: number, account: AccountElement): number {

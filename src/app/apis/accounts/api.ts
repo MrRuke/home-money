@@ -26,4 +26,8 @@ export class AccountsApi extends BaseApi {
   public getAccountById(id: number): Observable<AccountElement> {
     return this.get(`accounts/${id}`).pipe(delay(400));
   }
+
+  public deleteAccount(id: number): Observable<void> {
+    return this.delete(`accounts/${id}`).pipe(delay(400));
+  }
 }

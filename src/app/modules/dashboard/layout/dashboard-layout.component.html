@@ -4,11 +4,18 @@
       *ngFor="let item of accounts | async; trackBy: trackByAccounts"
       class="app-dashboard-layout__item"
     >
-      {{ item.value | appCost: item.currency }}
+      {{ item.value | appCost : item.currency }}
+
+      <p-button
+        icon="pi pi-trash"
+        size="small"
+        [rounded]="true"
+        (click)="onRemove(item.id)"
+      ></p-button>
     </div>
 
     <div class="app-dashboard-layout__create-card">
-      <p-button icon="pi pi-plus" size="small" [rounded]="true"></p-button>
+      <p-button icon="pi pi-plus" size="small" [rounded]="true" (click)="onAdd()"></p-button>
     </div>
   </div>
 </div>

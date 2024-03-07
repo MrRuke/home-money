@@ -31,6 +31,13 @@ export class BaseApi {
       .pipe(map((response: any) => response));
   }
 
+  // tslint:disable-next-line:no-any
+  protected delete(url: string = '', data: any = {}): Observable<any> {
+    return this.http.delete(this.getUrl(url), data)
+      // tslint:disable-next-line:no-any
+      .pipe(map((response: any) => response));
+  }
+
   private getUrl(url: string = ''): string {
     return this.baseUrl + url;
   }
