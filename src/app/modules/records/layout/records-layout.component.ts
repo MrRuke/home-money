@@ -3,12 +3,13 @@ import { CategoryRequest } from '@app/apis/categories/models';
 import { HistoryRequest } from '@app/apis/history/models';
 import { SubscriberComponent } from '@app/core/subscriber';
 import { MetaService } from '@app/services/meta.service';
-import { RecordsService } from '../records.service';
 import { CategoryService } from '@app/stores/categories/category.service';
 import { Store } from '@ngrx/store';
 import { selectCategories } from '@app/stores/categories/category.selectors';
 import { tap } from 'rxjs';
 import { CategoryActions } from '@app/stores/categories/category.actions';
+import { HistoryService } from '@app/stores/history/history.service';
+import { HistoryActions } from '@app/stores/history/history.actions';
 
 @Component({
   selector: 'app-records-layout',
@@ -19,7 +20,7 @@ export class RecordsLayoutComponent extends SubscriberComponent implements OnIni
   public readonly categories = this.store.select(selectCategories);
 
   constructor(
-    private recordsService: RecordsService,
+    private historyService: HistoryService,
     private categoryService: CategoryService,
     private store: Store,
     metaService: MetaService,
@@ -49,6 +50,10 @@ export class RecordsLayoutComponent extends SubscriberComponent implements OnIni
   }
 
   public addHistoryElement(event: HistoryRequest): void {
-    this.subscribe(this.recordsService.addHistoryElement(event));
+    this.subscribe(this.historyService.add(event).pipe(
+      tap((res) => {
+        this.store.dispatch(HistoryActions.addHistory({ history: res }))
+      }),
+    ));
   }
 }
