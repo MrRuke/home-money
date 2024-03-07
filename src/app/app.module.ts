@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { accountReducer } from './stores/account/account.reducer';
+import { historyReducer } from './stores/history/history.reducer';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { accountReducer } from './stores/account/account.reducer';
     MainMenuModule,
     StoreModule.forRoot({
       accounts: accountReducer,
+      history: historyReducer,
     }),
   ],
   providers: [

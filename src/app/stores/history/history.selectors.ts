@@ -1,4 +1,4 @@
 import { AccountElement } from '@app/apis/accounts/models';
 import { createFeatureSelector } from '@ngrx/store';
 
-export const selectAccounts = createFeatureSelector<ReadonlyArray<AccountElement>>('accounts');
+export const selectHistory = createFeatureSelector<ReadonlyArray<AccountElement>>('history');

@@ -4,18 +4,14 @@ import { Category } from '@app/apis/categories/models';
 import { HistoryElement, HistoryType } from '@app/apis/history/models';
 import { CategoriesQuery } from '@app/stores/categories/query';
 import { CategoriesService } from '@app/stores/categories/service';
-import { HistoryQuery } from '@app/stores/history/query';
-import { HistoryService } from '@app/stores/history/service';
 import { combineLatest, Observable, of } from 'rxjs';
-import { map, mapTo } from 'rxjs/operators';
+import { mapTo } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class PlanningService {
   constructor(
     private categoriesService: CategoriesService,
-    private historyService: HistoryService,
     private categoriesQuery: CategoriesQuery,
-    private historyQuery: HistoryQuery,
   ) {
   }
 
@@ -23,7 +19,6 @@ export class PlanningService {
     return combineLatest([
       // this.accountsService.load(),
       this.categoriesService.load(),
-      this.historyService.load(),
     ]).pipe(
       mapTo(void 0),
     );
@@ -35,20 +30,21 @@ export class PlanningService {
   }
 
   public selectPlanning(): Observable<PlanningView[]> {
-    return combineLatest([
-      this.categoriesQuery.selectCategories(),
-      this.historyQuery.selectHistory(),
-    ]).pipe(
-      map(([categories, histories]) => categories.map(category => {
-        const cost = this.getCategoryCost(category, histories);
-        return {
-          category,
-          cost,
-          percent: this.getPercent(category, cost),
-          balance: category.limit - cost,
-        };
-      })),
-    );
+    return of([]);
+    // return combineLatest([
+    //   this.categoriesQuery.selectCategories(),
+    //   this.historyQuery.selectHistory(),
+    // ]).pipe(
+    //   map(([categories, histories]) => categories.map(category => {
+    //     const cost = this.getCategoryCost(category, histories);
+    //     return {
+    //       category,
+    //       cost,
+    //       percent: this.getPercent(category, cost),
+    //       balance: category.limit - cost,
+    //     };
+    //   })),
+    // );
   }
 
   private getCategoryCost(category: Category, histories: HistoryElement[]): number {

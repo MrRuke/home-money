@@ -1,17 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Category, CategoryRequest } from '@app/apis/categories/models';
-import { HistoryRequest } from '@app/apis/history/models';
 import { CategoriesQuery } from '@app/stores/categories/query';
 import { CategoriesService } from '@app/stores/categories/service';
-import { HistoryService } from '@app/stores/history/service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class RecordsService{
   constructor(
     private categoriesService: CategoriesService,
     private categoriesQuery: CategoriesQuery,
-    private historyService: HistoryService,
   ) {
   }
 
@@ -28,8 +25,9 @@ export class RecordsService{
     return this.categoriesQuery.selectCategories();
   }
 
-  public addHistoryElement(event: HistoryRequest): Observable<void> {
-    return this.historyService.addHistoryElement(event);
+  public addHistoryElement(event: any): Observable<void> {
+    return of(void 0);
+    // return this.historyService.addHistoryElement(event);
   }
 
 }
