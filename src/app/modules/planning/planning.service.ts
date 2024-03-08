@@ -1,49 +1,58 @@
 import { Injectable } from '@angular/core';
-import { AccountElement } from '@app/apis/accounts/models';
 import { Category } from '@app/apis/categories/models';
 import { HistoryElement, HistoryType } from '@app/apis/history/models';
-import { Observable, of } from 'rxjs';
+import { CategoryActions } from '@app/stores/categories/category.actions';
+import { selectCategories } from '@app/stores/categories/category.selectors';
+import { CategoryService } from '@app/stores/categories/category.service';
+import { HistoryActions } from '@app/stores/history/history.actions';
+import { selectHistory } from '@app/stores/history/history.selectors';
+import { HistoryService } from '@app/stores/history/history.service';
+import { Store } from '@ngrx/store';
+import { Observable, combineLatest, map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class PlanningService {
   constructor(
+    private store: Store,
+    private categoryService: CategoryService,
+    private historyService: HistoryService,
   ) {
   }
 
   public loadValues(): Observable<void> {
-    return of(void 0);
-    // return combineLatest([
-    //   // this.accountsService.load(),
-    //   this.categoriesService.load(),
-    // ]).pipe(
-    //   mapTo(void 0),
-    // );
-  }
-
-  public selectAccounts(): Observable<AccountElement[]> {
-    return of([]);
-    // return this.accountsQuery.selectAccounts();
+    return combineLatest([
+      this.categoryService.load(),
+      this.historyService.load(),
+    ]).pipe(
+      map(([categories, history]) => {
+        this.store.dispatch(CategoryActions.retrievedCategoryList({ categories }));
+        this.store.dispatch(HistoryActions.retrievedHistoryList({ history }));
+        return;
+      })
+    );
   }
 
   public selectPlanning(): Observable<PlanningView[]> {
-    return of([]);
-    // return combineLatest([
-    //   this.categoriesQuery.selectCategories(),
-    //   this.historyQuery.selectHistory(),
-    // ]).pipe(
-    //   map(([categories, histories]) => categories.map(category => {
-    //     const cost = this.getCategoryCost(category, histories);
-    //     return {
-    //       category,
-    //       cost,
-    //       percent: this.getPercent(category, cost),
-    //       balance: category.limit - cost,
-    //     };
-    //   })),
-    // );
+    return combineLatest([
+      this.store.select(selectCategories),
+      this.store.select(selectHistory),
+    ]).pipe(
+      map(([categories, histories]) => {
+        return categories.map(category => {
+          const cost = this.getCategoryCost(category, histories);
+  
+          return {
+            category,
+            cost,
+            percent: this.getPercent(category, cost),
+            balance: category.limit - cost,
+          };
+        });
+      }),
+    );
   }
 
-  private getCategoryCost(category: Category, histories: HistoryElement[]): number {
+  private getCategoryCost(category: Category, histories: readonly HistoryElement[]): number {
     const history = histories
       .filter(item => item.category === category.id && item.type === HistoryType.OUTCOME);
 
