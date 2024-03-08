@@ -1292,11 +1292,6 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@datorama/akita@^8.0.1":
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/@datorama/akita/-/akita-8.0.1.tgz#b37df94941e84f27ceb8ac875579c3a10c4bc536"
-  integrity sha512-0VnPWd+Sy3ColhzjDSBNcEnzAQtbezk6bYmJHvPaLMK5Ysl90KcNls2bE4sj5vaLeGLjhMtqtfp/RgrigPXDxA==
-
 "@discoveryjs/json-ext@0.5.7":
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
