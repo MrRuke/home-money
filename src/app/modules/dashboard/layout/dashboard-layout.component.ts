@@ -7,11 +7,13 @@ import { selectAccounts } from '@app/stores/account/account.selectors';
 import { AccountsActions } from '@app/stores/account/account.actions';
 import { finalize, tap } from 'rxjs';
 import { AccountService } from '@app/stores/account/account.service';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-dashboard-layout',
   templateUrl: './dashboard-layout.component.html',
   styleUrls: ['./dashboard-layout.component.scss'],
+  providers: [ConfirmationService],
 })
 export class DashboardLayoutComponent extends SubscriberComponent implements OnInit {
   public readonly accounts = this.store.select(selectAccounts);
@@ -20,6 +22,7 @@ export class DashboardLayoutComponent extends SubscriberComponent implements OnI
   constructor(
     private accountService: AccountService,
     private store: Store,
+    private confirmationService: ConfirmationService,
     metaService: MetaService,
   ) {
     super();
@@ -43,12 +46,22 @@ export class DashboardLayoutComponent extends SubscriberComponent implements OnI
     ))
   }
 
-  public onRemove(accountId: number): void {
-    this.subscribe(this.accountService.delete(accountId).pipe(
-      tap(() => {
-        this.store.dispatch(AccountsActions.removeAccount({ accountId }));
-      }),
-    ));
+  public onRemove(event: Event, accountId: number): void {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Do you want to delete this record?',
+      header: 'Delete Confirmation',
+      icon: 'pi pi-info-circle',
+      acceptButtonStyleClass: "p-button-danger p-button-text",
+      rejectButtonStyleClass: "p-button-text p-button-text",
+      accept: () => {
+        this.subscribe(this.accountService.delete(accountId).pipe(
+          tap(() => {
+            this.store.dispatch(AccountsActions.removeAccount({ accountId }));
+          }),
+        ));
+      },
+    });
   }
 
   public onAdd(): void {

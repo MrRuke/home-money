@@ -1,6 +1,9 @@
 <div class="app-dashboard-layout">
   <div class="app-dashboard-layout__list">
-    <p-progressSpinner *ngIf="isLoading" ariaLabel="loading"></p-progressSpinner>
+    <p-progressSpinner
+      *ngIf="isLoading"
+      ariaLabel="loading"
+    ></p-progressSpinner>
 
     <ng-container *ngIf="!isLoading">
       <div
@@ -13,7 +16,7 @@
           icon="pi pi-trash"
           size="small"
           [rounded]="true"
-          (click)="onRemove(item.id)"
+          (click)="onRemove($event, item.id)"
         ></p-button>
       </div>
 
@@ -26,5 +29,7 @@
         ></p-button>
       </div>
     </ng-container>
+
+    <p-confirmDialog></p-confirmDialog>
   </div>
 </div>

@@ -24,6 +24,11 @@
       "id": "1",
       "value": 100000,
       "currency": "RUB"
+    },
+    {
+      "id": "0a7e",
+      "value": 1200,
+      "currency": "RUB"
     }
   ],
   "categories": [
@@ -62,6 +67,22 @@
       "amount": 13,
       "description": "",
       "date": "07.03.2024 00:18:00"
+    },
+    {
+      "id": "3e12",
+      "category": "0aec",
+      "type": "INCOME",
+      "amount": 1222,
+      "description": "",
+      "date": "17.03.2024 01:01:49"
+    },
+    {
+      "id": "1cf2",
+      "category": "0aec",
+      "type": "OUTCOME",
+      "amount": 1333,
+      "description": "",
+      "date": "17.03.2024 01:02:05"
     }
   ]
 }

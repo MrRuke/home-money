@@ -5,6 +5,7 @@ import { DashboardLayoutComponent } from './layout/dashboard-layout.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [DashboardLayoutComponent],
@@ -14,6 +15,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     CostPipeModule,
     ButtonModule,
     ProgressSpinnerModule,
+    ConfirmDialogModule,
   ],
 })
 export class DashboardModule {
