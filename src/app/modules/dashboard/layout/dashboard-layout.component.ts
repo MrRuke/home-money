@@ -7,13 +7,13 @@ import { selectAccounts } from '@app/stores/account/account.selectors';
 import { AccountsActions } from '@app/stores/account/account.actions';
 import { finalize, tap } from 'rxjs';
 import { AccountService } from '@app/stores/account/account.service';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-dashboard-layout',
   templateUrl: './dashboard-layout.component.html',
   styleUrls: ['./dashboard-layout.component.scss'],
-  providers: [ConfirmationService],
+  providers: [ConfirmationService, MessageService],
 })
 export class DashboardLayoutComponent extends SubscriberComponent implements OnInit {
   public readonly accounts = this.store.select(selectAccounts);
@@ -23,6 +23,7 @@ export class DashboardLayoutComponent extends SubscriberComponent implements OnI
     private accountService: AccountService,
     private store: Store,
     private confirmationService: ConfirmationService,
+    private messageService: MessageService,
     metaService: MetaService,
   ) {
     super();
@@ -58,6 +59,7 @@ export class DashboardLayoutComponent extends SubscriberComponent implements OnI
         this.subscribe(this.accountService.delete(accountId).pipe(
           tap(() => {
             this.store.dispatch(AccountsActions.removeAccount({ accountId }));
+            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Card deleted' });
           }),
         ));
       },

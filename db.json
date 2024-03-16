@@ -24,11 +24,6 @@
       "id": "1",
       "value": 100000,
       "currency": "RUB"
-    },
-    {
-      "id": "0a7e",
-      "value": 1200,
-      "currency": "RUB"
     }
   ],
   "categories": [
@@ -61,6 +56,11 @@
       "id": "7adf",
       "name": "32",
       "limit": "132"
+    },
+    {
+      "id": "3c89",
+      "name": "43",
+      "limit": 1
     }
   ],
   "events": [
