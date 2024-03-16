@@ -41,6 +41,26 @@
       "id": "be76",
       "name": "32",
       "limit": 1
+    },
+    {
+      "id": "a118",
+      "name": "test",
+      "limit": 1
+    },
+    {
+      "id": "4b7e",
+      "name": "test4",
+      "limit": 1
+    },
+    {
+      "id": "2499",
+      "name": "tet4",
+      "limit": "43"
+    },
+    {
+      "id": "7adf",
+      "name": "32",
+      "limit": "132"
     }
   ],
   "events": [
@@ -83,6 +103,46 @@
       "amount": 1333,
       "description": "",
       "date": "17.03.2024 01:02:05"
+    },
+    {
+      "id": "b61b",
+      "category": "2499",
+      "type": "OUTCOME",
+      "amount": 143,
+      "description": "",
+      "date": "17.03.2024 01:21:56"
+    },
+    {
+      "id": "799f",
+      "category": "a118",
+      "type": "INCOME",
+      "amount": 321,
+      "description": "",
+      "date": "17.03.2024 01:22:21"
+    },
+    {
+      "id": "0caa",
+      "category": "4b7e",
+      "type": "INCOME",
+      "amount": 1,
+      "description": "",
+      "date": "17.03.2024 01:22:35"
+    },
+    {
+      "id": "2d62",
+      "category": "2499",
+      "type": "INCOME",
+      "amount": 32,
+      "description": "",
+      "date": "17.03.2024 01:22:40"
+    },
+    {
+      "id": "98de",
+      "category": "a118",
+      "type": "OUTCOME",
+      "amount": 32,
+      "description": "",
+      "date": "17.03.2024 01:23:23"
     }
   ]
 }

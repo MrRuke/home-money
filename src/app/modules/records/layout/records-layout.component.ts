@@ -10,11 +10,13 @@ import { finalize, tap } from 'rxjs';
 import { CategoryActions } from '@app/stores/categories/category.actions';
 import { HistoryService } from '@app/stores/history/history.service';
 import { HistoryActions } from '@app/stores/history/history.actions';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-records-layout',
   templateUrl: './records-layout.component.html',
   styleUrls: ['./records-layout.component.scss'],
+  providers: [MessageService],
 })
 export class RecordsLayoutComponent extends SubscriberComponent implements OnInit {
   public readonly categories = this.store.select(selectCategories);
@@ -24,6 +26,7 @@ export class RecordsLayoutComponent extends SubscriberComponent implements OnIni
     private historyService: HistoryService,
     private categoryService: CategoryService,
     private store: Store,
+    private messageService: MessageService,
     metaService: MetaService,
   ) {
     super();
@@ -49,7 +52,8 @@ export class RecordsLayoutComponent extends SubscriberComponent implements OnIni
   public createCategory(category: CategoryRequest): void {
     this.subscribe(this.categoryService.add(category).pipe(
       tap((res) => {
-        this.store.dispatch(CategoryActions.addCategory({ category: res }))
+        this.store.dispatch(CategoryActions.addCategory({ category: res }));
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Category created' });
       }),
     ));
   }
@@ -57,7 +61,8 @@ export class RecordsLayoutComponent extends SubscriberComponent implements OnIni
   public addHistoryElement(event: HistoryRequest): void {
     this.subscribe(this.historyService.add(event).pipe(
       tap((res) => {
-        this.store.dispatch(HistoryActions.addHistory({ history: res }))
+        this.store.dispatch(HistoryActions.addHistory({ history: res }));
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Event added' });
       }),
     ));
   }
