@@ -1,21 +1,30 @@
 <div class="app-dashboard-layout">
   <div class="app-dashboard-layout__list">
-    <div
-      *ngFor="let item of accounts | async; trackBy: trackByAccounts"
-      class="app-dashboard-layout__item"
-    >
-      {{ item.value | appCost : item.currency }}
+    <p-progressSpinner *ngIf="isLoading" ariaLabel="loading"></p-progressSpinner>
 
-      <p-button
-        icon="pi pi-trash"
-        size="small"
-        [rounded]="true"
-        (click)="onRemove(item.id)"
-      ></p-button>
-    </div>
+    <ng-container *ngIf="!isLoading">
+      <div
+        *ngFor="let item of accounts | async; trackBy: trackByAccounts"
+        class="app-dashboard-layout__item"
+      >
+        {{ item.value | appCost : item.currency }}
 
-    <div class="app-dashboard-layout__create-card">
-      <p-button icon="pi pi-plus" size="small" [rounded]="true" (click)="onAdd()"></p-button>
-    </div>
+        <p-button
+          icon="pi pi-trash"
+          size="small"
+          [rounded]="true"
+          (click)="onRemove(item.id)"
+        ></p-button>
+      </div>
+
+      <div class="app-dashboard-layout__create-card">
+        <p-button
+          icon="pi pi-plus"
+          size="small"
+          [rounded]="true"
+          (click)="onAdd()"
+        ></p-button>
+      </div>
+    </ng-container>
   </div>
 </div>

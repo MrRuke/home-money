@@ -12,6 +12,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { DropdownModule } from 'primeng/dropdown';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { DropdownModule } from 'primeng/dropdown';
     InputNumberModule,
     RadioButtonModule,
     DropdownModule,
+    ProgressSpinnerModule,
   ],
 })
 export class RecordsModule {

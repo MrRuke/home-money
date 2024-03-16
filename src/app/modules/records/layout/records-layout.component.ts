@@ -6,7 +6,7 @@ import { MetaService } from '@app/services/meta.service';
 import { CategoryService } from '@app/stores/categories/category.service';
 import { Store } from '@ngrx/store';
 import { selectCategories } from '@app/stores/categories/category.selectors';
-import { tap } from 'rxjs';
+import { finalize, tap } from 'rxjs';
 import { CategoryActions } from '@app/stores/categories/category.actions';
 import { HistoryService } from '@app/stores/history/history.service';
 import { HistoryActions } from '@app/stores/history/history.actions';
@@ -18,6 +18,7 @@ import { HistoryActions } from '@app/stores/history/history.actions';
 })
 export class RecordsLayoutComponent extends SubscriberComponent implements OnInit {
   public readonly categories = this.store.select(selectCategories);
+  public isLoading = false;
 
   constructor(
     private historyService: HistoryService,
@@ -34,9 +35,13 @@ export class RecordsLayoutComponent extends SubscriberComponent implements OnIni
   }
 
   public ngOnInit(): void {
+    this.isLoading = true;
     this.subscribe(this.categoryService.load().pipe(
       tap((res) => {
         this.store.dispatch(CategoryActions.retrievedCategoryList({ categories: res }))
+      }),
+      finalize(() => {
+        this.isLoading = false;
       }),
     ));
   }

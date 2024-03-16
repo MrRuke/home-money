@@ -6,6 +6,7 @@ import { HistoryLayoutComponent } from './layout/history-layout.component';
 import { HistoryTableComponent } from './components/history-table/history-table.component';
 import { TableModule } from 'primeng/table';
 import { ChipModule } from 'primeng/chip';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [HistoryLayoutComponent, HistoryTableComponent],
@@ -15,6 +16,7 @@ import { ChipModule } from 'primeng/chip';
     CostPipeModule,
     TableModule,
     ChipModule,
+    ProgressSpinnerModule,
   ],
 })
 export class HistoryModule {

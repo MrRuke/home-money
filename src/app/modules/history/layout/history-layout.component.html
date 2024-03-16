@@ -1,3 +1,5 @@
 <div class="app-history-layout">
-  <app-history-table [history]="history | async"></app-history-table>
+  <p-progressSpinner *ngIf="isLoading" ariaLabel="loading"></p-progressSpinner>
+
+  <app-history-table *ngIf="!isLoading" [history]="history | async"></app-history-table>
 </div>

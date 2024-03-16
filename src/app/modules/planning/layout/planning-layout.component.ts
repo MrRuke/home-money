@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MetaService } from '@app/services/meta.service';
 import { SubscriberComponent } from '@app/core/subscriber';
 import { PlanningService } from '../planning.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-planning-layout',
@@ -10,6 +11,7 @@ import { PlanningService } from '../planning.service';
 })
 export class PlanningLayoutComponent extends SubscriberComponent implements OnInit {
   public readonly planning = this.planningService.selectPlanning();
+  public isLoading = false;
 
   constructor(
     private planningService: PlanningService,
@@ -24,7 +26,12 @@ export class PlanningLayoutComponent extends SubscriberComponent implements OnIn
   }
 
   public ngOnInit(): void {
-    this.subscribe(this.planningService.loadValues());
+    this.isLoading = true;
+    this.subscribe(this.planningService.loadValues().pipe(
+      finalize(() => {
+        this.isLoading = false;
+      }),
+    ));
   }
 
   public getProgressBarModifiers(percent: number): string {

@@ -4,6 +4,7 @@ import { CostPipeModule } from '@app/services/cost.pipe.module';
 import { PlanningLayoutComponent } from './layout/planning-layout.component';
 import { PlanningRoutingModule } from './planning-routing.module';
 import { CardModule } from 'primeng/card';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [PlanningLayoutComponent],
@@ -12,6 +13,7 @@ import { CardModule } from 'primeng/card';
     PlanningRoutingModule,
     CostPipeModule,
     CardModule,
+    ProgressSpinnerModule,
   ],
 })
 export class PlanningModule {

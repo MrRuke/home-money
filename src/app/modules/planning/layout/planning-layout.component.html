@@ -1,5 +1,7 @@
 <div class="app-planning-layout">
-  <p-card header="History">
+  <p-progressSpinner *ngIf="isLoading" ariaLabel="loading"></p-progressSpinner>
+
+  <p-card *ngIf="!isLoading" header="History">
     <div
       *ngFor="let element of planning | async; trackBy: trackByPlanning"
       class="app-planning-layout__progress-item"

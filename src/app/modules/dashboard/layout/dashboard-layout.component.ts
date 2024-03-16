@@ -5,7 +5,7 @@ import { SubscriberComponent } from '@app/core/subscriber';
 import { Store } from '@ngrx/store';
 import { selectAccounts } from '@app/stores/account/account.selectors';
 import { AccountsActions } from '@app/stores/account/account.actions';
-import { tap } from 'rxjs';
+import { finalize, tap } from 'rxjs';
 import { AccountService } from '@app/stores/account/account.service';
 
 @Component({
@@ -15,6 +15,7 @@ import { AccountService } from '@app/stores/account/account.service';
 })
 export class DashboardLayoutComponent extends SubscriberComponent implements OnInit {
   public readonly accounts = this.store.select(selectAccounts);
+  public isLoading = false;
 
   constructor(
     private accountService: AccountService,
@@ -30,9 +31,14 @@ export class DashboardLayoutComponent extends SubscriberComponent implements OnI
   }
 
   public ngOnInit(): void {
+    this.isLoading = true;
+
     this.subscribe(this.accountService.load().pipe(
       tap((res) => {
         this.store.dispatch(AccountsActions.retrievedAccountList({ accounts: res }))
+      }),
+      finalize(() => {
+        this.isLoading = false;
       }),
     ))
   }

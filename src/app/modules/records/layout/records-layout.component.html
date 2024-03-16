@@ -1,13 +1,20 @@
-<div class="records-layout__card">
-  <p-card header="Create category">
-    <app-create-category
-      (categorySubmitted)="createCategory($event)"
-    ></app-create-category>
-  </p-card>
-</div>
+<p-progressSpinner *ngIf="isLoading" ariaLabel="loading"></p-progressSpinner>
 
-<div class="records-layout__card">
-  <p-card *ngIf="(categories | async) as cats" header="Add event">
-    <app-add-event [categories]="cats" (eventSubmitted)="addHistoryElement($event)"></app-add-event>
-  </p-card>
-</div>
+<ng-container *ngIf="!isLoading">
+  <div class="records-layout__card">
+    <p-card header="Create category">
+      <app-create-category
+        (categorySubmitted)="createCategory($event)"
+      ></app-create-category>
+    </p-card>
+  </div>
+
+  <div class="records-layout__card">
+    <p-card *ngIf="categories | async as cats" header="Add event">
+      <app-add-event
+        [categories]="cats"
+        (eventSubmitted)="addHistoryElement($event)"
+      ></app-add-event>
+    </p-card>
+  </div>
+</ng-container>

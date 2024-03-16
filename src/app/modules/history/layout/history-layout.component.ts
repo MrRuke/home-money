@@ -6,7 +6,7 @@ import { SubscriberComponent } from '@app/core/subscriber';
 import { HistoryService } from '@app/stores/history/history.service';
 import { Store } from '@ngrx/store';
 import { selectHistory } from '@app/stores/history/history.selectors';
-import { tap } from 'rxjs';
+import { finalize, tap } from 'rxjs';
 import { HistoryActions } from '@app/stores/history/history.actions';
 
 @Component({
@@ -16,6 +16,7 @@ import { HistoryActions } from '@app/stores/history/history.actions';
 })
 export class HistoryLayoutComponent extends SubscriberComponent implements OnInit {
   public readonly history = this.store.select(selectHistory);
+  public isLoading = false;
 
   constructor(
     private hstoryService: HistoryService,
@@ -31,9 +32,14 @@ export class HistoryLayoutComponent extends SubscriberComponent implements OnIni
   }
 
   public ngOnInit(): void {
+    this.isLoading = true;
+
     this.subscribe(this.hstoryService.load().pipe(
       tap((res) => {
         this.store.dispatch(HistoryActions.retrievedHistoryList({ history: res }))
+      }),
+      finalize(() => {
+        this.isLoading = false;
       }),
     ));
   }
