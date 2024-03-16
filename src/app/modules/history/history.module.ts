@@ -5,6 +5,7 @@ import { CostPipeModule } from '@app/services/cost.pipe.module';
 import { HistoryLayoutComponent } from './layout/history-layout.component';
 import { HistoryTableComponent } from './components/history-table/history-table.component';
 import { TableModule } from 'primeng/table';
+import { ChipModule } from 'primeng/chip';
 
 @NgModule({
   declarations: [HistoryLayoutComponent, HistoryTableComponent],
@@ -13,6 +14,7 @@ import { TableModule } from 'primeng/table';
     HistoryRoutingModule,
     CostPipeModule,
     TableModule,
+    ChipModule,
   ],
 })
 export class HistoryModule {

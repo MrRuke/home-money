@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { HistoryElement } from '@app/apis/history/models';
+import { HistoryElement, HistoryType } from '@app/apis/history/models';
 
 @Component({
   selector: 'app-history-table',
@@ -9,4 +9,6 @@ import { HistoryElement } from '@app/apis/history/models';
 export class HistoryTableComponent {
   @Input()
   public history: HistoryElement[] = [];
+
+  public getTypeIcon = (type: HistoryType): string => type === HistoryType.INCOME ? 'pi-angle-double-up' : 'pi-angle-double-down';
 }
