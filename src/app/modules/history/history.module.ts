@@ -7,6 +7,9 @@ import { HistoryTableComponent } from './components/history-table/history-table.
 import { TableModule } from 'primeng/table';
 import { ChipModule } from 'primeng/chip';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [HistoryLayoutComponent, HistoryTableComponent],
@@ -17,6 +20,9 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     TableModule,
     ChipModule,
     ProgressSpinnerModule,
+    ButtonModule,
+    ConfirmDialogModule,
+    ToastModule,
   ],
 })
 export class HistoryModule {

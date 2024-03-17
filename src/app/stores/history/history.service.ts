@@ -17,4 +17,8 @@ export class HistoryService {
   public add(event: HistoryRequest): Observable<HistoryElement> {
     return this.api.addHistoryElement(event);
   }
+
+  public delete(eventId: string): Observable<void> {
+    return this.api.deleteHistoryElement(eventId);
+  }
 }

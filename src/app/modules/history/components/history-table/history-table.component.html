@@ -5,6 +5,7 @@
       <th>Amount</th>
       <th>Date</th>
       <th>Type</th>
+      <th></th>
     </tr>
   </ng-template>
 
@@ -15,6 +16,14 @@
       <td>{{ item.date }}</td>
       <td>
         <p-chip [label]="item.type" [icon]="'pi ' + getTypeIcon(item.type)"></p-chip>
+      </td>
+      <td>
+        <p-button
+          icon="pi pi-trash"
+          size="small"
+          severity="danger"
+          (click)="handleRemove(item.id)"
+        ></p-button>
       </td>
     </tr>
   </ng-template>

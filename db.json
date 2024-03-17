@@ -65,38 +65,6 @@
   ],
   "events": [
     {
-      "id": "ef8c",
-      "category": "0aec",
-      "type": "OUTCOME",
-      "amount": 200,
-      "description": "",
-      "date": "06.03.2024 00:35:32"
-    },
-    {
-      "id": "08d5",
-      "category": "0aec",
-      "type": "INCOME",
-      "amount": 1,
-      "description": "",
-      "date": "07.03.2024 00:17:52"
-    },
-    {
-      "id": "b1a7",
-      "category": "0aec",
-      "type": "OUTCOME",
-      "amount": 13,
-      "description": "",
-      "date": "07.03.2024 00:18:00"
-    },
-    {
-      "id": "3e12",
-      "category": "0aec",
-      "type": "INCOME",
-      "amount": 1222,
-      "description": "",
-      "date": "17.03.2024 01:01:49"
-    },
-    {
       "id": "1cf2",
       "category": "0aec",
       "type": "OUTCOME",
@@ -143,6 +111,14 @@
       "amount": 32,
       "description": "",
       "date": "17.03.2024 01:23:23"
+    },
+    {
+      "id": "e60b",
+      "category": "7adf",
+      "type": "OUTCOME",
+      "amount": 1,
+      "description": "",
+      "date": "17.03.2024 01:46:36"
     }
   ]
 }

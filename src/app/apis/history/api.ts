@@ -22,4 +22,8 @@ export class HistoryApi extends BaseApi {
   public getHistoryElementById(id: string): Observable<HistoryElement> {
     return this.get(`events/${id}`).pipe(delay(400));
   }
+
+  public deleteHistoryElement(id: string): Observable<void> {
+    return this.delete(`events/${id}`).pipe(delay(400));
+  }
 }
