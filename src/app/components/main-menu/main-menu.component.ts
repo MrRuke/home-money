@@ -1,7 +1,9 @@
-import { Component, ViewEncapsulation } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { Router } from "@angular/router";
+import { SubscriberComponent } from "@app/core/subscriber";
 import { TranslocoService } from "@ngneat/transloco";
 import { MenuItem } from "primeng/api";
+import { tap } from "rxjs/operators";
 
 @Component({
   selector: "app-main-menu",
@@ -9,34 +11,46 @@ import { MenuItem } from "primeng/api";
   styleUrls: ["./main-menu.component.scss"],
   encapsulation: ViewEncapsulation.None,
 })
-export class MainMenuComponent {
-  public readonly items: MenuItem[] = [
-    {
-      label: "Home",
-      icon: "pi pi-fw pi-home",
-      routerLink: ["/"],
-    },
-    {
-      label: "History",
-      icon: "pi pi-fw pi-history",
-      routerLink: ["/history"],
-    },
-    {
-      label: "Planning",
-      icon: "pi pi-fw pi-book",
-      routerLink: ["/planning"],
-    },
-    {
-      label: "Records",
-      icon: "pi pi-fw pi-pencil",
-      routerLink: ["/records"],
-    },
-  ];
+export class MainMenuComponent extends SubscriberComponent implements OnInit {
+  public items: MenuItem[] = [];
 
   constructor(
     private router: Router,
     private translocoService: TranslocoService
-  ) {}
+  ) {
+    super();
+  }
+
+  public ngOnInit(): void {
+    this.subscribe(
+      this.translocoService.selectTranslate('PAGES.DASHBOARD').pipe(
+        tap(() => {
+          this.items = [
+            {
+              label: this.translocoService.translate('PAGES.DASHBOARD'),
+              icon: "pi pi-fw pi-home",
+              routerLink: ["/"],
+            },
+            {
+              label: this.translocoService.translate('PAGES.HISTORY'),
+              icon: "pi pi-fw pi-history",
+              routerLink: ["/history"],
+            },
+            {
+              label: this.translocoService.translate('PAGES.PLANNING'),
+              icon: "pi pi-fw pi-book",
+              routerLink: ["/planning"],
+            },
+            {
+              label: this.translocoService.translate('PAGES.RECORDS'),
+              icon: "pi pi-fw pi-pencil",
+              routerLink: ["/records"],
+            },
+          ];
+        })
+      )
+    );
+  }
 
   public changeLanguage(lang: string): void {
     this.translocoService.setActiveLang(lang);

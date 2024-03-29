@@ -1,6 +1,8 @@
 <form class="add-event" [formGroup]="formGroup">
   <div class="add-event__field">
-    <label for="amount">Amount</label>
+    <label for="amount">
+      {{ "RECORDS.ADD_HISTORY.AMOUNT_FIELD.TITLE" | transloco }}
+    </label>
 
     <p-inputNumber
       inputId="integeronly"
@@ -8,13 +10,15 @@
       formControlName="amount"
     ></p-inputNumber>
 
-    <small class="add-event__field-helper">Set down amount </small>
+    <small class="add-event__field-helper">
+      {{ "RECORDS.ADD_HISTORY.AMOUNT_FIELD.PLACEHOLDER" | transloco }}
+    </small>
 
     <small
       *ngIf="amountControl.hasError('required') && amountControl.dirty"
       class="add-event__field-helper--error"
     >
-      Amount is <strong>required</strong>
+      {{ "RECORDS.ADD_HISTORY.AMOUNT_FIELD.REQUIRED" | transloco }}
     </small>
   </div>
 
@@ -27,7 +31,7 @@
       ></p-radioButton>
 
       <label [for]="type">
-        {{ type }}
+        {{ getTypeText(type) | transloco }}
       </label>
     </div>
   </div>
@@ -37,19 +41,12 @@
       formControlName="category"
       [options]="categories"
       optionLabel="name"
-      placeholder="Choose category"
+      placeholder="{{ 'RECORDS.ADD_HISTORY.CATEGORY_PLACEHOLDER' | transloco }}"
     ></p-dropdown>
-
-    <small
-      *ngIf="categoryControl.hasError('required') && categoryControl.dirty"
-      class="add-event__field-helper--error"
-    >
-      Category is <strong>required</strong>
-    </small>
   </div>
 
   <p-button
-    label="Add event"
+    label="{{ 'RECORDS.ADD_HISTORY.SUBMIT' | transloco }}"
     severity="success"
     class="add-event__submit-button"
     (onClick)="handleSubmit()"

@@ -1,21 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { AccountCurrencyTypes, AccountElement } from '@app/apis/accounts/models';
-import { MetaService } from '@app/services/meta.service';
-import { SubscriberComponent } from '@app/core/subscriber';
-import { Store } from '@ngrx/store';
-import { selectAccounts } from '@app/stores/account/account.selectors';
-import { AccountsActions } from '@app/stores/account/account.actions';
-import { finalize, tap } from 'rxjs';
-import { AccountService } from '@app/stores/account/account.service';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { Component, OnInit } from "@angular/core";
+import {
+  AccountCurrencyTypes,
+  AccountElement,
+} from "@app/apis/accounts/models";
+import { MetaService } from "@app/services/meta.service";
+import { SubscriberComponent } from "@app/core/subscriber";
+import { Store } from "@ngrx/store";
+import { selectAccounts } from "@app/stores/account/account.selectors";
+import { AccountsActions } from "@app/stores/account/account.actions";
+import { finalize, tap } from "rxjs";
+import { AccountService } from "@app/stores/account/account.service";
+import { ConfirmationService, MessageService } from "primeng/api";
+import { TranslocoService } from "@ngneat/transloco";
 
 @Component({
-  selector: 'app-dashboard-layout',
-  templateUrl: './dashboard-layout.component.html',
-  styleUrls: ['./dashboard-layout.component.scss'],
+  selector: "app-dashboard-layout",
+  templateUrl: "./dashboard-layout.component.html",
+  styleUrls: ["./dashboard-layout.component.scss"],
   providers: [ConfirmationService, MessageService],
 })
-export class DashboardLayoutComponent extends SubscriberComponent implements OnInit {
+export class DashboardLayoutComponent
+  extends SubscriberComponent
+  implements OnInit
+{
   public readonly accounts = this.store.select(selectAccounts);
   public isLoading = false;
 
@@ -24,57 +31,72 @@ export class DashboardLayoutComponent extends SubscriberComponent implements OnI
     private store: Store,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
-    metaService: MetaService,
+    private translocoService: TranslocoService,
+    metaService: MetaService
   ) {
     super();
     metaService.init({
-      title: 'Dashboard',
-      description: 'Page of dashboard',
-      keywords: 'Dashboard',
+      title: "Dashboard",
+      description: "Page of dashboard",
+      keywords: "Dashboard",
     });
   }
 
   public ngOnInit(): void {
     this.isLoading = true;
 
-    this.subscribe(this.accountService.load().pipe(
-      tap((res) => {
-        this.store.dispatch(AccountsActions.retrievedAccountList({ accounts: res }))
-      }),
-      finalize(() => {
-        this.isLoading = false;
-      }),
-    ))
+    this.subscribe(
+      this.accountService.load().pipe(
+        tap((res) => {
+          this.store.dispatch(
+            AccountsActions.retrievedAccountList({ accounts: res })
+          );
+        }),
+        finalize(() => {
+          this.isLoading = false;
+        })
+      )
+    );
   }
 
   public onRemove(event: Event, accountId: number): void {
     this.confirmationService.confirm({
       target: event.target as EventTarget,
-      message: 'Do you want to delete this record?',
-      header: 'Delete Confirmation',
-      icon: 'pi pi-info-circle',
+      message: this.translocoService.translate("DELETE_CONFIRMATION.MESSAGE"),
+      header: this.translocoService.translate("DELETE_CONFIRMATION.TITLE"),
+      icon: "pi pi-info-circle",
       acceptButtonStyleClass: "p-button-danger p-button-text",
       rejectButtonStyleClass: "p-button-text p-button-text",
       accept: () => {
-        this.subscribe(this.accountService.delete(accountId).pipe(
-          tap(() => {
-            this.store.dispatch(AccountsActions.removeAccount({ accountId }));
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Card deleted' });
-          }),
-        ));
+        this.subscribe(
+          this.accountService.delete(accountId).pipe(
+            tap(() => {
+              this.store.dispatch(AccountsActions.removeAccount({ accountId }));
+              this.messageService.add({
+                severity: "success",
+                summary: this.translocoService.translate("TOASTS.DELETE_SUCCESS.TITLE"),
+                detail: this.translocoService.translate("TOASTS.DELETE_SUCCESS.MESSAGE"),
+              });
+            })
+          )
+        );
       },
     });
   }
 
   public onAdd(): void {
-    this.subscribe(this.accountService.add({
-      value: 1200,
-      currency: AccountCurrencyTypes.RUB,
-    }).pipe(
-      tap((account) => {
-        this.store.dispatch(AccountsActions.addAccount({ account }));
-      }),
-    ));
+    this.subscribe(
+      this.accountService
+        .add({
+          value: 1200,
+          currency: AccountCurrencyTypes.RUB,
+        })
+        .pipe(
+          tap((account) => {
+            this.store.dispatch(AccountsActions.addAccount({ account }));
+          })
+        )
+    );
   }
 
   public trackByAccounts(index: number, account: AccountElement): number {

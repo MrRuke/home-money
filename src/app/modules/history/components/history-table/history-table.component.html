@@ -1,10 +1,10 @@
 <p-table [value]="history">
   <ng-template pTemplate="header">
     <tr>
-      <th>No</th>
-      <th>Amount</th>
-      <th>Date</th>
-      <th>Type</th>
+      <th>№</th>
+      <th>{{ "HISTORY.AMOUNT" | transloco }}</th>
+      <th>{{ "HISTORY.DATE" | transloco }}</th>
+      <th>{{ "HISTORY.TYPE" | transloco }}</th>
       <th></th>
     </tr>
   </ng-template>
@@ -15,7 +15,7 @@
       <td>{{ item.amount | appCost : "RUB" }}</td>
       <td>{{ item.date }}</td>
       <td>
-        <p-chip [label]="item.type" [icon]="'pi ' + getTypeIcon(item.type)"></p-chip>
+        <p-chip [label]="getTypeText(item.type) | transloco" [icon]="'pi ' + getTypeIcon(item.type)"></p-chip>
       </td>
       <td>
         <p-button

@@ -1,30 +1,34 @@
 <form class="create-category" [formGroup]="formGroup">
   <div class="create-category__field">
-    <label for="categoryName">Category name</label>
+    <label for="categoryName">
+      {{ "RECORDS.CREATE_CATEGORY.NAME_FIELD.TITLE" | transloco }}
+    </label>
 
     <input pInputText id="categoryName" type="text" formControlName="name" />
 
     <small class="create-category__field-helper">
-      Set down category name
+      {{ "RECORDS.CREATE_CATEGORY.NAME_FIELD.PLACEHOLDER" | transloco }}
     </small>
 
     <small
       *ngIf="nameControl.hasError('required') && nameControl.dirty"
       class="create-category__field-helper--error"
     >
-      Category name is <strong>required</strong>
+      {{ "RECORDS.CREATE_CATEGORY.NAME_FIELD.REQUIRED" | transloco }}
     </small>
 
     <small
       *ngIf="nameControl.hasError('maxlength')"
       class="create-category__field-helper--error"
     >
-      Category name length is must be <strong>less 32 symbols</strong>
+      {{ "RECORDS.CREATE_CATEGORY.NAME_FIELD.MAX_LENGTH" | transloco }}
     </small>
   </div>
 
   <div class="create-category__field">
-    <label for="limit">Category limit</label>
+    <label for="limit">
+      {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.TITLE" | transloco }}
+    </label>
 
     <p-inputNumber
       inputId="integeronly"
@@ -32,32 +36,34 @@
       formControlName="limit"
     ></p-inputNumber>
 
-    <small class="create-category__field-helper"> Set down limit </small>
+    <small class="create-category__field-helper">
+      {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.PLACEHOLDER" | transloco }}
+    </small>
 
     <small
       *ngIf="limitControl.hasError('required') && limitControl.dirty"
       class="create-category__field-helper--error"
     >
-      Limit is <strong>required</strong>
+      {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.REQUIRED" | transloco }}
     </small>
 
     <small
       *ngIf="limitControl.hasError('min')"
       class="create-category__field-helper--error"
     >
-      Limit is must be <strong>more than 0</strong>
+      {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.MIN_LENGTH" | transloco }}
     </small>
 
     <small
       *ngIf="limitControl.hasError('max')"
       class="create-category__field-helper--error"
     >
-      Limit is must be <strong>less than 999999</strong>
+      {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.MAX_LENGTH" | transloco }}
     </small>
   </div>
 
   <p-button
-    label="Create category"
+    label="{{ 'RECORDS.CREATE_CATEGORY.SUBMIT' | transloco }}"
     severity="success"
     class="create-category__submit-button"
     (onClick)="handleSubmit()"

@@ -10,6 +10,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
+import { TranslocoRootModule } from '@app/transloco-root.module';
 
 @NgModule({
   declarations: [HistoryLayoutComponent, HistoryTableComponent],
@@ -23,6 +24,7 @@ import { ToastModule } from 'primeng/toast';
     ButtonModule,
     ConfirmDialogModule,
     ToastModule,
+    TranslocoRootModule,
   ],
 })
 export class HistoryModule {

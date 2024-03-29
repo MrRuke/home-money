@@ -36,6 +36,11 @@ export class AddEventComponent {
   ) {
   }
 
+  public isIncome = (type: HistoryType): boolean => type === HistoryType.INCOME;
+
+  public getTypeText = (type: HistoryType): string =>
+    this.isIncome(type) ? "HISTORY.TYPE_INCOME" : "HISTORY.TYPE_OUTCOME";
+
   public handleSubmit(): void {
     if (this.formGroup.invalid) {
       return;
