@@ -12,15 +12,15 @@ export class HistoryApi extends BaseApi {
   }
 
   public addHistoryElement(event: HistoryRequest): Observable<HistoryElement> {
-    return this.post('events', event).pipe(delay(400));
+    return this.post<HistoryRequest, HistoryElement>('events', event).pipe(delay(400));
   }
 
   public getHistory(): Observable<HistoryElement[]> {
-    return this.get('events').pipe(delay(400));
+    return this.get<HistoryElement[]>('events').pipe(delay(400));
   }
 
   public getHistoryElementById(id: string): Observable<HistoryElement> {
-    return this.get(`events/${id}`).pipe(delay(400));
+    return this.get<HistoryElement>(`events/${id}`).pipe(delay(400));
   }
 
   public deleteHistoryElement(id: string): Observable<void> {

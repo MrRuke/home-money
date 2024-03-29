@@ -1,44 +1,38 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { environment } from '@env/environment';
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
+import { environment } from "@env/environment";
 
 export class BaseApi {
   private baseUrl = environment.restURL;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient) {}
+
+  protected get<R>(url: string = ""): Observable<R> {
+    return this.http
+      .get<R>(this.getUrl(url))
+      .pipe(map((response: R) => response));
   }
 
-  // tslint:disable-next-line:no-any
-  protected get(url: string = ''): Observable<any> {
-    return this.http.get(this.getUrl(url))
-      // tslint:disable-next-line:no-any
-      .pipe(map((response: any) => response));
+  protected post<T, R>(url: string = "", data?: T): Observable<R> {
+    return this.http
+      .post<R>(this.getUrl(url), data ?? {})
+      .pipe(map((response: R) => response));
   }
 
-  // tslint:disable-next-line:no-any
-  protected post(url: string = '', data: any = {}): Observable<any> {
-    return this.http.post(this.getUrl(url), data)
-      // tslint:disable-next-line:no-any
-      .pipe(map((response: any) => response));
+  protected put<T, R>(url: string = "", data?: T): Observable<R> {
+    return this.http
+      .put<R>(this.getUrl(url), data ?? {})
+      .pipe(map((response: R) => response));
   }
 
-  // tslint:disable-next-line:no-any
-  protected put(url: string = '', data: any = {}): Observable<any> {
-    return this.http.put(this.getUrl(url), data)
-      // tslint:disable-next-line:no-any
-      .pipe(map((response: any) => response));
+  protected delete<T>(url: string = "", data?: T): Observable<void> {
+    return this.http
+      .delete<void>(this.getUrl(url), data ?? {})
+      .pipe(map(() => {}));
   }
 
-  // tslint:disable-next-line:no-any
-  protected delete(url: string = '', data: any = {}): Observable<any> {
-    return this.http.delete(this.getUrl(url), data)
-      // tslint:disable-next-line:no-any
-      .pipe(map((response: any) => response));
-  }
-
-  private getUrl(url: string = ''): string {
+  private getUrl(url: string = ""): string {
     return this.baseUrl + url;
   }
 }
