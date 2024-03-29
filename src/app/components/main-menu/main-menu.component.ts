@@ -1,40 +1,45 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
-import { MenuItem } from 'primeng/api';
+import { Component, ViewEncapsulation } from "@angular/core";
+import { Router } from "@angular/router";
+import { TranslocoService } from "@ngneat/transloco";
+import { MenuItem } from "primeng/api";
 
 @Component({
-  selector: 'app-main-menu',
-  templateUrl: './main-menu.component.html',
-  styleUrls: ['./main-menu.component.scss'],
+  selector: "app-main-menu",
+  templateUrl: "./main-menu.component.html",
+  styleUrls: ["./main-menu.component.scss"],
   encapsulation: ViewEncapsulation.None,
 })
 export class MainMenuComponent {
   public readonly items: MenuItem[] = [
     {
-        label: 'Home',
-        icon: 'pi pi-fw pi-home',
-        routerLink: ['/']
+      label: "Home",
+      icon: "pi pi-fw pi-home",
+      routerLink: ["/"],
     },
     {
-        label: 'History',
-        icon: 'pi pi-fw pi-history',
-        routerLink: ['/history']
+      label: "History",
+      icon: "pi pi-fw pi-history",
+      routerLink: ["/history"],
     },
     {
-        label: 'Planning',
-        icon: 'pi pi-fw pi-book',
-        routerLink: ['/planning']
+      label: "Planning",
+      icon: "pi pi-fw pi-book",
+      routerLink: ["/planning"],
     },
     {
-        label: 'Records',
-        icon: 'pi pi-fw pi-pencil',
-        routerLink: ['/records']
-    }
-];
+      label: "Records",
+      icon: "pi pi-fw pi-pencil",
+      routerLink: ["/records"],
+    },
+  ];
 
   constructor(
     private router: Router,
-  ) {
+    private translocoService: TranslocoService
+  ) {}
+
+  public changeLanguage(lang: string): void {
+    this.translocoService.setActiveLang(lang);
   }
 
   public trackByMenu(index: number): number {

@@ -23,6 +23,7 @@
     "@angular/platform-browser": "^17.2.3",
     "@angular/platform-browser-dynamic": "^17.2.3",
     "@angular/router": "^17.2.3",
+    "@ngneat/transloco": "6.0.4",
     "@ngrx/store": "^17.1.1",
     "@ngx-translate/core": "^15.0.0",
     "@swimlane/ngx-charts": "^20.5.0",
@@ -48,6 +49,7 @@
     "@angular-eslint/template-parser": "17.2.1",
     "@angular/cli": "^17.2.2",
     "@angular/compiler-cli": "^17.2.3",
+    "@ngrx/eslint-plugin": "^17.1.1",
     "@types/jasmine": "~5.1.4",
     "@types/jasminewd2": "~2.0.13",
     "@types/node": "^20.11.24",
@@ -65,7 +67,6 @@
     "protractor": "~7.0.0",
     "ts-node": "~10.9.2",
     "tslint": "~6.1.0",
-    "typescript": "~5.3.3",
-    "@ngrx/eslint-plugin": "^17.1.1"
+    "typescript": "~5.3.3"
   }
 }

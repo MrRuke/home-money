@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { accountReducer } from './stores/account/account.reducer';
 import { historyReducer } from './stores/history/history.reducer';
 import { categoryReducer } from './stores/categories/category.reducer';
+import { TranslocoRootModule } from './transloco-root.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { categoryReducer } from './stores/categories/category.reducer';
       history: historyReducer,
       categories: categoryReducer,
     }),
+    TranslocoRootModule,
   ],
   providers: [
     CommonModule,

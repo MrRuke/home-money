@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HeaderComponent } from './header.component';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
+import { TranslocoRootModule } from '@app/transloco-root.module';
 
 @NgModule({
   declarations: [HeaderComponent],
@@ -10,6 +11,7 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     ToolbarModule,
     ButtonModule,
+    TranslocoRootModule,
   ],
   exports: [
     HeaderComponent,
