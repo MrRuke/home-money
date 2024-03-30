@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { Router } from "@angular/router";
 import { SubscriberComponent } from "@app/core/subscriber";
+import { ThemeService } from "@app/services/theme.service";
 import { TranslocoService } from "@ngneat/transloco";
 import { MenuItem } from "primeng/api";
 import { tap } from "rxjs/operators";
@@ -16,7 +17,8 @@ export class MainMenuComponent extends SubscriberComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private translocoService: TranslocoService
+    private translocoService: TranslocoService,
+    private themeService: ThemeService,
   ) {
     super();
   }
@@ -50,6 +52,10 @@ export class MainMenuComponent extends SubscriberComponent implements OnInit {
         })
       )
     );
+  }
+
+  public changeTheme(theme: string): void {
+    this.themeService.switchTheme(theme);
   }
 
   public changeLanguage(lang: string): void {

@@ -1,6 +1,23 @@
 <div *ngIf="items.length" class="main-menu">
   <p-menu [model]="items" styleClass="main-menu__container"></p-menu>
 
-  <button type="button" (click)="changeLanguage('en')">English</button>
-  <button type="button" (click)="changeLanguage('ru')">Русский</button>
+  <div>
+    <button type="button" (click)="changeLanguage('en')">English</button>
+
+    <button type="button" (click)="changeLanguage('ru')">Русский</button>
+  </div>
+
+  <div>
+    <button type="button" (click)="changeTheme('md-light-indigo')">
+      indigo
+    </button>
+
+    <button type="button" (click)="changeTheme('bootstrap4-light-blue')">
+      light blue
+    </button>
+
+    <button type="button" (click)="changeTheme('bootstrap4-dark-blue')">
+      dark blue
+    </button>
+  </div>
 </div>
