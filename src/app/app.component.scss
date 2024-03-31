@@ -1,9 +1,10 @@
 .app-root {
+  background-color: var(--surface-b);
+
   &__main-panel {
     margin-left: auto;
     width: calc(100% - 260px);
   }
-
 
   &__main-menu {
     position: fixed;
@@ -13,9 +14,9 @@
     width: 260px;
     left: 0;
     z-index: 1000;
-    background: #fff;
     border-right: 1px solid #ddd;
     box-sizing: border-box;
+    background-color: var(--surface-a);
   }
 
   &__content {
@@ -23,7 +24,7 @@
   }
 
   &__main-panel-background {
-    background: #f4f3ef;
+    background-color: var(--surface-b);
     position: fixed;
     left: 0;
     top: 0;

@@ -1,7 +1,8 @@
 .header {
-  background-color: #fff;
   border: none;
+  border-bottom: 1px solid var(--surface-b);
   border-radius: 0;
+  background-color: var(--surface-a);
 
   &__title {
     font-size: 1.5rem;
