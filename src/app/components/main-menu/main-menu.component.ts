@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { Router } from "@angular/router";
 import { SubscriberComponent } from "@app/core/subscriber";
+import { LangService } from "@app/services/lang.service";
 import { ThemeService } from "@app/services/theme.service";
 import { TranslocoService } from "@ngneat/transloco";
 import { MenuItem } from "primeng/api";
@@ -37,7 +38,8 @@ export class MainMenuComponent extends SubscriberComponent implements OnInit {
   constructor(
     private router: Router,
     private translocoService: TranslocoService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private langService: LangService,
   ) {
     super();
   }
@@ -74,7 +76,7 @@ export class MainMenuComponent extends SubscriberComponent implements OnInit {
   }
 
   public changeLanguage(event: DropdownChangeEvent): void {
-    this.translocoService.setActiveLang((event.value as Language).code);
+    this.langService.setActiveLang((event.value as Language).code);
   }
 
   public changeTheme(event: DropdownChangeEvent): void {
