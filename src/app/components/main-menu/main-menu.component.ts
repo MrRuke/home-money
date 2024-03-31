@@ -25,6 +25,9 @@ export class MainMenuComponent extends SubscriberComponent implements OnInit {
   public readonly languages: Language[] = [
     { name: "English", code: "en" },
     { name: "Русский", code: "ru" },
+    { name: "Deutsch", code: "de" },
+    { name: "Français", code: "fr" },
+    { name: "Español", code: "es" },
   ];
   public readonly themes = [
     "md-light-indigo",

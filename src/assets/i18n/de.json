@@ -1,0 +1,63 @@
+{
+  "HEADER_TITLE": "Finanzbuchhaltung",
+  "PAGES": {
+    "DASHBOARD": "Dashboard",
+    "HISTORY": "Verlauf",
+    "PLANNING": "Planung",
+    "RECORDS": "Aufzeichnungen"
+  },
+  "DELETE_CONFIRMATION": {
+    "TITLE": "Löschbestätigung",
+    "MESSAGE": "Möchten Sie dieses Element löschen?"
+  },
+  "TOASTS": {
+    "ADD_SUCCESS": {
+      "TITLE": "Erfolg",
+      "MESSAGE": "Element hinzugefügt"
+    },
+    "DELETE_SUCCESS": {
+      "TITLE": "Erfolg",
+      "MESSAGE": "Element gelöscht"
+    }
+  },
+  "HISTORY": {
+    "AMOUNT": "Betrag",
+    "DATE": "Datum",
+    "TYPE": "Typ",
+    "TYPE_INCOME": "Einkommen",
+    "TYPE_OUTCOME": "Ausgabe"
+  },
+  "PLANNING": {
+    "OF": "von",
+    "BALANCE": "Guthaben"
+  },
+  "RECORDS": {
+    "CREATE_CATEGORY": {
+      "NAME_FIELD": {
+        "TITLE": "Kategoriename",
+        "PLACEHOLDER": "Kategoriename eingeben",
+        "REQUIRED": "Kategoriename ist erforderlich",
+        "MAX_LENGTH": "Kategoriename muss weniger als 32 Zeichen lang sein"
+      },
+      "LIMIT_FIELD": {
+        "TITLE": "Kategorielimit",
+        "PLACEHOLDER": "Limit eingeben",
+        "REQUIRED": "Limit ist erforderlich",
+        "MIN_LENGTH": "Limit muss größer als 0 sein",
+        "MAX_LENGTH": "Limit muss kleiner als 999999 sein"
+      },
+      "TITLE": "Kategorie erstellen",
+      "SUBMIT": "Kategorie erstellen"
+    },
+    "ADD_HISTORY": {
+      "AMOUNT_FIELD": {
+        "TITLE": "Betrag",
+        "PLACEHOLDER": "Betrag eingeben",
+        "REQUIRED": "Betrag ist erforderlich"
+      },
+      "CATEGORY_PLACEHOLDER": "Kategorie wählen",
+      "TITLE": "Verlauf hinzufügen",
+      "SUBMIT": "Verlauf hinzufügen"
+    }
+  }
+}
