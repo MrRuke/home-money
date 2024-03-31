@@ -4,7 +4,13 @@ import { SubscriberComponent } from "@app/core/subscriber";
 import { ThemeService } from "@app/services/theme.service";
 import { TranslocoService } from "@ngneat/transloco";
 import { MenuItem } from "primeng/api";
+import { DropdownChangeEvent } from "primeng/dropdown";
 import { tap } from "rxjs/operators";
+
+interface Language {
+  name: string;
+  code: string;
+}
 
 @Component({
   selector: "app-main-menu",
@@ -15,36 +21,49 @@ import { tap } from "rxjs/operators";
 export class MainMenuComponent extends SubscriberComponent implements OnInit {
   public items: MenuItem[] = [];
 
+  public readonly languages: Language[] = [
+    { name: "English", code: "en" },
+    { name: "Русский", code: "ru" },
+  ];
+  public readonly themes = [
+    "md-light-indigo",
+    "bootstrap4-light-blue",
+    "bootstrap4-dark-blue",
+  ];
+
+  public selectedLanguage: Language | undefined;
+  public selectedTheme: string | undefined;
+
   constructor(
     private router: Router,
     private translocoService: TranslocoService,
-    private themeService: ThemeService,
+    private themeService: ThemeService
   ) {
     super();
   }
 
   public ngOnInit(): void {
     this.subscribe(
-      this.translocoService.selectTranslate('PAGES.DASHBOARD').pipe(
+      this.translocoService.selectTranslate("PAGES.DASHBOARD").pipe(
         tap(() => {
           this.items = [
             {
-              label: this.translocoService.translate('PAGES.DASHBOARD'),
+              label: this.translocoService.translate("PAGES.DASHBOARD"),
               icon: "pi pi-fw pi-home",
               routerLink: ["/"],
             },
             {
-              label: this.translocoService.translate('PAGES.HISTORY'),
+              label: this.translocoService.translate("PAGES.HISTORY"),
               icon: "pi pi-fw pi-history",
               routerLink: ["/history"],
             },
             {
-              label: this.translocoService.translate('PAGES.PLANNING'),
+              label: this.translocoService.translate("PAGES.PLANNING"),
               icon: "pi pi-fw pi-book",
               routerLink: ["/planning"],
             },
             {
-              label: this.translocoService.translate('PAGES.RECORDS'),
+              label: this.translocoService.translate("PAGES.RECORDS"),
               icon: "pi pi-fw pi-pencil",
               routerLink: ["/records"],
             },
@@ -54,12 +73,12 @@ export class MainMenuComponent extends SubscriberComponent implements OnInit {
     );
   }
 
-  public changeTheme(theme: string): void {
-    this.themeService.switchTheme(theme);
+  public changeLanguage(event: DropdownChangeEvent): void {
+    this.translocoService.setActiveLang((event.value as Language).code);
   }
 
-  public changeLanguage(lang: string): void {
-    this.translocoService.setActiveLang(lang);
+  public changeTheme(event: DropdownChangeEvent): void {
+    this.themeService.switchTheme(event.value as string);
   }
 
   public trackByMenu(index: number): number {

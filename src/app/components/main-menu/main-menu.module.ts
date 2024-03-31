@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MainMenuComponent } from './main-menu.component';
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
-
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [MainMenuComponent],
@@ -13,6 +13,7 @@ import { MenuModule } from 'primeng/menu';
     RouterModule,
     ButtonModule,
     MenuModule,
+    DropdownModule,
   ],
   exports: [
     MainMenuComponent,
