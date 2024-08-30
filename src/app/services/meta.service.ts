@@ -19,9 +19,15 @@ export class MetaService {
   }
 
   public init(meta: MetaModel): void {
-    meta.title && this.setTitle(meta.title);
-    meta.description && this.addDescription(meta.description);
-    meta.keywords && this.addKeywords(meta.keywords)
+    if (meta.title) {
+      this.setTitle(meta.title);
+    }
+    if (meta.description) {
+      this.setTitle(meta.description);
+    }
+    if (meta.keywords) {
+      this.setTitle(meta.keywords);
+    }
   }
 
   private setTitle(title: string): void {
