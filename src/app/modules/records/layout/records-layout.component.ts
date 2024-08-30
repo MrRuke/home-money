@@ -1,12 +1,11 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { CategoryRequest } from "@app/apis/categories/models";
 import { HistoryRequest } from "@app/apis/history/models";
-import { SubscriberComponent } from "@app/core/subscriber";
 import { MetaService } from "@app/services/meta.service";
 import { CategoryService } from "@app/stores/categories/category.service";
 import { Store } from "@ngrx/store";
 import { selectCategories } from "@app/stores/categories/category.selectors";
-import { finalize, tap } from "rxjs";
+import { finalize, take, tap } from "rxjs";
 import { CategoryActions } from "@app/stores/categories/category.actions";
 import { HistoryService } from "@app/stores/history/history.service";
 import { HistoryActions } from "@app/stores/history/history.actions";
@@ -19,10 +18,7 @@ import { TranslocoService } from "@ngneat/transloco";
   styleUrls: ["./records-layout.component.scss"],
   providers: [MessageService],
 })
-export class RecordsLayoutComponent
-  extends SubscriberComponent
-  implements OnInit
-{
+export class RecordsLayoutComponent implements OnInit {
   private historyService = inject(HistoryService);
   private categoryService = inject(CategoryService);
   private store = inject(Store);
@@ -33,7 +29,6 @@ export class RecordsLayoutComponent
   public isLoading = false;
 
   constructor(metaService: MetaService) {
-    super();
     metaService.init({
       title: "Records",
       description: "Page of records",
@@ -43,8 +38,10 @@ export class RecordsLayoutComponent
 
   public ngOnInit(): void {
     this.isLoading = true;
-    this.subscribe(
-      this.categoryService.load().pipe(
+    this.categoryService
+      .load()
+      .pipe(
+        take(1),
         tap((res) => {
           this.store.dispatch(
             CategoryActions.retrievedCategoryList({ categories: res })
@@ -54,12 +51,14 @@ export class RecordsLayoutComponent
           this.isLoading = false;
         })
       )
-    );
+      .subscribe();
   }
 
   public createCategory(category: CategoryRequest): void {
-    this.subscribe(
-      this.categoryService.add(category).pipe(
+    this.categoryService
+      .add(category)
+      .pipe(
+        take(1),
         tap((res) => {
           this.store.dispatch(CategoryActions.addCategory({ category: res }));
           this.messageService.add({
@@ -73,12 +72,14 @@ export class RecordsLayoutComponent
           });
         })
       )
-    );
+      .subscribe();
   }
 
   public addHistoryElement(event: HistoryRequest): void {
-    this.subscribe(
-      this.historyService.add(event).pipe(
+    this.historyService
+      .add(event)
+      .pipe(
+        take(1),
         tap((res) => {
           this.store.dispatch(HistoryActions.addHistory({ history: res }));
           this.messageService.add({
@@ -92,6 +93,6 @@ export class RecordsLayoutComponent
           });
         })
       )
-    );
+      .subscribe();
   }
 }

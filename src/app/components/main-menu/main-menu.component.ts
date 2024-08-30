@@ -1,12 +1,18 @@
-import { Component, inject, OnInit, ViewEncapsulation } from "@angular/core";
+import {
+  Component,
+  DestroyRef,
+  inject,
+  OnInit,
+  ViewEncapsulation,
+} from "@angular/core";
 import { Router } from "@angular/router";
-import { SubscriberComponent } from "@app/core/subscriber";
 import { LangService } from "@app/services/lang.service";
 import { ThemeService } from "@app/services/theme.service";
 import { TranslocoService } from "@ngneat/transloco";
 import { MenuItem } from "primeng/api";
 import { DropdownChangeEvent } from "primeng/dropdown";
 import { tap } from "rxjs/operators";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 interface Language {
   name: string;
@@ -19,11 +25,12 @@ interface Language {
   styleUrls: ["./main-menu.component.scss"],
   encapsulation: ViewEncapsulation.None,
 })
-export class MainMenuComponent extends SubscriberComponent implements OnInit {
+export class MainMenuComponent implements OnInit {
   private router = inject(Router);
   private translocoService = inject(TranslocoService);
   private themeService = inject(ThemeService);
   private langService = inject(LangService);
+  private destroyRef = inject(DestroyRef);
 
   public items: MenuItem[] = [];
 
@@ -44,8 +51,10 @@ export class MainMenuComponent extends SubscriberComponent implements OnInit {
   public selectedTheme: string | undefined;
 
   public ngOnInit(): void {
-    this.subscribe(
-      this.translocoService.selectTranslate("PAGES.DASHBOARD").pipe(
+    this.translocoService
+      .selectTranslate("PAGES.DASHBOARD")
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
         tap(() => {
           this.items = [
             {
@@ -71,7 +80,7 @@ export class MainMenuComponent extends SubscriberComponent implements OnInit {
           ];
         })
       )
-    );
+      .subscribe();
   }
 
   public changeLanguage(event: DropdownChangeEvent): void {

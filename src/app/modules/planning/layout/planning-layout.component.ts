@@ -1,24 +1,19 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { MetaService } from "@app/services/meta.service";
-import { SubscriberComponent } from "@app/core/subscriber";
 import { PlanningService } from "../planning.service";
-import { finalize } from "rxjs/operators";
+import { finalize, take } from "rxjs/operators";
 
 @Component({
   selector: "app-planning-layout",
   templateUrl: "./planning-layout.component.html",
   styleUrls: ["./planning-layout.component.scss"],
 })
-export class PlanningLayoutComponent
-  extends SubscriberComponent
-  implements OnInit
-{
+export class PlanningLayoutComponent implements OnInit {
   private planningService = inject(PlanningService);
   public readonly planning = this.planningService.selectPlanning();
   public isLoading = false;
 
   constructor(metaService: MetaService) {
-    super();
     metaService.init({
       title: "Planning",
       description: "Page of planning",
@@ -28,13 +23,15 @@ export class PlanningLayoutComponent
 
   public ngOnInit(): void {
     this.isLoading = true;
-    this.subscribe(
-      this.planningService.loadValues().pipe(
+    this.planningService
+      .loadValues()
+      .pipe(
+        take(1),
         finalize(() => {
           this.isLoading = false;
         })
       )
-    );
+      .subscribe();
   }
 
   public getProgressBarModifiers(percent: number): string {

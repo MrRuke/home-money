@@ -4,11 +4,10 @@ import {
   AccountElement,
 } from "@app/apis/accounts/models";
 import { MetaService } from "@app/services/meta.service";
-import { SubscriberComponent } from "@app/core/subscriber";
 import { Store } from "@ngrx/store";
 import { selectAccounts } from "@app/stores/account/account.selectors";
 import { AccountsActions } from "@app/stores/account/account.actions";
-import { finalize, tap } from "rxjs";
+import { finalize, take, tap } from "rxjs";
 import { AccountService } from "@app/stores/account/account.service";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { TranslocoService } from "@ngneat/transloco";
@@ -19,20 +18,17 @@ import { TranslocoService } from "@ngneat/transloco";
   styleUrls: ["./dashboard-layout.component.scss"],
   providers: [ConfirmationService, MessageService],
 })
-export class DashboardLayoutComponent
-  extends SubscriberComponent
-  implements OnInit
-{
+export class DashboardLayoutComponent implements OnInit {
   private accountService = inject(AccountService);
   private store = inject(Store);
   private confirmationService = inject(ConfirmationService);
   private messageService = inject(MessageService);
   private translocoService = inject(TranslocoService);
+
   public readonly accounts = this.store.select(selectAccounts);
   public isLoading = false;
 
   constructor(metaService: MetaService) {
-    super();
     metaService.init({
       title: "Dashboard",
       description: "Page of dashboard",
@@ -43,8 +39,10 @@ export class DashboardLayoutComponent
   public ngOnInit(): void {
     this.isLoading = true;
 
-    this.subscribe(
-      this.accountService.load().pipe(
+    this.accountService
+      .load()
+      .pipe(
+        take(1),
         tap((res) => {
           this.store.dispatch(
             AccountsActions.retrievedAccountList({ accounts: res })
@@ -54,7 +52,7 @@ export class DashboardLayoutComponent
           this.isLoading = false;
         })
       )
-    );
+      .subscribe();
   }
 
   public onRemove(event: Event, accountId: number): void {
@@ -66,8 +64,10 @@ export class DashboardLayoutComponent
       acceptButtonStyleClass: "p-button-danger p-button-text",
       rejectButtonStyleClass: "p-button-text p-button-text",
       accept: () => {
-        this.subscribe(
-          this.accountService.delete(accountId).pipe(
+        this.accountService
+          .delete(accountId)
+          .pipe(
+            take(1),
             tap(() => {
               this.store.dispatch(AccountsActions.removeAccount({ accountId }));
               this.messageService.add({
@@ -81,24 +81,24 @@ export class DashboardLayoutComponent
               });
             })
           )
-        );
+          .subscribe();
       },
     });
   }
 
   public onAdd(): void {
-    this.subscribe(
-      this.accountService
-        .add({
-          value: 1200,
-          currency: AccountCurrencyTypes.RUB,
+    this.accountService
+      .add({
+        value: 1200,
+        currency: AccountCurrencyTypes.RUB,
+      })
+      .pipe(
+        take(1),
+        tap((account) => {
+          this.store.dispatch(AccountsActions.addAccount({ account }));
         })
-        .pipe(
-          tap((account) => {
-            this.store.dispatch(AccountsActions.addAccount({ account }));
-          })
-        )
-    );
+      )
+      .subscribe();
   }
 
   public trackByAccounts(index: number, account: AccountElement): number {
