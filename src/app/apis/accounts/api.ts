@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AccountElement, AccountRequest } from '@app/apis/accounts/models';
 import { Observable } from 'rxjs';
@@ -7,10 +6,6 @@ import { BaseApi } from '../base-api';
 
 @Injectable({ providedIn: 'root' })
 export class AccountsApi extends BaseApi {
-  constructor(public http: HttpClient) {
-    super(http);
-  }
-
   public addAccount(account: AccountRequest): Observable<AccountElement> {
     return this.post<AccountRequest, AccountElement>('accounts', account).pipe(delay(400));
   }

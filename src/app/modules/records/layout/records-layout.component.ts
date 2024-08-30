@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { CategoryRequest } from "@app/apis/categories/models";
 import { HistoryRequest } from "@app/apis/history/models";
 import { SubscriberComponent } from "@app/core/subscriber";
@@ -23,17 +23,16 @@ export class RecordsLayoutComponent
   extends SubscriberComponent
   implements OnInit
 {
+  private historyService = inject(HistoryService);
+  private categoryService = inject(CategoryService);
+  private store = inject(Store);
+  private messageService = inject(MessageService);
+  private translocoService = inject(TranslocoService);
+
   public readonly categories = this.store.select(selectCategories);
   public isLoading = false;
 
-  constructor(
-    private historyService: HistoryService,
-    private categoryService: CategoryService,
-    private store: Store,
-    private messageService: MessageService,
-    private translocoService: TranslocoService,
-    metaService: MetaService
-  ) {
+  constructor(metaService: MetaService) {
     super();
     metaService.init({
       title: "Records",
@@ -65,8 +64,12 @@ export class RecordsLayoutComponent
           this.store.dispatch(CategoryActions.addCategory({ category: res }));
           this.messageService.add({
             severity: "success",
-            summary: this.translocoService.translate("TOASTS.ADD_SUCCESS.TITLE"),
-            detail: this.translocoService.translate("TOASTS.ADD_SUCCESS.MESSAGE"),
+            summary: this.translocoService.translate(
+              "TOASTS.ADD_SUCCESS.TITLE"
+            ),
+            detail: this.translocoService.translate(
+              "TOASTS.ADD_SUCCESS.MESSAGE"
+            ),
           });
         })
       )
@@ -80,8 +83,12 @@ export class RecordsLayoutComponent
           this.store.dispatch(HistoryActions.addHistory({ history: res }));
           this.messageService.add({
             severity: "success",
-            summary: this.translocoService.translate("TOASTS.ADD_SUCCESS.TITLE"),
-            detail: this.translocoService.translate("TOASTS.ADD_SUCCESS.MESSAGE"),
+            summary: this.translocoService.translate(
+              "TOASTS.ADD_SUCCESS.TITLE"
+            ),
+            detail: this.translocoService.translate(
+              "TOASTS.ADD_SUCCESS.MESSAGE"
+            ),
           });
         })
       )

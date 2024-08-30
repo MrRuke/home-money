@@ -1,8 +1,5 @@
-import { Injectable } from '@angular/core';
-import {
-  Meta,
-  Title,
-} from '@angular/platform-browser';
+import { inject, Injectable } from "@angular/core";
+import { Meta, Title } from "@angular/platform-browser";
 
 interface MetaModel {
   title?: string;
@@ -10,13 +7,10 @@ interface MetaModel {
   keywords?: string;
 }
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class MetaService {
-  constructor(
-    private title: Title,
-    private meta: Meta,
-  ) {
-  }
+  private title = inject(Title);
+  private meta = inject(Meta);
 
   public init(meta: MetaModel): void {
     if (meta.title) {
@@ -37,7 +31,7 @@ export class MetaService {
   private addDescription(value: string): void {
     this.meta.addTags([
       {
-        name: 'description',
+        name: "description",
         content: value,
       },
     ]);
@@ -46,7 +40,7 @@ export class MetaService {
   private addKeywords(value: string): void {
     this.meta.addTags([
       {
-        name: 'keywords',
+        name: "keywords",
         content: value,
       },
     ]);

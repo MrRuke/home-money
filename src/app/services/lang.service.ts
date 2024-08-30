@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { APP_LANG_STORAGE_KEY } from "@app/core/constansts";
 import { TranslocoService } from "@ngneat/transloco";
 
@@ -6,7 +6,7 @@ import { TranslocoService } from "@ngneat/transloco";
   providedIn: "root",
 })
 export class LangService {
-  constructor(private translocoService: TranslocoService) {}
+  private translocoService = inject(TranslocoService);
 
   public setActiveLang(lang: string): void {
     this.translocoService.setActiveLang(lang);

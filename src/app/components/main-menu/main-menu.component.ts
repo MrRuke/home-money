@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, inject, OnInit, ViewEncapsulation } from "@angular/core";
 import { Router } from "@angular/router";
 import { SubscriberComponent } from "@app/core/subscriber";
 import { LangService } from "@app/services/lang.service";
@@ -20,6 +20,11 @@ interface Language {
   encapsulation: ViewEncapsulation.None,
 })
 export class MainMenuComponent extends SubscriberComponent implements OnInit {
+  private router = inject(Router);
+  private translocoService = inject(TranslocoService);
+  private themeService = inject(ThemeService);
+  private langService = inject(LangService);
+
   public items: MenuItem[] = [];
 
   public readonly languages: Language[] = [
@@ -37,15 +42,6 @@ export class MainMenuComponent extends SubscriberComponent implements OnInit {
 
   public selectedLanguage: Language | undefined;
   public selectedTheme: string | undefined;
-
-  constructor(
-    private router: Router,
-    private translocoService: TranslocoService,
-    private themeService: ThemeService,
-    private langService: LangService,
-  ) {
-    super();
-  }
 
   public ngOnInit(): void {
     this.subscribe(

@@ -1,14 +1,11 @@
-import { Injectable } from '@angular/core';
-import { HistoryApi } from '@app/apis/history/api';
-import { HistoryElement, HistoryRequest } from '@app/apis/history/models';
-import { Observable } from 'rxjs';
+import { inject, Injectable } from "@angular/core";
+import { HistoryApi } from "@app/apis/history/api";
+import { HistoryElement, HistoryRequest } from "@app/apis/history/models";
+import { Observable } from "rxjs";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class HistoryService {
-  constructor(
-    private api: HistoryApi,
-  ) {
-  }
+  private api = inject(HistoryApi);
 
   public load(): Observable<HistoryElement[]> {
     return this.api.getHistory();

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import {
   AccountCurrencyTypes,
   AccountElement,
@@ -23,17 +23,15 @@ export class DashboardLayoutComponent
   extends SubscriberComponent
   implements OnInit
 {
+  private accountService = inject(AccountService);
+  private store = inject(Store);
+  private confirmationService = inject(ConfirmationService);
+  private messageService = inject(MessageService);
+  private translocoService = inject(TranslocoService);
   public readonly accounts = this.store.select(selectAccounts);
   public isLoading = false;
 
-  constructor(
-    private accountService: AccountService,
-    private store: Store,
-    private confirmationService: ConfirmationService,
-    private messageService: MessageService,
-    private translocoService: TranslocoService,
-    metaService: MetaService
-  ) {
+  constructor(metaService: MetaService) {
     super();
     metaService.init({
       title: "Dashboard",
@@ -74,8 +72,12 @@ export class DashboardLayoutComponent
               this.store.dispatch(AccountsActions.removeAccount({ accountId }));
               this.messageService.add({
                 severity: "success",
-                summary: this.translocoService.translate("TOASTS.DELETE_SUCCESS.TITLE"),
-                detail: this.translocoService.translate("TOASTS.DELETE_SUCCESS.MESSAGE"),
+                summary: this.translocoService.translate(
+                  "TOASTS.DELETE_SUCCESS.TITLE"
+                ),
+                detail: this.translocoService.translate(
+                  "TOASTS.DELETE_SUCCESS.MESSAGE"
+                ),
               });
             })
           )

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, inject } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { Category } from '@app/apis/categories/models';
 import { HistoryRequest, HistoryType } from '@app/apis/history/models';
@@ -10,6 +10,8 @@ import * as moment from 'moment';
   styleUrls: ['./add-event.component.scss'],
 })
 export class AddEventComponent {
+  private fb = inject(UntypedFormBuilder);
+  
   public readonly amountControl = this.fb.control(1, [
     Validators.required,
   ]);
@@ -30,11 +32,6 @@ export class AddEventComponent {
 
   @Output()
   public eventSubmitted = new EventEmitter<HistoryRequest>();
-
-  constructor(
-    private fb: UntypedFormBuilder,
-  ) {
-  }
 
   public isIncome = (type: HistoryType): boolean => type === HistoryType.INCOME;
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { HistoryElement } from "@app/apis/history/models";
 
 import { MetaService } from "@app/services/meta.service";
@@ -21,17 +21,15 @@ export class HistoryLayoutComponent
   extends SubscriberComponent
   implements OnInit
 {
+  private historyService = inject(HistoryService);
+  private store = inject(Store);
+  private confirmationService = inject(ConfirmationService);
+  private messageService = inject(MessageService);
+  private translocoService = inject(TranslocoService);
   public readonly history = this.store.select(selectHistory);
   public isLoading = false;
 
-  constructor(
-    private historyService: HistoryService,
-    private store: Store,
-    private confirmationService: ConfirmationService,
-    private messageService: MessageService,
-    private translocoService: TranslocoService,
-    metaService: MetaService
-  ) {
+  constructor(metaService: MetaService) {
     super();
     metaService.init({
       title: "History",
@@ -73,8 +71,12 @@ export class HistoryLayoutComponent
               );
               this.messageService.add({
                 severity: "success",
-                summary: this.translocoService.translate("TOASTS.DELETE_SUCCESS.TITLE"),
-                detail: this.translocoService.translate("TOASTS.DELETE_SUCCESS.MESSAGE"),
+                summary: this.translocoService.translate(
+                  "TOASTS.DELETE_SUCCESS.TITLE"
+                ),
+                detail: this.translocoService.translate(
+                  "TOASTS.DELETE_SUCCESS.MESSAGE"
+                ),
               });
             })
           )

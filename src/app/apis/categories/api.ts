@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Category, CategoryRequest } from '@app/apis/categories/models';
 import { Observable } from 'rxjs';
@@ -7,10 +6,6 @@ import { BaseApi } from '../base-api';
 
 @Injectable({ providedIn: 'root' })
 export class CategoriesApi extends BaseApi {
-  constructor(public http: HttpClient) {
-    super(http);
-  }
-
   public addCategory(category: CategoryRequest): Observable<Category> {
     return this.post<CategoryRequest, Category>('categories', category).pipe(delay(400));
   }

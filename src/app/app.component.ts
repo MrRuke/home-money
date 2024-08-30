@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { ThemeService } from "./services/theme.service";
 import { LangService } from "./services/lang.service";
 
@@ -8,10 +8,8 @@ import { LangService } from "./services/lang.service";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {
-  constructor(
-    private themeService: ThemeService,
-    private langService: LangService,
-  ) {}
+  private themeService = inject(ThemeService);
+  private langService = inject(LangService);
 
   public ngOnInit(): void {
     this.themeService.initTheme();

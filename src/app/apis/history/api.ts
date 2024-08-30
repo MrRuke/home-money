@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HistoryElement, HistoryRequest } from '@app/apis/history/models';
 import { Observable } from 'rxjs';
@@ -7,10 +6,6 @@ import { BaseApi } from '../base-api';
 
 @Injectable({ providedIn: 'root' })
 export class HistoryApi extends BaseApi {
-  constructor(public http: HttpClient) {
-    super(http);
-  }
-
   public addHistoryElement(event: HistoryRequest): Observable<HistoryElement> {
     return this.post<HistoryRequest, HistoryElement>('events', event).pipe(delay(400));
   }

@@ -2,11 +2,12 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { environment } from "@env/environment";
+import { inject } from "@angular/core";
 
 export class BaseApi {
-  private baseUrl = environment.restURL;
+  public http = inject(HttpClient);
 
-  constructor(public http: HttpClient) {}
+  private baseUrl = environment.restURL;
 
   protected get<R>(url: string = ""): Observable<R> {
     return this.http
