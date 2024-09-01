@@ -42,12 +42,13 @@
           </select>
         </div>
 
-        <p *ngIf="formGroup.controls.value.hasError('required')" class="absolute text-red-700">
+        <p
+          *ngIf="formGroup.controls.value.hasError('required')"
+          class="absolute text-red-700"
+        >
           Balance is required
         </p>
       </div>
     </form>
-
-    <div></div>
   </div>
 </app-dialog>

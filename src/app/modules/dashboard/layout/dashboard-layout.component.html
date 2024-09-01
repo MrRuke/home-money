@@ -1,27 +1,30 @@
 <div class="app-dashboard-layout">
-  <div class="app-dashboard-layout__list">
+  <div class="flex flex-wrap gap-3">
     <p-progressSpinner
       *ngIf="isLoading"
       ariaLabel="loading"
     ></p-progressSpinner>
-    
+
     <ng-container *ngIf="!isLoading">
       <div
-        *ngFor="let item of accounts | async; trackBy: trackByAccounts"
-        class="app-dashboard-layout__item"
+        *ngFor="let item of accounts(); trackBy: trackByAccounts"
+        class="rounded-md font-semibold shadow-sm flex justify-end items-end text-gray-900 bg-white ring-1 ring-inset ring-gray-300 p-2 h-56 w-1/4"
       >
-        {{ item.value | appCost : item.currency }}
+        <div class="flex justify-end items-center gap-2 text-2xl">
+          <span>{{ item.value | appCost : item.currency }}</span>
 
-        <p-button
-          icon="pi pi-trash"
-          size="small"
-          severity="danger"
-          (click)="onRemove($event, item.id)"
-        ></p-button>
+          <app-custom-button theme="danger" (click)="onRemove($event, item.id)">
+            Delete
+          </app-custom-button>
+        </div>
       </div>
 
-      <div class="app-dashboard-layout__create-card">
-        <p-button icon="pi pi-plus" size="small" (click)="handleOpenCreateDialog()"></p-button>
+      <div
+        class="flex items-center justify-center rounded-md border-blue-600 border-2 border-dashed h-56 w-1/4"
+      >
+        <app-custom-button theme="primary" (click)="handleOpenCreateDialog()">
+          Create
+        </app-custom-button>
       </div>
     </ng-container>
   </div>
@@ -31,4 +34,7 @@
 
 <p-confirmDialog></p-confirmDialog>
 
-<app-create-account-dialog *ngIf="isCreateDialogVisible()" (closed)="onClose()"></app-create-account-dialog>
+<app-create-account-dialog
+  *ngIf="isCreateDialogVisible()"
+  (closed)="onClose()"
+></app-create-account-dialog>

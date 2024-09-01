@@ -1,31 +1,23 @@
 import { Component, inject, OnInit, signal } from "@angular/core";
-import {
-  AccountElement,
-} from "@app/apis/accounts/models";
+import { AccountElement } from "@app/apis/accounts/models";
 import { MetaService } from "@app/services/meta.service";
-import { Store } from "@ngrx/store";
-import { selectAccounts } from "@app/stores/account/account.selectors";
-import { AccountsActions } from "@app/stores/account/account.actions";
-import { finalize, take, tap } from "rxjs";
-import { AccountService } from "@app/stores/account/account.service";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { TranslocoService } from "@ngneat/transloco";
+import { AccountFacade } from "@app/stores/account/account.facade";
 
 @Component({
   selector: "app-dashboard-layout",
   templateUrl: "./dashboard-layout.component.html",
-  styleUrls: ["./dashboard-layout.component.scss"],
   providers: [ConfirmationService, MessageService],
 })
 export class DashboardLayoutComponent implements OnInit {
-  private accountService = inject(AccountService);
-  private store = inject(Store);
   private confirmationService = inject(ConfirmationService);
   private messageService = inject(MessageService);
   private translocoService = inject(TranslocoService);
+  private accountFacade = inject(AccountFacade);
 
   public isCreateDialogVisible = signal(false);
-  public readonly accounts = this.store.select(selectAccounts);
+  public readonly accounts = this.accountFacade.accounts;
   public isLoading = false;
 
   constructor(metaService: MetaService) {
@@ -37,22 +29,7 @@ export class DashboardLayoutComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.isLoading = true;
-
-    this.accountService
-      .load()
-      .pipe(
-        take(1),
-        tap((res) => {
-          this.store.dispatch(
-            AccountsActions.retrievedAccountList({ accounts: res })
-          );
-        }),
-        finalize(() => {
-          this.isLoading = false;
-        })
-      )
-      .subscribe();
+    this.accountFacade.loadAccounts();
   }
 
   public onRemove(event: Event, accountId: number): void {
@@ -64,24 +41,16 @@ export class DashboardLayoutComponent implements OnInit {
       acceptButtonStyleClass: "p-button-danger p-button-text",
       rejectButtonStyleClass: "p-button-text p-button-text",
       accept: () => {
-        this.accountService
-          .delete(accountId)
-          .pipe(
-            take(1),
-            tap(() => {
-              this.store.dispatch(AccountsActions.removeAccount({ accountId }));
-              this.messageService.add({
-                severity: "success",
-                summary: this.translocoService.translate(
-                  "TOASTS.DELETE_SUCCESS.TITLE"
-                ),
-                detail: this.translocoService.translate(
-                  "TOASTS.DELETE_SUCCESS.MESSAGE"
-                ),
-              });
-            })
-          )
-          .subscribe();
+        this.accountFacade.removeAccount(accountId);
+        this.messageService.add({
+          severity: "success",
+          summary: this.translocoService.translate(
+            "TOASTS.DELETE_SUCCESS.TITLE"
+          ),
+          detail: this.translocoService.translate(
+            "TOASTS.DELETE_SUCCESS.MESSAGE"
+          ),
+        });
       },
     });
   }

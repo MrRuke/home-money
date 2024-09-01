@@ -6,7 +6,27 @@
   },
   "accounts": [
     {
-      "id": "f2dd",
+      "id": "fe5e",
+      "value": 0,
+      "currency": "EUR"
+    },
+    {
+      "id": "606a",
+      "value": 1221,
+      "currency": "EUR"
+    },
+    {
+      "id": "af1c",
+      "value": 3232,
+      "currency": "EUR"
+    },
+    {
+      "id": "8f0c",
+      "value": 0,
+      "currency": "EUR"
+    },
+    {
+      "id": "6bbd",
       "value": 0,
       "currency": "EUR"
     }

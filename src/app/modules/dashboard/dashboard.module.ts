@@ -10,6 +10,7 @@ import { ToastModule } from 'primeng/toast';
 import { CreateAccountDialogComponent } from './create-account-dialog/create-account-dialog.component';
 import { DialogModule } from '@app/components/dialog/dialog.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomButtonModule } from '@app/components/custom-button/custom-button.module';
 
 @NgModule({
   declarations: [DashboardLayoutComponent, CreateAccountDialogComponent],
@@ -24,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DialogModule,
     ReactiveFormsModule,
     FormsModule,
+    CustomButtonModule,
   ],
 })
 export class DashboardModule {

@@ -7,7 +7,7 @@ export const initialState: ReadonlyArray<AccountElement> = [];
 
 export const accountReducer = createReducer(
   initialState,
-  on(AccountsActions.removeAccount, (state, { accountId }) =>
+  on(AccountsActions.removeAccountSuccess, (state, { accountId }) =>
     state.filter((item) => item.id !== accountId)
   ),
   on(AccountsActions.addAccountSuccess, (state, { account }) => {
@@ -15,5 +15,5 @@ export const accountReducer = createReducer(
 
     return [...state, account];
   }),
-  on(AccountsActions.retrievedAccountList, (_state, { accounts }) => accounts)
+  on(AccountsActions.retrievedAccountListSuccess, (_state, { accounts }) => accounts)
 );
