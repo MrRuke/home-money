@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CostPipeModule } from '@app/services/cost.pipe.module';
 import { DashboardLayoutComponent } from './layout/dashboard-layout.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
@@ -18,7 +17,6 @@ import { CustomButtonModule } from '@app/components/custom-button/custom-button.
     CommonModule,
     DashboardRoutingModule,
     CostPipeModule,
-    ButtonModule,
     ProgressSpinnerModule,
     ConfirmDialogModule,
     ToastModule,

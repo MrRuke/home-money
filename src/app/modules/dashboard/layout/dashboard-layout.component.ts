@@ -18,7 +18,7 @@ export class DashboardLayoutComponent implements OnInit {
 
   public isCreateDialogVisible = signal(false);
   public readonly accounts = this.accountFacade.accounts;
-  public isLoading = false;
+  public readonly isLoading = this.accountFacade.isLoading;
 
   constructor(metaService: MetaService) {
     metaService.init({
@@ -30,6 +30,7 @@ export class DashboardLayoutComponent implements OnInit {
 
   public ngOnInit(): void {
     this.accountFacade.loadAccounts();
+    console.log('t', this.accounts());
   }
 
   public onRemove(event: Event, accountId: number): void {
@@ -63,7 +64,7 @@ export class DashboardLayoutComponent implements OnInit {
     this.isCreateDialogVisible.set(true);
   }
 
-  public trackByAccounts(index: number, account: AccountElement): number {
+  public trackByAccounts(index: number, account: AccountElement): string {
     return account.id;
   }
 }

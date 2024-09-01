@@ -10,5 +10,5 @@ export enum AccountCurrencyTypes {
 }
 
 export interface AccountElement extends AccountRequest {
-  id: number;
+  id: string;
 }

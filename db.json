@@ -6,29 +6,19 @@
   },
   "accounts": [
     {
-      "id": "fe5e",
+      "id": "27c7",
+      "value": 21,
+      "currency": "EUR"
+    },
+    {
+      "id": "49d7",
       "value": 0,
       "currency": "EUR"
     },
     {
-      "id": "606a",
-      "value": 1221,
-      "currency": "EUR"
-    },
-    {
-      "id": "af1c",
-      "value": 3232,
-      "currency": "EUR"
-    },
-    {
-      "id": "8f0c",
+      "id": "2629",
       "value": 0,
-      "currency": "EUR"
-    },
-    {
-      "id": "6bbd",
-      "value": 0,
-      "currency": "EUR"
+      "currency": "USD"
     }
   ],
   "categories": [],

@@ -11,7 +11,7 @@ export const AccountsActions = createActionGroup({
     'Remove account Success': props<{ accountId: number }>(),
     'Remove account Failure': props<{ errorMsg: string }>(),
     'Retrieved Account List': emptyProps(),
-    'Retrieved Account List Success': props<{ accounts: ReadonlyArray<AccountElement> }>(),
+    'Retrieved Account List Success': props<{ accounts: AccountElement[] }>(),
     'Retrieved Account List Failure': props<{ errorMsg: string }>(),
   },
 });

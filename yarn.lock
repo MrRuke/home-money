@@ -1925,6 +1925,13 @@
     "@ngrx/operators" "18.0.1"
     tslib "^2.0.0"
 
+"@ngrx/entity@^18.0.2":
+  version "18.0.2"
+  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-18.0.2.tgz#a4d69260e06a28d6f0bf0b8a33382245f6d7efd8"
+  integrity sha512-wPV7MK0RnTx//hliCwmWXFaE2qvUbK32uzoElLiBBaLzwFTxeddqAlVrqOw7u15iPeVbPM92Y3pkbavH8f04uw==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngrx/eslint-plugin@^18.0.2":
   version "18.0.2"
   resolved "https://registry.yarnpkg.com/@ngrx/eslint-plugin/-/eslint-plugin-18.0.2.tgz#dc18f54d7a2950e717f071f9341a2459992a7342"
