@@ -90,7 +90,7 @@ export class DashboardLayoutComponent implements OnInit {
     this.isCreateDialogVisible.set(false);
   }
 
-  public onAdd(): void {
+  public handleOpenCreateDialog(): void {
     this.isCreateDialogVisible.set(true);
   }
 

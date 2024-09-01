@@ -5,6 +5,8 @@ export interface AccountRequest {
 
 export enum AccountCurrencyTypes {
   RUB = 'RUB',
+  EUR = 'EUR',
+  USD = 'USD',
 }
 
 export interface AccountElement extends AccountRequest {

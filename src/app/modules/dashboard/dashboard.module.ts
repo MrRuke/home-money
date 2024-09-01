@@ -9,6 +9,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { CreateAccountDialogComponent } from './create-account-dialog/create-account-dialog.component';
 import { DialogModule } from '@app/components/dialog/dialog.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [DashboardLayoutComponent, CreateAccountDialogComponent],
@@ -21,6 +22,8 @@ import { DialogModule } from '@app/components/dialog/dialog.module';
     ConfirmDialogModule,
     ToastModule,
     DialogModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
 })
 export class DashboardModule {
