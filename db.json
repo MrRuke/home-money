@@ -6,43 +6,8 @@
   },
   "accounts": [
     {
-      "id": "5da2",
-      "value": 1200,
-      "currency": "RUB"
-    },
-    {
-      "id": "866a",
-      "value": 1200,
-      "currency": "RUB"
-    },
-    {
-      "id": "5dca",
-      "value": 1200,
-      "currency": "RUB"
-    },
-    {
-      "id": "aeb5",
-      "value": 43,
-      "currency": "EURO"
-    },
-    {
-      "id": "e63d",
-      "value": 3232111,
-      "currency": "USD"
-    },
-    {
-      "id": "27a2",
-      "value": 1111,
-      "currency": "EUR"
-    },
-    {
-      "id": "5aed",
-      "value": 3232,
-      "currency": "EUR"
-    },
-    {
-      "id": "be55",
-      "value": 32.3232,
+      "id": "f2dd",
+      "value": 0,
       "currency": "EUR"
     }
   ],

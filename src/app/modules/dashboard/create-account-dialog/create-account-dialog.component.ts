@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Output } from "@angular/core";
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 import { AccountCurrencyTypes } from "@app/apis/accounts/models";
 import { AccountFacade } from "@app/stores/account/account.facade";
 
@@ -13,7 +13,7 @@ export class CreateAccountDialogComponent {
   private fb = inject(FormBuilder);
 
   public readonly formGroup = this.fb.group({
-    value: 0,
+    value: this.fb.control(0, [Validators.required]),
     currency: AccountCurrencyTypes.EUR,
   });
 
@@ -22,16 +22,15 @@ export class CreateAccountDialogComponent {
 
   public handleSubmit(): void {
     const { value, currency } = this.formGroup.value;
-    console.log('c', currency);
 
-    if (!value || !currency) {
-      // TODO: Validation
+    if (this.formGroup.invalid) {
+      this.formGroup.markAllAsTouched();
       return;
     }
 
     this.accountFacade.createNewAccount({
-      value,
-      currency,
+      value: value!,
+      currency: currency!,
     });
     this.closed.emit();
   }
