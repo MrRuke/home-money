@@ -1,6 +1,5 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit, signal } from "@angular/core";
 import {
-  AccountCurrencyTypes,
   AccountElement,
 } from "@app/apis/accounts/models";
 import { MetaService } from "@app/services/meta.service";
@@ -25,6 +24,7 @@ export class DashboardLayoutComponent implements OnInit {
   private messageService = inject(MessageService);
   private translocoService = inject(TranslocoService);
 
+  public isCreateDialogVisible = signal(false);
   public readonly accounts = this.store.select(selectAccounts);
   public isLoading = false;
 
@@ -86,19 +86,12 @@ export class DashboardLayoutComponent implements OnInit {
     });
   }
 
+  public onClose(): void {
+    this.isCreateDialogVisible.set(false);
+  }
+
   public onAdd(): void {
-    this.accountService
-      .add({
-        value: 1200,
-        currency: AccountCurrencyTypes.RUB,
-      })
-      .pipe(
-        take(1),
-        tap((account) => {
-          this.store.dispatch(AccountsActions.addAccount({ account }));
-        })
-      )
-      .subscribe();
+    this.isCreateDialogVisible.set(true);
   }
 
   public trackByAccounts(index: number, account: AccountElement): number {

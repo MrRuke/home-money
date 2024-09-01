@@ -4,7 +4,7 @@
       *ngIf="isLoading"
       ariaLabel="loading"
     ></p-progressSpinner>
-
+    
     <ng-container *ngIf="!isLoading">
       <div
         *ngFor="let item of accounts | async; trackBy: trackByAccounts"
@@ -21,11 +21,7 @@
       </div>
 
       <div class="app-dashboard-layout__create-card">
-        <p-button
-          icon="pi pi-plus"
-          size="small"
-          (click)="onAdd()"
-        ></p-button>
+        <p-button icon="pi pi-plus" size="small" (click)="onAdd()"></p-button>
       </div>
     </ng-container>
   </div>
@@ -34,3 +30,5 @@
 <p-toast position="top-center"></p-toast>
 
 <p-confirmDialog></p-confirmDialog>
+
+<app-create-account-dialog *ngIf="isCreateDialogVisible()" (closed)="onClose()"></app-create-account-dialog>

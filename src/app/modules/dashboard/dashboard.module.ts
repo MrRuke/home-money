@@ -7,9 +7,11 @@ import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
+import { CreateAccountDialogComponent } from './create-account-dialog/create-account-dialog.component';
+import { DialogModule } from '@app/components/dialog/dialog.module';
 
 @NgModule({
-  declarations: [DashboardLayoutComponent],
+  declarations: [DashboardLayoutComponent, CreateAccountDialogComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -18,6 +20,7 @@ import { ToastModule } from 'primeng/toast';
     ProgressSpinnerModule,
     ConfirmDialogModule,
     ToastModule,
+    DialogModule,
   ],
 })
 export class DashboardModule {

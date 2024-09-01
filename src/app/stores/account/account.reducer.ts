@@ -10,7 +10,7 @@ export const accountReducer = createReducer(
   on(AccountsActions.removeAccount, (state, { accountId }) =>
     state.filter((item) => item.id !== accountId)
   ),
-  on(AccountsActions.addAccount, (state, { account }) => {
+  on(AccountsActions.addAccountSuccess, (state, { account }) => {
     if (state.find(item => item.id === account.id)) return state;
 
     return [...state, account];
