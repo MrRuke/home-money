@@ -1,4 +1,4 @@
-<div *ngIf="items.length" class="bg-blue-600 p-2 h-full">
+<div *ngIf="items.length" class="bg-blue-600 p-2 h-full flex flex-col">
   <div class="h-16 mb-8">
     <a
       routerLink="/"
@@ -71,4 +71,58 @@
       class="main-menu__dropdown"
     ></p-dropdown>
   </div>
+
+  <footer class="footer text-white text-sm">
+    <p>&copy; 2023 developed by Eduard Rudenko</p>
+
+    <div class="flex mt-4 gap-2">
+      <a
+        href="https://gitlab.com/ruyteks"
+        target="_blank"
+        rel="noreferrer"
+        class="flex gap-2 items-center"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-4"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
+          />
+        </svg>
+
+        <span>Linkedin</span>
+      </a>
+
+      <a
+        href="https://www.linkedin.com/in/eduard-rudenko/"
+        target="_blank"
+        rel="noreferrer"
+        class="flex gap-2 items-center"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-4"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
+          />
+        </svg>
+
+        <span>Gitlab</span>
+      </a>
+    </div>
+  </footer>
 </div>
