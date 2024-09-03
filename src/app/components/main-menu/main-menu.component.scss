@@ -1,5 +1,4 @@
 .main-menu {
-  background-color: rgb(37 99 235 / 1);
 
   &__logo {
     height: 4rem;
@@ -20,13 +19,9 @@
     width: 100%;
     align-items: center;
     gap: 1rem;
-
-    &--active {
-      background-color: rgb(67 56 202);
-    }
-
+    
+    &--active,
     &:hover {
-      background-color: rgb(67 56 202);
       background-color: rgb(59 130 246);
     }
   }
