@@ -45,10 +45,11 @@
     ></p-dropdown>
   </div>
 
-  <p-button
-    label="{{ 'RECORDS.ADD_HISTORY.SUBMIT' | transloco }}"
-    severity="success"
+  <app-custom-button
     class="add-event__submit-button"
+    theme="success"
     (onClick)="handleSubmit()"
-  ></p-button>
+  >
+    {{ "RECORDS.ADD_HISTORY.SUBMIT" | transloco }}
+  </app-custom-button>
 </form>

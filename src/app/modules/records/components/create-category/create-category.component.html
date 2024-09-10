@@ -62,10 +62,11 @@
     </small>
   </div>
 
-  <p-button
-    label="{{ 'RECORDS.CREATE_CATEGORY.SUBMIT' | transloco }}"
-    severity="success"
+  <app-custom-button
     class="create-category__submit-button"
+    theme="success"
     (onClick)="handleSubmit()"
-  ></p-button>
+  >
+    {{ "RECORDS.CREATE_CATEGORY.SUBMIT" | transloco }}
+  </app-custom-button>
 </form>

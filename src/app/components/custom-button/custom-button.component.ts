@@ -23,8 +23,11 @@ export class CustomButtonComponent {
     if (this.theme === "danger") {
       return "text-white bg-red-600 hover:bg-red-500";
     }
+    if (this.theme === "success") {
+      return "text-white bg-green-600 hover:bg-green-500";
+    }
     return "";
   }
 }
 
-type BUTTON_THEME = "primary" | "outlined" | "danger";
+type BUTTON_THEME = "primary" | "outlined" | "danger" | "success";

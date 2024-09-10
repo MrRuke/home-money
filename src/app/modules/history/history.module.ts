@@ -11,6 +11,7 @@ import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { TranslocoRootModule } from '@app/transloco-root.module';
+import { CustomButtonModule } from '@app/components/custom-button/custom-button.module';
 
 @NgModule({
   declarations: [HistoryLayoutComponent, HistoryTableComponent],
@@ -25,6 +26,7 @@ import { TranslocoRootModule } from '@app/transloco-root.module';
     ConfirmDialogModule,
     ToastModule,
     TranslocoRootModule,
+    CustomButtonModule,
   ],
 })
 export class HistoryModule {
