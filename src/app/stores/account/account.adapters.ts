@@ -1,10 +1,10 @@
 import { AccountElement } from "@app/apis/accounts/models";
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
+import { BaseState } from "../state";
 
-export interface AccountState {
+export type AccountState = {
   accounts: EntityState<AccountElement>;
-  isLoading: boolean;
-}
+} & BaseState;
 
 export const accountAdapter: EntityAdapter<AccountElement> =
   createEntityAdapter<AccountElement>();

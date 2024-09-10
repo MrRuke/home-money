@@ -1,8 +1,7 @@
-export interface CategoryRequest {
+export type Category = {
+  id: number;
   name: string;
   limit: number;
 }
 
-export interface Category extends CategoryRequest {
-  id: number;
-}
+export type CategoryRequest = Omit<Category, 'id'>;

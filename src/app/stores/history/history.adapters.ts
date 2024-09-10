@@ -1,10 +1,10 @@
 import { HistoryElement } from "@app/apis/history/models";
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
+import { BaseState } from "../state";
 
-export interface HistoryState {
+export type HistoryState = {
   history: EntityState<HistoryElement>;
-  isLoading: boolean;
-}
+} & BaseState;
 
 export const historyAdapter: EntityAdapter<HistoryElement> =
   createEntityAdapter<HistoryElement>();

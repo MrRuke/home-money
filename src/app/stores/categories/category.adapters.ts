@@ -1,10 +1,10 @@
 import { Category } from "@app/apis/categories/models";
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
+import { BaseState } from "../state";
 
-export interface CategoryState {
+export type CategoryState = {
   categories: EntityState<Category>;
-  isLoading: boolean;
-}
+} & BaseState;
 
 export const categoriesAdapter: EntityAdapter<Category> =
   createEntityAdapter<Category>();
