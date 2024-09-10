@@ -21,10 +21,6 @@ export const accountReducer = createReducer(
     ...state,
     isLoading: true,
   })),
-  on(AccountsActions.retrievedAccountListFailure, (state) => ({
-    ...state,
-    isLoading: true,
-  })),
   on(AccountsActions.retrievedAccountListSuccess, (state, { accounts }) => ({
     ...state,
     isLoading: false,
