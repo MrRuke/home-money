@@ -9,7 +9,6 @@ import { HistoryFacade } from "@app/stores/history/history.facade";
 @Component({
   selector: "app-history-layout",
   templateUrl: "./history-layout.component.html",
-  styleUrls: ["./history-layout.component.scss"],
   providers: [ConfirmationService, MessageService],
 })
 export class HistoryLayoutComponent implements OnInit {
