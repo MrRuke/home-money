@@ -1,7 +1,7 @@
 <div class="app-history-layout">
-  <p-progressSpinner *ngIf="isLoading" ariaLabel="loading"></p-progressSpinner>
+  <p-progressSpinner *ngIf="isLoading()" ariaLabel="loading"></p-progressSpinner>
 
-  <app-history-table *ngIf="!isLoading" [history]="history | async" (remove)="onRemove($event)"></app-history-table>
+  <app-history-table *ngIf="!isLoading()" [history]="history()" (remove)="onRemove($event)"></app-history-table>
 </div>
 
 <p-toast position="top-center"></p-toast>

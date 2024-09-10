@@ -16,6 +16,7 @@ import { categoryReducer } from "./stores/categories/category.reducer";
 import { TranslocoRootModule } from "./transloco-root.module";
 
 import * as accountEffects from "./stores/account/account.effects";
+import * as historyEffects from "./stores/history/history.effects";
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,7 +34,7 @@ import * as accountEffects from "./stores/account/account.effects";
       history: historyReducer,
       categories: categoryReducer,
     }),
-    EffectsModule.forRoot(accountEffects),
+    EffectsModule.forRoot([accountEffects, historyEffects]),
     TranslocoRootModule,
   ],
   providers: [CommonModule],

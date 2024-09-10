@@ -16,6 +16,21 @@
       "currency": "USD"
     }
   ],
-  "categories": [],
-  "events": []
+  "categories": [
+    {
+      "id": "2398",
+      "name": "312312",
+      "limit": 1
+    }
+  ],
+  "events": [
+    {
+      "id": "1f87",
+      "category": "2398",
+      "type": "INCOME",
+      "amount": 1,
+      "description": "",
+      "date": "10.09.2024 20:01:00"
+    }
+  ]
 }

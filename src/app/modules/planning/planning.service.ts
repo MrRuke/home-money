@@ -25,7 +25,7 @@ export class PlanningService {
         this.store.dispatch(
           CategoryActions.retrievedCategoryList({ categories })
         );
-        this.store.dispatch(HistoryActions.retrievedHistoryList({ history }));
+        // this.store.dispatch(HistoryActions.retrievedHistoryList({ history }));
         return;
       })
     );
