@@ -1,19 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
 import { CostPipeModule } from '@app/services/cost.pipe.module';
-import { BemModule } from 'angular-bem';
 import { PlanningLayoutComponent } from './layout/planning-layout.component';
 import { PlanningRoutingModule } from './planning-routing.module';
+import { CardModule } from 'primeng/card';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { TranslocoRootModule } from '@app/transloco-root.module';
 
 @NgModule({
   declarations: [PlanningLayoutComponent],
   imports: [
     CommonModule,
     PlanningRoutingModule,
-    BemModule,
-    MatCardModule,
     CostPipeModule,
+    CardModule,
+    ProgressSpinnerModule,
+    TranslocoRootModule,
   ],
 })
 export class PlanningModule {

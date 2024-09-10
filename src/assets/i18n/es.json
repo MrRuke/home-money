@@ -1,0 +1,63 @@
+{
+  "HEADER_TITLE": "Contabilidad financiera",
+  "PAGES": {
+    "DASHBOARD": "Tablero",
+    "HISTORY": "Historial",
+    "PLANNING": "Planificación",
+    "RECORDS": "Registros"
+  },
+  "DELETE_CONFIRMATION": {
+    "TITLE": "Confirmación de eliminación",
+    "MESSAGE": "¿Desea eliminar este elemento?"
+  },
+  "TOASTS": {
+    "ADD_SUCCESS": {
+      "TITLE": "Éxito",
+      "MESSAGE": "Elemento agregado"
+    },
+    "DELETE_SUCCESS": {
+      "TITLE": "Éxito",
+      "MESSAGE": "Elemento eliminado"
+    }
+  },
+  "HISTORY": {
+    "AMOUNT": "Cantidad",
+    "DATE": "Fecha",
+    "TYPE": "Tipo",
+    "TYPE_INCOME": "Ingreso",
+    "TYPE_OUTCOME": "Gasto"
+  },
+  "PLANNING": {
+    "OF": "de",
+    "BALANCE": "Saldo"
+  },
+  "RECORDS": {
+    "CREATE_CATEGORY": {
+      "NAME_FIELD": {
+        "TITLE": "Nombre de la categoría",
+        "PLACEHOLDER": "Ingrese el nombre de la categoría",
+        "REQUIRED": "Se requiere el nombre de la categoría",
+        "MAX_LENGTH": "La longitud del nombre de la categoría debe ser menor a 32 caracteres"
+      },
+      "LIMIT_FIELD": {
+        "TITLE": "Límite de la categoría",
+        "PLACEHOLDER": "Ingrese el límite",
+        "REQUIRED": "Se requiere el límite",
+        "MIN_LENGTH": "El límite debe ser mayor a 0",
+        "MAX_LENGTH": "El límite debe ser menor a 999999"
+      },
+      "TITLE": "Crear categoría",
+      "SUBMIT": "Crear categoría"
+    },
+    "ADD_HISTORY": {
+      "AMOUNT_FIELD": {
+        "TITLE": "Cantidad",
+        "PLACEHOLDER": "Ingrese la cantidad",
+        "REQUIRED": "Se requiere la cantidad"
+      },
+      "CATEGORY_PLACEHOLDER": "Elegir categoría",
+      "TITLE": "Agregar historial",
+      "SUBMIT": "Agregar historial"
+    }
+  }
+}

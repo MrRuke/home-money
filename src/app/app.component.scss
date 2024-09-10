@@ -1,9 +1,10 @@
 .app-root {
+  background-color: var(--surface-b);
+
   &__main-panel {
     margin-left: auto;
     width: calc(100% - 260px);
   }
-
 
   &__main-menu {
     position: fixed;
@@ -12,31 +13,20 @@
     bottom: 0;
     width: 260px;
     left: 0;
-    z-index: 1000;
-    background: #fff;
+    z-index: 5;
     border-right: 1px solid #ddd;
     box-sizing: border-box;
-  }
-
-  &__header {
-    position: fixed;
-    top: 0;
-    height: 80px;
-    z-index: 1000;
-    width: calc(100% - 260px);
+    background-color: var(--surface-a);
   }
 
   &__content {
-    padding: 80px 16px;
+    padding: 1rem;
   }
 
   &__main-panel-background {
-    background: #f4f3ef;
+    background-color: var(--surface-b);
     position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     z-index: -1;
   }
 }

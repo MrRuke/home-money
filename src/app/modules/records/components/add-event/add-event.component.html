@@ -1,0 +1,55 @@
+<form class="add-event" [formGroup]="formGroup">
+  <div class="add-event__field">
+    <label for="amount">
+      {{ "RECORDS.ADD_HISTORY.AMOUNT_FIELD.TITLE" | transloco }}
+    </label>
+
+    <p-inputNumber
+      inputId="integeronly"
+      id="amount"
+      formControlName="amount"
+    ></p-inputNumber>
+
+    <small class="add-event__field-helper">
+      {{ "RECORDS.ADD_HISTORY.AMOUNT_FIELD.PLACEHOLDER" | transloco }}
+    </small>
+
+    <small
+      *ngIf="amountControl.hasError('required') && amountControl.dirty"
+      class="add-event__field-helper--error"
+    >
+      {{ "RECORDS.ADD_HISTORY.AMOUNT_FIELD.REQUIRED" | transloco }}
+    </small>
+  </div>
+
+  <div class="add-event__field">
+    <div *ngFor="let type of types" class="add-event__radio-button">
+      <p-radioButton
+        [inputId]="type"
+        [value]="type"
+        formControlName="type"
+      ></p-radioButton>
+
+      <label [for]="type">
+        {{ getTypeText(type) | transloco }}
+      </label>
+    </div>
+  </div>
+
+  <div class="add-event__field">
+    <p-dropdown
+      formControlName="category"
+      [options]="categories"
+      optionLabel="name"
+      placeholder="{{ 'RECORDS.ADD_HISTORY.CATEGORY_PLACEHOLDER' | transloco }}"
+    ></p-dropdown>
+  </div>
+
+  <app-custom-button
+    class="add-event__submit-button"
+    theme="success"
+    (click)="handleSubmit()"
+  >
+    {{ "RECORDS.ADD_HISTORY.SUBMIT" | transloco }}
+  </app-custom-button>
+</form>

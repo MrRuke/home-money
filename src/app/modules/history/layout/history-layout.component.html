@@ -1,3 +1,9 @@
-<div block="app-history-layout">
-  <app-history-table [history]="history | async"></app-history-table>
+<div class="app-history-layout">
+  <p-progressSpinner *ngIf="isLoading()" ariaLabel="loading"></p-progressSpinner>
+
+  <app-history-table *ngIf="!isLoading()" [history]="history()" (remove)="onRemove($event)"></app-history-table>
 </div>
+
+<p-toast position="top-center"></p-toast>
+
+<p-confirmDialog></p-confirmDialog>

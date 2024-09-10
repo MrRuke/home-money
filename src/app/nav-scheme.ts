@@ -3,15 +3,7 @@ import { Routes } from '@angular/router';
 import { AuthComponent } from './old/auth/auth.component';
 import { LoginComponent } from './old/auth/login/login.component';
 import { RegistrationComponent } from './old/auth/registration/registration.component';
-import { NotFoundComponent } from './old/shared/components/not-found/not-found.component';
-import { AuthGuard } from './old/shared/services/auth.guard';
-import { BillPageComponent } from './old/system/bill-page/bill-page.component';
-import { HistoryDetailComponent } from './old/system/history-page/history-detail/history-detail.component';
-import { HistoryPageComponent } from './old/system/history-page/history-page.component';
-import { PlanningPageComponent } from './old/system/planning-page/planning-page.component';
-import { RecordsPageComponent } from './old/system/records-page/records-page.component';
-import { SystemComponent } from './old/system/system.component';
-import { UsersPageComponent } from './old/system/users-page/users-page.component';
+// import { AuthGuard } from './old/shared/services/auth.guard';
 
 export const Urls = {
   url: '',
@@ -63,43 +55,23 @@ export const AuthScheme: Routes = [
   },
 ];
 
-export const SystemScheme: Routes = [
-  {
-    path: Urls.system.url,
-    component: SystemComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: Urls.system.bill.url,
-        component: BillPageComponent,
-      },
-      {
-        path: Urls.system.history.url,
-        component: HistoryPageComponent,
-      },
-      {
-        path: Urls.system.history.detail.url,
-        component: HistoryDetailComponent,
-      },
-      {
-        path: Urls.system.planning.url,
-        component: PlanningPageComponent,
-      },
-      {
-        path: Urls.system.records.url,
-        component: RecordsPageComponent,
-      },
-      {
-        path: Urls.system.users.url,
-        component: UsersPageComponent,
-      },
-    ],
-  },
-  {
-    path: '**',
-    component: NotFoundComponent,
-  },
-];
+// export const SystemScheme: Routes = [
+//   {
+//     path: Urls.system.url,
+//     component: HistoryPageComponent,
+//     canActivate: [AuthGuard],
+//     children: [
+//       {
+//         path: Urls.system.history.url,
+//         component: HistoryPageComponent,
+//       },
+//       {
+//         path: Urls.system.history.detail.url,
+//         component: HistoryDetailComponent,
+//       },
+//     ],
+//   },
+// ];
 
 export const AppScheme: Routes = [
   { path: Urls.url, redirectTo: 'login', pathMatch: 'full' },

@@ -1,9 +1,25 @@
-<div>
-  <mat-card>
-    <mat-card-title>Create category</mat-card-title>
+<p-progressSpinner *ngIf="isLoading()" ariaLabel="loading"></p-progressSpinner>
 
-    <mat-card-content>
-      <app-create-category (categorySubmitted)="createCategory($event)"></app-create-category>
-    </mat-card-content>
-  </mat-card>
-</div>
+<ng-container *ngIf="!isLoading()">
+  <div class="records-layout__card">
+    <p-card header="{{ 'RECORDS.CREATE_CATEGORY.TITLE' | transloco }}">
+      <app-create-category
+        (categorySubmitted)="createCategory($event)"
+      ></app-create-category>
+    </p-card>
+  </div>
+
+  <div class="records-layout__card">
+    <p-card
+      *ngIf="categories() as categories"
+      header="{{ 'RECORDS.ADD_HISTORY.TITLE' | transloco }}"
+    >
+      <app-add-event
+        [categories]="categories"
+        (eventSubmitted)="addHistoryElement($event)"
+      ></app-add-event>
+    </p-card>
+  </div>
+</ng-container>
+
+<p-toast position="top-center"></p-toast>

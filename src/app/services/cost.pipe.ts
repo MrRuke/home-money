@@ -12,7 +12,7 @@ export class AppCostPipe implements PipeTransform {
 
 
   private getMeasureTranslate(measure: AppCostPipeMeasure): string {
-    if (measure === 'DOLLAR') {
+    if (measure === 'DOLLAR' || measure === 'USD') {
       return '$';
     }
 
@@ -20,11 +20,11 @@ export class AppCostPipe implements PipeTransform {
       return '₽';
     }
 
-    if (measure === 'EURO') {
+    if (measure === 'EURO' || measure === 'EUR') {
       return '€';
     }
     return '';
   }
 }
 
-export type AppCostPipeMeasure = 'RUB' | 'EURO' | 'DOLLAR';
+export type AppCostPipeMeasure = 'RUB' | 'EURO' | 'DOLLAR' | 'USD' | 'EUR';

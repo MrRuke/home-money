@@ -1,38 +1,94 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {
+  Component,
+  DestroyRef,
+  inject,
+  OnInit,
+  ViewEncapsulation,
+} from "@angular/core";
+import { Router } from "@angular/router";
+import { LangService } from "@app/services/lang.service";
+import { ThemeService } from "@app/services/theme.service";
+import { TranslocoService } from "@ngneat/transloco";
+import { MenuItem } from "primeng/api";
+import { DropdownChangeEvent } from "primeng/dropdown";
+import { tap } from "rxjs/operators";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+
+interface Language {
+  name: string;
+  code: string;
+}
 
 @Component({
-  selector: 'app-main-menu',
-  templateUrl: './main-menu.component.html',
-  styleUrls: ['./main-menu.component.scss'],
+  selector: "app-main-menu",
+  templateUrl: "./main-menu.component.html",
+  styleUrls: ["./main-menu.component.scss"],
+  encapsulation: ViewEncapsulation.None,
 })
-export class MainMenuComponent {
-  public readonly menuList: MainMenuItem[] = [
-    {
-      title: 'Home',
-      href: '/',
-      icon: 'home',
-    },
-    {
-      title: 'History',
-      href: 'history',
-      icon: 'history',
-    },
-    {
-      title: 'Planning',
-      href: 'planning',
-      icon: 'archive',
-    },
-    {
-      title: 'Records',
-      href: 'records',
-      icon: 'mode',
-    },
+export class MainMenuComponent implements OnInit {
+  private router = inject(Router);
+  private translocoService = inject(TranslocoService);
+  private themeService = inject(ThemeService);
+  private langService = inject(LangService);
+  private destroyRef = inject(DestroyRef);
+
+  public items: MenuItem[] = [];
+
+  public readonly languages: Language[] = [
+    { name: "English", code: "en" },
+    { name: "Русский", code: "ru" },
+    { name: "Deutsch", code: "de" },
+    { name: "Français", code: "fr" },
+    { name: "Español", code: "es" },
+  ];
+  public readonly themes = [
+    "md-light-indigo",
+    "bootstrap4-light-blue",
+    "bootstrap4-dark-blue",
   ];
 
-  constructor(
-    private router: Router,
-  ) {
+  public selectedLanguage: Language | undefined;
+  public selectedTheme: string | undefined;
+
+  public ngOnInit(): void {
+    this.translocoService
+      .selectTranslate("PAGES.DASHBOARD")
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        tap(() => {
+          this.items = [
+            {
+              label: this.translocoService.translate("PAGES.DASHBOARD"),
+              icon: "pi pi-fw pi-home",
+              routerLink: ["/"],
+            },
+            {
+              label: this.translocoService.translate("PAGES.HISTORY"),
+              icon: "pi pi-fw pi-history",
+              routerLink: ["/history"],
+            },
+            {
+              label: this.translocoService.translate("PAGES.PLANNING"),
+              icon: "pi pi-fw pi-book",
+              routerLink: ["/planning"],
+            },
+            {
+              label: this.translocoService.translate("PAGES.RECORDS"),
+              icon: "pi pi-fw pi-pencil",
+              routerLink: ["/records"],
+            },
+          ];
+        })
+      )
+      .subscribe();
+  }
+
+  public changeLanguage(event: DropdownChangeEvent): void {
+    this.langService.setActiveLang((event.value as Language).code);
+  }
+
+  public changeTheme(event: DropdownChangeEvent): void {
+    this.themeService.switchTheme(event.value as string);
   }
 
   public trackByMenu(index: number): number {

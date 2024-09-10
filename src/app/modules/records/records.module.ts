@@ -1,28 +1,43 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
-import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
-import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
-import { BemModule } from 'angular-bem';
 
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
 import { RecordsLayoutComponent } from './layout/records-layout.component';
 import { RecordsRoutingModule } from './records-routing.module';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { AddEventComponent } from './components/add-event/add-event.component';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { DropdownModule } from 'primeng/dropdown';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ToastModule } from 'primeng/toast';
+import { TranslocoRootModule } from '@app/transloco-root.module';
+import { CustomButtonModule } from '@app/components/custom-button/custom-button.module';
 
 @NgModule({
-  declarations: [RecordsLayoutComponent, CreateCategoryComponent],
+  declarations: [
+    RecordsLayoutComponent,
+    CreateCategoryComponent,
+    AddEventComponent,
+  ],
   imports: [
     CommonModule,
     RecordsRoutingModule,
-    MatFormFieldModule,
-    MatInputModule,
     ReactiveFormsModule,
     FormsModule,
-    BemModule,
-    MatCardModule,
-    MatButtonModule,
+    ButtonModule,
+    CardModule,
+    InputTextModule,
+    InputNumberModule,
+    RadioButtonModule,
+    DropdownModule,
+    ProgressSpinnerModule,
+    ToastModule,
+    TranslocoRootModule,
+    CustomButtonModule,
   ],
 })
 export class RecordsModule {

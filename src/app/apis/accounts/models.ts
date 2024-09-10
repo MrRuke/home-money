@@ -1,12 +1,13 @@
-export interface AccountRequest {
+export enum AccountCurrencyTypes {
+  RUB = "RUB",
+  EUR = "EUR",
+  USD = "USD",
+}
+
+export type AccountElement = {
   value: number;
   currency: AccountCurrencyTypes;
-}
+  id: string;
+};
 
-export enum AccountCurrencyTypes {
-  RUB = 'RUB',
-}
-
-export interface AccountElement extends AccountRequest {
-  id: number;
-}
+export type AccountRequest = Omit<AccountElement, "id">;

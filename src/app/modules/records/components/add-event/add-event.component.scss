@@ -1,0 +1,23 @@
+.add-event {
+  &__field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__field + &__field {
+    margin-top: 1rem;
+  }
+
+  &__field-helper--error {
+    color: red;
+  }
+
+  &__submit-button {
+    margin-top: 0.5rem;
+    display: block;
+  }
+
+  &__radio-button + &__radio-button {
+    margin-top: 0.5rem;
+  }
+}

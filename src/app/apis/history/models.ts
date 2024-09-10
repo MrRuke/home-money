@@ -1,16 +1,15 @@
 export enum HistoryType {
-  INCOME = 'INCOME',
-  OUTCOME = 'OUTCOME',
+  INCOME = "INCOME",
+  OUTCOME = "OUTCOME",
 }
 
-export interface HistoryRequest {
+export type HistoryElement = {
+  id: string;
   type: HistoryType;
   amount: number;
   category: number;
   date: string;
   description: string;
-}
+};
 
-export interface HistoryElement extends HistoryRequest {
-  id: string;
-}
+export type HistoryRequest = Omit<HistoryElement, "id">;

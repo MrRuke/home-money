@@ -1,0 +1,63 @@
+{
+  "HEADER_TITLE": "Учет финансов",
+  "PAGES": {
+    "DASHBOARD": "Главная",
+    "HISTORY": "История",
+    "PLANNING": "Планирование",
+    "RECORDS": "Записи"
+  },
+  "DELETE_CONFIRMATION": {
+    "TITLE": "Подтверждение удаления",
+    "MESSAGE": "Вы уверены, что хотите удалить этот элемент?"
+  },
+  "TOASTS": {
+    "ADD_SUCCESS": {
+      "TITLE": "Успешно",
+      "MESSAGE": "Элемент добавлен"
+    },
+    "DELETE_SUCCESS": {
+      "TITLE": "Успешно",
+      "MESSAGE": "Элемент удален"
+    }
+  },
+  "HISTORY": {
+    "AMOUNT": "Сумма",
+    "DATE": "Дата",
+    "TYPE": "Тип",
+    "TYPE_INCOME": "Доход",
+    "TYPE_OUTCOME": "Расход"
+  },
+  "PLANNING": {
+    "OF": "из",
+    "BALANCE": "Баланс"
+  },
+  "RECORDS": {
+    "CREATE_CATEGORY": {
+      "NAME_FIELD": {
+        "TITLE": "Название категории",
+        "PLACEHOLDER": "Введите название категории",
+        "REQUIRED": "Название категории обязательно",
+        "MAX_LENGTH": "Длина названия категории должна быть не более 32 символов"
+      },
+      "LIMIT_FIELD": {
+        "TITLE": "Лимит категории",
+        "PLACEHOLDER": "Введите лимит",
+        "REQUIRED": "Лимит обязателен",
+        "MIN_LENGTH": "Лимит должен быть больше 0",
+        "MAX_LENGTH": "Лимит должен быть менее 999999"
+      },
+      "TITLE": "Создать категорию",
+      "SUBMIT": "Создать категорию"
+    },
+    "ADD_HISTORY": {
+      "AMOUNT_FIELD": {
+        "TITLE": "Сумма",
+        "PLACEHOLDER": "Введите сумму",
+        "REQUIRED": "Сумма обязательна"
+      },
+      "CATEGORY_PLACEHOLDER": "Выберите категорию",
+      "TITLE": "Добавить в историю",
+      "SUBMIT": "Добавить в историю"
+    }
+  }
+}

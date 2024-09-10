@@ -1,58 +1,72 @@
-<form
-  block="app-create-category"
-  [formGroup]="formGroup"
-  (ngSubmit)="submit()"
->
-  <mat-form-field elem="field">
-    <mat-label>Category name</mat-label>
+<form class="create-category" [formGroup]="formGroup">
+  <div class="create-category__field">
+    <label for="categoryName">
+      {{ "RECORDS.CREATE_CATEGORY.NAME_FIELD.TITLE" | transloco }}
+    </label>
 
-    <input
-      type="text"
-      matInput
-      formControlName="name"
-      placeholder="Set down category name"
-      required
+    <input pInputText id="categoryName" type="text" formControlName="name" />
+
+    <small class="create-category__field-helper">
+      {{ "RECORDS.CREATE_CATEGORY.NAME_FIELD.PLACEHOLDER" | transloco }}
+    </small>
+
+    <small
+      *ngIf="nameControl.hasError('required') && nameControl.dirty"
+      class="create-category__field-helper--error"
     >
+      {{ "RECORDS.CREATE_CATEGORY.NAME_FIELD.REQUIRED" | transloco }}
+    </small>
 
-    <mat-error *ngIf="nameControl.hasError('required')">
-      Category name is <strong>required</strong>
-    </mat-error>
+    <small
+      *ngIf="nameControl.hasError('maxlength')"
+      class="create-category__field-helper--error"
+    >
+      {{ "RECORDS.CREATE_CATEGORY.NAME_FIELD.MAX_LENGTH" | transloco }}
+    </small>
+  </div>
 
-    <mat-error *ngIf="nameControl.hasError('maxlength')">
-      Category name length is must be <strong>less 32 symbols</strong>
-    </mat-error>
-  </mat-form-field>
+  <div class="create-category__field">
+    <label for="limit">
+      {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.TITLE" | transloco }}
+    </label>
 
-  <mat-form-field elem="field">
-    <mat-label>Category limit</mat-label>
-
-    <input
-      type="number"
-      matInput
+    <p-inputNumber
+      inputId="integeronly"
+      id="limit"
       formControlName="limit"
-      placeholder="Set down limit"
-      required
+    ></p-inputNumber>
+
+    <small class="create-category__field-helper">
+      {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.PLACEHOLDER" | transloco }}
+    </small>
+
+    <small
+      *ngIf="limitControl.hasError('required') && limitControl.dirty"
+      class="create-category__field-helper--error"
     >
+      {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.REQUIRED" | transloco }}
+    </small>
 
-    <mat-error *ngIf="limitControl.hasError('required')">
-      Limit is <strong>required</strong>
-    </mat-error>
+    <small
+      *ngIf="limitControl.hasError('min')"
+      class="create-category__field-helper--error"
+    >
+      {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.MIN_LENGTH" | transloco }}
+    </small>
 
-    <mat-error *ngIf="limitControl.hasError('min')">
-      Limit is must be <strong>more than 0</strong>
-    </mat-error>
+    <small
+      *ngIf="limitControl.hasError('max')"
+      class="create-category__field-helper--error"
+    >
+      {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.MAX_LENGTH" | transloco }}
+    </small>
+  </div>
 
-    <mat-error *ngIf="limitControl.hasError('max')">
-      Limit is must be <strong>less than 999999</strong>
-    </mat-error>
-  </mat-form-field>
-
-  <button
-    mat-raised-button
-    elem="submit-button"
-    type="submit"
-    color="primary"
+  <app-custom-button
+    class="create-category__submit-button"
+    theme="success"
+    (click)="handleSubmit()"
   >
-    Create category
-  </button>
+    {{ "RECORDS.CREATE_CATEGORY.SUBMIT" | transloco }}
+  </app-custom-button>
 </form>
