@@ -1,10 +1,10 @@
-import { HistoryElement } from "@app/apis/history/models";
+import { HistoryElement, HistoryRequest } from "@app/apis/history/models";
 import { createActionGroup, emptyProps, props } from "@ngrx/store";
 
 export const HistoryActions = createActionGroup({
   source: 'History',
   events: {
-    'Add history': props<{ history: HistoryElement }>(),
+    'Add history': props<{ history: HistoryRequest }>(),
     'Add history Success': props<{ history: HistoryElement }>(),
     'Add history Failure': props<{ errorMsg: string }>(),
     'Remove history': props<{ historyId: string }>(),

@@ -31,6 +31,14 @@
       "amount": 1,
       "description": "",
       "date": "10.09.2024 20:01:00"
+    },
+    {
+      "id": "dbe2",
+      "category": "2398",
+      "type": "INCOME",
+      "amount": 1,
+      "description": "",
+      "date": "10.09.2024 21:59:39"
     }
   ]
 }

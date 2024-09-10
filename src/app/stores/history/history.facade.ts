@@ -2,7 +2,7 @@ import { inject, Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { selectHistory, selectIsLoading } from "./history.selectors";
 import { HistoryActions } from "./history.actions";
-import { HistoryElement } from "@app/apis/history/models";
+import { HistoryRequest } from "@app/apis/history/models";
 
 @Injectable({ providedIn: "root" })
 export class HistoryFacade {
@@ -15,7 +15,7 @@ export class HistoryFacade {
     this.store.dispatch(HistoryActions.retrievedHistoryList());
   }
 
-  public addHistory(history: HistoryElement): void {
+  public addHistory(history: HistoryRequest): void {
     this.store.dispatch(HistoryActions.addHistory({ history }));
   }
 

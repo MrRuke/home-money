@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { CategoryActions } from "./category.actions";
-import { Category } from "@app/apis/categories/models";
+import { CategoryRequest } from "@app/apis/categories/models";
 import { selectCategories, selectIsLoading } from "./category.selectors";
 
 @Injectable({ providedIn: "root" })
@@ -11,7 +11,7 @@ export class CategoryFacade {
   public readonly categories = this.store.selectSignal(selectCategories);
   public readonly isLoading = this.store.selectSignal(selectIsLoading);
 
-  public createNewCategory(category: Category): void {
+  public createNewCategory(category: CategoryRequest): void {
     this.store.dispatch(CategoryActions.addCategory({ category }));
   }
 

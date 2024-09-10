@@ -15,7 +15,17 @@ export const historyReducer = createReducer(
   })),
   on(HistoryActions.addHistory, (state, { history }) => ({
     ...state,
-    history: historyAdapter.addOne(history, state.history),
+    history: historyAdapter.addOne(
+      { ...history, id: "test-id-number" },
+      state.history
+    ),
+  })),
+  on(HistoryActions.addHistorySuccess, (state, { history }) => ({
+    ...state,
+    history: historyAdapter.updateOne(
+      { id: "test-id-number", changes: history },
+      state.history
+    ),
   })),
   on(HistoryActions.retrievedHistoryList, (state) => ({
     ...state,

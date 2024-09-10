@@ -1,6 +1,6 @@
-<p-progressSpinner *ngIf="isLoading" ariaLabel="loading"></p-progressSpinner>
+<p-progressSpinner *ngIf="isLoading()" ariaLabel="loading"></p-progressSpinner>
 
-<ng-container *ngIf="!isLoading">
+<ng-container *ngIf="!isLoading()">
   <div class="records-layout__card">
     <p-card header="{{ 'RECORDS.CREATE_CATEGORY.TITLE' | transloco }}">
       <app-create-category
@@ -10,9 +10,12 @@
   </div>
 
   <div class="records-layout__card">
-    <p-card *ngIf="categories | async as cats" header="{{ 'RECORDS.ADD_HISTORY.TITLE' | transloco }}">
+    <p-card
+      *ngIf="categories() as categories"
+      header="{{ 'RECORDS.ADD_HISTORY.TITLE' | transloco }}"
+    >
       <app-add-event
-        [categories]="cats"
+        [categories]="categories"
         (eventSubmitted)="addHistoryElement($event)"
       ></app-add-event>
     </p-card>

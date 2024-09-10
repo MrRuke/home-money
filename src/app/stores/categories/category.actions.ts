@@ -1,10 +1,10 @@
-import { Category } from "@app/apis/categories/models";
+import { Category, CategoryRequest } from "@app/apis/categories/models";
 import { createActionGroup, emptyProps, props } from "@ngrx/store";
 
 export const CategoryActions = createActionGroup({
   source: "Categories",
   events: {
-    "Add category": props<{ category: Category }>(),
+    "Add category": props<{ category: CategoryRequest }>(),
     "Add category Success": props<{ category: Category }>(),
     "Add category Failure": props<{ errorMsg: string }>(),
     "Remove category": props<{ categoryId: number }>(),

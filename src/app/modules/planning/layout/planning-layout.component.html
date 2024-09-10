@@ -1,9 +1,9 @@
 <div class="app-planning-layout">
-  <p-progressSpinner *ngIf="isLoading" ariaLabel="loading"></p-progressSpinner>
+  <p-progressSpinner *ngIf="isLoading()" ariaLabel="loading"></p-progressSpinner>
 
-  <p-card *ngIf="!isLoading">
+  <p-card *ngIf="!isLoading()">
     <div
-      *ngFor="let element of planning | async; trackBy: trackByPlanning"
+      *ngFor="let element of planning(); trackBy: trackByPlanning"
       class="app-planning-layout__progress-item"
     >
       <div class="app-planning-layout__progress-item-bar-wrapper">
