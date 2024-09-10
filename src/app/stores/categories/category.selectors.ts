@@ -1,4 +1,18 @@
-import { Category } from '@app/apis/categories/models';
-import { createFeatureSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { categoriesAdapter, CategoryState } from "./category.adapters";
 
-export const selectCategories = createFeatureSelector<ReadonlyArray<Category>>('categories');
+export const selectState = createFeatureSelector<CategoryState>("categories");
+export const selectCategoriesEmptyState = createSelector(
+  selectState,
+  (state) => state.categories
+);
+export const selectIsLoading = createSelector(
+  selectState,
+  (state) => state.isLoading
+);
+
+const { selectAll: allCategories } = categoriesAdapter.getSelectors();
+export const selectCategories = createSelector(
+  selectCategoriesEmptyState,
+  allCategories
+);

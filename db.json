@@ -1,152 +1,44 @@
 {
-  "users": [
-    {
-      "id": "1",
-      "name": "Администратор",
-      "email": "ruyteks@gmail.com",
-      "password": "123456",
-      "group": "Администратор"
-    },
-    {
-      "id": "2",
-      "name": "eduard",
-      "email": "ruyteks11@gmail.com",
-      "password": "123456",
-      "group": "Пользователь"
-    }
-  ],
+  "users": [],
   "bill": {
     "value": 85123,
     "currency": "RUB"
   },
   "accounts": [
     {
-      "id": "1",
-      "value": 100000,
-      "currency": "RUB"
+      "id": "49d7",
+      "value": 0,
+      "currency": "EUR"
+    },
+    {
+      "id": "2629",
+      "value": 0,
+      "currency": "USD"
     }
   ],
   "categories": [
     {
-      "id": "0aec",
-      "name": "New category",
-      "limit": "1500"
-    },
-    {
-      "id": "be76",
-      "name": "32",
-      "limit": 1
-    },
-    {
-      "id": "a118",
-      "name": "test",
-      "limit": 1
-    },
-    {
-      "id": "4b7e",
-      "name": "test4",
-      "limit": 1
-    },
-    {
-      "id": "2499",
-      "name": "tet4",
-      "limit": "43"
-    },
-    {
-      "id": "7adf",
-      "name": "32",
-      "limit": "132"
-    },
-    {
-      "id": "3c89",
-      "name": "43",
-      "limit": 1
-    },
-    {
-      "id": "4db1",
-      "name": "32",
-      "limit": 1
-    },
-    {
-      "id": "5529",
-      "name": "32",
-      "limit": "32"
-    },
-    {
-      "id": "2b05",
-      "name": "213",
-      "limit": "132"
-    },
-    {
-      "id": "e151",
-      "name": "21",
+      "id": "2398",
+      "name": "312312",
       "limit": 1
     }
   ],
   "events": [
     {
-      "id": "1cf2",
-      "category": "0aec",
-      "type": "OUTCOME",
-      "amount": 1333,
-      "description": "",
-      "date": "17.03.2024 01:02:05"
-    },
-    {
-      "id": "799f",
-      "category": "a118",
-      "type": "INCOME",
-      "amount": 321,
-      "description": "",
-      "date": "17.03.2024 01:22:21"
-    },
-    {
-      "id": "0caa",
-      "category": "4b7e",
+      "id": "1f87",
+      "category": "2398",
       "type": "INCOME",
       "amount": 1,
       "description": "",
-      "date": "17.03.2024 01:22:35"
+      "date": "10.09.2024 20:01:00"
     },
     {
-      "id": "2d62",
-      "category": "2499",
-      "type": "INCOME",
-      "amount": 32,
-      "description": "",
-      "date": "17.03.2024 01:22:40"
-    },
-    {
-      "id": "98de",
-      "category": "a118",
-      "type": "OUTCOME",
-      "amount": 32,
-      "description": "",
-      "date": "17.03.2024 01:23:23"
-    },
-    {
-      "id": "5c1d",
-      "category": "2499",
+      "id": "dbe2",
+      "category": "2398",
       "type": "INCOME",
       "amount": 1,
       "description": "",
-      "date": "30.03.2024 00:23:42"
-    },
-    {
-      "id": "8265",
-      "category": "0aec",
-      "type": "OUTCOME",
-      "amount": 1,
-      "description": "",
-      "date": "30.03.2024 01:19:20"
-    },
-    {
-      "id": "d4cd",
-      "category": "2499",
-      "type": "INCOME",
-      "amount": 1,
-      "description": "",
-      "date": "30.03.2024 01:32:36"
+      "date": "10.09.2024 21:59:39"
     }
   ]
 }

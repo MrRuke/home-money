@@ -15,6 +15,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ToastModule } from 'primeng/toast';
 import { TranslocoRootModule } from '@app/transloco-root.module';
+import { CustomButtonModule } from '@app/components/custom-button/custom-button.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { TranslocoRootModule } from '@app/transloco-root.module';
     ProgressSpinnerModule,
     ToastModule,
     TranslocoRootModule,
+    CustomButtonModule,
   ],
 })
 export class RecordsModule {

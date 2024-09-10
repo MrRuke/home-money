@@ -2,15 +2,10 @@ import { Component, inject, OnInit } from "@angular/core";
 import { CategoryRequest } from "@app/apis/categories/models";
 import { HistoryRequest } from "@app/apis/history/models";
 import { MetaService } from "@app/services/meta.service";
-import { CategoryService } from "@app/stores/categories/category.service";
-import { Store } from "@ngrx/store";
-import { selectCategories } from "@app/stores/categories/category.selectors";
-import { finalize, take, tap } from "rxjs";
-import { CategoryActions } from "@app/stores/categories/category.actions";
-import { HistoryService } from "@app/stores/history/history.service";
-import { HistoryActions } from "@app/stores/history/history.actions";
 import { MessageService } from "primeng/api";
 import { TranslocoService } from "@ngneat/transloco";
+import { CategoryFacade } from "@app/stores/categories/category.facade";
+import { HistoryFacade } from "@app/stores/history/history.facade";
 
 @Component({
   selector: "app-records-layout",
@@ -19,14 +14,14 @@ import { TranslocoService } from "@ngneat/transloco";
   providers: [MessageService],
 })
 export class RecordsLayoutComponent implements OnInit {
-  private historyService = inject(HistoryService);
-  private categoryService = inject(CategoryService);
-  private store = inject(Store);
   private messageService = inject(MessageService);
   private translocoService = inject(TranslocoService);
 
-  public readonly categories = this.store.select(selectCategories);
-  public isLoading = false;
+  private categoryFacade = inject(CategoryFacade);
+  private historyFacade = inject(HistoryFacade);
+
+  public readonly categories = this.categoryFacade.categories;
+  public readonly isLoading = this.categoryFacade.isLoading;
 
   constructor(metaService: MetaService) {
     metaService.init({
@@ -37,62 +32,25 @@ export class RecordsLayoutComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.isLoading = true;
-    this.categoryService
-      .load()
-      .pipe(
-        take(1),
-        tap((res) => {
-          this.store.dispatch(
-            CategoryActions.retrievedCategoryList({ categories: res })
-          );
-        }),
-        finalize(() => {
-          this.isLoading = false;
-        })
-      )
-      .subscribe();
+    this.categoryFacade.loadCategories();
   }
 
   public createCategory(category: CategoryRequest): void {
-    this.categoryService
-      .add(category)
-      .pipe(
-        take(1),
-        tap((res) => {
-          this.store.dispatch(CategoryActions.addCategory({ category: res }));
-          this.messageService.add({
-            severity: "success",
-            summary: this.translocoService.translate(
-              "TOASTS.ADD_SUCCESS.TITLE"
-            ),
-            detail: this.translocoService.translate(
-              "TOASTS.ADD_SUCCESS.MESSAGE"
-            ),
-          });
-        })
-      )
-      .subscribe();
+    this.categoryFacade.createNewCategory(category);
+
+    this.messageService.add({
+      severity: "success",
+      summary: this.translocoService.translate("TOASTS.ADD_SUCCESS.TITLE"),
+      detail: this.translocoService.translate("TOASTS.ADD_SUCCESS.MESSAGE"),
+    });
   }
 
-  public addHistoryElement(event: HistoryRequest): void {
-    this.historyService
-      .add(event)
-      .pipe(
-        take(1),
-        tap((res) => {
-          this.store.dispatch(HistoryActions.addHistory({ history: res }));
-          this.messageService.add({
-            severity: "success",
-            summary: this.translocoService.translate(
-              "TOASTS.ADD_SUCCESS.TITLE"
-            ),
-            detail: this.translocoService.translate(
-              "TOASTS.ADD_SUCCESS.MESSAGE"
-            ),
-          });
-        })
-      )
-      .subscribe();
+  public addHistoryElement(history: HistoryRequest): void {
+    this.historyFacade.addHistory(history);
+    this.messageService.add({
+      severity: "success",
+      summary: this.translocoService.translate("TOASTS.ADD_SUCCESS.TITLE"),
+      detail: this.translocoService.translate("TOASTS.ADD_SUCCESS.MESSAGE"),
+    });
   }
 }

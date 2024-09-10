@@ -1,19 +1,29 @@
-import { AccountElement } from '@app/apis/accounts/models';
-import { createReducer, on } from '@ngrx/store';
-import { AccountsActions } from './account.actions';
+import { createReducer, on } from "@ngrx/store";
+import { AccountsActions } from "./account.actions";
+import { accountAdapter, AccountState } from "./account.adapters";
 
-
-export const initialState: ReadonlyArray<AccountElement> = [];
+export const initialState: AccountState = {
+  accounts: accountAdapter.getInitialState(),
+  isLoading: false,
+};
 
 export const accountReducer = createReducer(
   initialState,
-  on(AccountsActions.removeAccount, (state, { accountId }) =>
-    state.filter((item) => item.id !== accountId)
-  ),
-  on(AccountsActions.addAccount, (state, { account }) => {
-    if (state.find(item => item.id === account.id)) return state;
-
-    return [...state, account];
-  }),
-  on(AccountsActions.retrievedAccountList, (_state, { accounts }) => accounts)
+  on(AccountsActions.removeAccountSuccess, (state, { accountId }) => ({
+    ...state,
+    accounts: accountAdapter.removeOne(accountId, state.accounts),
+  })),
+  on(AccountsActions.addAccountSuccess, (state, { account }) => ({
+    ...state,
+    accounts: accountAdapter.addOne(account, state.accounts),
+  })),
+  on(AccountsActions.retrievedAccountList, (state) => ({
+    ...state,
+    isLoading: true,
+  })),
+  on(AccountsActions.retrievedAccountListSuccess, (state, { accounts }) => ({
+    ...state,
+    isLoading: false,
+    accounts: accountAdapter.setAll(accounts, state.accounts),
+  }))
 );

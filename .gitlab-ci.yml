@@ -17,3 +17,4 @@ lint:
   stage: lint
   script:
     - npm run lint
+    - npm run lint:styles

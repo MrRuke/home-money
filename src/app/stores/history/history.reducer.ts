@@ -1,19 +1,39 @@
-import { createReducer, on } from '@ngrx/store';
-import { HistoryElement } from '@app/apis/history/models';
-import { HistoryActions } from './history.actions';
+import { createReducer, on } from "@ngrx/store";
+import { HistoryActions } from "./history.actions";
+import { historyAdapter, HistoryState } from "./history.adapters";
 
-
-export const initialState: ReadonlyArray<HistoryElement> = [];
+export const initialState: HistoryState = {
+  history: historyAdapter.getInitialState(),
+  isLoading: false,
+};
 
 export const historyReducer = createReducer(
   initialState,
-  on(HistoryActions.removeHistory, (state, { historyId }) =>
-    state.filter((item) => item.id !== historyId)
-  ),
-  on(HistoryActions.addHistory, (state, { history }) => {
-    if (state.find(item => item.id === history.id)) return state;
-
-    return [...state, history];
-  }),
-  on(HistoryActions.retrievedHistoryList, (_state, { history }) => history)
+  on(HistoryActions.removeHistorySuccess, (state, { historyId }) => ({
+    ...state,
+    history: historyAdapter.removeOne(historyId, state.history),
+  })),
+  on(HistoryActions.addHistory, (state, { history }) => ({
+    ...state,
+    history: historyAdapter.addOne(
+      { ...history, id: "test-id-number" },
+      state.history
+    ),
+  })),
+  on(HistoryActions.addHistorySuccess, (state, { history }) => ({
+    ...state,
+    history: historyAdapter.updateOne(
+      { id: "test-id-number", changes: history },
+      state.history
+    ),
+  })),
+  on(HistoryActions.retrievedHistoryList, (state) => ({
+    ...state,
+    isLoading: true,
+  })),
+  on(HistoryActions.retrievedHistoryListSuccess, (state, { history }) => ({
+    ...state,
+    isLoading: false,
+    history: historyAdapter.setAll(history, state.history),
+  }))
 );

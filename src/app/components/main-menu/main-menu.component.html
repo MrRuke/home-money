@@ -1,7 +1,59 @@
-<div *ngIf="items.length" class="main-menu">
-  <p-menu [model]="items" styleClass="main-menu__container"></p-menu>
+<div *ngIf="items.length" class="bg-blue-600 p-2 h-full flex flex-col">
+  <div class="h-16 mb-8">
+    <a
+      routerLink="/"
+      class="inline-flex items-center gap-1 text-white hover:text-blue-300"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="h-16"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m21 7.5-2.25-1.313M21 7.5v2.25m0-2.25-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3 2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75 2.25-1.313M12 21.75V19.5m0 2.25-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25"
+        />
+      </svg>
 
-  <div class="main-menu__controls">
+      <span class="text-lg font-semibold">EDRUD</span>
+    </a>
+  </div>
+
+  <nav>
+    <ul>
+      <li *ngFor="let item of items" class="pb-1">
+        <a
+          [routerLink]="item.routerLink"
+          class="main-menu__link"
+          routerLinkActive="main-menu__link--active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+            />
+          </svg>
+
+          {{ item.label }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="flex flex-col gap-4 mt-4">
     <p-dropdown
       [options]="languages"
       [(ngModel)]="selectedLanguage"
@@ -19,4 +71,58 @@
       class="main-menu__dropdown"
     ></p-dropdown>
   </div>
+
+  <footer class="footer text-white text-sm">
+    <p>&copy; 2019-2024 developed by Eduard Rudenko</p>
+
+    <div class="flex mt-4 gap-2">
+      <a
+        href="https://gitlab.com/ruyteks"
+        target="_blank"
+        rel="noreferrer"
+        class="flex gap-2 items-center"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-4"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
+          />
+        </svg>
+
+        <span>Gitlab</span>
+      </a>
+
+      <a
+        href="https://www.linkedin.com/in/eduard-rudenko/"
+        target="_blank"
+        rel="noreferrer"
+        class="flex gap-2 items-center"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-4"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
+          />
+        </svg>
+
+        <span>Linkedin</span>
+      </a>
+    </div>
+  </footer>
 </div>

@@ -1,4 +1,18 @@
-import { AccountElement } from '@app/apis/accounts/models';
-import { createFeatureSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { accountAdapter, AccountState } from "./account.adapters";
 
-export const selectAccounts = createFeatureSelector<ReadonlyArray<AccountElement>>('accounts');
+export const selectState = createFeatureSelector<AccountState>("accounts");
+export const selectAccountsEmptyState = createSelector(
+  selectState,
+  (state) => state.accounts
+);
+export const selectIsLoading = createSelector(
+  selectState,
+  (state) => state.isLoading
+);
+
+const { selectAll: allAccounts } = accountAdapter.getSelectors();
+export const selectAccounts = createSelector(
+  selectAccountsEmptyState,
+  allAccounts
+);

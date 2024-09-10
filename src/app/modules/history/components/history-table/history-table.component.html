@@ -15,15 +15,15 @@
       <td>{{ item.amount | appCost : "RUB" }}</td>
       <td>{{ item.date }}</td>
       <td>
-        <p-chip [label]="getTypeText(item.type) | transloco" [icon]="'pi ' + getTypeIcon(item.type)"></p-chip>
+        <p-chip
+          [label]="getTypeText(item.type) | transloco"
+          [icon]="'pi ' + getTypeIcon(item.type)"
+        ></p-chip>
       </td>
       <td>
-        <p-button
-          icon="pi pi-trash"
-          size="small"
-          severity="danger"
-          (click)="handleRemove(item.id)"
-        ></p-button>
+        <app-custom-button theme="danger" (click)="handleRemove(item.id)">
+          Delete
+        </app-custom-button>
       </td>
     </tr>
   </ng-template>

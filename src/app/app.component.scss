@@ -13,7 +13,7 @@
     bottom: 0;
     width: 260px;
     left: 0;
-    z-index: 1000;
+    z-index: 5;
     border-right: 1px solid #ddd;
     box-sizing: border-box;
     background-color: var(--surface-a);
@@ -26,10 +26,7 @@
   &__main-panel-background {
     background-color: var(--surface-b);
     position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     z-index: -1;
   }
 }

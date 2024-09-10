@@ -1,32 +1,24 @@
-import { Component, inject, OnInit } from "@angular/core";
-import {
-  AccountCurrencyTypes,
-  AccountElement,
-} from "@app/apis/accounts/models";
+import { Component, inject, OnInit, signal } from "@angular/core";
+import { AccountElement } from "@app/apis/accounts/models";
 import { MetaService } from "@app/services/meta.service";
-import { Store } from "@ngrx/store";
-import { selectAccounts } from "@app/stores/account/account.selectors";
-import { AccountsActions } from "@app/stores/account/account.actions";
-import { finalize, take, tap } from "rxjs";
-import { AccountService } from "@app/stores/account/account.service";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { TranslocoService } from "@ngneat/transloco";
+import { AccountFacade } from "@app/stores/account/account.facade";
 
 @Component({
   selector: "app-dashboard-layout",
   templateUrl: "./dashboard-layout.component.html",
-  styleUrls: ["./dashboard-layout.component.scss"],
   providers: [ConfirmationService, MessageService],
 })
 export class DashboardLayoutComponent implements OnInit {
-  private accountService = inject(AccountService);
-  private store = inject(Store);
   private confirmationService = inject(ConfirmationService);
   private messageService = inject(MessageService);
   private translocoService = inject(TranslocoService);
+  private accountFacade = inject(AccountFacade);
 
-  public readonly accounts = this.store.select(selectAccounts);
-  public isLoading = false;
+  public isCreateDialogVisible = signal(false);
+  public readonly accounts = this.accountFacade.accounts;
+  public readonly isLoading = this.accountFacade.isLoading;
 
   constructor(metaService: MetaService) {
     metaService.init({
@@ -37,22 +29,8 @@ export class DashboardLayoutComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.isLoading = true;
-
-    this.accountService
-      .load()
-      .pipe(
-        take(1),
-        tap((res) => {
-          this.store.dispatch(
-            AccountsActions.retrievedAccountList({ accounts: res })
-          );
-        }),
-        finalize(() => {
-          this.isLoading = false;
-        })
-      )
-      .subscribe();
+    this.accountFacade.loadAccounts();
+    console.log('t', this.accounts());
   }
 
   public onRemove(event: Event, accountId: number): void {
@@ -64,44 +42,29 @@ export class DashboardLayoutComponent implements OnInit {
       acceptButtonStyleClass: "p-button-danger p-button-text",
       rejectButtonStyleClass: "p-button-text p-button-text",
       accept: () => {
-        this.accountService
-          .delete(accountId)
-          .pipe(
-            take(1),
-            tap(() => {
-              this.store.dispatch(AccountsActions.removeAccount({ accountId }));
-              this.messageService.add({
-                severity: "success",
-                summary: this.translocoService.translate(
-                  "TOASTS.DELETE_SUCCESS.TITLE"
-                ),
-                detail: this.translocoService.translate(
-                  "TOASTS.DELETE_SUCCESS.MESSAGE"
-                ),
-              });
-            })
-          )
-          .subscribe();
+        this.accountFacade.removeAccount(accountId);
+        this.messageService.add({
+          severity: "success",
+          summary: this.translocoService.translate(
+            "TOASTS.DELETE_SUCCESS.TITLE"
+          ),
+          detail: this.translocoService.translate(
+            "TOASTS.DELETE_SUCCESS.MESSAGE"
+          ),
+        });
       },
     });
   }
 
-  public onAdd(): void {
-    this.accountService
-      .add({
-        value: 1200,
-        currency: AccountCurrencyTypes.RUB,
-      })
-      .pipe(
-        take(1),
-        tap((account) => {
-          this.store.dispatch(AccountsActions.addAccount({ account }));
-        })
-      )
-      .subscribe();
+  public onClose(): void {
+    this.isCreateDialogVisible.set(false);
   }
 
-  public trackByAccounts(index: number, account: AccountElement): number {
+  public handleOpenCreateDialog(): void {
+    this.isCreateDialogVisible.set(true);
+  }
+
+  public trackByAccounts(index: number, account: AccountElement): string {
     return account.id;
   }
 }

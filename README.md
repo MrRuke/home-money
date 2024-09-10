@@ -1,7 +1,18 @@
 # Accounting of finance application
+Application that exist for personal accounting of finances. You can use it for creating different accounts, prepare categories with balance and adding income/outcome that you can easily follow by. 
 
-For using this application you need to install `json-server`
+## Tech stack
+- Angular 18
+- TypeScript
+- RxJs
+- NgRx store management (with effects and entities)
+- TailwindCSS
+- SCSS
 
-Then, you can use npm run dev, which run `server` and `project` with using `concurrently`
+## Install
+- `npm run install`
+- `npm install json-server`
 
-#######;###
+## Run and watch
+- `npm run server` - will run json-server that required for the application
+- `npm run start` - will run Angular project
