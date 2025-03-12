@@ -24,22 +24,7 @@
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/styles.scss",
-              {
-                "input": "src/theme-md-light-indigo.scss",
-                "bundleName": "md-light-indigo",
-                "inject": false
-              },
-              {
-                "input": "src/theme-bootstrap4-light-blue.scss",
-                "bundleName": "bootstrap4-light-blue",
-                "inject": false
-              },
-              {
-                "input": "src/theme-bootstrap4-dark-blue.scss",
-                "bundleName": "bootstrap4-dark-blue",
-                "inject": false
-              }
+              "src/styles.scss"
             ],
             "scripts": [],
             "vendorChunk": true,

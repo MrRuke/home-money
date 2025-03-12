@@ -9,8 +9,6 @@ import { Router } from "@angular/router";
 import { LangService } from "@app/services/lang.service";
 import { ThemeService } from "@app/services/theme.service";
 import { TranslocoService } from "@ngneat/transloco";
-import { MenuItem } from "primeng/api";
-import { DropdownChangeEvent } from "primeng/dropdown";
 import { tap } from "rxjs/operators";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
@@ -32,7 +30,7 @@ export class MainMenuComponent implements OnInit {
   private langService = inject(LangService);
   private destroyRef = inject(DestroyRef);
 
-  public items: MenuItem[] = [];
+  public items: any[] = [];
 
   public readonly languages: Language[] = [
     { name: "English", code: "en" },
@@ -83,11 +81,11 @@ export class MainMenuComponent implements OnInit {
       .subscribe();
   }
 
-  public changeLanguage(event: DropdownChangeEvent): void {
+  public changeLanguage(event: any): void {
     this.langService.setActiveLang((event.value as Language).code);
   }
 
-  public changeTheme(event: DropdownChangeEvent): void {
+  public changeTheme(event: any): void {
     this.themeService.switchTheme(event.value as string);
   }
 
