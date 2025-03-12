@@ -1,4 +1,4 @@
-<div class="app-root">
+<!-- <div class="app-root">
   <div class="app-root__main-menu">
     <app-main-menu></app-main-menu>
   </div>
@@ -14,4 +14,17 @@
 
     <div class="app-root__main-panel-background"></div>
   </div>
-</div>
+</div> -->
+
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened>
+    <app-main-menu></app-main-menu>
+  </mat-sidenav>
+  
+  <mat-sidenav-content>
+    <app-header></app-header>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

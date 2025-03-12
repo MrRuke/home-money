@@ -1,24 +1,29 @@
-<div
-  class="pl-8 pr-8 h-16 flex bg-white justify-between items-center shadow-md"
->
-  <span class="text-lg font-semibold">
-    {{ "HEADER_TITLE" | transloco }}
-  </span>
-
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    width="24"
-    height="24"
-    stroke-width="1.5"
-    stroke="currentColor"
-    class="size-8 text-gray-400 hover:text-gray-700 cursor-pointer"
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
   >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"
-    />
-  </svg>
-</div>
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span>{{ "HEADER_TITLE" | transloco }}</span>
+
+  <span class="example-spacer"></span>
+
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    <mat-icon>favorite</mat-icon>
+  </button>
+
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+  >
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>

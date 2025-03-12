@@ -1,32 +1,9 @@
-.app-root {
-  background-color: var(--surface-b);
-
-  &__main-panel {
-    margin-left: auto;
-    width: calc(100% - 260px);
-  }
-
-  &__main-menu {
-    position: fixed;
-    top: 0;
-    height: 100%;
-    bottom: 0;
-    width: 260px;
-    left: 0;
-    z-index: 5;
-    border-right: 1px solid #ddd;
-    box-sizing: border-box;
-    background-color: var(--surface-a);
-  }
-
-  &__content {
-    padding: 1rem;
-  }
-
-  &__main-panel-background {
-    background-color: var(--surface-b);
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-  }
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
 }
+

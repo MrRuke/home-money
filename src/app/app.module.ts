@@ -14,10 +14,12 @@ import { accountReducer } from "./stores/account/account.reducer";
 import { historyReducer } from "./stores/history/history.reducer";
 import { categoryReducer } from "./stores/categories/category.reducer";
 import { TranslocoRootModule } from "./transloco-root.module";
+import { MatSidenavModule } from "@angular/material/sidenav";
 
 import * as accountEffects from "./stores/account/account.effects";
 import * as historyEffects from "./stores/history/history.effects";
 import * as categoryEffects from "./stores/categories/category.effects";
+import { RouterOutlet } from "@angular/router";
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +31,8 @@ import * as categoryEffects from "./stores/categories/category.effects";
     BrowserAnimationsModule,
     TranslateModule.forRoot(),
     HeaderModule,
+    MatSidenavModule,
+    RouterOutlet,
     MainMenuModule,
     StoreModule.forRoot({
       accounts: accountReducer,
