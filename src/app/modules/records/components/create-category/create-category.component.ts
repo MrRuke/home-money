@@ -3,9 +3,10 @@ import { UntypedFormBuilder, Validators } from "@angular/forms";
 import { CategoryRequest } from "@app/apis/categories/models";
 
 @Component({
-  selector: "app-create-category",
-  templateUrl: "./create-category.component.html",
-  styleUrls: ["./create-category.component.scss"],
+    selector: "app-create-category",
+    templateUrl: "./create-category.component.html",
+    styleUrls: ["./create-category.component.scss"],
+    standalone: false
 })
 export class CreateCategoryComponent {
   private formBuilder = inject(UntypedFormBuilder);

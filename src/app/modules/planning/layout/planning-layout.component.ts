@@ -6,9 +6,10 @@ import { CategoryFacade } from "@app/stores/categories/category.facade";
 import { HistoryFacade } from "@app/stores/history/history.facade";
 
 @Component({
-  selector: "app-planning-layout",
-  templateUrl: "./planning-layout.component.html",
-  styleUrls: ["./planning-layout.component.scss"],
+    selector: "app-planning-layout",
+    templateUrl: "./planning-layout.component.html",
+    styleUrls: ["./planning-layout.component.scss"],
+    standalone: false
 })
 export class PlanningLayoutComponent implements OnInit {
   private categoryFacade = inject(CategoryFacade);

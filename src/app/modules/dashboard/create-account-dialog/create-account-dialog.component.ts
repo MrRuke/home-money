@@ -4,9 +4,10 @@ import { AccountCurrencyTypes } from "@app/apis/accounts/models";
 import { AccountFacade } from "@app/stores/account/account.facade";
 
 @Component({
-  selector: "app-create-account-dialog",
-  templateUrl: "./create-account-dialog.component.html",
-  providers: [],
+    selector: "app-create-account-dialog",
+    templateUrl: "./create-account-dialog.component.html",
+    providers: [],
+    standalone: false
 })
 export class CreateAccountDialogComponent {
   private accountFacade = inject(AccountFacade);

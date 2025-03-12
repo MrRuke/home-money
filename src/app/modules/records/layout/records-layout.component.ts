@@ -7,9 +7,10 @@ import { CategoryFacade } from "@app/stores/categories/category.facade";
 import { HistoryFacade } from "@app/stores/history/history.facade";
 
 @Component({
-  selector: "app-records-layout",
-  templateUrl: "./records-layout.component.html",
-  styleUrls: ["./records-layout.component.scss"],
+    selector: "app-records-layout",
+    templateUrl: "./records-layout.component.html",
+    styleUrls: ["./records-layout.component.scss"],
+    standalone: false
 })
 export class RecordsLayoutComponent implements OnInit {
   private translocoService = inject(TranslocoService);

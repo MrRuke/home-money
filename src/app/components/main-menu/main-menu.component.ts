@@ -18,10 +18,11 @@ interface Language {
 }
 
 @Component({
-  selector: "app-main-menu",
-  templateUrl: "./main-menu.component.html",
-  styleUrls: ["./main-menu.component.scss"],
-  encapsulation: ViewEncapsulation.None,
+    selector: "app-main-menu",
+    templateUrl: "./main-menu.component.html",
+    styleUrls: ["./main-menu.component.scss"],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class MainMenuComponent implements OnInit {
   private router = inject(Router);

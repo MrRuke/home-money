@@ -6,8 +6,9 @@ import { TranslocoService } from "@ngneat/transloco";
 import { HistoryFacade } from "@app/stores/history/history.facade";
 
 @Component({
-  selector: "app-history-layout",
-  templateUrl: "./history-layout.component.html",
+    selector: "app-history-layout",
+    templateUrl: "./history-layout.component.html",
+    standalone: false
 })
 export class HistoryLayoutComponent implements OnInit {
   private translocoService = inject(TranslocoService);

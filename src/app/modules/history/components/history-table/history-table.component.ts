@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { HistoryElement, HistoryType } from "@app/apis/history/models";
 
 @Component({
-  selector: "app-history-table",
-  templateUrl: "./history-table.component.html",
-  styleUrls: ["./history-table.component.scss"],
+    selector: "app-history-table",
+    templateUrl: "./history-table.component.html",
+    styleUrls: ["./history-table.component.scss"],
+    standalone: false
 })
 export class HistoryTableComponent {
   @Input()

@@ -2,12 +2,12 @@ import { Component, Output, EventEmitter, Input, inject } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { Category } from '@app/apis/categories/models';
 import { HistoryRequest, HistoryType } from '@app/apis/history/models';
-import * as moment from 'moment';
 
 @Component({
-  selector: 'app-add-event',
-  templateUrl: './add-event.component.html',
-  styleUrls: ['./add-event.component.scss'],
+    selector: 'app-add-event',
+    templateUrl: './add-event.component.html',
+    styleUrls: ['./add-event.component.scss'],
+    standalone: false
 })
 export class AddEventComponent {
   private fb = inject(UntypedFormBuilder);
@@ -48,7 +48,7 @@ export class AddEventComponent {
       amount: Number(this.formGroup.value.amount),
       category: this.formGroup.value.category.id,
       description: '',
-      date: moment().format('DD.MM.YYYY HH:mm:ss'),
+      date: '',
     });
     // TODO
     this.formGroup.reset();

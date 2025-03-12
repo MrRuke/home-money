@@ -5,8 +5,9 @@ import { TranslocoService } from "@ngneat/transloco";
 import { AccountFacade } from "@app/stores/account/account.facade";
 
 @Component({
-  selector: "app-dashboard-layout",
-  templateUrl: "./dashboard-layout.component.html",
+    selector: "app-dashboard-layout",
+    templateUrl: "./dashboard-layout.component.html",
+    standalone: false
 })
 export class DashboardLayoutComponent implements OnInit {
   private translocoService = inject(TranslocoService);

@@ -1,13 +1,14 @@
 import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: "app-custom-button",
-  templateUrl: "./custom-button.component.html",
-  styles: `
+    selector: "app-custom-button",
+    templateUrl: "./custom-button.component.html",
+    styles: `
     :host {
       display: flex;
     }
   `,
+    standalone: false
 })
 export class CustomButtonComponent {
   @Input()
