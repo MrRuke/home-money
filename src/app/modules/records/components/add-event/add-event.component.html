@@ -14,42 +14,44 @@
       {{ "RECORDS.ADD_HISTORY.AMOUNT_FIELD.PLACEHOLDER" | transloco }}
     </small>
 
-    <small
-      *ngIf="amountControl.hasError('required') && amountControl.dirty"
-      class="add-event__field-helper--error"
-    >
-      {{ "RECORDS.ADD_HISTORY.AMOUNT_FIELD.REQUIRED" | transloco }}
-    </small>
+    @if (amountControl.hasError('required') && amountControl.dirty) {
+      <small
+        class="add-event__field-helper--error"
+        >
+        {{ "RECORDS.ADD_HISTORY.AMOUNT_FIELD.REQUIRED" | transloco }}
+      </small>
+    }
   </div>
 
   <div class="add-event__field">
-    <div *ngFor="let type of types" class="add-event__radio-button">
-      <p-radioButton
-        [inputId]="type"
-        [value]="type"
-        formControlName="type"
-      ></p-radioButton>
-
-      <label [for]="type">
-        {{ getTypeText(type) | transloco }}
-      </label>
-    </div>
+    @for (type of types; track type) {
+      <div class="add-event__radio-button">
+        <p-radioButton
+          [inputId]="type"
+          [value]="type"
+          formControlName="type"
+        ></p-radioButton>
+        <label [for]="type">
+          {{ getTypeText(type) | transloco }}
+        </label>
+      </div>
+    }
   </div>
 
   <div class="add-event__field">
     <!-- <p-dropdown
-      formControlName="category"
-      [options]="categories"
-      optionLabel="name"
-      placeholder="{{ 'RECORDS.ADD_HISTORY.CATEGORY_PLACEHOLDER' | transloco }}"
-    ></p-dropdown> -->
-  </div>
+    formControlName="category"
+    [options]="categories"
+    optionLabel="name"
+    placeholder="{{ 'RECORDS.ADD_HISTORY.CATEGORY_PLACEHOLDER' | transloco }}"
+  ></p-dropdown> -->
+</div>
 
-  <app-custom-button
-    class="add-event__submit-button"
-    theme="success"
-    (click)="handleSubmit()"
+<app-custom-button
+  class="add-event__submit-button"
+  theme="success"
+  (click)="handleSubmit()"
   >
-    {{ "RECORDS.ADD_HISTORY.SUBMIT" | transloco }}
-  </app-custom-button>
+  {{ "RECORDS.ADD_HISTORY.SUBMIT" | transloco }}
+</app-custom-button>
 </form>

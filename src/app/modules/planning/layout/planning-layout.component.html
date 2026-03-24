@@ -1,45 +1,44 @@
 <div class="app-planning-layout">
-  <p-progressSpinner *ngIf="isLoading()" ariaLabel="loading"></p-progressSpinner>
+  @if (isLoading()) {
+    <p-progressSpinner ariaLabel="loading"></p-progressSpinner>
+  }
 
-  <p-card *ngIf="!isLoading()">
-    <div
-      *ngFor="let element of planning(); trackBy: trackByPlanning"
-      class="app-planning-layout__progress-item"
-    >
-      <div class="app-planning-layout__progress-item-bar-wrapper">
+  @if (!isLoading()) {
+    <p-card>
+      @for (element of planning(); track trackByPlanning($index, element)) {
         <div
+          class="app-planning-layout__progress-item"
+          >
+          <div class="app-planning-layout__progress-item-bar-wrapper">
+            <div
           class="app-planning-layout__progress-item-bar {{
             getProgressBarModifiers(element.percent)
           }}"
-          [style.width.%]="element.percent"
-        >
-          {{ element.percent | number : "1.0-0" }}%
+              [style.width.%]="element.percent"
+              >
+              {{ element.percent | number : "1.0-0" }}%
+            </div>
+          </div>
+          <div class="app-planning-layout__progress-item-values">
+            <span class="app-planning-layout__progress-item-category">
+              {{ element.category.name }}
+            </span>
+            <span class="app-planning-layout__progress-item-cost">
+              <strong>
+                {{ element.cost | appCost : "RUB" }}
+              </strong>
+              {{ "PLANNING.OF" | transloco }}
+              <strong>
+                {{ element.category.limit | appCost : "RUB" }}
+              </strong>
+            </span>
+            <span class="app-planning-layout__progress-item-balance">
+              {{ "PLANNING.BALANCE" | transloco }}
+              <strong>{{ element.balance | appCost : "RUB" }}</strong>
+            </span>
+          </div>
         </div>
-      </div>
-
-      <div class="app-planning-layout__progress-item-values">
-        <span class="app-planning-layout__progress-item-category">
-          {{ element.category.name }}
-        </span>
-
-        <span class="app-planning-layout__progress-item-cost">
-          <strong>
-            {{ element.cost | appCost : "RUB" }}
-          </strong>
-
-          {{ "PLANNING.OF" | transloco }}
-
-          <strong>
-            {{ element.category.limit | appCost : "RUB" }}
-          </strong>
-        </span>
-
-        <span class="app-planning-layout__progress-item-balance">
-          {{ "PLANNING.BALANCE" | transloco }}
-
-          <strong>{{ element.balance | appCost : "RUB" }}</strong>
-        </span>
-      </div>
-    </div>
-  </p-card>
+      }
+    </p-card>
+  }
 </div>

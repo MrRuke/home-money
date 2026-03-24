@@ -1,5 +1,9 @@
 <div class="app-history-layout">
-  <p-progressSpinner *ngIf="isLoading()" ariaLabel="loading"></p-progressSpinner>
+  @if (isLoading()) {
+    <p-progressSpinner ariaLabel="loading"></p-progressSpinner>
+  }
 
-  <app-history-table *ngIf="!isLoading()" [history]="history()" (remove)="onRemove($event)"></app-history-table>
+  @if (!isLoading()) {
+    <app-history-table [history]="history()" (remove)="onRemove($event)"></app-history-table>
+  }
 </div>

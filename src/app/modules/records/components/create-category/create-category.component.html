@@ -10,19 +10,21 @@
       {{ "RECORDS.CREATE_CATEGORY.NAME_FIELD.PLACEHOLDER" | transloco }}
     </small>
 
-    <small
-      *ngIf="nameControl.hasError('required') && nameControl.dirty"
-      class="create-category__field-helper--error"
-    >
-      {{ "RECORDS.CREATE_CATEGORY.NAME_FIELD.REQUIRED" | transloco }}
-    </small>
+    @if (nameControl.hasError('required') && nameControl.dirty) {
+      <small
+        class="create-category__field-helper--error"
+        >
+        {{ "RECORDS.CREATE_CATEGORY.NAME_FIELD.REQUIRED" | transloco }}
+      </small>
+    }
 
-    <small
-      *ngIf="nameControl.hasError('maxlength')"
-      class="create-category__field-helper--error"
-    >
-      {{ "RECORDS.CREATE_CATEGORY.NAME_FIELD.MAX_LENGTH" | transloco }}
-    </small>
+    @if (nameControl.hasError('maxlength')) {
+      <small
+        class="create-category__field-helper--error"
+        >
+        {{ "RECORDS.CREATE_CATEGORY.NAME_FIELD.MAX_LENGTH" | transloco }}
+      </small>
+    }
   </div>
 
   <div class="create-category__field">
@@ -40,33 +42,36 @@
       {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.PLACEHOLDER" | transloco }}
     </small>
 
-    <small
-      *ngIf="limitControl.hasError('required') && limitControl.dirty"
-      class="create-category__field-helper--error"
-    >
-      {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.REQUIRED" | transloco }}
-    </small>
+    @if (limitControl.hasError('required') && limitControl.dirty) {
+      <small
+        class="create-category__field-helper--error"
+        >
+        {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.REQUIRED" | transloco }}
+      </small>
+    }
 
-    <small
-      *ngIf="limitControl.hasError('min')"
-      class="create-category__field-helper--error"
-    >
-      {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.MIN_LENGTH" | transloco }}
-    </small>
+    @if (limitControl.hasError('min')) {
+      <small
+        class="create-category__field-helper--error"
+        >
+        {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.MIN_LENGTH" | transloco }}
+      </small>
+    }
 
-    <small
-      *ngIf="limitControl.hasError('max')"
-      class="create-category__field-helper--error"
-    >
-      {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.MAX_LENGTH" | transloco }}
-    </small>
+    @if (limitControl.hasError('max')) {
+      <small
+        class="create-category__field-helper--error"
+        >
+        {{ "RECORDS.CREATE_CATEGORY.LIMIT_FIELD.MAX_LENGTH" | transloco }}
+      </small>
+    }
   </div>
 
   <app-custom-button
     class="create-category__submit-button"
     theme="success"
     (click)="handleSubmit()"
-  >
+    >
     {{ "RECORDS.CREATE_CATEGORY.SUBMIT" | transloco }}
   </app-custom-button>
 </form>
