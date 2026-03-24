@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, inject } from '@angular/core';
+import { Component, Output, EventEmitter, Input, inject, output } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { Category } from '@app/apis/categories/models';
 import { HistoryRequest, HistoryType } from '@app/apis/history/models';
@@ -29,9 +29,8 @@ export class AddEventComponent {
 
   @Input()
   public categories: Category[] = [];
-
-  @Output()
-  public eventSubmitted = new EventEmitter<HistoryRequest>();
+  
+  public eventSubmitted = output<HistoryRequest>();
 
   public isIncome = (type: HistoryType): boolean => type === HistoryType.INCOME;
 

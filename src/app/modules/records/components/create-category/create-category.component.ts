@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, inject } from "@angular/core";
+import { Component, Output, EventEmitter, inject, output } from "@angular/core";
 import { UntypedFormBuilder, Validators } from "@angular/forms";
 import { CategoryRequest } from "@app/apis/categories/models";
 
@@ -24,9 +24,8 @@ export class CreateCategoryComponent {
     name: this.nameControl,
     limit: this.limitControl,
   });
-
-  @Output()
-  public categorySubmitted = new EventEmitter<CategoryRequest>();
+  
+  public categorySubmitted = output<CategoryRequest>();
 
   public handleSubmit(): void {
     if (this.formGroup.invalid) {

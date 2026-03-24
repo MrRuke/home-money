@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, output, Output } from "@angular/core";
 
 @Component({
     selector: "app-dialog",
@@ -6,9 +6,6 @@ import { Component, EventEmitter, Output } from "@angular/core";
     standalone: false
 })
 export class DialogComponent {
-  @Output()
-  public closed = new EventEmitter<void>();
-  
-  @Output()
-  public submitted = new EventEmitter<void>();
+    public closed = output<void>();
+    public submitted = output<void>();
 }

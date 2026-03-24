@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output } from "@angular/core";
+import { Component, EventEmitter, inject, output, Output } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { AccountCurrencyTypes } from "@app/apis/accounts/models";
 import { AccountFacade } from "@app/stores/account/account.facade";
@@ -18,8 +18,7 @@ export class CreateAccountDialogComponent {
     currency: AccountCurrencyTypes.EUR,
   });
 
-  @Output()
-  public closed = new EventEmitter();
+  public closed = output<void>();
 
   public handleSubmit(): void {
     const { value, currency } = this.formGroup.value;

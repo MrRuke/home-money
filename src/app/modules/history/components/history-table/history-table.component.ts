@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Input, output, Output } from "@angular/core";
 import { HistoryElement, HistoryType } from "@app/apis/history/models";
 
 @Component({
@@ -10,9 +10,8 @@ import { HistoryElement, HistoryType } from "@app/apis/history/models";
 export class HistoryTableComponent {
   @Input()
   public history: HistoryElement[] = [];
-
-  @Output()
-  public remove = new EventEmitter<string>();
+  
+  public remove = output<string>();
 
   public getTypeIcon = (type: HistoryType): string =>
     this.isIncome(type) ? "pi-angle-double-up" : "pi-angle-double-down";
