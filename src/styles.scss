@@ -1,18 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
-a {
-  color: unset;
-  text-decoration: none;
+:root {
+  /* =========================================
+     Backgrounds
+     ========================================= */
+  --bg-main: #121212;
+  --bg-surface: #1E1E1E;
+  --bg-input: #2A2A2A;
+
+  /* =========================================
+     Text Colors
+     ========================================= */
+  --text-primary: #F9FAFB;
+  --text-secondary: #9CA3AF;
+  --text-inverse: #FFFFFF;
+
+  /* =========================================
+     Brand Accents
+     ========================================= */
+  --accent-teal: #14B8A6;
+  --accent-teal-hover: #0D9488;
+  --accent-orange: #F97316;
+  --accent-orange-hover: #EA580C;
+
+  /* =========================================
+     Semantic colors
+     ========================================= */
+  --status-income-text: #34D399;
+  --status-income-bg: rgba(52, 211, 153, 0.1);
+
+  --status-expense-text: #F87171;
+  --status-expense-bg: rgba(248, 113, 113, 0.1);
+
+  /* =========================================
+     Borders
+     ========================================= */
+  --border-light: #374151;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  min-height: 100vh;
 }
-
-html {
-  // BASE SIZE FOR REM
-  font-size: 14px;
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
