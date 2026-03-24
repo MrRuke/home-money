@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, output, Output } from "@angular/core";
+import { Component, EventEmitter, input, Input, output, Output } from "@angular/core";
 import { HistoryElement, HistoryType } from "@app/apis/history/models";
 
 @Component({
@@ -8,8 +8,7 @@ import { HistoryElement, HistoryType } from "@app/apis/history/models";
     standalone: false
 })
 export class HistoryTableComponent {
-  @Input()
-  public history: HistoryElement[] = [];
+  public history = input<HistoryElement[]>([]);
   
   public remove = output<string>();
 

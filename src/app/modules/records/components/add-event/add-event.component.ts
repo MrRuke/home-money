@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, inject, output } from '@angular/core';
+import { Component, Output, EventEmitter, Input, inject, output, input } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { Category } from '@app/apis/categories/models';
 import { HistoryRequest, HistoryType } from '@app/apis/history/models';
@@ -27,8 +27,7 @@ export class AddEventComponent {
 
   public readonly types = Object.values(HistoryType);
 
-  @Input()
-  public categories: Category[] = [];
+  public categories = input<Category[]>([]);
   
   public eventSubmitted = output<HistoryRequest>();
 
