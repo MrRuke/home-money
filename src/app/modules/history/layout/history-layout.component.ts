@@ -1,38 +1,42 @@
-import { Component, inject, OnInit } from "@angular/core";
-import { HistoryElement } from "@app/apis/history/models";
-
-import { MetaService } from "@app/services/meta.service";
+import { ChangeDetectionStrategy, Component, inject, OnInit } from "@angular/core";
 import { TranslocoService } from "@ngneat/transloco";
-import { HistoryFacade } from "@app/stores/history/history.facade";
+import { HistoryElement } from "../../../apis/history/models";
+import { MetaService } from "../../../services/meta.service";
+import { HistoryFacade } from "../../../stores/history/history.facade";
+import { HistoryTableComponent } from "../components/history-table/history-table.component";
 
 @Component({
     selector: "app-history-layout",
     templateUrl: "./history-layout.component.html",
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [HistoryTableComponent]
 })
 export class HistoryLayoutComponent implements OnInit {
-  private translocoService = inject(TranslocoService);
-  private historyFacade = inject(HistoryFacade);
+    private translocoService = inject(TranslocoService);
+    private historyFacade = inject(HistoryFacade);
 
-  public readonly history = this.historyFacade.history;
-  public readonly isLoading = this.historyFacade.isLoading;
+    public readonly history = this.historyFacade.history;
+    public readonly isLoading = this.historyFacade.isLoading;
 
-  constructor(metaService: MetaService) {
-    metaService.init({
-      title: "History",
-      description: "Page of history",
-      keywords: "History",
-    });
-  }
+    constructor() {
+        const metaService = inject(MetaService);
 
-  public ngOnInit(): void {
-    this.historyFacade.loadHistory();
-    setTimeout(() => {
-    console.log('test', this.history());
-    }, 2000);
-  }
+        metaService.init({
+            title: "History",
+            description: "Page of history",
+            keywords: "History",
+        });
+    }
 
-  public onRemove(eventId: string): void {
+    public ngOnInit(): void {
+        this.historyFacade.loadHistory();
+        setTimeout(() => {
+            console.log('test', this.history());
+        }, 2000);
+    }
+
+    public onRemove(eventId: string): void {
+        console.log('eventId', eventId);
     // this.confirmationService.confirm({
     //   message: this.translocoService.translate("DELETE_CONFIRMATION.MESSAGE"),
     //   header: this.translocoService.translate("DELETE_CONFIRMATION.TITLE"),
@@ -52,9 +56,9 @@ export class HistoryLayoutComponent implements OnInit {
     //     });
     //   },
     // });
-  }
+    }
 
-  public trackByHistory(index: number, history: HistoryElement): string {
-    return history.id;
-  }
+    public trackByHistory(index: number, history: HistoryElement): string {
+        return history.id;
+    }
 }

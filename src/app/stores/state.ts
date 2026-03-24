@@ -1,3 +1,3 @@
 export type BaseState = {
-  isLoading: boolean;
+    isLoading: boolean;
 };

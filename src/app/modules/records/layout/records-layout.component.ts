@@ -1,54 +1,59 @@
-import { Component, inject, OnInit } from "@angular/core";
-import { CategoryRequest } from "@app/apis/categories/models";
-import { HistoryRequest } from "@app/apis/history/models";
-import { MetaService } from "@app/services/meta.service";
-import { TranslocoService } from "@ngneat/transloco";
-import { CategoryFacade } from "@app/stores/categories/category.facade";
-import { HistoryFacade } from "@app/stores/history/history.facade";
+import { ChangeDetectionStrategy, Component, inject, OnInit } from "@angular/core";
+import { TranslocoPipe, TranslocoService } from "@ngneat/transloco";
+import { CategoryRequest } from "../../../apis/categories/models";
+import { HistoryRequest } from "../../../apis/history/models";
+import { MetaService } from "../../../services/meta.service";
+import { CategoryFacade } from "../../../stores/categories/category.facade";
+import { HistoryFacade } from "../../../stores/history/history.facade";
+import { AddEventComponent } from "../components/add-event/add-event.component";
+import { CreateCategoryComponent } from "../components/create-category/create-category.component";
 
 @Component({
     selector: "app-records-layout",
     templateUrl: "./records-layout.component.html",
     styleUrls: ["./records-layout.component.scss"],
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CreateCategoryComponent, AddEventComponent, TranslocoPipe]
 })
 export class RecordsLayoutComponent implements OnInit {
-  private translocoService = inject(TranslocoService);
+    private translocoService = inject(TranslocoService);
 
-  private categoryFacade = inject(CategoryFacade);
-  private historyFacade = inject(HistoryFacade);
+    private categoryFacade = inject(CategoryFacade);
+    private historyFacade = inject(HistoryFacade);
 
-  public readonly categories = this.categoryFacade.categories;
-  public readonly isLoading = this.categoryFacade.isLoading;
+    public readonly categories = this.categoryFacade.categories;
+    public readonly isLoading = this.categoryFacade.isLoading;
 
-  constructor(metaService: MetaService) {
-    metaService.init({
-      title: "Records",
-      description: "Page of records",
-      keywords: "Records",
-    });
-  }
+    constructor() {
+        const metaService = inject(MetaService);
 
-  public ngOnInit(): void {
-    this.categoryFacade.loadCategories();
-  }
+        metaService.init({
+            title: "Records",
+            description: "Page of records",
+            keywords: "Records",
+        });
+    }
 
-  public createCategory(category: CategoryRequest): void {
-    this.categoryFacade.createNewCategory(category);
+    public ngOnInit(): void {
+        this.categoryFacade.loadCategories();
+    }
+
+    public createCategory(category: CategoryRequest): void {
+        this.categoryFacade.createNewCategory(category);
 
     // this.messageService.add({
     //   severity: "success",
     //   summary: this.translocoService.translate("TOASTS.ADD_SUCCESS.TITLE"),
     //   detail: this.translocoService.translate("TOASTS.ADD_SUCCESS.MESSAGE"),
     // });
-  }
+    }
 
-  public addHistoryElement(history: HistoryRequest): void {
-    this.historyFacade.addHistory(history);
+    public addHistoryElement(history: HistoryRequest): void {
+        this.historyFacade.addHistory(history);
     // this.messageService.add({
     //   severity: "success",
     //   summary: this.translocoService.translate("TOASTS.ADD_SUCCESS.TITLE"),
     //   detail: this.translocoService.translate("TOASTS.ADD_SUCCESS.MESSAGE"),
     // });
-  }
+    }
 }

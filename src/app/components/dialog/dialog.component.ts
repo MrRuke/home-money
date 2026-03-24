@@ -1,14 +1,13 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { ChangeDetectionStrategy, Component, output } from "@angular/core";
+import { CustomButtonComponent } from "../custom-button/custom-button.component";
 
 @Component({
     selector: "app-dialog",
     templateUrl: "./dialog.component.html",
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CustomButtonComponent]
 })
 export class DialogComponent {
-  @Output()
-  public closed = new EventEmitter<void>();
-  
-  @Output()
-  public submitted = new EventEmitter<void>();
+    public closed = output<void>();
+    public submitted = output<void>();
 }

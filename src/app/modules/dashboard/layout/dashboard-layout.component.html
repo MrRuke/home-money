@@ -1,36 +1,37 @@
 <div class="app-dashboard-layout">
   <div class="flex flex-wrap gap-3">
-    <p-progressSpinner
-      *ngIf="isLoading()"
-      ariaLabel="loading"
-    ></p-progressSpinner>
+    @if (isLoading()) {
+      <p-progressSpinner
+        ariaLabel="loading"
+      ></p-progressSpinner>
+    }
 
-    <ng-container *ngIf="!isLoading()">
-      <div
-        *ngFor="let item of accounts(); trackBy: trackByAccounts"
-        class="rounded-md font-semibold shadow-sm flex justify-end items-end text-gray-900 bg-white ring-1 ring-inset ring-gray-300 p-2 h-56 w-1/4"
-      >
-        <div class="flex justify-end items-center gap-2 text-2xl">
-          <span>{{ item.value | appCost : item.currency }}</span>
-
-          <app-custom-button theme="danger" (click)="onRemove($event, item.id)">
-            Delete
-          </app-custom-button>
+    @if (!isLoading()) {
+      @for (item of accounts(); track trackByAccounts($index, item)) {
+        <div
+          class="rounded-md font-semibold shadow-sm flex justify-end items-end text-gray-900 bg-white ring-1 ring-inset ring-gray-300 p-2 h-56 w-1/4"
+          >
+          <div class="flex justify-end items-center gap-2 text-2xl">
+            <span>{{ item.value | appCost : item.currency }}</span>
+            <app-custom-button theme="danger" (click)="onRemove($event, item.id)">
+              Delete
+            </app-custom-button>
+          </div>
         </div>
-      </div>
-
+      }
       <div
         class="flex items-center justify-center rounded-md border-blue-600 border-2 border-dashed h-56 w-1/4"
-      >
+        >
         <app-custom-button theme="primary" (click)="handleOpenCreateDialog()">
           Create
         </app-custom-button>
       </div>
-    </ng-container>
+    }
   </div>
 </div>
 
-<app-create-account-dialog
-  *ngIf="isCreateDialogVisible()"
-  (closed)="onClose()"
-></app-create-account-dialog>
+@if (isCreateDialogVisible()) {
+  <app-create-account-dialog
+    (closed)="onClose()"
+    />
+}
