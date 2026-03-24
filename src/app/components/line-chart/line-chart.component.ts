@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChartData, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
@@ -11,7 +11,30 @@ import { BaseChartDirective } from 'ng2-charts';
         BaseChartDirective,
     ],
 })
-export class LineChartComponent {
+export class LineChartComponent implements OnInit {
+    activeFilter: '1M' | '1Y' | '3Y' = '1Y';
+
+    private chartDataStore = {
+        '1M': {
+            labels: ['Mar 1', 'Mar 8', 'Mar 15', 'Mar 24'],
+            main: [4100, 4150, 4200, 4235],
+            savings: [15500, 15600, 15650, 15700],
+            credit: [-900, -880, -850, -845]
+        },
+        '1Y': {
+            labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'],
+            main: [3000, 3100, 2900, 3400, 3500, 3700, 3600, 3900, 4000, 4100, 4200, 4235],
+            savings: [13000, 13200, 13500, 13800, 14000, 14200, 14500, 14800, 15000, 15300, 15500, 15700],
+            credit: [-1200, -1100, -1300, -1000, -900, -950, -800, -850, -700, -750, -800, -845]
+        },
+        '3Y': {
+            labels: ['2024', '2025', '2026'],
+            main: [2500, 3800, 4235],
+            savings: [10000, 14000, 15700],
+            credit: [-1500, -900, -845]
+        }
+    };
+    
     protected balanceChartOptions: ChartOptions<'line'> = {
         responsive: true,
         maintainAspectRatio: false,
@@ -109,4 +132,44 @@ export class LineChartComponent {
             }
         ]
     };
+
+    ngOnInit() {
+        this.updateChartData(this.activeFilter);
+    }
+
+    setFilter(filter: '1M' | '1Y' | '3Y') {
+        this.activeFilter = filter;
+        this.updateChartData(filter);
+    }
+
+    private updateChartData(filter: '1M' | '1Y' | '3Y') {
+        const data = this.chartDataStore[filter];
+
+        this.balanceChartData = {
+            labels: data.labels,
+            datasets: [
+                {
+                    label: 'Main Checking',
+                    data: data.main,
+                    borderColor: '#14B8A6',
+                    backgroundColor: 'rgba(20, 184, 166, 0.1)',
+                    fill: true, tension: 0.4, borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#121212'
+                },
+                {
+                    label: 'Savings',
+                    data: data.savings,
+                    borderColor: '#F97316',
+                    backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                    fill: true, tension: 0.4, borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#121212'
+                },
+                {
+                    label: 'Credit Card',
+                    data: data.credit,
+                    borderColor: '#F43F5E',
+                    backgroundColor: 'rgba(244, 63, 94, 0.1)',
+                    fill: true, tension: 0.4, borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#121212'
+                }
+            ]
+        };
+    }
 }

@@ -2,3 +2,44 @@
     position: relative;
     height: 300px;
 }
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header-title-group {
+        font-size: 12px;
+    }
+}
+
+.time-filters {
+    display: flex;
+    background-color: var(--bg-input);
+    border-radius: 8px;
+    padding: 4px;
+    gap: 4px;
+}
+
+.time-filters button {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.time-filters button:hover:not(.active) {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.time-filters button.active {
+    background-color: var(--accent-teal);
+    color: var(--text-inverse);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

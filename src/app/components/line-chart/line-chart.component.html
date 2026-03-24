@@ -1,4 +1,18 @@
-<div class="card-content">
-    <canvas baseChart [data]="balanceChartData" [options]="balanceChartOptions" [type]="'line'">
-    </canvas>
-</div>
+<section class="card account-assets">
+    <header class="card-header">
+        <div class="header-title-group">
+            <h2>Total Balance Dynamics</h2>
+        </div>
+
+        <div class="time-filters">
+            <button [class.active]="activeFilter === '1M'" (click)="setFilter('1M')">1M</button>
+            <button [class.active]="activeFilter === '1Y'" (click)="setFilter('1Y')">1Y</button>
+            <button [class.active]="activeFilter === '3Y'" (click)="setFilter('3Y')">3Y</button>
+        </div>
+    </header>
+
+    <div class="card-content">
+        <canvas baseChart [data]="balanceChartData" [options]="balanceChartOptions" [type]="'line'">
+        </canvas>
+    </div>
+</section>
