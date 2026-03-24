@@ -17,7 +17,9 @@ export class DashboardLayoutComponent implements OnInit {
     public readonly accounts = this.accountFacade.accounts;
     public readonly isLoading = this.accountFacade.isLoading;
 
-    constructor(metaService: MetaService) {
+    constructor() {
+        const metaService = inject(MetaService);
+
         metaService.init({
             title: "Dashboard",
             description: "Page of dashboard",

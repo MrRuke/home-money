@@ -17,7 +17,9 @@ export class HistoryLayoutComponent implements OnInit {
     public readonly history = this.historyFacade.history;
     public readonly isLoading = this.historyFacade.isLoading;
 
-    constructor(metaService: MetaService) {
+    constructor() {
+        const metaService = inject(MetaService);
+
         metaService.init({
             title: "History",
             description: "Page of history",

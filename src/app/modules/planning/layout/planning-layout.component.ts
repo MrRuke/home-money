@@ -35,7 +35,12 @@ export class PlanningLayoutComponent implements OnInit {
         () => this.categoryFacade.isLoading() || this.historyFacade.isLoading()
     );
 
-    constructor(metaService: MetaService) {
+    /** Inserted by Angular inject() migration for backwards compatibility */
+    constructor(...args: unknown[]);
+
+    constructor() {
+        const metaService = inject(MetaService);
+
         metaService.init({
             title: "Planning",
             description: "Page of planning",

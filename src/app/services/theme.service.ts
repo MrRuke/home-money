@@ -1,12 +1,14 @@
 import { DOCUMENT } from "@angular/common";
-import { Inject, Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { APP_THEME_STORAGE_KEY } from "@app/core/constansts";
 
 @Injectable({
     providedIn: "root",
 })
 export class ThemeService {
-    constructor(@Inject(DOCUMENT) private document: Document) {}
+    private document = inject<Document>(DOCUMENT);
+
+    constructor() {}
 
     public switchTheme(theme: string): void {
         const themeLink = this.document.getElementById(

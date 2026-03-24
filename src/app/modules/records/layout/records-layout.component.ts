@@ -2,9 +2,9 @@ import { Component, inject, OnInit } from "@angular/core";
 import { CategoryRequest } from "@app/apis/categories/models";
 import { HistoryRequest } from "@app/apis/history/models";
 import { MetaService } from "@app/services/meta.service";
-import { TranslocoService } from "@ngneat/transloco";
 import { CategoryFacade } from "@app/stores/categories/category.facade";
 import { HistoryFacade } from "@app/stores/history/history.facade";
+import { TranslocoService } from "@ngneat/transloco";
 
 @Component({
     selector: "app-records-layout",
@@ -21,7 +21,9 @@ export class RecordsLayoutComponent implements OnInit {
     public readonly categories = this.categoryFacade.categories;
     public readonly isLoading = this.categoryFacade.isLoading;
 
-    constructor(metaService: MetaService) {
+    constructor() {
+        const metaService = inject(MetaService);
+
         metaService.init({
             title: "Records",
             description: "Page of records",
