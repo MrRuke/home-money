@@ -43,3 +43,125 @@
     color: var(--text-inverse);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+/* =========================================
+   (Account Cards)
+   ========================================= */
+.account-cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 32px;
+}
+
+.account-mini-card {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 16px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.account-mini-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.mini-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.card-title-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.card-icon.teal {
+    color: var(--accent-teal);
+}
+
+.card-icon.orange {
+    color: var(--accent-orange);
+}
+
+.card-icon.red {
+    color: var(--status-expense-text);
+}
+
+.card-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.edit-btn {
+    width: 14px;
+    height: 14px;
+    color: var(--text-secondary);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+}
+
+.account-mini-card:hover .edit-btn {
+    opacity: 1;
+}
+
+.mini-card-body {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 8px;
+    flex-direction: column;
+}
+
+.account-balance {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.5px;
+}
+
+.account-balance.negative {
+    color: var(--status-expense-text);
+}
+
+.account-trend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.account-trend svg {
+    width: 12px;
+    height: 12px;
+}
+
+.account-trend.positive {
+    color: var(--status-income-text);
+    background-color: var(--status-income-bg);
+}
+
+.account-trend.negative {
+    color: var(--status-expense-text);
+    background-color: var(--status-expense-bg);
+}
+
+@media (max-width: 768px) {
+    .account-cards-wrapper {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LucidePen } from '@lucide/angular';
 import { ChartData, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
@@ -9,6 +10,7 @@ import { BaseChartDirective } from 'ng2-charts';
     styleUrls: ['./line-chart.component.scss'],
     imports: [
         BaseChartDirective,
+        LucidePen,
     ],
 })
 export class LineChartComponent implements OnInit {

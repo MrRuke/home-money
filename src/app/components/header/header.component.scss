@@ -18,6 +18,10 @@
     align-items: center;
     gap: 8px;
     cursor: pointer;
+
+    svg {
+        color: var(--accent-teal);
+    }
 }
 
 .logo-text {
@@ -25,6 +29,10 @@
     font-weight: 700;
     color: var(--text-primary);
     letter-spacing: 0.5px;
+
+    &-first {
+        color: var(--accent-teal);
+    }
 }
 
 .user-profile {
