@@ -1,4 +1,4 @@
-import { Component, input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, input } from "@angular/core";
 
 @Component({
     selector: "app-custom-button",
@@ -8,6 +8,7 @@ import { Component, input } from "@angular/core";
       display: flex;
     }
   `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: false
 })
 export class CustomButtonComponent {

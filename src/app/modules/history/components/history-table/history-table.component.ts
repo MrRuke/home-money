@@ -1,10 +1,11 @@
-import { Component, input, output } from "@angular/core";
+import { ChangeDetectionStrategy, Component, input, output } from "@angular/core";
 import { HistoryElement, HistoryType } from "@app/apis/history/models";
 
 @Component({
     selector: "app-history-table",
     templateUrl: "./history-table.component.html",
     styleUrls: ["./history-table.component.scss"],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: false
 })
 export class HistoryTableComponent {

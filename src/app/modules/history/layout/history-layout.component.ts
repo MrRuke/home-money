@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, OnInit } from "@angular/core";
 import { HistoryElement } from "@app/apis/history/models";
 
 import { MetaService } from "@app/services/meta.service";
@@ -8,6 +8,7 @@ import { TranslocoService } from "@ngneat/transloco";
 @Component({
     selector: "app-history-layout",
     templateUrl: "./history-layout.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: false
 })
 export class HistoryLayoutComponent implements OnInit {

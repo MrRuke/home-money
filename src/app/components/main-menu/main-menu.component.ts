@@ -1,4 +1,5 @@
 import {
+    ChangeDetectionStrategy,
     Component,
     DestroyRef,
     inject,
@@ -22,6 +23,7 @@ interface Language {
     templateUrl: "./main-menu.component.html",
     styleUrls: ["./main-menu.component.scss"],
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: false
 })
 export class MainMenuComponent implements OnInit {

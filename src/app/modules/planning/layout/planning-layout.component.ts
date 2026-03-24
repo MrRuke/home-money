@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, inject, OnInit } from "@angular/core";
 import { Category } from "@app/apis/categories/models";
 import { HistoryElement, HistoryType } from "@app/apis/history/models";
 import { MetaService } from "@app/services/meta.service";
@@ -9,6 +9,7 @@ import { HistoryFacade } from "@app/stores/history/history.facade";
     selector: "app-planning-layout",
     templateUrl: "./planning-layout.component.html",
     styleUrls: ["./planning-layout.component.scss"],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: false
 })
 export class PlanningLayoutComponent implements OnInit {

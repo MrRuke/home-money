@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, OnInit } from "@angular/core";
 import { CategoryRequest } from "@app/apis/categories/models";
 import { HistoryRequest } from "@app/apis/history/models";
 import { MetaService } from "@app/services/meta.service";
@@ -10,6 +10,7 @@ import { TranslocoService } from "@ngneat/transloco";
     selector: "app-records-layout",
     templateUrl: "./records-layout.component.html",
     styleUrls: ["./records-layout.component.scss"],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: false
 })
 export class RecordsLayoutComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, inject, output } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, output } from "@angular/core";
 import { UntypedFormBuilder, Validators } from "@angular/forms";
 import { CategoryRequest } from "@app/apis/categories/models";
 
@@ -6,6 +6,7 @@ import { CategoryRequest } from "@app/apis/categories/models";
     selector: "app-create-category",
     templateUrl: "./create-category.component.html",
     styleUrls: ["./create-category.component.scss"],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: false
 })
 export class CreateCategoryComponent {

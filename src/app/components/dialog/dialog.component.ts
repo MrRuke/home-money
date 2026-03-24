@@ -1,8 +1,9 @@
-import { Component, output } from "@angular/core";
+import { ChangeDetectionStrategy, Component, output } from "@angular/core";
 
 @Component({
     selector: "app-dialog",
     templateUrl: "./dialog.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: false
 })
 export class DialogComponent {

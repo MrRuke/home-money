@@ -1,4 +1,4 @@
-import { Component, inject, output } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, output } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { AccountCurrencyTypes } from "@app/apis/accounts/models";
 import { AccountFacade } from "@app/stores/account/account.facade";
@@ -7,6 +7,7 @@ import { AccountFacade } from "@app/stores/account/account.facade";
     selector: "app-create-account-dialog",
     templateUrl: "./create-account-dialog.component.html",
     providers: [],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: false
 })
 export class CreateAccountDialogComponent {

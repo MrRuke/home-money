@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from "@angular/core";
 import { AccountElement } from "@app/apis/accounts/models";
 import { MetaService } from "@app/services/meta.service";
 import { AccountFacade } from "@app/stores/account/account.facade";
@@ -7,6 +7,7 @@ import { TranslocoService } from "@ngneat/transloco";
 @Component({
     selector: "app-dashboard-layout",
     templateUrl: "./dashboard-layout.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: false
 })
 export class DashboardLayoutComponent implements OnInit {
