@@ -1,14 +1,16 @@
 import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Category } from '@app/apis/categories/models';
 import { HistoryRequest, HistoryType } from '@app/apis/history/models';
+import { CustomButtonComponent } from '../../../../components/custom-button/custom-button.component';
+import { TranslocoPipe } from '@ngneat/transloco';
 
 @Component({
     selector: 'app-add-event',
     templateUrl: './add-event.component.html',
     styleUrls: ['./add-event.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [ReactiveFormsModule, CustomButtonComponent, TranslocoPipe]
 })
 export class AddEventComponent {
     private fb = inject(UntypedFormBuilder);

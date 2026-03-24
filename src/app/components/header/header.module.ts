@@ -8,13 +8,13 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatToolbarModule } from "@angular/material/toolbar";
 
 @NgModule({
-    declarations: [HeaderComponent],
     imports: [
         CommonModule,
         TranslocoRootModule,
         MatToolbarModule,
         MatButtonModule,
         MatIconModule,
+        HeaderComponent,
     ],
     exports: [HeaderComponent],
 })

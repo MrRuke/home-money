@@ -5,8 +5,7 @@ import { HistoryElement, HistoryType } from "@app/apis/history/models";
     selector: "app-history-table",
     templateUrl: "./history-table.component.html",
     styleUrls: ["./history-table.component.scss"],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HistoryTableComponent {
     public history = input<HistoryElement[]>([]);

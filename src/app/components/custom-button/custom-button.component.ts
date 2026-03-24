@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from "@angular/core";
+import { MatButton } from "@angular/material/button";
 
 @Component({
     selector: "app-custom-button",
@@ -9,7 +10,7 @@ import { ChangeDetectionStrategy, Component, input } from "@angular/core";
     }
   `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [MatButton]
 })
 export class CustomButtonComponent {
     public theme = input.required<BUTTON_THEME>();

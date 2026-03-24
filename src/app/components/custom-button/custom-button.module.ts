@@ -4,8 +4,7 @@ import { CustomButtonComponent } from "./custom-button.component";
 import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
-    declarations: [CustomButtonComponent],
-    imports: [CommonModule, MatButtonModule],
+    imports: [CommonModule, MatButtonModule, CustomButtonComponent],
     exports: [CustomButtonComponent],
 })
 export class CustomButtonModule {}

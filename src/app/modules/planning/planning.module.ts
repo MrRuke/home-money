@@ -6,12 +6,12 @@ import { PlanningRoutingModule } from './planning-routing.module';
 import { TranslocoRootModule } from '@app/transloco-root.module';
 
 @NgModule({
-    declarations: [PlanningLayoutComponent],
     imports: [
         CommonModule,
         PlanningRoutingModule,
         CostPipeModule,
         TranslocoRootModule,
+        PlanningLayoutComponent,
     ],
 })
 export class PlanningModule {

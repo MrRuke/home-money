@@ -1,14 +1,15 @@
 import { ChangeDetectionStrategy, Component, inject, output } from "@angular/core";
-import { FormBuilder, Validators } from "@angular/forms";
+import { FormBuilder, Validators, ReactiveFormsModule } from "@angular/forms";
 import { AccountCurrencyTypes } from "@app/apis/accounts/models";
 import { AccountFacade } from "@app/stores/account/account.facade";
+import { DialogComponent } from "../../../components/dialog/dialog.component";
 
 @Component({
     selector: "app-create-account-dialog",
     templateUrl: "./create-account-dialog.component.html",
     providers: [],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [DialogComponent, ReactiveFormsModule]
 })
 export class CreateAccountDialogComponent {
     private accountFacade = inject(AccountFacade);

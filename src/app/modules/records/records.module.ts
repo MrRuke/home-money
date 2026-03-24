@@ -10,11 +10,6 @@ import { TranslocoRootModule } from '@app/transloco-root.module';
 import { CustomButtonModule } from '@app/components/custom-button/custom-button.module';
 
 @NgModule({
-    declarations: [
-        RecordsLayoutComponent,
-        CreateCategoryComponent,
-        AddEventComponent,
-    ],
     imports: [
         CommonModule,
         RecordsRoutingModule,
@@ -22,6 +17,9 @@ import { CustomButtonModule } from '@app/components/custom-button/custom-button.
         FormsModule,
         TranslocoRootModule,
         CustomButtonModule,
+        RecordsLayoutComponent,
+        CreateCategoryComponent,
+        AddEventComponent,
     ],
 })
 export class RecordsModule {

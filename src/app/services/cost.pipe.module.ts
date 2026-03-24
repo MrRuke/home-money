@@ -3,9 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppCostPipe } from './cost.pipe';
 
 @NgModule({
-    declarations: [
-        AppCostPipe,
-    ],
+    imports: [AppCostPipe],
     exports: [
         AppCostPipe,
     ],

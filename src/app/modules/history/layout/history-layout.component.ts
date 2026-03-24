@@ -4,12 +4,13 @@ import { HistoryElement } from "@app/apis/history/models";
 import { MetaService } from "@app/services/meta.service";
 import { HistoryFacade } from "@app/stores/history/history.facade";
 import { TranslocoService } from "@ngneat/transloco";
+import { HistoryTableComponent } from "../components/history-table/history-table.component";
 
 @Component({
     selector: "app-history-layout",
     templateUrl: "./history-layout.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [HistoryTableComponent]
 })
 export class HistoryLayoutComponent implements OnInit {
     private translocoService = inject(TranslocoService);

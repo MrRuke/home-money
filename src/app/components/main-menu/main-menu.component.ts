@@ -7,7 +7,7 @@ import {
     ViewEncapsulation,
 } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { Router } from "@angular/router";
+import { Router, RouterLink, RouterLinkActive } from "@angular/router";
 import { LangService } from "@app/services/lang.service";
 import { ThemeService } from "@app/services/theme.service";
 import { TranslocoService } from "@ngneat/transloco";
@@ -24,7 +24,7 @@ interface Language {
     styleUrls: ["./main-menu.component.scss"],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [RouterLink, RouterLinkActive]
 })
 export class MainMenuComponent implements OnInit {
     private router = inject(Router);

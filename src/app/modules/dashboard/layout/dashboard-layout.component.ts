@@ -3,12 +3,15 @@ import { AccountElement } from "@app/apis/accounts/models";
 import { MetaService } from "@app/services/meta.service";
 import { AccountFacade } from "@app/stores/account/account.facade";
 import { TranslocoService } from "@ngneat/transloco";
+import { CustomButtonComponent } from "../../../components/custom-button/custom-button.component";
+import { CreateAccountDialogComponent } from "../create-account-dialog/create-account-dialog.component";
+import { AppCostPipe } from "../../../services/cost.pipe";
 
 @Component({
     selector: "app-dashboard-layout",
     templateUrl: "./dashboard-layout.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [CustomButtonComponent, CreateAccountDialogComponent, AppCostPipe]
 })
 export class DashboardLayoutComponent implements OnInit {
     private translocoService = inject(TranslocoService);

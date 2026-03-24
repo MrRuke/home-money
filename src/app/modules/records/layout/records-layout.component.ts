@@ -4,14 +4,16 @@ import { HistoryRequest } from "@app/apis/history/models";
 import { MetaService } from "@app/services/meta.service";
 import { CategoryFacade } from "@app/stores/categories/category.facade";
 import { HistoryFacade } from "@app/stores/history/history.facade";
-import { TranslocoService } from "@ngneat/transloco";
+import { TranslocoService, TranslocoPipe } from "@ngneat/transloco";
+import { CreateCategoryComponent } from "../components/create-category/create-category.component";
+import { AddEventComponent } from "../components/add-event/add-event.component";
 
 @Component({
     selector: "app-records-layout",
     templateUrl: "./records-layout.component.html",
     styleUrls: ["./records-layout.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [CreateCategoryComponent, AddEventComponent, TranslocoPipe]
 })
 export class RecordsLayoutComponent implements OnInit {
     private translocoService = inject(TranslocoService);

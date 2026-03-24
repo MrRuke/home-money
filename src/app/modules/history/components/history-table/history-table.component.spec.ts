@@ -8,7 +8,7 @@ describe('HistoryTableComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [ HistoryTableComponent ]
+            imports: [HistoryTableComponent]
         })
             .compileComponents();
     });

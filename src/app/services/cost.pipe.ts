@@ -1,9 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({
-    name: 'appCost',
-    standalone: false
-})
+@Pipe({ name: 'appCost' })
 export class AppCostPipe implements PipeTransform {
     public transform(value: number, measure: AppCostPipeMeasure): string {
         return `${this.getConvertedValue(value)} ${this.getMeasureTranslate(measure)}`;

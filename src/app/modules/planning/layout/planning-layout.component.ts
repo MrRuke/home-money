@@ -4,13 +4,16 @@ import { HistoryElement, HistoryType } from "@app/apis/history/models";
 import { MetaService } from "@app/services/meta.service";
 import { CategoryFacade } from "@app/stores/categories/category.facade";
 import { HistoryFacade } from "@app/stores/history/history.facade";
+import { DecimalPipe } from "@angular/common";
+import { AppCostPipe } from "../../../services/cost.pipe";
+import { TranslocoPipe } from "@ngneat/transloco";
 
 @Component({
     selector: "app-planning-layout",
     templateUrl: "./planning-layout.component.html",
     styleUrls: ["./planning-layout.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [DecimalPipe, AppCostPipe, TranslocoPipe]
 })
 export class PlanningLayoutComponent implements OnInit {
     private categoryFacade = inject(CategoryFacade);
