@@ -5,7 +5,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HeaderModule } from "@app/components/header/header.module";
-import { MainMenuModule } from "@app/components/main-menu/main-menu.module";
+
 import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
@@ -33,7 +33,6 @@ import * as historyEffects from "./stores/history/history.effects";
         HeaderModule,
         MatSidenavModule,
         RouterOutlet,
-        MainMenuModule,
         StoreModule.forRoot({
             accounts: accountReducer,
             history: historyReducer,
