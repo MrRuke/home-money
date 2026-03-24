@@ -29,35 +29,18 @@
   </mat-sidenav-content>
 </mat-sidenav-container> -->
 
-<header class="top-header">
-  <div class="header-container">
-    <div class="logo">
-      <span class="logo-icon">📊</span>
-      <span class="logo-text">FinTrack</span>
-    </div>
-
-    <div class="user-profile">
-      <button class="icon-btn" aria-label="Notifications">
-        🔔
-      </button>
-
-      <div class="profile-info">
-        <img src="https://via.placeholder.com/32" alt="User Avatar" class="avatar">
-        <span class="user-name">Alex R.</span>
-        <span class="dropdown-icon">▼</span>
-      </div>
-    </div>
-  </div>
-</header>
+<app-header></app-header>
 
 <div class="dashboard-container">
   <section class="card account-assets">
     <header class="card-header">
       <h2>Account Assets</h2>
-      <button class="btn-teal">+ New Account</button>
+
+      <app-button>New Account</app-button>
     </header>
     <div class="card-content">
-      <div class="placeholder">placeholder</div>
+      <!-- <div class="placeholder">placeholder</div> -->
+      <app-line-chart></app-line-chart>
     </div>
   </section>
 

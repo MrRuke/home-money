@@ -16,7 +16,12 @@ import { historyReducer } from "./stores/history/history.reducer";
 import { TranslocoRootModule } from "./transloco-root.module";
 
 import { RouterOutlet } from "@angular/router";
+
+import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { ButtonComponent } from "./components/button/button.component";
+import { HeaderComponent } from "./components/header/header.component";
 import { HeaderModule } from "./components/header/header.module";
+import { LineChartComponent } from "./components/line-chart/line-chart.component";
 import { MainMenuComponent } from "./components/main-menu/main-menu.component";
 import * as accountEffects from "./stores/account/account.effects";
 import * as categoryEffects from "./stores/categories/category.effects";
@@ -42,8 +47,18 @@ import * as historyEffects from "./stores/history/history.effects";
         EffectsModule.forRoot([accountEffects, historyEffects, categoryEffects]),
         TranslocoRootModule,
         MainMenuComponent,
+
+        //
+        ButtonComponent,
+        HeaderComponent,
+        BaseChartDirective,
+        LineChartComponent,
     ],
-    providers: [CommonModule],
+    providers: [
+        CommonModule,
+        provideCharts(withDefaultRegisterables()),
+
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {

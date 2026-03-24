@@ -7,7 +7,7 @@ import { ThemeService } from "./services/theme.service";
     templateUrl: "./app.component.html",
     styleUrls: ["./app.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class AppComponent implements OnInit {
     private themeService = inject(ThemeService);

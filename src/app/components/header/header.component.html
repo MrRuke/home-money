@@ -1,29 +1,22 @@
-<mat-toolbar color="primary">
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
+<header class="top-header">
+  <div class="header-container">
+    <div class="logo">
+      <svg lucideChartNoAxesCombined></svg>
+      <span class="logo-text">FinTrack</span>
+    </div>
 
-  <span>{{ "HEADER_TITLE" | transloco }}</span>
+    <div class="user-profile">
+      <button class="icon-btn" aria-label="Notifications">
+        <svg lucideBellRing></svg>
+      </button>
 
-  <span class="example-spacer"></span>
-
-  <button
-    mat-icon-button
-    class="example-icon favorite-icon"
-    aria-label="Example icon-button with heart icon"
-  >
-    <mat-icon>favorite</mat-icon>
-  </button>
-
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with share icon"
-  >
-    <mat-icon>share</mat-icon>
-  </button>
-</mat-toolbar>
+      <div class="profile-info">
+        <svg lucideUser class="avatar"></svg>
+        <span class="user-name">Alex R.</span>
+        <span class="dropdown-icon">
+          <svg lucideChevronDown></svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</header>

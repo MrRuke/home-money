@@ -1,14 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MatToolbar } from '@angular/material/toolbar';
-import { MatIconButton } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
-import { TranslocoPipe } from '@ngneat/transloco';
+import { LucideBellRing, LucideChartNoAxesCombined, LucideChevronDown, LucideUser } from '@lucide/angular';
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
+    styleUrl: './header.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatToolbar, MatIconButton, MatIcon, TranslocoPipe]
+    imports: [
+        LucideBellRing,
+        LucideChartNoAxesCombined,
+        LucideUser,
+        LucideChevronDown,
+    ]
 })
 export class HeaderComponent {
 }
