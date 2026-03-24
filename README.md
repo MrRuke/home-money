@@ -2,7 +2,7 @@
 Application that exist for personal accounting of finances. You can use it for creating different accounts, prepare categories with balance and adding income/outcome that you can easily follow by. 
 
 ## Tech stack
-- Angular 18
+- Angular 21
 - TypeScript
 - RxJs
 - NgRx store management (with effects and entities)
