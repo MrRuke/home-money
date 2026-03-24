@@ -1,5 +1,5 @@
-import { AccountElement, AccountRequest } from "@app/apis/accounts/models";
 import { createActionGroup, emptyProps, props } from "@ngrx/store";
+import { AccountElement, AccountRequest } from "../../apis/accounts/models";
 
 export const AccountsActions = createActionGroup({
     source: 'Accounts',

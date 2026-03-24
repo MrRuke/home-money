@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject, output } from "@angular/core";
-import { FormBuilder, Validators, ReactiveFormsModule } from "@angular/forms";
-import { AccountCurrencyTypes } from "@app/apis/accounts/models";
-import { AccountFacade } from "@app/stores/account/account.facade";
+import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
+import { AccountCurrencyTypes } from "../../../apis/accounts/models";
 import { DialogComponent } from "../../../components/dialog/dialog.component";
+import { AccountFacade } from "../../../stores/account/account.facade";
 
 @Component({
     selector: "app-create-account-dialog",

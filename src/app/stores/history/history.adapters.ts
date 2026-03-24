@@ -1,5 +1,5 @@
-import { HistoryElement } from "@app/apis/history/models";
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
+import { HistoryElement } from "../../apis/history/models";
 import { BaseState } from "../state";
 
 export type HistoryState = {

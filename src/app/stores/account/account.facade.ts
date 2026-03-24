@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
-import { AccountRequest } from "@app/apis/accounts/models";
 import { Store } from "@ngrx/store";
+import { AccountRequest } from "../../apis/accounts/models";
 import { AccountsActions } from "./account.actions";
 import { selectAccounts, selectIsLoading } from "./account.selectors";
 

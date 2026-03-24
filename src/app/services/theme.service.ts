@@ -1,6 +1,6 @@
-import { DOCUMENT } from "@angular/common";
-import { Injectable, inject } from "@angular/core";
-import { APP_THEME_STORAGE_KEY } from "@app/core/constansts";
+
+import { DOCUMENT, Injectable, inject } from "@angular/core";
+import { APP_THEME_STORAGE_KEY } from "../core/constansts";
 
 @Injectable({
     providedIn: "root",

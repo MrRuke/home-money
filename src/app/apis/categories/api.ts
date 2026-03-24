@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Category, CategoryRequest } from '@app/apis/categories/models';
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { BaseApi } from '../base-api';
+import { Category, CategoryRequest } from './models';
 
 @Injectable({ providedIn: 'root' })
 export class CategoriesApi extends BaseApi {

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HistoryElement, HistoryRequest } from '@app/apis/history/models';
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { BaseApi } from '../base-api';
+import { HistoryElement, HistoryRequest } from './models';
 
 @Injectable({ providedIn: 'root' })
 export class HistoryApi extends BaseApi {

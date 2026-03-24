@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AccountElement, AccountRequest } from '@app/apis/accounts/models';
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { BaseApi } from '../base-api';
+import { AccountElement, AccountRequest } from './models';
 
 @Injectable({ providedIn: 'root' })
 export class AccountsApi extends BaseApi {

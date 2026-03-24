@@ -1,12 +1,12 @@
-import { ChangeDetectionStrategy, Component, computed, inject, OnInit } from "@angular/core";
-import { Category } from "@app/apis/categories/models";
-import { HistoryElement, HistoryType } from "@app/apis/history/models";
-import { MetaService } from "@app/services/meta.service";
-import { CategoryFacade } from "@app/stores/categories/category.facade";
-import { HistoryFacade } from "@app/stores/history/history.facade";
 import { DecimalPipe } from "@angular/common";
-import { AppCostPipe } from "../../../services/cost.pipe";
+import { ChangeDetectionStrategy, Component, computed, inject, OnInit } from "@angular/core";
 import { TranslocoPipe } from "@ngneat/transloco";
+import { Category } from "../../../apis/categories/models";
+import { HistoryElement, HistoryType } from "../../../apis/history/models";
+import { AppCostPipe } from "../../../services/cost.pipe";
+import { MetaService } from "../../../services/meta.service";
+import { CategoryFacade } from "../../../stores/categories/category.facade";
+import { HistoryFacade } from "../../../stores/history/history.facade";
 
 @Component({
     selector: "app-planning-layout",

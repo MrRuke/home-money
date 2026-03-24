@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { CategoriesApi } from '@app/apis/categories/api';
-import { Category, CategoryRequest } from '@app/apis/categories/models';
 import { Observable, of } from 'rxjs';
+import { CategoriesApi } from '../../apis/categories/api';
+import { Category, CategoryRequest } from '../../apis/categories/models';
 
 @Injectable({ providedIn: 'root' })
 export class CategoryService {

@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
+import { CategoryRequest } from "../../apis/categories/models";
 import { CategoryActions } from "./category.actions";
-import { CategoryRequest } from "@app/apis/categories/models";
 import { selectCategories, selectIsLoading } from "./category.selectors";
 
 @Injectable({ providedIn: "root" })

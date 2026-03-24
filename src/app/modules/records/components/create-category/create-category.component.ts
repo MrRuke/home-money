@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject, output } from "@angular/core";
-import { UntypedFormBuilder, Validators, ReactiveFormsModule } from "@angular/forms";
-import { CategoryRequest } from "@app/apis/categories/models";
-import { CustomButtonComponent } from "../../../../components/custom-button/custom-button.component";
+import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import { TranslocoPipe } from "@ngneat/transloco";
+import { CategoryRequest } from "../../../../apis/categories/models";
+import { CustomButtonComponent } from "../../../../components/custom-button/custom-button.component";
 
 @Component({
     selector: "app-create-category",

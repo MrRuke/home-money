@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
-import { UntypedFormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Category } from '@app/apis/categories/models';
-import { HistoryRequest, HistoryType } from '@app/apis/history/models';
-import { CustomButtonComponent } from '../../../../components/custom-button/custom-button.component';
+import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import { TranslocoPipe } from '@ngneat/transloco';
+import { Category } from '../../../../apis/categories/models';
+import { HistoryRequest, HistoryType } from '../../../../apis/history/models';
+import { CustomButtonComponent } from '../../../../components/custom-button/custom-button.component';
 
 @Component({
     selector: 'app-add-event',

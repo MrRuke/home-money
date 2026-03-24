@@ -1,10 +1,10 @@
+import { NgModule } from '@angular/core';
 import {
     provideTransloco,
     TranslocoModule
 } from '@ngneat/transloco';
-import { NgModule } from '@angular/core';
+import { environment } from '../environments/environment.prod';
 import { TranslocoHttpLoader } from './transloco-loader';
-import { environment } from '@env/environment';
 
 @NgModule({
     exports: [ TranslocoModule ],

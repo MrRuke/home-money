@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
-import { HistoryRequest } from "@app/apis/history/models";
 import { Store } from "@ngrx/store";
+import { HistoryRequest } from "../../apis/history/models";
 import { HistoryActions } from "./history.actions";
 import { selectHistory, selectIsLoading } from "./history.selectors";
 

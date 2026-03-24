@@ -2,21 +2,13 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./src",
     "outDir": "./dist/out-tsc",
-    "paths": {
-      "@app/*": [
-        "app/*"
-      ],
-      "@env/*": [
-        "environments/*"
-      ]
-    },
+    "paths": {},
     "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
     "module": "es2020",

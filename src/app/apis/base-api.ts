@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
+import { inject } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { environment } from "@env/environment";
-import { inject } from "@angular/core";
+import { environment } from "../../environments/environment";
 
 export class BaseApi {
     public http = inject(HttpClient);

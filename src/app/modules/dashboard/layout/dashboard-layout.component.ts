@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from "@angular/core";
-import { AccountElement } from "@app/apis/accounts/models";
-import { MetaService } from "@app/services/meta.service";
-import { AccountFacade } from "@app/stores/account/account.facade";
 import { TranslocoService } from "@ngneat/transloco";
+import { AccountElement } from "../../../apis/accounts/models";
 import { CustomButtonComponent } from "../../../components/custom-button/custom-button.component";
-import { CreateAccountDialogComponent } from "../create-account-dialog/create-account-dialog.component";
 import { AppCostPipe } from "../../../services/cost.pipe";
+import { MetaService } from "../../../services/meta.service";
+import { AccountFacade } from "../../../stores/account/account.facade";
+import { CreateAccountDialogComponent } from "../create-account-dialog/create-account-dialog.component";
 
 @Component({
     selector: "app-dashboard-layout",

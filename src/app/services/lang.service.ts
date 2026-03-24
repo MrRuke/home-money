@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
-import { APP_LANG_STORAGE_KEY } from "@app/core/constansts";
 import { TranslocoService } from "@ngneat/transloco";
+import { APP_LANG_STORAGE_KEY } from "../core/constansts";
 
 @Injectable({
     providedIn: "root",

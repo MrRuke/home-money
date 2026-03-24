@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, output } from "@angular/core";
-import { HistoryElement, HistoryType } from "@app/apis/history/models";
+import { HistoryElement, HistoryType } from "../../../../apis/history/models";
 
 @Component({
     selector: "app-history-table",

@@ -4,7 +4,6 @@ import { NgModule, inject } from "@angular/core";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { HeaderModule } from "@app/components/header/header.module";
 
 import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
@@ -17,6 +16,8 @@ import { historyReducer } from "./stores/history/history.reducer";
 import { TranslocoRootModule } from "./transloco-root.module";
 
 import { RouterOutlet } from "@angular/router";
+import { HeaderModule } from "./components/header/header.module";
+import { MainMenuComponent } from "./components/main-menu/main-menu.component";
 import * as accountEffects from "./stores/account/account.effects";
 import * as categoryEffects from "./stores/categories/category.effects";
 import * as historyEffects from "./stores/history/history.effects";
@@ -40,6 +41,7 @@ import * as historyEffects from "./stores/history/history.effects";
         }),
         EffectsModule.forRoot([accountEffects, historyEffects, categoryEffects]),
         TranslocoRootModule,
+        MainMenuComponent,
     ],
     providers: [CommonModule],
     bootstrap: [AppComponent],

@@ -1,5 +1,5 @@
-import { AccountElement } from "@app/apis/accounts/models";
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
+import { AccountElement } from "../../apis/accounts/models";
 import { BaseState } from "../state";
 
 export type AccountState = {

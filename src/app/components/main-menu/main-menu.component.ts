@@ -8,10 +8,10 @@ import {
 } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { Router, RouterLink, RouterLinkActive } from "@angular/router";
-import { LangService } from "@app/services/lang.service";
-import { ThemeService } from "@app/services/theme.service";
 import { TranslocoService } from "@ngneat/transloco";
 import { tap } from "rxjs/operators";
+import { LangService } from "../../services/lang.service";
+import { ThemeService } from "../../services/theme.service";
 
 interface Language {
     name: string;

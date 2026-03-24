@@ -1,5 +1,5 @@
-import { HistoryElement, HistoryRequest } from "@app/apis/history/models";
 import { createActionGroup, emptyProps, props } from "@ngrx/store";
+import { HistoryElement, HistoryRequest } from "../../apis/history/models";
 
 export const HistoryActions = createActionGroup({
     source: 'History',

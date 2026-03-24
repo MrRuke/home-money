@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from "@angular/core";
-import { CategoryRequest } from "@app/apis/categories/models";
-import { HistoryRequest } from "@app/apis/history/models";
-import { MetaService } from "@app/services/meta.service";
-import { CategoryFacade } from "@app/stores/categories/category.facade";
-import { HistoryFacade } from "@app/stores/history/history.facade";
-import { TranslocoService, TranslocoPipe } from "@ngneat/transloco";
-import { CreateCategoryComponent } from "../components/create-category/create-category.component";
+import { TranslocoPipe, TranslocoService } from "@ngneat/transloco";
+import { CategoryRequest } from "../../../apis/categories/models";
+import { HistoryRequest } from "../../../apis/history/models";
+import { MetaService } from "../../../services/meta.service";
+import { CategoryFacade } from "../../../stores/categories/category.facade";
+import { HistoryFacade } from "../../../stores/history/history.facade";
 import { AddEventComponent } from "../components/add-event/add-event.component";
+import { CreateCategoryComponent } from "../components/create-category/create-category.component";
 
 @Component({
     selector: "app-records-layout",

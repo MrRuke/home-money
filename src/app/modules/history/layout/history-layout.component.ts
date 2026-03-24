@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from "@angular/core";
-import { HistoryElement } from "@app/apis/history/models";
-
-import { MetaService } from "@app/services/meta.service";
-import { HistoryFacade } from "@app/stores/history/history.facade";
 import { TranslocoService } from "@ngneat/transloco";
+import { HistoryElement } from "../../../apis/history/models";
+import { MetaService } from "../../../services/meta.service";
+import { HistoryFacade } from "../../../stores/history/history.facade";
 import { HistoryTableComponent } from "../components/history-table/history-table.component";
 
 @Component({

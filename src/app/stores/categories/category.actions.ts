@@ -1,5 +1,5 @@
-import { Category, CategoryRequest } from "@app/apis/categories/models";
 import { createActionGroup, emptyProps, props } from "@ngrx/store";
+import { Category, CategoryRequest } from "../../apis/categories/models";
 
 export const CategoryActions = createActionGroup({
     source: "Categories",
