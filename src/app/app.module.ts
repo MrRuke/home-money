@@ -23,6 +23,7 @@ import { HeaderComponent } from "./components/header/header.component";
 import { HeaderModule } from "./components/header/header.module";
 import { LineChartComponent } from "./components/line-chart/line-chart.component";
 import { MainMenuComponent } from "./components/main-menu/main-menu.component";
+import { TransactionEntryComponent } from "./components/transaction-entry/transaction-entry.component";
 import * as accountEffects from "./stores/account/account.effects";
 import * as categoryEffects from "./stores/categories/category.effects";
 import * as historyEffects from "./stores/history/history.effects";
@@ -53,6 +54,7 @@ import * as historyEffects from "./stores/history/history.effects";
         HeaderComponent,
         BaseChartDirective,
         LineChartComponent,
+        TransactionEntryComponent,
     ],
     providers: [
         CommonModule,

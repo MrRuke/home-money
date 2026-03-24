@@ -1,0 +1,79 @@
+<div class="transaction-toggle">
+    <button class="toggle-btn active-expense">Expense</button>
+    <button class="toggle-btn active-income">Income</button>
+</div>
+
+<div class="smart-templates">
+    <span class="templates-label">SMART TEMPLATES</span>
+    <div class="templates-list">
+        <button class="template-btn">
+            <svg lucideUtensils></svg>
+            Groceries
+        </button>
+        <button class="template-btn">
+            <svg lucideFuel></svg>
+            Gas
+        </button>
+        <button class="template-btn">
+            <svg lucideCoffee></svg>
+            Coffee
+        </button>
+    </div>
+</div>
+
+<form class="transaction-form">
+    <div class="form-grid">
+
+        <div class="form-group">
+            <label>Amount</label>
+            <div class="input-wrapper">
+                <span class="input-prefix">
+                    <svg lucideEuro></svg>
+                </span>
+                <input type="number" step="0.01" placeholder="0.00" class="form-input" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <div class="input-wrapper">
+                <span class="input-prefix">
+                    <svg lucideList></svg>
+                </span>
+                <input type="text" placeholder="e.g. Rewe Supermarket" class="form-input">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Category</label>
+            <select class="form-input select-input" required>
+                <option value="" disabled selected>Select category...</option>
+                <option value="groceries">Groceries</option>
+                <option value="transport">Transport</option>
+                <option value="dining">Dining Out</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Account</label>
+            <select class="form-input select-input" required>
+                <option value="main">Main Checking</option>
+                <option value="savings">Savings</option>
+                <option value="credit">Credit Card</option>
+            </select>
+        </div>
+
+        <div class="form-group full-width">
+            <label>Date</label>
+            <div class="input-wrapper">
+                <span class="input-prefix">
+                    <svg lucideCalendar></svg>
+                </span>
+                <input type="date" class="form-input" value="2026-03-24" required>
+            </div>
+        </div>
+
+    </div>
+
+    <button type="submit" class="btn-submit">LOG TRANSACTION</button>
+</form>

@@ -1,0 +1,171 @@
+.transaction-toggle {
+    display: flex;
+    background-color: var(--bg-input);
+    border-radius: 8px;
+    padding: 4px;
+    margin-bottom: 24px;
+}
+
+.toggle-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 8px 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.toggle-btn:hover:not(.active-expense):not(.active-income) {
+    color: var(--text-primary);
+}
+
+.toggle-btn.active-expense {
+    background-color: var(--status-expense-text);
+    color: var(--text-inverse);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-btn.active-income {
+    background-color: var(--status-income-text);
+    color: var(--text-inverse);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.smart-templates {
+    margin-bottom: 24px;
+}
+
+.templates-label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.templates-list {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.template-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: transparent;
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.template-btn svg {
+    width: 14px;
+    height: 14px;
+    color: var(--accent-orange);
+}
+
+.template-btn:hover {
+    border-color: var(--accent-orange);
+    background-color: rgba(249, 115, 22, 0.05);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-prefix {
+    position: absolute;
+    left: 12px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+}
+
+.input-prefix svg {
+    width: 16px;
+    height: 16px;
+}
+
+.form-input {
+    width: 100%;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-wrapper .form-input {
+    padding-left: 36px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.form-input:focus {
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: var(--accent-orange);
+    color: var(--text-inverse);
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-submit:hover {
+    background-color: var(--accent-orange-hover);
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}
