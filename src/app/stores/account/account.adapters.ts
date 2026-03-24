@@ -3,8 +3,8 @@ import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 import { BaseState } from "../state";
 
 export type AccountState = {
-  accounts: EntityState<AccountElement>;
+    accounts: EntityState<AccountElement>;
 } & BaseState;
 
 export const accountAdapter: EntityAdapter<AccountElement> =
-  createEntityAdapter<AccountElement>();
+    createEntityAdapter<AccountElement>();

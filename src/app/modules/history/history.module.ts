@@ -8,14 +8,14 @@ import { TranslocoRootModule } from '@app/transloco-root.module';
 import { CustomButtonModule } from '@app/components/custom-button/custom-button.module';
 
 @NgModule({
-  declarations: [HistoryLayoutComponent, HistoryTableComponent],
-  imports: [
-    CommonModule,
-    HistoryRoutingModule,
-    CostPipeModule,
-    TranslocoRootModule,
-    CustomButtonModule,
-  ],
+    declarations: [HistoryLayoutComponent, HistoryTableComponent],
+    imports: [
+        CommonModule,
+        HistoryRoutingModule,
+        CostPipeModule,
+        TranslocoRootModule,
+        CustomButtonModule,
+    ],
 })
 export class HistoryModule {
 }

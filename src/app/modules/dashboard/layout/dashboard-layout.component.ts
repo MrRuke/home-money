@@ -1,8 +1,8 @@
 import { Component, inject, OnInit, signal } from "@angular/core";
 import { AccountElement } from "@app/apis/accounts/models";
 import { MetaService } from "@app/services/meta.service";
-import { TranslocoService } from "@ngneat/transloco";
 import { AccountFacade } from "@app/stores/account/account.facade";
+import { TranslocoService } from "@ngneat/transloco";
 
 @Component({
     selector: "app-dashboard-layout",
@@ -10,27 +10,28 @@ import { AccountFacade } from "@app/stores/account/account.facade";
     standalone: false
 })
 export class DashboardLayoutComponent implements OnInit {
-  private translocoService = inject(TranslocoService);
-  private accountFacade = inject(AccountFacade);
+    private translocoService = inject(TranslocoService);
+    private accountFacade = inject(AccountFacade);
 
-  public isCreateDialogVisible = signal(false);
-  public readonly accounts = this.accountFacade.accounts;
-  public readonly isLoading = this.accountFacade.isLoading;
+    public isCreateDialogVisible = signal(false);
+    public readonly accounts = this.accountFacade.accounts;
+    public readonly isLoading = this.accountFacade.isLoading;
 
-  constructor(metaService: MetaService) {
-    metaService.init({
-      title: "Dashboard",
-      description: "Page of dashboard",
-      keywords: "Dashboard",
-    });
-  }
+    constructor(metaService: MetaService) {
+        metaService.init({
+            title: "Dashboard",
+            description: "Page of dashboard",
+            keywords: "Dashboard",
+        });
+    }
 
-  public ngOnInit(): void {
-    this.accountFacade.loadAccounts();
-    console.log('t', this.accounts());
-  }
+    public ngOnInit(): void {
+        this.accountFacade.loadAccounts();
+        console.log('t', this.accounts());
+    }
 
-  public onRemove(event: Event, accountId: number): void {
+    public onRemove(event: Event, accountId: number): void {
+        console.log(event, accountId);
     // this.confirmationService.confirm({
     //   target: event.target as EventTarget,
     //   message: this.translocoService.translate("DELETE_CONFIRMATION.MESSAGE"),
@@ -51,17 +52,17 @@ export class DashboardLayoutComponent implements OnInit {
     //     });
     //   },
     // });
-  }
+    }
 
-  public onClose(): void {
-    this.isCreateDialogVisible.set(false);
-  }
+    public onClose(): void {
+        this.isCreateDialogVisible.set(false);
+    }
 
-  public handleOpenCreateDialog(): void {
-    this.isCreateDialogVisible.set(true);
-  }
+    public handleOpenCreateDialog(): void {
+        this.isCreateDialogVisible.set(true);
+    }
 
-  public trackByAccounts(index: number, account: AccountElement): string {
-    return account.id;
-  }
+    public trackByAccounts(index: number, account: AccountElement): string {
+        return account.id;
+    }
 }

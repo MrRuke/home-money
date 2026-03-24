@@ -9,11 +9,11 @@ import { LangService } from "./services/lang.service";
     standalone: false
 })
 export class AppComponent implements OnInit {
-  private themeService = inject(ThemeService);
-  private langService = inject(LangService);
+    private themeService = inject(ThemeService);
+    private langService = inject(LangService);
 
-  public ngOnInit(): void {
-    this.themeService.initTheme();
-    this.langService.initLang();
-  }
+    public ngOnInit(): void {
+        this.themeService.initTheme();
+        this.langService.initLang();
+    }
 }

@@ -3,8 +3,8 @@ import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 import { BaseState } from "../state";
 
 export type CategoryState = {
-  categories: EntityState<Category>;
+    categories: EntityState<Category>;
 } & BaseState;
 
 export const categoriesAdapter: EntityAdapter<Category> =
-  createEntityAdapter<Category>();
+    createEntityAdapter<Category>();

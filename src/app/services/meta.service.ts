@@ -2,47 +2,47 @@ import { inject, Injectable } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
 
 interface MetaModel {
-  title?: string;
-  description?: string;
-  keywords?: string;
+    title?: string;
+    description?: string;
+    keywords?: string;
 }
 
 @Injectable({ providedIn: "root" })
 export class MetaService {
-  private title = inject(Title);
-  private meta = inject(Meta);
+    private title = inject(Title);
+    private meta = inject(Meta);
 
-  public init(meta: MetaModel): void {
-    if (meta.title) {
-      this.setTitle(meta.title);
+    public init(meta: MetaModel): void {
+        if (meta.title) {
+            this.setTitle(meta.title);
+        }
+        if (meta.description) {
+            this.setTitle(meta.description);
+        }
+        if (meta.keywords) {
+            this.setTitle(meta.keywords);
+        }
     }
-    if (meta.description) {
-      this.setTitle(meta.description);
+
+    private setTitle(title: string): void {
+        this.title.setTitle(title);
     }
-    if (meta.keywords) {
-      this.setTitle(meta.keywords);
+
+    private addDescription(value: string): void {
+        this.meta.addTags([
+            {
+                name: "description",
+                content: value,
+            },
+        ]);
     }
-  }
 
-  private setTitle(title: string): void {
-    this.title.setTitle(title);
-  }
-
-  private addDescription(value: string): void {
-    this.meta.addTags([
-      {
-        name: "description",
-        content: value,
-      },
-    ]);
-  }
-
-  private addKeywords(value: string): void {
-    this.meta.addTags([
-      {
-        name: "keywords",
-        content: value,
-      },
-    ]);
-  }
+    private addKeywords(value: string): void {
+        this.meta.addTags([
+            {
+                name: "keywords",
+                content: value,
+            },
+        ]);
+    }
 }

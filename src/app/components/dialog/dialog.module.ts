@@ -4,14 +4,14 @@ import { DialogComponent } from './dialog.component';
 import { CustomButtonModule } from '../custom-button/custom-button.module';
 
 @NgModule({
-  declarations: [DialogComponent],
-  imports: [
-    CommonModule,
-    CustomButtonModule,
-  ],
-  exports: [
-    DialogComponent,
-  ],
+    declarations: [DialogComponent],
+    imports: [
+        CommonModule,
+        CustomButtonModule,
+    ],
+    exports: [
+        DialogComponent,
+    ],
 })
 export class DialogModule {
 }

@@ -9,16 +9,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomButtonModule } from '@app/components/custom-button/custom-button.module';
 
 @NgModule({
-  declarations: [DashboardLayoutComponent, CreateAccountDialogComponent],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule,
-    CostPipeModule,
-    DialogModule,
-    ReactiveFormsModule,
-    FormsModule,
-    CustomButtonModule,
-  ],
+    declarations: [DashboardLayoutComponent, CreateAccountDialogComponent],
+    imports: [
+        CommonModule,
+        DashboardRoutingModule,
+        CostPipeModule,
+        DialogModule,
+        ReactiveFormsModule,
+        FormsModule,
+        CustomButtonModule,
+    ],
 })
 export class DashboardModule {
 }

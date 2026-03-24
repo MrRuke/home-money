@@ -6,53 +6,53 @@ import { RegistrationComponent } from './old/auth/registration/registration.comp
 // import { AuthGuard } from './old/shared/services/auth.guard';
 
 export const Urls = {
-  url: '',
-  auth: {
-    login: {
-      url: 'login',
+    url: '',
+    auth: {
+        login: {
+            url: 'login',
+        },
+        registration: {
+            url: 'registration',
+        },
     },
-    registration: {
-      url: 'registration',
+    system: {
+        url: 'system',
+        bill: {
+            url: 'bill',
+        },
+        history: {
+            url: 'history',
+            detail: {
+                url: 'history:id',
+            },
+        },
+        planning: {
+            url: 'planning',
+        },
+        records: {
+            url: 'records',
+        },
+        users: {
+            url: 'users',
+        },
     },
-  },
-  system: {
-    url: 'system',
-    bill: {
-      url: 'bill',
-    },
-    history: {
-      url: 'history',
-      detail: {
-        url: 'history:id',
-      },
-    },
-    planning: {
-      url: 'planning',
-    },
-    records: {
-      url: 'records',
-    },
-    users: {
-      url: 'users',
-    },
-  },
 };
 
 export const AuthScheme: Routes = [
-  {
-    path: Urls.url,
-    component: AuthComponent,
-    children: [
-      {
-        path: Urls.auth.login.url,
-        component: LoginComponent,
-      },
-      {
-        path: Urls.auth.registration.url,
-        component: RegistrationComponent,
-      },
-    ],
-  },
+    {
+        path: Urls.url,
+        component: AuthComponent,
+        children: [
+            {
+                path: Urls.auth.login.url,
+                component: LoginComponent,
+            },
+            {
+                path: Urls.auth.registration.url,
+                component: RegistrationComponent,
+            },
+        ],
+    },
 ];
 
 // export const SystemScheme: Routes = [
@@ -74,6 +74,6 @@ export const AuthScheme: Routes = [
 // ];
 
 export const AppScheme: Routes = [
-  { path: Urls.url, redirectTo: 'login', pathMatch: 'full' },
-  { path: Urls.system.url, redirectTo: 'system/bill', pathMatch: 'full' },
+    { path: Urls.url, redirectTo: 'login', pathMatch: 'full' },
+    { path: Urls.system.url, redirectTo: 'system/bill', pathMatch: 'full' },
 ];

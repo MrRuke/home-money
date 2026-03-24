@@ -22,33 +22,33 @@ import * as categoryEffects from "./stores/categories/category.effects";
 import { RouterOutlet } from "@angular/router";
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    TranslateModule.forRoot(),
-    HeaderModule,
-    MatSidenavModule,
-    RouterOutlet,
-    MainMenuModule,
-    StoreModule.forRoot({
-      accounts: accountReducer,
-      history: historyReducer,
-      categories: categoryReducer,
-    }),
-    EffectsModule.forRoot([accountEffects, historyEffects, categoryEffects]),
-    TranslocoRootModule,
-  ],
-  providers: [CommonModule],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        TranslateModule.forRoot(),
+        HeaderModule,
+        MatSidenavModule,
+        RouterOutlet,
+        MainMenuModule,
+        StoreModule.forRoot({
+            accounts: accountReducer,
+            history: historyReducer,
+            categories: categoryReducer,
+        }),
+        EffectsModule.forRoot([accountEffects, historyEffects, categoryEffects]),
+        TranslocoRootModule,
+    ],
+    providers: [CommonModule],
+    bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(translateService: TranslateService) {
-    translateService.setDefaultLang("ru");
-    translateService.use("ru");
+    constructor(translateService: TranslateService) {
+        translateService.setDefaultLang("ru");
+        translateService.use("ru");
     // translateService.setTranslation('ru', locales);
-  }
+    }
 }

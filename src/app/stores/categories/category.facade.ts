@@ -6,20 +6,20 @@ import { selectCategories, selectIsLoading } from "./category.selectors";
 
 @Injectable({ providedIn: "root" })
 export class CategoryFacade {
-  private store = inject(Store);
+    private store = inject(Store);
 
-  public readonly categories = this.store.selectSignal(selectCategories);
-  public readonly isLoading = this.store.selectSignal(selectIsLoading);
+    public readonly categories = this.store.selectSignal(selectCategories);
+    public readonly isLoading = this.store.selectSignal(selectIsLoading);
 
-  public createNewCategory(category: CategoryRequest): void {
-    this.store.dispatch(CategoryActions.addCategory({ category }));
-  }
+    public createNewCategory(category: CategoryRequest): void {
+        this.store.dispatch(CategoryActions.addCategory({ category }));
+    }
 
-  public loadCategories(): void {
-    this.store.dispatch(CategoryActions.retrievedCategoryList());
-  }
+    public loadCategories(): void {
+        this.store.dispatch(CategoryActions.retrievedCategoryList());
+    }
 
-  public removeCategory(categoryId: number): void {
-    this.store.dispatch(CategoryActions.removeCategory({ categoryId }));
-  }
+    public removeCategory(categoryId: number): void {
+        this.store.dispatch(CategoryActions.removeCategory({ categoryId }));
+    }
 }

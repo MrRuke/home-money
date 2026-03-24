@@ -5,17 +5,17 @@ import { Observable } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class AccountService {
-  private api = inject(AccountsApi);
+    private api = inject(AccountsApi);
 
-  public load(): Observable<AccountElement[]> {
-    return this.api.getAccounts();
-  }
+    public load(): Observable<AccountElement[]> {
+        return this.api.getAccounts();
+    }
 
-  public add(account: AccountRequest): Observable<AccountElement> {
-    return this.api.addAccount(account);
-  }
+    public add(account: AccountRequest): Observable<AccountElement> {
+        return this.api.addAccount(account);
+    }
 
-  public delete(accountId: number): Observable<void> {
-    return this.api.deleteAccount(accountId);
-  }
+    public delete(accountId: number): Observable<void> {
+        return this.api.deleteAccount(accountId);
+    }
 }

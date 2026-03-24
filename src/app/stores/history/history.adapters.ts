@@ -3,8 +3,8 @@ import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 import { BaseState } from "../state";
 
 export type HistoryState = {
-  history: EntityState<HistoryElement>;
+    history: EntityState<HistoryElement>;
 } & BaseState;
 
 export const historyAdapter: EntityAdapter<HistoryElement> =
-  createEntityAdapter<HistoryElement>();
+    createEntityAdapter<HistoryElement>();
